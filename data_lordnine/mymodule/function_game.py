@@ -431,7 +431,6 @@ def click_pos_2(pos_1, pos_2, cla):
         import pyautogui
 
 
-
         coordinate = 0
         if cla == 'one':
             coordinate = 0
@@ -518,10 +517,10 @@ def click_pos_2(pos_1, pos_2, cla):
                         move_ = True
                         data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
                         ser.write(data.encode())
-                    # else:
-                    #     print("아직 오차 범위 밖이다...", move_count)
-                    #     print("x_reg", x_reg)
-                    #     print("y_reg", y_reg)
+                # else:
+                #     print("아직 오차 범위 밖이다...", move_count)
+                #     print("x_reg", x_reg)
+                #     print("y_reg", y_reg)
             ser.close()
         else:
 
