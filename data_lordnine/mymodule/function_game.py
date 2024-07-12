@@ -513,10 +513,26 @@ def click_pos_2(pos_1, pos_2, cla):
                         # print("moveY", moveY)
                         # print("x_reg", x_reg)
                         # print("y_reg", y_reg)
-                        moveZ = 2
                         move_ = True
+
+                        # moveZ = 2
+                        # data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
+                        # ser.write(data.encode())
+
+                        moveX = 0
+                        moveY = 0
+                        moveZ = 3
                         data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
                         ser.write(data.encode())
+
+                        time.sleep(0.1)
+
+                        moveX = 0
+                        moveY = 0
+                        moveZ = 4
+                        data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
+                        ser.write(data.encode())
+
                 # else:
                 #     print("아직 오차 범위 밖이다...", move_count)
                 #     print("x_reg", x_reg)
@@ -611,10 +627,30 @@ def click_pos_reg(pos_1, pos_2, cla):
                     x_reg = pos_1 + coordinate - pyautogui.position()[0]
                     y_reg = pos_2 - pyautogui.position()[1]
                     if -c_reg < x_reg < c_reg and -c_reg < y_reg < c_reg and pyautogui.position()[1] >= 31:
-                        moveZ = 2
                         move_ = True
+
+                        # moveZ = 2
+                        # data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
+                        # ser.write(data.encode())
+
+                        moveX = 0
+                        moveY = 0
+                        moveZ = 3
                         data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
                         ser.write(data.encode())
+
+                        time.sleep(0.1)
+
+                        moveX = 0
+                        moveY = 0
+                        moveZ = 4
+                        data = f'x = {moveX}, y = {moveY}, z = {moveZ}\n'
+                        ser.write(data.encode())
+
+                        # drag_pos_Press()
+                        # time.sleep(0.1)
+                        # drag_pos_Release()
+
             ser.close()
         else:
 

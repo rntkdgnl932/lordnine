@@ -16,7 +16,7 @@ def go_test():
     import random
     import pydirectinput
 
-    from function_game import text_check_get, int_put_, imgs_set_, click_pos_reg, click_pos_2
+    from function_game import text_check_get, int_put_, imgs_set_, imgs_set_for, click_pos_reg
     from tuto_lordnine import way_check
     from action_lordnine import skip_start
 
@@ -44,12 +44,17 @@ def go_test():
     # result_num = int_put_(result)
     # print("result", result_num)
 
-    time.sleep(1)
+    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_2.PNG"
+    img_array = np.fromfile(full_path, np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    imgs_ = imgs_set_for(0, 80, 960, 140, cla, img, 0.7)
+    if imgs_ is not None and imgs_ != False:
+        print("close_2 : ", imgs_)
+        if len(imgs_) > 0:
+            for i in range(len(imgs_)):
+                click_pos_reg(imgs_[i][0], imgs_[i][1], cla)
+                time.sleep(0.5)
 
-    click_pos_2(925, 50, cla)
-
-    time.sleep(0.5)
-    pydirectinput.click()
 
     # skip_start(cla)
     #

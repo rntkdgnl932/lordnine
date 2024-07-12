@@ -48,6 +48,7 @@ from schedule import myQuest_play_check, myQuest_play_add
 
 
 from stop_event18 import _stop_please
+from tuto_lordnine import tuto_start
 
 from test_ import go_test
 
@@ -3361,8 +3362,7 @@ class game_Playing(QThread):
                                 # 오토 시작
 
                                 if result_schedule_ == "튜토육성":
-                                    # tuto_start(v_.now_cla)
-                                    print("start")
+                                    tuto_start(v_.now_cla)
 
 
 
