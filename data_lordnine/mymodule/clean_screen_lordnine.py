@@ -28,7 +28,7 @@ def clean_screen_start(cla):
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_for(0, 80, 960, 140, cla, img, 0.8)
+        imgs_ = imgs_set_for(0, 30, 960, 140, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("close_2 : ", imgs_)
             if len(imgs_) > 0:
