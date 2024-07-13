@@ -49,6 +49,7 @@ from schedule import myQuest_play_check, myQuest_play_add
 
 from stop_event18 import _stop_please
 from tuto_lordnine import tuto_start
+from character_select_and_game_start import game_start_screen
 
 from test_ import go_test
 
@@ -3336,7 +3337,7 @@ class game_Playing(QThread):
 
 
                                 # 게임 시작 화면인지 분석부터 하기
-                                # game_start_screen(v_.now_cla, character_id)
+                                game_start_screen(v_.now_cla, character_id)
 
 
 
