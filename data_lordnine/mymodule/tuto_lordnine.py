@@ -16,6 +16,7 @@ def tuto_start(cla):
 
     from function_game import click_pos_2, imgs_set_
     from action_lordnine import skip_start, confirm_all, move_check
+    from clean_screen_lordnine import clean_screen_just_on_start
 
     try:
 
@@ -197,6 +198,7 @@ def quest_checking(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import skip_start
     from massenger import line_to_me
+    from clean_screen_lordnine import clean_screen_just_on_start
 
     from schedule import myQuest_play_add
 
@@ -264,15 +266,122 @@ def quest_checking(cla):
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(0.5)
 
+        # 어빌리티
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\ability.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 30, 200, 150, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("ability", imgs_)
+
+            # 2_1
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\2_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(270, 100, 360, 200, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("ability : 2_1", imgs_)
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\ability_clicked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(270, 60, 420, 130, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("ability_clicked ", imgs_)
+                        click_pos_2(320, 150, cla)
+                        break
+                    else:
+                        click_pos_2(305, 285, cla)
+                    time.sleep(0.5)
+            # 2_2
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\2_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(330, 100, 430, 200, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("ability : 2_2", imgs_)
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\ability_clicked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(270, 60, 420, 130, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("ability_clicked ", imgs_)
+                        click_pos_2(380, 150, cla)
+                        break
+                    else:
+                        click_pos_2(400, 285, cla)
+                    time.sleep(0.5)
+
+            # 3_1
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\3_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(450, 100, 550, 200, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("ability : 3_1", imgs_)
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\ability_clicked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(270, 60, 420, 130, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("ability_clicked ", imgs_)
+                        click_pos_2(505, 150, cla)
+                        break
+                    else:
+                        click_pos_2(490, 285, cla)
+                    time.sleep(0.5)
+            # 3_2
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\3_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(520, 100, 610, 200, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("ability : 3_2", imgs_)
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\ability_clicked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(270, 60, 420, 130, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("ability_clicked ", imgs_)
+                        click_pos_2(565, 150, cla)
+                        clean_screen_just_on_start(cla)
+                        break
+                    else:
+                        click_pos_2(585, 285, cla)
+                    time.sleep(0.5)
+
+        # tuto 임시 정지
+
         # character_info_title
+
+        pause = False
+
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ganghwa_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(300, 670, 400, 730, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("ganghwa_btn : 1차 튜토 끝", imgs_)
-            why = str(v_.this_game) + " 1차 튜토 끝"
-            print(why)
+            why = str(v_.this_game) + " 강화로 인한 튜토 잠시 정지"
+            pause = True
+        else:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\ability.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 150, 30, 150, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("ability : 1차 튜토 끝", imgs_)
+                # why = str(v_.this_game) + " 직업 고르기 위한..."
+                # pause = True
+
+        if pause == True:
             line_to_me(v_.now_cla, why)
 
             dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
