@@ -385,8 +385,29 @@ def quest_checking(cla):
                     print("jejak_1", imgs_)
                     click_pos_2(865, 1005, cla)
                     break
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("jejak_2", imgs_)
+                        click_pos_2(865, 1005, cla)
+                        break
 
                 time.sleep(0.5)
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("touch_me", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    break
+
+                time.sleep(0.2)
+
 
         # tuto 임시 정지
 

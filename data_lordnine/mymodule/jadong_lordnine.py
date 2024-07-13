@@ -50,8 +50,9 @@ def jadong_start(cla, where):
             else:
 
 
-                spot_in(cla, result_spot)
-
+                spot_in(cla, result_where)
+        else:
+            spot_in(cla, result_where)
 
 
     except Exception as e:
@@ -154,6 +155,9 @@ def spot_in(cla, where):
                                     imgs_ = imgs_set_(500, 70, 640, 110, cla, img, 0.7)
                                     if imgs_ is not None and imgs_ != False:
                                         world = True
+
+                                        spot_go(cla)
+
                                         break
 
                                 else:
