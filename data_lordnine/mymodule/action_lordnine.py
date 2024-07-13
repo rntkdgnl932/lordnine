@@ -166,6 +166,9 @@ def skip_start(cla):
     import cv2
 
     from function_game import imgs_set_, click_pos_reg
+
+    from clean_screen_lordnine import clean_screen_just_on_start
+
     try:
 
         print("skip_start")
@@ -198,6 +201,25 @@ def skip_start(cla):
                 if imgs_ is not None and imgs_ != False:
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     is_skip = True
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\off.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("off")
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(0.5)
+        else:
+            clean_screen_just_on_start(cla)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\on.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("on")
+            is_skip = True
 
         if is_skip == True:
             time.sleep(0.5)

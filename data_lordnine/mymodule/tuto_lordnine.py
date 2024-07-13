@@ -61,7 +61,8 @@ def quest_ing_check(cla):
     import cv2
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg, int_put_, change_number
-    from clean_screen_lordnine import clean_screen_start
+    from clean_screen_lordnine import clean_screen_just_on_start
+    from action_lordnine import skip_start
 
     try:
 
@@ -107,7 +108,7 @@ def quest_ing_check(cla):
                         print("off")
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
-                        clean_screen_start(cla)
+                        clean_screen_just_on_start(cla)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\on.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -116,6 +117,9 @@ def quest_ing_check(cla):
         if imgs_ is not None and imgs_ != False:
             print("on")
             click_pos_2(480, 820, cla)
+            time.sleep(0.2)
+            skip_start(cla)
+
 
         return is_q
 
