@@ -38,7 +38,7 @@ def jadong_start(cla, where):
             # result_spot[2] => 중간 맵 // 200 235 270 ...
             # result_spot[3] => 세부 맵
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_spot\\" + str(result_spot[1]) + ".PNG"
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_spot\\" + str(result_spot[1]) + "\\" + str(result_spot[2]) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(10, 890, 130, 940, cla, img, 0.7)
