@@ -18,8 +18,13 @@ def go_test():
 
     from function_game import text_check_get, int_put_, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2
     from tuto_lordnine import way_check
-    from action_lordnine import skip_start
+    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check
     from clean_screen_lordnine import clean_screen_just_on_start
+    from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start
+    from potion_lordnine import potion_buy_start
+    from get_item import get_start, get_event
+    from jadong_lordnine import jadong_start, spot_go
+    from dead_die import dead_recorvery
 
 
     print("test")
@@ -43,113 +48,61 @@ def go_test():
 
 
     try:
-        # result = text_check_get(490, 510, 560, 550, cla)
-        # result_num = int_put_(result)
-        # print("result", result_num)
+        # where = "성전사단격전지/계승자초소"
+        # jadong_start(cla, where)
 
-        # 어빌리티
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\ability.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 200, 150, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("ability", imgs_)
+        get_start(cla)
 
-            # 2_1
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\2_1.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(270, 100, 360, 200, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("ability : 2_1", imgs_)
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("monster_close", imgs_)
 
-                for i in range(5):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\ability_clicked.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(270, 60, 420, 130, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("ability_clicked ", imgs_)
-                        click_pos_2(320, 150, cla)
-                        break
-                    else:
-                        click_pos_2(305, 285, cla)
-                    time.sleep(0.5)
-            # 2_2
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\2_2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(330, 100, 430, 200, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("ability : 2_2", imgs_)
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("talk")
 
-                for i in range(5):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\ability_clicked.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(270, 60, 420, 130, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("ability_clicked ", imgs_)
-                        click_pos_2(380, 150, cla)
-                        break
-                    else:
-                        click_pos_2(400, 285, cla)
-                    time.sleep(0.5)
-
-            # 3_1
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\3_1.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(450, 100, 550, 200, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("ability : 3_1", imgs_)
-
-                for i in range(5):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\ability_clicked.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(270, 60, 420, 130, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("ability_clicked ", imgs_)
-                        click_pos_2(505, 150, cla)
-                        break
-                    else:
-                        click_pos_2(490, 285, cla)
-                    time.sleep(0.5)
-            # 3_2
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\3_2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(520, 100, 610, 200, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("ability : 3_2", imgs_)
-
-                for i in range(5):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\ability\\ability_clicked.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(270, 60, 420, 130, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("ability_clicked ", imgs_)
-                        click_pos_2(565, 150, cla)
-                        clean_screen_just_on_start(cla)
-                        break
-                    else:
-                        click_pos_2(585, 285, cla)
-                    time.sleep(0.5)
-
-
-        # skip_start(cla)
-        #
-        # for i in range(4):
-        #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(100, 50, 170, 950, cla, img, 0.7)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("menu_point_1", imgs_)
+        #     is_point = True
+        #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
         #     img_array = np.fromfile(full_path, np.uint8)
         #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        #     imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+        #     imgs_ = imgs_set_for(100, 50, 170, 950, cla, img, 0.7)
         #     if imgs_ is not None and imgs_ != False:
-        #         print("i", i)
-        #         click_pos_reg(imgs_.x, imgs_.y, cla)
-        #     time.sleep(1)
+        #         print("menu_point_1", imgs_)
+        #         if len(imgs_) > 0:
+        #             last = len(imgs_) - 1
+        #             click_pos_reg(imgs_[last][0] - 30, imgs_[last][1] + 10, cla)
+        #             time.sleep(0.5)
+        # else:
+        #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(100, 50, 170, 950, cla, img, 0.7)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("menu_point_2", imgs_)
+        #         is_point = True
+        #         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_for(100, 50, 170, 950, cla, img, 0.7)
+        #         if imgs_ is not None and imgs_ != False:
+        #             print("menu_point_2", imgs_)
+        #             if len(imgs_) > 0:
+        #                 last = len(imgs_) - 1
+        #                 click_pos_reg(imgs_[last][0] - 30, imgs_[last][1] + 10, cla)
+        #                 time.sleep(0.5)
+
 
     except Exception as e:
         print(e)

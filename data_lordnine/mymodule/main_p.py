@@ -50,6 +50,9 @@ from schedule import myQuest_play_check, myQuest_play_add
 from stop_event18 import _stop_please
 from tuto_lordnine import tuto_start
 from character_select_and_game_start import game_start_screen
+from get_item import get_start
+from potion_lordnine import potion_buy_start
+from jadong_lordnine import jadong_start
 
 from test_ import go_test
 
@@ -171,7 +174,7 @@ class MyApp(QDialog):
         elif last_monitor_number == 3:
             x_reg = 960 * 2
 
-        self.setGeometry(20 + x_reg, 200, 900, 700)
+        self.setGeometry(6 + x_reg, 200, 900, 700)
         self.show()
     def my_title(self):
         self.setWindowTitle(v_.this_game + "(ver " + version + ")")
@@ -798,13 +801,13 @@ class FirstTab(QWidget):
         # 콜렉션 온오프(수집 온오프)
         self.onActivated_slelect_collection_toggle_read()
 
-        self.collection_on_off = QGroupBox('수집 On/Off')
+        self.collection_on_off = QGroupBox('튜토물약체크 On/Off')
         print("dark_demention", v_.onCollection)
         if v_.onCollection == True:
             tgl_now = "On"
         else:
             tgl_now = "Off"
-        self.now_toggle = QLabel("수집 : " + tgl_now + "\n")
+        self.now_toggle = QLabel("튜토물약체크 : " + tgl_now + "\n")
         # 토글 버튼
         self.tgl = QCheckBox("On / Off")
         self.tgl.adjustSize()
@@ -969,7 +972,7 @@ class FirstTab(QWidget):
         # 마을 의뢰
         self.com_group6 = QGroupBox('육성, 각종템받기, 거래소등록하기, 의뢰')
         cb6 = QComboBox()
-        list6 = ['스케쥴 선택', '캐릭터바꾸기', '각종템받기', '버프와물약사기', '거래소등록', '튜토육성', '의뢰_세라보그', '의뢰_바란', '의뢰_국경지대', '의뢰_유로키나산맥']
+        list6 = ['스케쥴 선택', '각종템받기', '버프와물약사기', '거래소등록', '튜토육성']
         cb6.addItems(list6)
         vbox6 = QHBoxLayout()
         vbox6.addWidget(cb6)
@@ -1058,10 +1061,10 @@ class FirstTab(QWidget):
 
         # 사냥터
         dir_path = "C:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder)
-        file_path1 = dir_path + "\\jadong\\moon_serabog.txt"
-        file_path2 = dir_path + "\\jadong\\moon_baran.txt"
-        file_path3 = dir_path + "\\jadong\\moon_countryregion.txt"
-        file_path4 = dir_path + "\\jadong\\moon_yourokina.txt"
+        file_path1 = dir_path + "\\jadong\\dien.txt"
+        file_path2 = dir_path + "\\jadong\\rindlis.txt"
+        file_path3 = dir_path + "\\jadong\\woolan.txt"
+        file_path4 = dir_path + "\\jadong\\serbis.txt"
 
         if os.path.isfile(file_path1) == True:
             with open(file_path1, "r", encoding='utf-8-sig') as file:
@@ -1070,7 +1073,7 @@ class FirstTab(QWidget):
                 for i in range(len(read_serabog)):
                     read_ready = read_serabog[i].split("_")
                     list5.append(read_ready[0])
-                list5.insert(0, "< 세라보그 >")
+                list5.insert(0, "< 디엔 >")
 
             with open(file_path2, "r", encoding='utf-8-sig') as file:
                 read_baran = file.read().splitlines()
@@ -1078,7 +1081,7 @@ class FirstTab(QWidget):
                 for i in range(len(read_baran)):
                     read_2_ready = read_baran[i].split("_")
                     list55.append(read_2_ready[0])
-                list55.insert(0, "< 바란 >")
+                list55.insert(0, "< 린드리스 >")
 
             with open(file_path3, "r", encoding='utf-8-sig') as file:
                 read_countryregioon = file.read().splitlines()
@@ -1086,7 +1089,7 @@ class FirstTab(QWidget):
                 for i in range(len(read_countryregioon)):
                     read_2_ready = read_countryregioon[i].split("_")
                     list555.append(read_2_ready[0])
-                list555.insert(0, "< 국경지대 >")
+                list555.insert(0, "< 울란 >")
 
             with open(file_path4, "r", encoding='utf-8-sig') as file:
                 read_yourokina = file.read().splitlines()
@@ -1094,7 +1097,7 @@ class FirstTab(QWidget):
                 for i in range(len(read_yourokina)):
                     read_2_ready = read_yourokina[i].split("_")
                     list5555.append(read_2_ready[0])
-                list5555.insert(0, "< 유로키나산맥 >")
+                list5555.insert(0, "< 세르비스 >")
 
             # with open(file_path3, "r", encoding='utf-8-sig') as file:
             #     read_1 = file.read()
@@ -1109,25 +1112,25 @@ class FirstTab(QWidget):
         cb5 = QComboBox()
         #list5 = ['자동 사냥터 선택1', '사냥_콜리아 삼거리', '사냥_마른땅 벌목지', '사냥_실바인 진흙탕', '사냥_실바인 저수지']
         cb5.addItems(list5)
-        jadong1 = QPushButton('세라보그 추가')
+        jadong1 = QPushButton('디엔 추가')
         jadong1.clicked.connect(self.onActivated_hunt_add)
 
         cb55 = QComboBox()
         #list55 = ['자동 사냥터 선택2', '사냥_콜리아 삼거리', '사냥_마른땅 벌목지', '사냥_실바인 진흙탕', '사냥_실바인 저수지']
         cb55.addItems(list55)
-        jadong2 = QPushButton('바란 추가')
+        jadong2 = QPushButton('린드리스 추가')
         jadong2.clicked.connect(self.onActivated_hunt_add_2)
 
         cb555 = QComboBox()
         #list555 = ['자동 사냥터 선택3', '사냥_콜리아 삼거리', '사냥_마른땅 벌목지', '사냥_실바인 진흙탕', '사냥_실바인 저수지']
         cb555.addItems(list555)
-        jadong3 = QPushButton('국경지대 추가')
+        jadong3 = QPushButton('울란 추가')
         jadong3.clicked.connect(self.onActivated_hunt_add_3)
 
         cb5555 = QComboBox()
         # list555 = ['자동 사냥터 선택3', '사냥_콜리아 삼거리', '사냥_마른땅 벌목지', '사냥_실바인 진흙탕', '사냥_실바인 저수지']
         cb5555.addItems(list5555)
-        jadong4 = QPushButton('유로키나산맥 추가')
+        jadong4 = QPushButton('세르비스 추가')
         jadong4.clicked.connect(self.onActivated_hunt_add_4)
 
 
@@ -1764,12 +1767,12 @@ class FirstTab(QWidget):
         global onCharacter, onHunt
         char_ = onCharacter
         # hun_ = onHunt
-        hun_ = "사냥/serabog/" + onHunt
+        hun_ = onHunt
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
-        elif onHunt == '< 세라보그 >' or onHunt == 'none':
+        elif onHunt == '< 디엔 >' or onHunt == 'none':
             pyautogui.alert(button='넵', text='던전을 선택해 주시지예', title='뭐합니꺼')
-        elif onCharacter != 0 and onHunt != '< 세라보그 >':
+        elif onCharacter != 0 and onHunt != '< 디엔 >':
             print('char_', char_)
             print('dun_', hun_)
 
@@ -1787,12 +1790,12 @@ class FirstTab(QWidget):
         global onCharacter, onHunt2
         char_ = onCharacter
         # hun_ = onHunt2
-        hun_ = "사냥/baran/" + onHunt2
+        hun_ = onHunt2
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
-        elif onHunt2 == '< 바란 >' or onHunt2 == 'none':
+        elif onHunt2 == '< 린드리스 >' or onHunt2 == 'none':
             pyautogui.alert(button='넵', text='던전을 선택해 주시지예', title='뭐합니꺼')
-        elif onCharacter != 0 and onHunt2 != '< 바란 >':
+        elif onCharacter != 0 and onHunt2 != '< 린드리스 >':
             print('char_', char_)
             print('dun_', hun_)
 
@@ -1810,12 +1813,12 @@ class FirstTab(QWidget):
         global onCharacter, onHunt3
         char_ = onCharacter
         # hun_ = "사냥_" + "첼라노_" + onHunt3
-        hun_ = "사냥/countryregioon/" + onHunt3
+        hun_ = onHunt3
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
-        elif onHunt3 == '< 국경지대 >' or onHunt3 == 'none':
+        elif onHunt3 == '< 울란 >' or onHunt3 == 'none':
             pyautogui.alert(button='넵', text='던전을 선택해 주시지예', title='뭐합니꺼')
-        elif onCharacter != 0 and onHunt3 != '< 국경지대 >':
+        elif onCharacter != 0 and onHunt3 != '< 울란 >':
             print('char_', char_)
             print('dun_', hun_)
 
@@ -1833,12 +1836,12 @@ class FirstTab(QWidget):
     def onActivated_hunt_add_4(self):
         global onCharacter, onHunt4
         char_ = onCharacter
-        hun_ = "사냥/yourokina/" + onHunt4
+        hun_ = onHunt4
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
-        elif onHunt4 == '< 유로키나산맥 >' or onHunt4 == 'none':
+        elif onHunt4 == '< 세르비스 >' or onHunt4 == 'none':
             pyautogui.alert(button='넵', text='던전을 선택해 주시지예', title='뭐합니꺼')
-        elif onCharacter != 0 and onHunt4 != '< 유로키나산맥 >':
+        elif onCharacter != 0 and onHunt4 != '< 세르비스 >':
             print('char_', char_)
             print('dun_', hun_)
 
@@ -3384,6 +3387,15 @@ class game_Playing(QThread):
 
                                 if result_schedule_ == "튜토육성":
                                     tuto_start(v_.now_cla)
+
+                                elif result_schedule_ == "각종템받기":
+                                    get_start(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
+                                elif result_schedule_ == "버프와물약사기":
+                                    potion_buy_start(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
+                                elif "/" in result_schedule_:
+                                    jadong_start(v_.now_cla, result_schedule_)
 
 
 

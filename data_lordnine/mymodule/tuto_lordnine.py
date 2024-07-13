@@ -16,41 +16,52 @@ def tuto_start(cla):
 
     from function_game import click_pos_2, imgs_set_
     from action_lordnine import skip_start, confirm_all, move_check
-    from clean_screen_lordnine import clean_screen_just_on_start
+    from dead_die import dead_check
+    from potion_lordnine import potion_check
 
     try:
 
         print("tuto_start")
 
-        result_move = move_check(cla)
+        result_dead = dead_check(cla)
 
-        result_quest_ing = quest_ing_check(cla)
+        if result_dead == False:
 
-        if result_move == False and result_quest_ing == False:
+            # v_.onCollection은 여기서 튜토시 물약체크 용으로 쓴다. 죽으면 아깝기 때문에
+            if v_.onCollection == True:
+                potion_check(cla)
 
-            skip_start(cla)
-            way_check(cla)
+            result_move = move_check(cla)
 
-            # 퀘스트 클릭
-            click_pos_2(870, 120, cla)
-            time.sleep(0.3)
-            confirm_all(cla)
+            result_quest_ing = quest_ing_check(cla)
 
-            for i in range(5):
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\near_aim_description.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(300, 30, 600, 250, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("near_aim_description", imgs_)
-                    click_pos_2(780, 130, cla)
-                    time.sleep(0.3)
-                    confirm_all(cla)
-                    break
-                time.sleep(0.2)
+            if result_move == False and result_quest_ing == False:
+
+                skip_start(cla)
+                way_check(cla)
+
+                # 퀘스트 클릭
+                click_pos_2(870, 120, cla)
+                time.sleep(0.3)
+                confirm_all(cla)
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\near_aim_description.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(300, 30, 600, 250, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("near_aim_description", imgs_)
+                        click_pos_2(780, 130, cla)
+                        time.sleep(0.3)
+                        confirm_all(cla)
+                        break
+                    time.sleep(0.2)
 
 
-            quest_checking(cla)
+                quest_checking(cla)
+
+
 
 
     except Exception as e:
@@ -130,8 +141,7 @@ def way_check(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg, in_number_check, int_put_, change_number
-    from action_lordnine import skip_start
+    from function_game import imgs_set_, click_pos_reg
 
     try:
 
@@ -200,11 +210,8 @@ def quest_checking(cla):
     import cv2
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import skip_start
     from massenger import line_to_me
     from clean_screen_lordnine import clean_screen_just_on_start
-
-    from schedule import myQuest_play_add
 
     try:
 
@@ -360,6 +367,26 @@ def quest_checking(cla):
                     else:
                         click_pos_2(585, 285, cla)
                     time.sleep(0.5)
+
+        # 제작
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\jejak.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 30, 170, 100, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("jejak", imgs_)
+
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("jejak_1", imgs_)
+                    click_pos_2(865, 1005, cla)
+                    break
+
+                time.sleep(0.5)
 
         # tuto 임시 정지
 
