@@ -364,9 +364,16 @@ def move_check(cla):
                 is_move_count = 0
 
             else:
-                is_move_count += 1
-                if is_move_count > 3:
-                    is_move = False
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    is_move_count += 1
+                    if is_move_count > 3:
+                        is_move = False
+                else:
+                    time.sleep(5)
 
             time.sleep(1)
 
