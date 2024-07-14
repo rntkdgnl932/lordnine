@@ -249,20 +249,26 @@ def character_change(cla, character_id):
                     # 장비 빼기
 
                     # 메뉴 열기
-                    menu_open(cla)
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\character_change_btn.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(860, 890, 960, 1000, cla, img, 0.75)
-                    if imgs_ is not None and imgs_ != False:
-                        print("character_change_btn", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
 
-                        for i in range(5):
-                            result_confirm = confirm_all(cla)
-                            if result_confirm == True:
-                                break
-                            time.sleep(0.5)
+                    print("메뉴열즈아...")
+
+                    menu_open(cla)
+                    time.sleep(1)
+                    
+
+                    for i in range(5):
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\character_change_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(860, 890, 960, 1000, cla, img, 0.75)
+                            if imgs_ is not None and imgs_ != False:
+                                print("character_change_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
 
 
                 else:
