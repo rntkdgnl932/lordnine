@@ -36,6 +36,7 @@ def collection_start(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import menu_open
     from clean_screen_lordnine import clean_screen_start
+    from tuto_lordnine import way_check
 
     try:
         print("collection_start")
@@ -54,6 +55,8 @@ def collection_start(cla):
             imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 print("item_collection", imgs_)
+
+                way_check(cla)
 
                 collection_scan_option(cla)
 
