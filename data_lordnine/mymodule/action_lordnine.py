@@ -539,6 +539,7 @@ def go_maul(cla):
                             for c in range(3):
                                 confirm_all(cla)
                                 time.sleep(0.2)
+                            time.sleep(3)
                         else:
                             clean_screen_start(cla)
             time.sleep(0.5)
