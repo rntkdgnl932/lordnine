@@ -94,7 +94,7 @@ def character_change(cla, character_id):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
-    from action_lordnine import out_check, menu_open, confirm_all
+    from action_lordnine import out_check, menu_open, confirm_all, go_maul
 
     from massenger import line_to_me
     try:
@@ -248,17 +248,21 @@ def character_change(cla, character_id):
 
                     # 장비 빼기
 
-                    # 메뉴 열기
+                    # 마을부터 가서 메뉴 열기
 
-                    print("메뉴열즈아...")
+
+                    go_maul(cla)
 
                     menu_open(cla)
                     time.sleep(1)
-                    
+
 
                     for i in range(5):
-                        result_confirm = confirm_all(cla)
-                        if result_confirm == True:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
                             break
                         else:
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\character_change_btn.PNG"
