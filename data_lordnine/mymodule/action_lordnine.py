@@ -109,24 +109,38 @@ def out_check(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from character_select_and_game_start import game_start_screen
+    from schedule import myQuest_play_check
     try:
 
         print("out_check")
 
-        is_out = False
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            result_schedule = myQuest_play_check(cla, "check")
+            character_id = result_schedule[0][1]
+            result_schedule_ = result_schedule[0][2]
 
-        result_menu_open = menu_open_check(cla)
-        if result_menu_open == False:
+            game_start_screen(cla, character_id)
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
-            if imgs_ is not None and imgs_ != False:
-                is_out = True
+        else:
+            is_out = False
 
-        return is_out
+            result_menu_open = menu_open_check(cla)
+            if result_menu_open == False:
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    is_out = True
+
+            return is_out
 
     except Exception as e:
         print(e)
@@ -205,7 +219,7 @@ def skip_start(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
 
     from clean_screen_lordnine import clean_screen_just_on_start
     from schedule import myQuest_play_check

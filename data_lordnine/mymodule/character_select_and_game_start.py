@@ -257,7 +257,7 @@ def character_change(cla, character_id):
                     time.sleep(1)
 
 
-                    for i in range(5):
+                    for i in range(20):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
