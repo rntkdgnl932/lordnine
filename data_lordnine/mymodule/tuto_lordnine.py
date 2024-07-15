@@ -27,8 +27,8 @@ def tuto_start(cla):
 
         if result_dead == False:
 
-            # v_.onCollection은 여기서 튜토시 물약체크 용으로 쓴다. 죽으면 아깝기 때문에
-            if v_.onCollection == True:
+            # v_.onTutoPotion은 여기서 튜토시 물약체크 용으로 쓴다. 죽으면 아깝기 때문에
+            if v_.onTutoPotion == True:
                 potion_check(cla)
 
             result_move = move_check(cla)

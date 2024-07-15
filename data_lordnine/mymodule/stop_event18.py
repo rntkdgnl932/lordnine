@@ -51,6 +51,8 @@ def game_check(cla):
     import os
 
     from function_game import imgs_set_
+    from action_lordnine import confirm_all, skip_start
+    from character_select_and_game_start import game_ready
     from massenger import line_to_me
 
     try:
@@ -59,6 +61,7 @@ def game_check(cla):
         why = "none"
 
         is_error = False
+        error_code = 0
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\network_error.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -67,10 +70,52 @@ def game_check(cla):
         if imgs_ is not None and imgs_ != False:
             print("network_error")
             is_error = True
+            error_code = 1
             why = str(v_.this_game) + "네트워크 에러"
+        else:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\long_time.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 500, 500, 600, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("long_time")
+                error_code = 2
+
+        if error_code == 2:
+            print("재접해보자")
+
+            restart = True
+            restart_count = 0
+
+            while restart is True:
+                restart_count += 1
+                if restart_count > 7:
+                    restart = False
+                    why = "장시간 이었으나 재접속 실패..."
+                    is_error = True
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    restart = False
+                    why = "장시간 이었으나 재접속 성공"
+                    print(why)
+                    line_to_me(v_.now_cla, why)
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\long_time.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 500, 500, 600, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        confirm_all(cla)
+
+                    game_ready(cla)
+
+                time.sleep(1)
 
         if is_error == True:
-
             print(why)
             line_to_me(v_.now_cla, why)
 

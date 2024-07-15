@@ -98,6 +98,16 @@ def confirm_all(cla):
             click_pos_reg(imgs_.x, imgs_.y, cla)
             is_confirm = True
 
+        # 던전 나가기
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\dun_exit_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(480, 540, 640, 640, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("dun_exit_btn", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            is_confirm = True
+
         return is_confirm
 
     except Exception as e:
@@ -256,6 +266,15 @@ def skip_start(cla):
                 if imgs_ is not None and imgs_ != False:
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     is_skip = True
+                else:
+                    # out_skip(character ready)
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\skip\\out_skip.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_skip = True
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\off.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -373,13 +392,70 @@ def move_check(cla):
                     if is_move_count > 3:
                         is_move = False
                 else:
-                    time.sleep(5)
+                    result_loading = loading_check(cla)
+                    if result_loading == True:
+                        is_move_count = 0
+                    else:
+                        is_move_count += 1
+                        if is_move_count > 3:
+                            is_move = False
 
             time.sleep(1)
 
 
         return is_move
 
+    except Exception as e:
+        print(e)
+
+
+
+def loading_check(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg
+    try:
+
+        print("loading_check")
+
+        is_loading = False
+
+        is_move = False
+
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\loading\\tip.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 900, 150, 1040, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("tip : loading...")
+                is_move = True
+                is_loading = True
+                break
+            time.sleep(0.2)
+
+        is_move_count = 0
+        is_move_second = 0
+        while is_move is True:
+            is_move_second += 1
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\loading\\tip.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 900, 150, 1040, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("로딩중", is_move_second, "초")
+                is_move_count = 0
+
+            else:
+                is_move_count += 1
+                if is_move_count > 3:
+                    is_move = False
+
+            time.sleep(1)
+
+        return is_loading
     except Exception as e:
         print(e)
 
@@ -421,13 +497,16 @@ def juljun_attack_check(cla):
 
         is_attack = False
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_attack_on.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
-        if imgs_ is not None and imgs_ != False:
-            print("juljun_attack_on", imgs_)
-            is_attack = True
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_attack_on.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("juljun_attack_on", imgs_)
+                is_attack = True
+                break
+            time.sleep(0.2)
 
         return is_attack
     except Exception as e:
@@ -483,7 +562,6 @@ def juljun_off(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
             if imgs_ is not None and imgs_ != False:
-                print("juljun_on", imgs_)
                 drag_pos(430, 530, 730, 530, cla)
 
                 for o in range(5):
@@ -540,15 +618,19 @@ def go_maul(cla):
                             clean_screen_start(cla)
                         break
                     else:
-                        result_out = out_check(cla)
-                        if result_out == True:
-                            click_pos_2(30, 210, cla)
-                            for c in range(3):
-                                confirm_all(cla)
-                                time.sleep(0.2)
-                            time.sleep(3)
-                        else:
-                            clean_screen_start(cla)
+                        result_loading = loading_check(cla)
+                        if result_loading == False:
+                            result_out = out_check(cla)
+                            if result_out == True:
+                                click_pos_2(30, 205, cla)
+                                for c in range(3):
+                                    result_loading = loading_check(cla)
+                                    if result_loading == False:
+                                        confirm_all(cla)
+                                    time.sleep(0.2)
+                                time.sleep(3)
+                            else:
+                                clean_screen_start(cla)
             time.sleep(0.5)
 
 
@@ -613,6 +695,13 @@ def attack_on(cla):
     try:
 
         print("attack_on")
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            juljun_off(cla)
 
         attack = False
 

@@ -16,15 +16,16 @@ def go_test():
     import random
     import pydirectinput
 
-    from function_game import text_check_get, int_put_, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2
+    from function_game import text_check_get, int_put_, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, drag_pos
     from tuto_lordnine import way_check
-    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check
+    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul
     from clean_screen_lordnine import clean_screen_just_on_start
-    from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start
+    from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start
     from potion_lordnine import potion_buy_start
     from get_item import get_start, get_event
     from jadong_lordnine import jadong_start, spot_go
     from dead_die import dead_recorvery
+    from dungeon_lordnine import dun_in
 
 
     print("test")
@@ -51,7 +52,46 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
-        get_start(cla)
+        # where = "던전_가르바나지하수로_5"
+        #
+        # dun_in(cla, where)
+
+        # v_.onCollecion = True
+        # v_.onCollecion_boonhae = True
+
+        # collection_scan_option(cla)
+
+        juljun_off(cla)
+
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(270, 515, 350, 600, cla, img, 0.7)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("체크", imgs_)
+        # else:
+        #     print("ㅎㅁㄴㅇㅎㅁ")
+
+
+
+        # for i in range(5):
+        #     x_1 = i + 1
+        #     print("x_1", x_1)
+        #
+        #     for y in range(3):
+        #         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_step\\bottom\\" + str(x_1) + ".PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(340, 740, 900, 850, cla, img, 0.85)
+        #         if imgs_ is not None and imgs_ != False:
+        #             print("result : x_1", imgs_)
+        #             click_pos_reg(imgs_.x, imgs_.y, cla)
+        #             time.sleep(0.2)
+        #         else:
+        #             if x_1 > 3:
+        #                 drag_pos(630, 810, 300, 810, cla)
+        #         time.sleep(0.3)
+        #     time.sleep(0.2)
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

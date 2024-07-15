@@ -67,7 +67,9 @@ colcount = 0
 thisRow = 0
 thisCol = 0
 table_datas = ""
-#  onCollection= False
+# onCollection= False
+# onTutoPotion = False
+# onCollection_boonhae = False
 onCla = 'none'
 onCharacter = 0
 onRefresh_time = 0
@@ -174,7 +176,7 @@ class MyApp(QDialog):
         elif last_monitor_number == 3:
             x_reg = 960 * 2
 
-        self.setGeometry(6 + x_reg, 200, 900, 700)
+        self.setGeometry(10 + x_reg, 200, 900, 700)
         self.show()
     def my_title(self):
         self.setWindowTitle(v_.this_game + "(ver " + version + ")")
@@ -798,30 +800,119 @@ class FirstTab(QWidget):
 
         self.force_sub.setLayout(sub_box)
 
-        # 콜렉션 온오프(수집 온오프)
-        self.onActivated_slelect_collection_toggle_read()
+        ################### 콜렉션 온오프(수집 온오프) ####################
 
-        self.collection_on_off = QGroupBox('튜토물약체크 On/Off')
-        print("dark_demention", v_.onCollection)
-        if v_.onCollection == True:
+        self.collection_on_off1 = QGroupBox('튜토물약체크 On/Off')
+
+        ################################################################
+
+        # 1. 튜토물약
+        self.onActivated_slelect_tutopotion_toggle_read()
+
+        print("onTutoPotion", v_.onTutoPotion)
+        if v_.onTutoPotion == True:
             tgl_now = "On"
         else:
             tgl_now = "Off"
         self.now_toggle = QLabel("튜토물약체크 : " + tgl_now + "\n")
-        # 토글 버튼
+
+        ## 토글 버튼
         self.tgl = QCheckBox("On / Off")
         self.tgl.adjustSize()
-        self.tgl.setChecked(v_.onCollection)
-        self.tgl.toggled.connect(self.onActivated_slelect_collection_toggle)
+        self.tgl.setChecked(v_.onTutoPotion)
+        self.tgl.toggled.connect(self.onActivated_slelect_tutopotion_toggle)
 
-        tgl33 = QHBoxLayout()
+
+
+        ####################################
+
+        tgl33 = QVBoxLayout()
         tgl33.addWidget(self.now_toggle)
+        tgl33.addWidget(self.tgl)
 
         collec_box = QVBoxLayout()
         collec_box.addLayout(tgl33)
-        collec_box.addWidget(self.tgl)
 
-        self.collection_on_off.setLayout(collec_box)
+        self.collection_on_off1.setLayout(collec_box)
+        ################### 콜렉션 온오프(수집 온오프) ####################
+
+        self.collection_on_off2 = QGroupBox('고급콜렉션 On/Off')
+
+        ################################################################
+
+
+
+        # 2. 고급장비콜렉
+        self.onActivated_slelect_collection_toggle_read()
+
+        print("onCollection", v_.onCollection)
+        if v_.onCollection == True:
+            tgl_now = "On"
+        else:
+            tgl_now = "Off"
+        self.now_toggle2 = QLabel("고급장비콜렉션 : " + tgl_now + "\n")
+
+        ## 토글 버튼
+        self.tgl2 = QCheckBox("On / Off")
+        self.tgl2.adjustSize()
+        self.tgl2.setChecked(v_.onCollection)
+        self.tgl2.toggled.connect(self.onActivated_slelect_collection_toggle)
+
+
+
+        ####################################
+
+
+        tgl333 = QVBoxLayout()
+        tgl333.addWidget(self.now_toggle2)
+        tgl333.addWidget(self.tgl2)
+
+
+        collec_box = QVBoxLayout()
+        collec_box.addLayout(tgl333)
+        # collec_box.addWidget(self.now_toggle2)
+        # collec_box.addWidget(self.tgl2)
+
+        self.collection_on_off2.setLayout(collec_box)
+
+        ################### 콜렉션 온오프(수집 온오프) ####################
+
+        self.collection_on_off3 = QGroupBox('고급장비분해 On/Off')
+
+        ################################################################
+
+
+
+        # 3. 고급장비분해
+        self.onActivated_slelect_collection_boonhae_toggle_read()
+
+        print("onCollection_boonhae", v_.onCollection_boonhae)
+        if v_.onCollection_boonhae == True:
+            tgl_now = "On"
+        else:
+            tgl_now = "Off"
+        self.now_toggle3 = QLabel("고급장비분해 : " + tgl_now + "\n")
+
+        ## 토글 버튼
+        self.tgl3 = QCheckBox("On / Off")
+        # self.tgl3.adjustSize()
+        self.tgl3.setChecked(v_.onCollection_boonhae)
+        self.tgl3.toggled.connect(self.onActivated_slelect_collection_boonhae_toggle)
+
+        ####################################
+
+
+        tgl3333 = QVBoxLayout()
+        tgl3333.addWidget(self.now_toggle3)
+        tgl3333.addWidget(self.tgl3)
+
+
+        collec_box = QVBoxLayout()
+        collec_box.addLayout(tgl3333)
+        # collec_box.addWidget(self.now_toggle2)
+        # collec_box.addWidget(self.tgl2)
+
+        self.collection_on_off3.setLayout(collec_box)
 
 
 
@@ -984,14 +1075,14 @@ class FirstTab(QWidget):
 
 
         # 던전 종류
-        self.dun_group_1 = QGroupBox('균열')
+        self.dun_group_1 = QGroupBox('던전')
         dun_g1_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
-        dun_g1_list = ['균열의 땅 선택', '홍염의신전', '얼음유적지', '마리아스의동굴']
+        dun_g1_list = ['던전 선택', '어둠의숲', '조각의숲', '타락한미궁', '가르바나지하수로']
         dun_g1_name.addItems(dun_g1_list)
 
         dun_g1_stair = QComboBox()
-        dun_g1_stair_list = ['층', '1', '2', '3', '4', '5', '6', '7']
+        dun_g1_stair_list = ['층', '1', '2', '3', '4', '5']
         dun_g1_stair.addItems(dun_g1_stair_list)
 
         # dun_g1_step = QComboBox()
@@ -1003,7 +1094,7 @@ class FirstTab(QWidget):
         dun_box_1.addWidget(dun_g1_stair)
         # dun_box_1.addWidget(dun_g1_step)
 
-        dungeon_1 = QPushButton('균열 추가')
+        dungeon_1 = QPushButton('던전 추가')
         dungeon_1.clicked.connect(self.onActivated_dunjeon_1_add)
 
         dun_box_1.addWidget(dungeon_1)
@@ -1247,8 +1338,10 @@ class FirstTab(QWidget):
         first_box_1 = QHBoxLayout()
         first_box_1.addWidget(self.force_sub)
 
-        first_box_2 = QHBoxLayout()
-        first_box_2.addWidget(self.collection_on_off)
+        first_box_2 = QVBoxLayout()
+        first_box_2.addWidget(self.collection_on_off1)
+        first_box_2.addWidget(self.collection_on_off2)
+        first_box_2.addWidget(self.collection_on_off3)
 
         first_vbox_1 = QVBoxLayout()
         first_vbox_1.addLayout(first_box_1)
@@ -1415,6 +1508,63 @@ class FirstTab(QWidget):
         self.my_limit_gold.setText("골드 : " + str(e) + " 이하 강제노역 ㄱㄱ\n")
         self.onActivated_slelect_gold_read()
 
+    def onActivated_slelect_tutopotion_toggle_read(self):
+        print('onTutoPotion read', v_.onTutoPotion)
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\tutopotion"
+        file_path = dir_toggle + "\\tutopotion_toggle.txt"
+
+        isToggle = False
+        while isToggle is False:
+            if os.path.isfile(file_path) == True:
+                with open(file_path, "r", encoding='utf-8-sig') as file:
+
+                    read_tgl = file.read()
+                    if read_tgl == "on":
+                        isToggle = True
+                        v_.onTutoPotion = True
+                    else:
+                        isToggle = True
+                        v_.onTutoPotion = False
+            else:
+                if os.path.isdir(dir_toggle) == False:
+                    print('토글 디렉토리 존재하지 않음')
+                    os.makedirs(dir_toggle)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("off")
+        return v_.onTutoPotion
+
+    def onActivated_slelect_tutopotion_toggle(self, e):
+        # global onTutoPotion
+        v_.onTutoPotion = e
+        print('onTutoPotion change', v_.onTutoPotion)
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\tutopotion"
+        file_path = dir_toggle + "\\tutopotion_toggle.txt"
+
+        isToggle = False
+        while isToggle is False:
+            if os.path.isfile(file_path) == True:
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    isToggle = True
+                    if e == True:
+                        file.write("on")
+                    else:
+                        file.write("off")
+            else:
+                if os.path.isdir(dir_toggle) == False:
+                    print('토글 디렉토리 존재하지 않음')
+                    os.makedirs(dir_toggle)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("off")
+        if v_.onTutoPotion == True:
+            tgl_now = "On"
+        else:
+            tgl_now = "Off"
+        self.now_toggle.setText("튜토물약체크 : " + str(tgl_now) + "\n")
+        self.tgl.setChecked(v_.onTutoPotion)
+        #self.set_rand_int()
+
     def onActivated_slelect_collection_toggle_read(self):
         print('onCollection read', v_.onCollection)
         dir_path = "C:\\my_games\\" + str(v_.game_folder)
@@ -1468,8 +1618,65 @@ class FirstTab(QWidget):
             tgl_now = "On"
         else:
             tgl_now = "Off"
-        self.now_toggle.setText("다크디멘션 : " + str(tgl_now) + "\n")
-        self.tgl.setChecked(v_.onCollection)
+        self.now_toggle2.setText("고급장비콜렉션 : " + str(tgl_now) + "\n")
+        self.tgl2.setChecked(v_.onCollection)
+        #self.set_rand_int()
+
+    def onActivated_slelect_collection_boonhae_toggle_read(self):
+        print('onCollection_boonhae read', v_.onCollection_boonhae)
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection_boonhae"
+        file_path = dir_path + "\\mysettings\\collection\\collection_boonhae_toggle.txt"
+
+        isToggle = False
+        while isToggle is False:
+            if os.path.isfile(file_path) == True:
+                with open(file_path, "r", encoding='utf-8-sig') as file:
+
+                    read_tgl = file.read()
+                    if read_tgl == "on":
+                        isToggle = True
+                        v_.onCollection_boonhae = True
+                    else:
+                        isToggle = True
+                        v_.onCollection_boonhae = False
+            else:
+                if os.path.isdir(dir_toggle) == False:
+                    print('토글 디렉토리 존재하지 않음')
+                    os.makedirs(dir_toggle)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("off")
+        return v_.onCollection_boonhae
+
+    def onActivated_slelect_collection_boonhae_toggle(self, e):
+        # global onCollection_boonhae
+        v_.onCollection_boonhae = e
+        print('onCollection_boonhae change', v_.onCollection_boonhae)
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection_boonhae"
+        file_path = dir_path + "\\mysettings\\collection\\collection_boonhae_toggle.txt"
+
+        isToggle = False
+        while isToggle is False:
+            if os.path.isfile(file_path) == True:
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    isToggle = True
+                    if e == True:
+                        file.write("on")
+                    else:
+                        file.write("off")
+            else:
+                if os.path.isdir(dir_toggle) == False:
+                    print('토글 디렉토리 존재하지 않음')
+                    os.makedirs(dir_toggle)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("off")
+        if v_.onCollection_boonhae == True:
+            tgl_now = "On"
+        else:
+            tgl_now = "Off"
+        self.now_toggle3.setText("고급장비분해 : " + str(tgl_now) + "\n")
+        self.tgl3.setChecked(v_.onCollection_boonhae)
         #self.set_rand_int()
 
     def onActivated_cla(self, text):
@@ -1533,7 +1740,7 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_1(self, text):
         global onDunjeon_1
-        if text != 0 and text != '균열의 땅 선택':
+        if text != 0 and text != '던전 선택':
             onDunjeon_1 = text
             print('onDunjeon_1', onDunjeon_1)
         else:
@@ -1672,7 +1879,7 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_1_add(self):
         char_ = onCharacter
-        dun_ = "던전/균열/" + str(onDunjeon_1) + "_" + str(onDunjeon_1_level)
+        dun_ = "던전_" + str(onDunjeon_1) + "_" + str(onDunjeon_1_level)
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onCla == 'none':
@@ -3358,6 +3565,8 @@ class game_Playing(QThread):
                                 character_id = result_schedule[0][1]
                                 result_schedule_ = result_schedule[0][2]
 
+                                # 18 이벤트창부터 끄자
+                                _stop_please(v_.now_cla)
 
                                 # 게임 시작 화면인지 분석부터 하기
                                 game_start_screen(v_.now_cla, character_id)
@@ -3365,8 +3574,7 @@ class game_Playing(QThread):
 
 
 
-                                # 18 이벤트창부터 끄자
-                                _stop_please(v_.now_cla)
+
 
 
 
