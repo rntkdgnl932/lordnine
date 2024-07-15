@@ -15,11 +15,14 @@ def jadong_start(cla, where):
     import os
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import juljun_check
+    from action_lordnine import juljun_check, juljun_attack_check, attack_on
     from potion_lordnine import potion_check
+    from dead_die import dead_check
 
     try:
         print("jadong_start", where)
+
+        dead_check(cla)
 
         result_where = spot_get(where)
 
@@ -44,8 +47,13 @@ def jadong_start(cla, where):
             imgs_ = imgs_set_(10, 890, 130, 940, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 print("juljun big_map", result_spot[1], imgs_)
+                result_juljun_attack = juljun_attack_check(cla)
 
-                potion_check(cla)
+                if result_juljun_attack == True:
+
+                    potion_check(cla)
+                else:
+                    attack_on(cla)
 
             else:
 

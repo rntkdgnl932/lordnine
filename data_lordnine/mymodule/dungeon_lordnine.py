@@ -50,7 +50,8 @@ def dungeon_start(cla, where):
                     attack_on(cla)
             else:
                 dun_in(cla, where)
-
+        else:
+            dun_in(cla, where)
 
     except Exception as e:
         print(e)
