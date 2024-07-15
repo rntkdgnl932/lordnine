@@ -41,10 +41,10 @@ def dead_check(cla):
                 if result_out == True:
                     break
                 time.sleep(0.2)
-
-            why = "죽었으니 당장 눈으로 확인하라. 10초 준다..."
-            line_to_me(cla, why)
-            time.sleep(10)
+            #
+            # why = "죽었으니 당장 눈으로 확인하라. 10초 준다..."
+            # line_to_me(cla, why)
+            # time.sleep(10)
 
             dead = True
 
@@ -71,6 +71,7 @@ def dead_recorvery(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen_lordnine import clean_screen_start
+    from action_lordnine import out_check
 
     try:
         print("dead_recorvery")
