@@ -67,6 +67,8 @@ def dun_in(cla, where):
     from action_lordnine import menu_open, out_check, loading_check, attack_on, juljun_on
     from potion_lordnine import potion_buy_start
 
+    from schedule import myQuest_play_add
+
     try:
         print("dun_in", where)
 
@@ -74,7 +76,7 @@ def dun_in(cla, where):
 
         result_spot = where.split("_")
 
-        # result_spot[1] => 던전종류류
+        # result_spot[1] => 던전종류
         # resut_spot[2] => 층수
 
         if result_spot[1] == "어둠의숲":
@@ -91,7 +93,14 @@ def dun_in(cla, where):
             dun_name = "garbana"
 
         # 던전 가기전 물약 사자
-        potion_buy_start(cla)
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("던전 고르는 중")
+        else:
+            potion_buy_start(cla)
 
         dun = False
         dun_count = 0
@@ -110,74 +119,95 @@ def dun_in(cla, where):
 
                 dun = True
 
+                # 만료여부
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                if str(dun_name) == "adoom":
+                    imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
+                elif str(dun_name) == "jogag":
+                    imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                elif str(dun_name) == "talag":
+                    imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                elif str(dun_name) == "garbana":
+                    imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("dun_complete_1", imgs_)
 
-                # 던전 클릭
-                for i in range(5):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_ready_check\\" + str(dun_name) + ".PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(500, 70, 800, 110, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        if result_spot[1] == "가르바나지하수로":
-                            int_step = int(result_spot[2])
-                            if int_step > 2:
-                                x_1 = 2
+                    dun = result_spot[0] + "_" + result_spot[1]
+
+                    myQuest_play_add(cla, dun)
+
+                else:
+
+
+                    # 던전 클릭
+                    for i in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_ready_check\\" + str(dun_name) + ".PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(500, 70, 800, 110, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            if result_spot[1] == "가르바나지하수로":
+                                int_step = int(result_spot[2])
+                                if int_step > 2:
+                                    x_1 = 2
+                                else:
+                                    x_1 = int_step
+
+                                step_select(cla, x_1)
+
                             else:
-                                x_1 = int_step
+                                step_select(cla, result_spot[2])
 
-                            step_select(cla, x_1)
 
+
+                            break
                         else:
-                            step_select(cla, result_spot[2])
+                            click_pos_2(150, y_1, cla)
+                        time.sleep(0.5)
 
+                    # 던전 입장
+                    is_out = False
+                    for i in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            print("dungeon", imgs_)
+                            click_pos_2(805, 1005, cla)
+                        else:
+                            for o in range(10):
+                                result_out = out_check(cla)
+                                if result_out == True:
+                                    is_out = True
 
-
-                        break
-                    else:
-                        click_pos_2(150, y_1, cla)
-                    time.sleep(0.5)
-
-                # 던전 입장
-                is_out = False
-                for i in range(5):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
-                    if imgs_ is not None and imgs_ != False:
-                        print("dungeon", imgs_)
-                        click_pos_2(805, 1005, cla)
-                    else:
-                        for o in range(10):
-                            result_out = out_check(cla)
-                            if result_out == True:
-                                is_out = True
-
-                                break
-                            else:
-                                loading_check(cla)
-                            time.sleep(0.5)
-                    if is_out == True:
-                        for o in range(3):
-                            result_loading = loading_check(cla)
-                            if result_loading == True:
-                                break
+                                    break
+                                else:
+                                    loading_check(cla)
+                                time.sleep(0.5)
+                        if is_out == True:
+                            for o in range(3):
+                                result_loading = loading_check(cla)
+                                if result_loading == True:
+                                    break
+                                time.sleep(0.2)
+                            break
+                        time.sleep(0.5)
+                    # 던전 입장 후
+                    for i in range(5):
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            # 공격하고 절전모드 ㄱㄱ
+                            attack_on(cla)
                             time.sleep(0.2)
-                        break
-                    time.sleep(0.5)
-                # 던전 입장 후
-                for i in range(5):
-                    result_out = out_check(cla)
-                    if result_out == True:
-                        # 공격하고 절전모드 ㄱㄱ
-                        attack_on(cla)
-                        time.sleep(0.2)
-                        juljun_on(cla)
+                            juljun_on(cla)
 
-                        break
-                    else:
-                        loading_check(cla)
-                    time.sleep(0.5)
+                            break
+                        else:
+                            loading_check(cla)
+                        time.sleep(0.5)
 
             else:
                 menu_open(cla)
