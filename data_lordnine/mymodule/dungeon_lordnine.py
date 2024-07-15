@@ -134,9 +134,8 @@ def dun_in(cla, where):
                 if imgs_ is not None and imgs_ != False:
                     print("dun_complete_1", imgs_)
 
-                    dun = result_spot[0] + "_" + result_spot[1]
 
-                    myQuest_play_add(cla, dun)
+                    myQuest_play_add(cla, where)
 
                 else:
 
