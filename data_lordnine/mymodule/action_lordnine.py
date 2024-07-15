@@ -129,11 +129,24 @@ def out_check(cla):
 
         game_check(cla)
 
+
+        out_screen = False
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
+            out_screen = True
+        else:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                out_screen = True
+
+
+        if out_screen == True:
             result_schedule = myQuest_play_check(cla, "check")
             character_id = result_schedule[0][1]
             result_schedule_ = result_schedule[0][2]
