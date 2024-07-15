@@ -542,7 +542,7 @@ def spot_get(where):
                 result_list = all_list[i]
                 break
 
-        print("result_list", result_list)
+        # print("result_list", result_list)
 
 
 
