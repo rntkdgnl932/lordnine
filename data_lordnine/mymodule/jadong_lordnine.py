@@ -60,17 +60,17 @@ def jadong_start(cla, where):
         return 0
 
 
-def spot_in(cla, where):
+def spot_in_ready(cla, where):
     import numpy as np
     import cv2
-    import os
+    import random
 
-    from function_game import imgs_set_, click_pos_2, click_pos_reg
-    from action_lordnine import go_maul, out_check
+    from function_game import imgs_set_, click_pos_2, click_pos_reg, imgs_set_for
+    from action_lordnine import go_maul, out_check, loading_check
     from clean_screen_lordnine import clean_screen_start
 
     try:
-        print("spot_in", where)
+        print("spot_in_ready", where)
 
         # 디엔북부/메마른호숫가_1_1_1
 
@@ -110,7 +110,210 @@ def spot_in(cla, where):
 
 
 
+                # 자세히 들어가기
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\big_map\\" + str(result_spot[1]) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(20, 100, 120, 150, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("big_map", result_spot[1], imgs_)
 
+                        click_pos_2(100, y_2, cla)
+                        time.sleep(0.2)
+                        click_pos_2(100, y_2, cla)
+                        time.sleep(0.2)
+
+                        for m in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\hunt_move_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+
+                                world = True
+
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\move_spot_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_for(680, 100, 750, 300, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("move_spot_btn : ", imgs_)
+                                    if len(imgs_) > 1:
+                                        ran_high_num = len(imgs_)
+                                        result_ran = random.randint(1, ran_high_num)
+                                        y_reg = imgs_[result_ran - 1][1]
+
+
+                                        for s in range(7):
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(480, 540, 640, 600, cla, img, 0.7)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("jadong_confirm", imgs_)
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                break
+                                            else:
+                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\move_spot_btn.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(680, 100, 750, 300, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("move_spot_btn : ", imgs_)
+                                                    click_pos_2(750, y_reg, cla)
+                                                    time.sleep(0.5)
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\soongan_move_btn.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(800, 980, 930, 1040, cla, img, 0.8)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.5)
+
+                                    else:
+                                        for s in range(7):
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(480, 540, 640, 600, cla, img, 0.7)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("jadong_confirm", imgs_)
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                break
+                                            else:
+                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\move_spot_btn.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(680, 100, 750, 300, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("move_spot_btn : ", imgs_)
+                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                    time.sleep(0.5)
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\soongan_move_btn.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(800, 980, 930, 1040, cla, img, 0.8)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.5)
+
+                                for s in range(5):
+                                    result_loading = loading_check(cla)
+                                    if result_loading == True:
+                                        break
+                                    time.sleep(0.2)
+
+                                for s in range(5):
+                                    result_out_check= out_check(cla)
+                                    if result_out_check == True:
+                                        break
+                                    time.sleep(0.5)
+                                break
+
+
+                            else:
+                                for o in range(5):
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\hunt_move_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        break
+                                    else:
+
+                                        click_pos_2(935, 90, cla)
+                                        time.sleep(0.3)
+                                    time.sleep(0.5)
+
+                            time.sleep(0.5)
+
+                        break
+
+                    else:
+
+                        for o in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\big_map\\" + str(
+                                result_spot[1]) + ".PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(20, 100, 120, 150, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+                                click_pos_2(15, y_1, cla)
+                            time.sleep(0.3)
+                    time.sleep(0.5)
+
+
+
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    click_pos_2(130, 170, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.3)
+
+                else:
+                    clean_screen_start(cla)
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def spot_in(cla, where):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from action_lordnine import go_maul, out_check
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("spot_in", where)
+
+        # 디엔북부/메마른호숫가_1_1_1
+
+        result_spot = where.split("_")
+
+        # result_spot[1] => 큰 맵
+        y_1 = 85 + (int(result_spot[1]) * 45)
+        # result_spot[2] => 중간 맵 // 200 235 270 ...
+        y_2 = 165 + (int(result_spot[2]) * 35)
+        # result_spot[3] => 세부 맵맵
+        y_3 = 95 + (int(result_spot[3]) * 36)
+
+        spot_in_ready(cla, where)
+
+
+        world = False
+        world_count = 0
+
+        while world is False:
+            world_count += 1
+            if world_count > 6:
+                world = True
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("worldmap", imgs_)
+
+
+
+                # 자세히 들어가기
                 for i in range(5):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\big_map\\" + str(result_spot[1]) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -220,8 +423,6 @@ def spot_in(cla, where):
     except Exception as e:
         print(e)
         return 0
-
-
 
 def spot_go(cla):
     import numpy as np

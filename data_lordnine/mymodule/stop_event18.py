@@ -51,7 +51,7 @@ def game_check(cla):
     import os
 
     from function_game import imgs_set_
-    from action_lordnine import confirm_all, skip_start
+    from action_lordnine import confirm_all
     from character_select_and_game_start import game_ready
     from massenger import line_to_me
 

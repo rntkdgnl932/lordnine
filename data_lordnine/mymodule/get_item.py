@@ -21,6 +21,7 @@ def get_start(cla):
 
         get_event(cla)
 
+        get_battle_pass(cla)
         get_post(cla)
         get_upjuk(cla)
         get_monster_dogam(cla)
@@ -252,6 +253,82 @@ def get_event_click(cla):
     except Exception as e:
         print(e)
         return 0
+
+
+def get_battle_pass(cla):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_lordnine import menu_open, out_check
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("get_battle_pass")
+
+        get = False
+        get_count = 0
+
+        while get is False:
+            get_count += 1
+            if get_count > 6:
+                get = True
+
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\battle_pass.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("battle_pass", imgs_)
+
+                get = True
+
+                # 아템 얻자자
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\anymore_battle_pass.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(300, 80, 650, 160, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        click_pos_2(660, 475, cla)
+                time.sleep(0.4)
+
+
+
+                # 마무리 나가기
+                clean_screen_start(cla)
+
+            else:
+
+                menu_open(cla)
+
+                get_point = False
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\battle_pass.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        get_point = True
+                        break
+
+                    else:
+                        click_pos_2(675, 50, cla)
+                    time.sleep(0.5)
+                if get_point == False:
+                    get = True
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
 
 def get_post(cla):
     import numpy as np

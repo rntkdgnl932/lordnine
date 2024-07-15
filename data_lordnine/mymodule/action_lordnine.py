@@ -119,12 +119,15 @@ def out_check(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_
+    from stop_event18 import game_check
     from character_select_and_game_start import game_start_screen
     from schedule import myQuest_play_check
     try:
 
-        print("out_check")
+        print("out_check 하면서 게임체크도 하기")
+
+        game_check(cla)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -187,11 +190,83 @@ def menu_open(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, click_pos_2
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
     from clean_screen_lordnine import clean_screen_start
+    from get_item import get_post
     try:
 
         print("menu_open")
+
+        result_menu_open = menu_open_check(cla)
+
+        menu_open_count = 0
+        while result_menu_open is False:
+            menu_open_count += 1
+            if menu_open_count > 5:
+                result_menu_open = True
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\character_change_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(860, 890, 960, 1000, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("character_change_btn", imgs_)
+
+                result_menu_open = True
+
+                # 우편물 확인하자
+
+                get_point = False
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(740, 880, 800, 930, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("menu_point_1", imgs_)
+                    click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                    get_point = True
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(740, 880, 800, 930, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("menu_point_2", imgs_)
+                        click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                        get_point = True
+
+                if get_point == True:
+                    get_post(cla)
+                    menu_open_last(cla)
+            else:
+                clean_screen_start(cla)
+                click_pos_2(915, 50, cla)
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\character_change_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(860, 890, 960, 1000, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    time.sleep(0.2)
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+
+
+def menu_open_last(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_2
+    from clean_screen_lordnine import clean_screen_start
+    from get_item import get_post
+    try:
+
+        print("menu_open_last")
 
         result_menu_open = menu_open_check(cla)
 

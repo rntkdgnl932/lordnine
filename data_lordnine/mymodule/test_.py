@@ -22,7 +22,7 @@ def go_test():
     from clean_screen_lordnine import clean_screen_just_on_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start
     from potion_lordnine import potion_buy_start
-    from get_item import get_start, get_event
+    from get_item import get_start, get_event, get_battle_pass
     from jadong_lordnine import jadong_start, spot_go
     from dead_die import dead_recorvery
     from dungeon_lordnine import dun_in
@@ -49,8 +49,11 @@ def go_test():
 
 
     try:
+        where = "오염된분지/감춰진언덕"
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
+
+        get_battle_pass(cla)
 
         # where = "던전_가르바나지하수로_5"
         #
@@ -61,7 +64,6 @@ def go_test():
 
         # collection_scan_option(cla)
 
-        juljun_off(cla)
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
