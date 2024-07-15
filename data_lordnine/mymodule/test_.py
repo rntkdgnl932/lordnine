@@ -29,7 +29,7 @@ def go_test():
 
 
     print("test")
-    cla = "one"
+    cla = "three"
 
     plus = 0
 

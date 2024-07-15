@@ -17,7 +17,7 @@ def potion_check(cla):
     from tuto_lordnine import way_check
 
     try:
-        print("potion_check")
+        print("potion_check", v_.potion_buy_count)
 
         # 우선 절전모드인지 아웃 모드인지 파악하기
 
@@ -60,7 +60,7 @@ def potion_check(cla):
                         x_2 = 722
                         y_2 = 923
 
-                        text_check_get(x_1, y_1, x_2, y_2, cla)
+                        # text_check_get(x_1, y_1, x_2, y_2, cla)
 
                         for i in range(10):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_num\\big\\" + str(
@@ -89,7 +89,7 @@ def potion_check(cla):
 
                 if is_num == False:
 
-                    print("절전 : 숫자 안 보여")
+                    print("절전 : 숫자 안 보여", v_.potion_buy_count)
 
 
 
@@ -97,7 +97,7 @@ def potion_check(cla):
                     v_.potion_buy_count += 1
                     if v_.potion_buy_count > 4:
                         v_.potion_buy_count = 0
-                    potion_buy_start(cla)
+                        potion_buy_start(cla)
 
         else:
 
@@ -139,7 +139,7 @@ def potion_check(cla):
                             x_2 = 217
                             y_2 = 920
 
-                            text_check_get(x_1, y_1, x_2, y_2, cla)
+                            # text_check_get(x_1, y_1, x_2, y_2, cla)
 
                             for i in range(10):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_num\\big\\" + str(
@@ -166,7 +166,7 @@ def potion_check(cla):
                                 time.sleep(0.1)
 
                     if is_num == False:
-                        print("아웃 : 숫자 안 보여")
+                        print("아웃 : 숫자 안 보여", v_.potion_buy_count)
 
                         v_.potion_buy_count += 1
                         if v_.potion_buy_count > 4:
