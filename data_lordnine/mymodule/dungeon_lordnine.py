@@ -15,9 +15,12 @@ def dungeon_start(cla, where):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import juljun_check, juljun_attack_check, attack_on
     from potion_lordnine import potion_check
+    from dead_die import dead_check
 
     try:
         print("dungeon_start")
+
+
 
         # 던전_어둠의숲_3
 
@@ -51,6 +54,7 @@ def dungeon_start(cla, where):
             else:
                 dun_in(cla, where)
         else:
+            dead_check(cla)
             dun_in(cla, where)
 
     except Exception as e:

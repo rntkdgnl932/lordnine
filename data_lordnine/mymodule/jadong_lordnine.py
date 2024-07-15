@@ -22,7 +22,7 @@ def jadong_start(cla, where):
     try:
         print("jadong_start", where)
 
-        dead_check(cla)
+
 
         result_where = spot_get(where)
 
@@ -60,6 +60,7 @@ def jadong_start(cla, where):
 
                 spot_in(cla, result_where)
         else:
+            dead_check(cla)
             spot_in(cla, result_where)
 
 
