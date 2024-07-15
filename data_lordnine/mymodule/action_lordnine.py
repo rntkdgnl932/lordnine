@@ -581,11 +581,11 @@ def juljun_attack_check(cla):
     from tuto_lordnine import way_check
 
     try:
-        print("juljun_check")
+        print("juljun_attack_check")
 
         is_attack = False
 
-        for i in range(5):
+        for i in range(25):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_attack_on.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
