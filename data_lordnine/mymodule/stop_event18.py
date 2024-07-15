@@ -80,6 +80,16 @@ def game_check(cla):
             if imgs_ is not None and imgs_ != False:
                 print("long_time")
                 error_code = 2
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\fix_ing.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 470, 470, 550, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("fix_ing")
+                    is_error = True
+                    error_code = 3
+                    why = str(v_.this_game) + "점검진행"
 
         if error_code == 2:
             print("재접해보자")
