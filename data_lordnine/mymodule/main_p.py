@@ -53,6 +53,7 @@ from character_select_and_game_start import game_start_screen
 from get_item import get_start
 from potion_lordnine import potion_buy_start
 from jadong_lordnine import jadong_start
+from dungeon_lordnine import dungeon_start
 
 from test_ import go_test
 
@@ -3604,6 +3605,8 @@ class game_Playing(QThread):
                                     myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif "/" in result_schedule_:
                                     jadong_start(v_.now_cla, result_schedule_)
+                                elif "던전" in result_schedule_:
+                                    dungeon_start(v_.now_cla, result_schedule_)
 
 
 
