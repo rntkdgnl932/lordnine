@@ -177,7 +177,7 @@ class MyApp(QDialog):
         elif last_monitor_number == 3:
             x_reg = 960 * 2
 
-        self.setGeometry(10 + x_reg, 200, 900, 700)
+        self.setGeometry(10 + x_reg, 100, 900, 800)
         self.show()
     def my_title(self):
         self.setWindowTitle(v_.this_game + "(ver " + version + ")")
@@ -1129,26 +1129,26 @@ class FirstTab(QWidget):
         self.dun_group_2.setLayout(dun_box_2)
 
         # 던전 종류
-        self.dun_group_3 = QGroupBox('월드')
-        dun_g3_name = QComboBox()
-        # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
-        # dun_g3_list = ['데이모스전장', '모리아기지', 'coming soon']
-        dun_g3_list = ['월드 던전 선택', '스피렌의안뜰']
-        dun_g3_name.addItems(dun_g3_list)
-
-        dun_g3_stair = QComboBox()
-        dun_g3_stair_list = ['층', '1', '2', '3', '4', '5', '6']
-        dun_g3_stair.addItems(dun_g3_stair_list)
-
-        dun_box_3 = QHBoxLayout()
-        dun_box_3.addWidget(dun_g3_name)
-        dun_box_3.addWidget(dun_g3_stair)
-
-        dungeon_3 = QPushButton('월드 추가')
-        dungeon_3.clicked.connect(self.onActivated_dunjeon_3_add)
-
-        dun_box_3.addWidget(dungeon_3)
-        self.dun_group_3.setLayout(dun_box_3)
+        # self.dun_group_3 = QGroupBox('월드')
+        # dun_g3_name = QComboBox()
+        # # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
+        # # dun_g3_list = ['데이모스전장', '모리아기지', 'coming soon']
+        # dun_g3_list = ['월드 던전 선택', '스피렌의안뜰']
+        # dun_g3_name.addItems(dun_g3_list)
+        #
+        # dun_g3_stair = QComboBox()
+        # dun_g3_stair_list = ['층', '1', '2', '3', '4', '5', '6']
+        # dun_g3_stair.addItems(dun_g3_stair_list)
+        #
+        # dun_box_3 = QHBoxLayout()
+        # dun_box_3.addWidget(dun_g3_name)
+        # dun_box_3.addWidget(dun_g3_stair)
+        #
+        # dungeon_3 = QPushButton('월드 추가')
+        # dungeon_3.clicked.connect(self.onActivated_dunjeon_3_add)
+        #
+        # dun_box_3.addWidget(dungeon_3)
+        # self.dun_group_3.setLayout(dun_box_3)
 
 
         # 사냥터
@@ -1204,43 +1204,62 @@ class FirstTab(QWidget):
         cb5 = QComboBox()
         #list5 = ['자동 사냥터 선택1', '사냥_콜리아 삼거리', '사냥_마른땅 벌목지', '사냥_실바인 진흙탕', '사냥_실바인 저수지']
         cb5.addItems(list5)
-        jadong1 = QPushButton('디엔 추가')
+        jadong1 = QPushButton('디엔 연속')
         jadong1.clicked.connect(self.onActivated_hunt_add)
+        jadong11 = QPushButton('디엔 1회')
+        jadong11.clicked.connect(self.onActivated_hunt_add_justOne)
 
         cb55 = QComboBox()
         #list55 = ['자동 사냥터 선택2', '사냥_콜리아 삼거리', '사냥_마른땅 벌목지', '사냥_실바인 진흙탕', '사냥_실바인 저수지']
         cb55.addItems(list55)
-        jadong2 = QPushButton('린드리스 추가')
+        jadong2 = QPushButton('린드리스 연속')
         jadong2.clicked.connect(self.onActivated_hunt_add_2)
+        jadong22 = QPushButton('린드리스 1회')
+        jadong22.clicked.connect(self.onActivated_hunt_add_2_justOne)
 
         cb555 = QComboBox()
         #list555 = ['자동 사냥터 선택3', '사냥_콜리아 삼거리', '사냥_마른땅 벌목지', '사냥_실바인 진흙탕', '사냥_실바인 저수지']
         cb555.addItems(list555)
-        jadong3 = QPushButton('울란 추가')
+        jadong3 = QPushButton('울란 연속')
         jadong3.clicked.connect(self.onActivated_hunt_add_3)
+        jadong33 = QPushButton('울란 1회')
+        jadong33.clicked.connect(self.onActivated_hunt_add_3_justOne)
 
         cb5555 = QComboBox()
         # list555 = ['자동 사냥터 선택3', '사냥_콜리아 삼거리', '사냥_마른땅 벌목지', '사냥_실바인 진흙탕', '사냥_실바인 저수지']
         cb5555.addItems(list5555)
-        jadong4 = QPushButton('세르비스 추가')
+        jadong4 = QPushButton('세르비스 연속')
         jadong4.clicked.connect(self.onActivated_hunt_add_4)
+        jadong44 = QPushButton('세르비스 1회')
+        jadong44.clicked.connect(self.onActivated_hunt_add_4_justOne)
 
-
+        vbox5_1_1 = QVBoxLayout()
+        vbox5_1_1.addWidget(jadong1)
+        vbox5_1_1.addWidget(jadong11)
         vbox5_1 = QHBoxLayout()
         vbox5_1.addWidget(cb5)
-        vbox5_1.addWidget(jadong1)
+        vbox5_1.addLayout(vbox5_1_1)
 
+        vbox5_2_2 = QVBoxLayout()
+        vbox5_2_2.addWidget(jadong2)
+        vbox5_2_2.addWidget(jadong22)
         vbox5_2 = QHBoxLayout()
         vbox5_2.addWidget(cb55)
-        vbox5_2.addWidget(jadong2)
+        vbox5_2.addLayout(vbox5_2_2)
 
+        vbox5_3_3 = QVBoxLayout()
+        vbox5_3_3.addWidget(jadong3)
+        vbox5_3_3.addWidget(jadong33)
         vbox5_3 = QHBoxLayout()
         vbox5_3.addWidget(cb555)
-        vbox5_3.addWidget(jadong3)
+        vbox5_3.addLayout(vbox5_3_3)
 
+        vbox5_4_4 = QVBoxLayout()
+        vbox5_4_4.addWidget(jadong4)
+        vbox5_4_4.addWidget(jadong44)
         vbox5_4 = QHBoxLayout()
         vbox5_4.addWidget(cb5555)
-        vbox5_4.addWidget(jadong4)
+        vbox5_4.addLayout(vbox5_4_4)
 
         lastbox = QVBoxLayout()
         lastbox.addLayout(vbox5_1)
@@ -1267,8 +1286,8 @@ class FirstTab(QWidget):
         dun_g2_stair.activated[str].connect(self.onActivated_dunjeon_2_level)  # 던전2 층수
         # dun_g2_step.activated[str].connect(self.onActivated_dunjeon_2_step)  # 던전2 난이도
 
-        dun_g3_name.activated[str].connect(self.onActivated_dunjeon_3)  # 던전3 이름
-        dun_g3_stair.activated[str].connect(self.onActivated_dunjeon_3_level)  # 던전3 층수
+        # dun_g3_name.activated[str].connect(self.onActivated_dunjeon_3)  # 던전3 이름
+        # dun_g3_stair.activated[str].connect(self.onActivated_dunjeon_3_level)  # 던전3 층수
         # dun_g3_step.activated[str].connect(self.onActivated_dunjeon_3_step)  # 던전3 난이도
 
         cb5.activated[str].connect(self.onActivated_hunt)  # 요건 함수
@@ -1323,8 +1342,8 @@ class FirstTab(QWidget):
         dun_2_hbox = QHBoxLayout()
         dun_2_hbox.addWidget(self.dun_group_2)
 
-        dun_3_hbox = QHBoxLayout()
-        dun_3_hbox.addWidget(self.dun_group_3)
+        # dun_3_hbox = QHBoxLayout()
+        # dun_3_hbox.addWidget(self.dun_group_3)
 
         hbox4 = QHBoxLayout()
         hbox4.addWidget(self.com_group5)
@@ -1361,7 +1380,7 @@ class FirstTab(QWidget):
         Vbox2.addLayout(hbox5)
         Vbox2.addLayout(dun_1_hbox)
         Vbox2.addLayout(dun_2_hbox)
-        Vbox2.addLayout(dun_3_hbox)
+        # Vbox2.addLayout(dun_3_hbox)
         Vbox2.addLayout(hbox4)
 
         hbox2 = QHBoxLayout()
@@ -1994,6 +2013,32 @@ class FirstTab(QWidget):
 
             print(data)
             self.onActivated_hunt_add2(data)
+
+    def onActivated_hunt_add_justOne(self):
+        global onCharacter, onHunt
+        char_ = onCharacter
+        # hun_ = onHunt
+        hun_ = "1회_" + onHunt
+        if onCharacter == 0:
+            pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
+        elif onHunt == '< 디엔 >' or onHunt == 'none':
+            pyautogui.alert(button='넵', text='던전을 선택해 주시지예', title='뭐합니꺼')
+        elif onCharacter != 0 and onHunt != '< 디엔 >':
+            print('char_', char_)
+            print('dun_', hun_)
+
+            if onCla == "One" or onCla == "Two":
+                data = "One:" + char_ + ":" + hun_ + ":대기중:" + "Two:" + char_ + ":" + hun_ + ":대기중\n"
+            elif onCla == "Three" or onCla == "Four":
+                data = "Three:" + char_ + ":" + hun_ + ":대기중:" + "Four:" + char_ + ":" + hun_ + ":대기중\n"
+            elif onCla == "Five" or onCla == "Six":
+                data = "Five:" + char_ + ":" + hun_ + ":대기중:" + "Six:" + char_ + ":" + hun_ + ":대기중\n"
+
+
+            print(data)
+            self.onActivated_hunt_add2(data)
+
+
     def onActivated_hunt_add_2(self):
         global onCharacter, onHunt2
         char_ = onCharacter
@@ -2017,6 +2062,31 @@ class FirstTab(QWidget):
 
             print(data)
             self.onActivated_hunt_add2(data)
+
+    def onActivated_hunt_add_2_justOne(self):
+        global onCharacter, onHunt2
+        char_ = onCharacter
+        # hun_ = onHunt2
+        hun_ = "1회_" + onHunt2
+        if onCharacter == 0:
+            pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
+        elif onHunt2 == '< 린드리스 >' or onHunt2 == 'none':
+            pyautogui.alert(button='넵', text='던전을 선택해 주시지예', title='뭐합니꺼')
+        elif onCharacter != 0 and onHunt2 != '< 린드리스 >':
+            print('char_', char_)
+            print('dun_', hun_)
+
+            if onCla == "One" or onCla == "Two":
+                data = "One:" + char_ + ":" + hun_ + ":대기중:" + "Two:" + char_ + ":" + hun_ + ":대기중\n"
+            elif onCla == "Three" or onCla == "Four":
+                data = "Three:" + char_ + ":" + hun_ + ":대기중:" + "Four:" + char_ + ":" + hun_ + ":대기중\n"
+            elif onCla == "Five" or onCla == "Six":
+                data = "Five:" + char_ + ":" + hun_ + ":대기중:" + "Six:" + char_ + ":" + hun_ + ":대기중\n"
+
+
+            print(data)
+            self.onActivated_hunt_add2(data)
+
     def onActivated_hunt_add_3(self):
         global onCharacter, onHunt3
         char_ = onCharacter
@@ -2041,10 +2111,59 @@ class FirstTab(QWidget):
             print(data)
             self.onActivated_hunt_add2(data)
 
+
+    def onActivated_hunt_add_3_justOne(self):
+        global onCharacter, onHunt3
+        char_ = onCharacter
+        # hun_ = "사냥_" + "첼라노_" + onHunt3
+        hun_ = "1회_" + onHunt3
+        if onCharacter == 0:
+            pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
+        elif onHunt3 == '< 울란 >' or onHunt3 == 'none':
+            pyautogui.alert(button='넵', text='던전을 선택해 주시지예', title='뭐합니꺼')
+        elif onCharacter != 0 and onHunt3 != '< 울란 >':
+            print('char_', char_)
+            print('dun_', hun_)
+
+            if onCla == "One" or onCla == "Two":
+                data = "One:" + char_ + ":" + hun_ + ":대기중:" + "Two:" + char_ + ":" + hun_ + ":대기중\n"
+            elif onCla == "Three" or onCla == "Four":
+                data = "Three:" + char_ + ":" + hun_ + ":대기중:" + "Four:" + char_ + ":" + hun_ + ":대기중\n"
+            elif onCla == "Five" or onCla == "Six":
+                data = "Five:" + char_ + ":" + hun_ + ":대기중:" + "Six:" + char_ + ":" + hun_ + ":대기중\n"
+
+
+            print(data)
+            self.onActivated_hunt_add2(data)
+
+
     def onActivated_hunt_add_4(self):
         global onCharacter, onHunt4
         char_ = onCharacter
         hun_ = onHunt4
+        if onCharacter == 0:
+            pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
+        elif onHunt4 == '< 세르비스 >' or onHunt4 == 'none':
+            pyautogui.alert(button='넵', text='던전을 선택해 주시지예', title='뭐합니꺼')
+        elif onCharacter != 0 and onHunt4 != '< 세르비스 >':
+            print('char_', char_)
+            print('dun_', hun_)
+
+            if onCla == "One" or onCla == "Two":
+                data = "One:" + char_ + ":" + hun_ + ":대기중:" + "Two:" + char_ + ":" + hun_ + ":대기중\n"
+            elif onCla == "Three" or onCla == "Four":
+                data = "Three:" + char_ + ":" + hun_ + ":대기중:" + "Four:" + char_ + ":" + hun_ + ":대기중\n"
+            elif onCla == "Five" or onCla == "Six":
+                data = "Five:" + char_ + ":" + hun_ + ":대기중:" + "Six:" + char_ + ":" + hun_ + ":대기중\n"
+
+
+            print(data)
+            self.onActivated_hunt_add2(data)
+
+    def onActivated_hunt_add_4_justOne(self):
+        global onCharacter, onHunt4
+        char_ = onCharacter
+        hun_ = "1회_" + onHunt4
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onHunt4 == '< 세르비스 >' or onHunt4 == 'none':
@@ -3604,7 +3723,12 @@ class game_Playing(QThread):
                                     potion_buy_start(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif "/" in result_schedule_:
-                                    jadong_start(v_.now_cla, result_schedule_)
+                                    if "1회" in result_schedule_:
+                                        result_spot = result_schedule_.split("_")
+                                        jadong_start(v_.now_cla, result_spot[1])
+                                    else:
+                                        jadong_start(v_.now_cla, result_schedule_)
+
                                 elif "던전" in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
 
