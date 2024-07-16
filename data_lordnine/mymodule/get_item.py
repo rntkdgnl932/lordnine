@@ -292,13 +292,21 @@ def get_gold_sohwan(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.7)
+                    imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_2(70, 130, cla)
                         break
                     else:
                         click_pos_2(150, 85, cla)
-                time.sleep(0.4)
+                        for g in range(10):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.1)
+                time.sleep(0.5)
 
                 # 아바타 소환하기
                 # 200 ~ 350, 400 ~ 550
