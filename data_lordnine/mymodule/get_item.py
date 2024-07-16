@@ -791,7 +791,7 @@ def get_post(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.7)
+                            imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.65)
                             if imgs_ is not None and imgs_ != False:
                                 print("menu_point_1", imgs_)
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
@@ -802,7 +802,7 @@ def get_post(cla):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.7)
+                                imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.65)
                                 if imgs_ is not None and imgs_ != False:
                                     print("menu_point_2", imgs_)
                                     click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
