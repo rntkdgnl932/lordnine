@@ -22,7 +22,7 @@ def go_test():
     from clean_screen_lordnine import clean_screen_just_on_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start
     from potion_lordnine import potion_buy_start
-    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan
+    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary
     from jadong_lordnine import jadong_start, spot_go
     from dead_die import dead_recorvery
     from dungeon_lordnine import dun_in
@@ -58,7 +58,10 @@ def go_test():
         #
         # dun_in(cla, where)
 
-        get_gold_sohwan(cla)
+        #################################################
+        get_diary(cla)
+
+        ######################################
 
         # v_.onCollecion = True
         # v_.onCollecion_boonhae = True

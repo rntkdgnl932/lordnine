@@ -482,6 +482,184 @@ def get_gold_sohwan_start(cla):
         print(e)
         return 0
 
+def get_diary(cla):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_lordnine import menu_open, skip_start
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("get_diary")
+
+        get = False
+        get_count = 0
+
+        while get is False:
+            get_count += 1
+            if get_count > 6:
+                get = True
+
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\diary.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("diary", imgs_)
+
+                get = True
+
+                # 아템 얻자자
+                is_diary = False
+
+                # 하단 포인트 클릭
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(410, 930, 480, 990, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("menu_point_1", imgs_)
+                    click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                    is_diary = True
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(410, 930, 480, 990, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("menu_point_2", imgs_)
+                        click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                        is_diary = True
+
+                if is_diary == True:
+                    time.sleep(0.5)
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\back.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\diary_open.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 550, 570, 660, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("diary_open", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+                    # 받기
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\back.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("back", imgs_)
+
+                            ###
+                            is_get_dairy = False
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(130, 85, 200, 400, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_point_1", imgs_)
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                                is_get_dairy = True
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(130, 85, 200, 400, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("menu_point_2", imgs_)
+                                    click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                                    is_get_dairy = True
+                            if is_get_dairy == True:
+                                time.sleep(0.5)
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\diary_get_point_1.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(360, 400, 500, 440, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("diary_get_point_1", imgs_)
+                                    click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                                    for s in range(5):
+                                        result_skip = skip_start(cla)
+                                        if result_skip == True:
+                                            time.sleep(1)
+                                            break
+                                        time.sleep(0.2)
+                                else:
+                                    break
+                            else:
+                                break
+                            ###
+
+
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\diary_open.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 550, 570, 660, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("diary_open", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+
+
+                # 마무리 나가기
+                clean_screen_start(cla)
+
+            else:
+
+                menu_open(cla)
+
+                get_point = False
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\diary.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(910, 140, 950, 180, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_point_1", imgs_)
+                            click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                            get_point = True
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(910, 140, 950, 180, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_point_2", imgs_)
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                                get_point = True
+                    time.sleep(0.5)
+                if get_point == False:
+                    get = True
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def get_battle_pass(cla):
     import numpy as np
