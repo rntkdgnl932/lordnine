@@ -94,7 +94,7 @@ def character_change(cla, character_id):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
 
-    from action_lordnine import out_check, menu_open, confirm_all, go_maul
+    from action_lordnine import out_check, menu_open, loading_check, go_maul
 
     from massenger import line_to_me
     try:
@@ -228,6 +228,8 @@ def character_change(cla, character_id):
                             time.sleep(0.5)
                             click_pos_reg(x_reg, y_reg, cla)
                             time.sleep(0.1)
+                        else:
+                            loading_check(cla)
 
                     time.sleep(1)
             else:
