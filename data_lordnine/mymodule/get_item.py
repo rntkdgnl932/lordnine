@@ -255,6 +255,198 @@ def get_event_click(cla):
         return 0
 
 
+
+
+def get_gold_sohwan(cla):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_lordnine import menu_open, out_check
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("get_gold_sohwan")
+
+        get = False
+        get_count = 0
+
+        while get is False:
+            get_count += 1
+            if get_count > 6:
+                get = True
+
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sangjum.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("battle_pass", imgs_)
+
+                get = True
+
+                # 골드소환
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(70, 130, cla)
+                        break
+                    else:
+                        click_pos_2(150, 85, cla)
+                time.sleep(0.4)
+
+                # 아바타 소환하기
+                # 200 ~ 350, 400 ~ 550
+                get_gold_sohwan_start(cla)
+
+
+
+                # 마무리 나가기
+                clean_screen_start(cla)
+
+            else:
+
+                menu_open(cla)
+
+                get_point = False
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sangjum.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        get_point = True
+                        break
+
+                    else:
+                        click_pos_2(755, 50, cla)
+                    time.sleep(0.5)
+                if get_point == False:
+                    get = True
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def get_gold_sohwan_start(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, drag_pos, click_pos_2
+    from action_lordnine import confirm_all
+    from massenger import line_to_me
+
+    try:
+        print("get_gold_sohwan_start")
+
+        sohwan = True
+        sohwan_count = 0
+
+        while sohwan is True:
+            sohwan_count += 1
+            if sohwan_count > 7:
+                sohwan = False
+
+            is_sohwan = False
+
+            for i in range(4):
+
+                x_1 = 200 + (i * 200)
+                x_2 = x_1 + 150
+                x_reg = (x_1 + x_2) / 2
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\moogi_level_not_enough.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_1, 170, x_2, 290, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print(str(i + 1) + "번째는 무기레벨 제한이다.")
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sold_out.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(x_1, 170, x_2, 290, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print(str(i + 1) + "번째는 품절")
+                    else:
+
+                        is_sohwan = True
+
+                        for c in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("avatar_sohwan_title", imgs_)
+                                # 확인 누르고 그전에 푸시 있으면 푸시 하고...
+                                break
+                            else:
+                                click_pos_2(x_reg, 200, cla)
+                            time.sleep(0.5)
+
+                        for c in range(20):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                confirm_all(cla)
+                            else:
+                                result_confirm = confirm_all(cla)
+                                if result_confirm == True:
+                                    time.sleep(2)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\push_right_drag.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(300, 700, 750, 1040, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("avatar_sohwan_title", imgs_)
+                                        drag_pos(450, 500, 450, 800, cla)
+
+                                        why = "작살나는 아바타 나왔다. 확인해라"
+                                        line_to_me(cla, why)
+
+                                        time.sleep(3)
+                            time.sleep(1)
+
+                        for c in range(10):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sangjum.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("battle_pass", imgs_)
+                                break
+                            else:
+                                confirm_all(cla)
+                            time.sleep(0.2)
+                        if is_sohwan == True:
+                            break
+
+                time.sleep(0.2)
+
+            if is_sohwan == False:
+                sohwan = False
+
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
 def get_battle_pass(cla):
     import numpy as np
     import cv2

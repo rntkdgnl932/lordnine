@@ -15,7 +15,7 @@ def jadong_start(cla, where):
     import os
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import juljun_check, juljun_attack_check, attack_on
+    from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_move_check
     from potion_lordnine import potion_check
     from dead_die import dead_check
 
@@ -53,7 +53,9 @@ def jadong_start(cla, where):
 
                     potion_check(cla)
                 else:
+
                     attack_on(cla)
+
 
             else:
 

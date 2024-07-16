@@ -28,10 +28,11 @@ def confirm_all(cla):
             click_pos_reg(imgs_.x, imgs_.y, cla)
             is_confirm = True
 
+        # 소환
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\confirm_btn_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
+        imgs_ = imgs_set_(0, 980, 960, 1040, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("confirm_btn_2 : 소환 확인", imgs_)
             x_reg = imgs_.x
@@ -47,7 +48,27 @@ def confirm_all(cla):
 
             click_pos_reg(x_reg, y_reg, cla)
             is_confirm = True
+        else:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sohwan_confirm.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 980, 960, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("sohwan_confirm : 소환 확인", imgs_)
+                print("confirm_btn_2 : 소환 확인", imgs_)
+                x_reg = imgs_.x
+                y_reg = imgs_.y
 
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\sohwan_not_checked.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 980, 40, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.3)
+
+                click_pos_reg(x_reg, y_reg, cla)
+                is_confirm = True
         # 이동
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\move_confirm.PNG"
         img_array = np.fromfile(full_path, np.uint8)
@@ -594,12 +615,47 @@ def juljun_attack_check(cla):
                 print("juljun_attack_on", imgs_)
                 is_attack = True
                 break
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_move_on.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    print("juljun_move_on", imgs_)
+                    for r in range(25):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_attack_on.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            print("juljun_attack_on", imgs_)
+                            is_attack = True
+                            break
+                        time.sleep(0.2)
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_rest_on.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
+                        print("juljun_rest_on", imgs_)
+                        for r in range(25):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_attack_on.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
+                            if imgs_ is not None and imgs_ != False:
+                                print("juljun_attack_on", imgs_)
+                                is_attack = True
+                                break
+                            time.sleep(0.2)
             time.sleep(0.2)
 
         return is_attack
     except Exception as e:
         print(e)
         return 0
+
 
 
 def juljun_on(cla):

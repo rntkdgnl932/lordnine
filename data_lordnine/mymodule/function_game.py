@@ -716,7 +716,7 @@ def mouse_move_cpp(pos_1, pos_2, cla):
         if cla == 'six':
             coordinate = 960 * 5
 
-        # pyautogui.moveTo(pos_1 + coordinate, pos_2)
+        pyautogui.moveTo(pos_1 + coordinate, pos_2)
 
         if v_.now_arduino == "on":
 
