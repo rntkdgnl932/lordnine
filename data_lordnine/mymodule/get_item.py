@@ -19,6 +19,8 @@ def get_start(cla):
     try:
         print("get_start")
 
+        get_gold_sohwan(cla)
+
         get_event(cla)
 
         get_battle_pass(cla)
