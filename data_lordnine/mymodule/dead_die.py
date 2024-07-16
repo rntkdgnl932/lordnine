@@ -116,6 +116,7 @@ def dead_recorvery(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen_lordnine import clean_screen_just_on_start
     from action_lordnine import out_check, juljun_off
+    from massenger import line_to_me
 
     try:
         print("dead_recorvery")
@@ -160,6 +161,27 @@ def dead_recorvery(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("boohwal_cross_btn")
                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                    v_.dead_count += 1
+
+                    if v_.dead_count > 3:
+                        why = "하루 3번 이상 죽었다 문제있다. 게임 종료 하겠다."
+                        line_to_me(cla, why)
+
+                        dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                        file_path = dir_path + "\\start.txt"
+                        # cla.txt
+                        cla_data = str(v_.now_cla) + "cla"
+                        file_path2 = dir_path + "\\" + cla_data + ".txt"
+                        with open(file_path, "w", encoding='utf-8-sig') as file:
+                            data = 'no'
+                            file.write(str(data))
+                            time.sleep(0.2)
+                        with open(file_path2, "w", encoding='utf-8-sig') as file:
+                            data = v_.now_cla
+                            file.write(str(data))
+                            time.sleep(0.2)
+                        os.execl(sys.executable, sys.executable, *sys.argv)
+
                     break
                 else:
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_cross_btn.PNG"
