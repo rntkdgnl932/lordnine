@@ -174,20 +174,19 @@ def out_check(cla):
 
             game_start_screen(cla, character_id)
 
-        else:
-            is_out = False
+        is_out = False
 
-            result_menu_open = menu_open_check(cla)
-            if result_menu_open == False:
+        result_menu_open = menu_open_check(cla)
+        if result_menu_open == False:
 
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
-                if imgs_ is not None and imgs_ != False:
-                    is_out = True
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                is_out = True
 
-            return is_out
+        return is_out
 
     except Exception as e:
         print(e)
