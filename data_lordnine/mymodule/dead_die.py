@@ -198,7 +198,7 @@ def dead_recorvery(cla):
                             time.sleep(0.5)
 
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_checked.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_not_checked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(210, 130, 275, 185, cla, img, 0.7)
