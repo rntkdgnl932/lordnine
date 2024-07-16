@@ -120,10 +120,15 @@ def dead_recorvery(cla):
     try:
         print("dead_recorvery")
 
-        for i in range(5):
+        for i in range(7):
             result_out = out_check(cla)
             if result_out == True:
-                break
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_cross_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 50, 260, 120, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    break
             else:
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -165,6 +170,7 @@ def dead_recorvery(cla):
                         print("boohwal_cross_btn")
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                 time.sleep(0.5)
+
             # 아이템 복구
             for i in range(10):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\item.PNG"
@@ -173,10 +179,7 @@ def dead_recorvery(cla):
                 imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     print("item")
-                    clean_screen_start(cla)
-                    break
-                else:
-                    click_pos_2(220, 110, cla)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorver_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -185,7 +188,11 @@ def dead_recorvery(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("boohwal_cross_btn")
                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    break
                 time.sleep(0.5)
+
+
 
 
     except Exception as e:

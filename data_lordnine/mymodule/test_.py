@@ -60,7 +60,7 @@ def go_test():
 
         #################################################
         # get_diary(cla)
-        dead_check(cla)
+        dead_recorvery(cla)(cla)
         ######################################
 
         # v_.onCollecion = True
