@@ -114,7 +114,7 @@ def dead_recorvery(cla):
     import os
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from clean_screen_lordnine import clean_screen_start
+    from clean_screen_lordnine import clean_screen_just_on_start
     from action_lordnine import out_check, juljun_off
 
     try:
@@ -172,44 +172,94 @@ def dead_recorvery(cla):
                 time.sleep(0.5)
 
             # 아이템 복구
-            for i in range(10):
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\item.PNG"
+            recorver_item = True
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\item.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.7)
+                imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
-                    print("item")
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
-
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_checked.PNG"
+                    recorver_item = False
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(210, 130, 275, 185, cla, img, 0.7)
+                    imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.9)
                     if imgs_ is not None and imgs_ != False:
-                        print("dead_checked")
+                        recorver_item = False
 
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorver_btn.PNG"
+            if recorver_item == False:
+                clean_screen_just_on_start(cla)
+            else:
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\item.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+
+                        end_fix = False
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(90, 430, 260, 490, cla, img, 0.7)
+                        imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.9)
                         if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.5)
+                            end_fix = True
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                end_fix = True
 
-                    else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_not_checked.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(210, 130, 275, 185, cla, img, 0.7)
-                        if imgs_ is not None and imgs_ != False:
-                            print("dead_checked")
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.5)
 
-                else:
-                    break
-                time.sleep(0.5)
+                        if end_fix == False:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\item.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("item")
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_checked.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(210, 130, 275, 185, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("dead_checked")
+
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorver_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(90, 430, 260, 490, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_not_checked.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(210, 130, 275, 185, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("dead_checked")
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+
+                        else:
+                            clean_screen_just_on_start(cla)
+                            break
+                    time.sleep(0.5)
 
 
 
