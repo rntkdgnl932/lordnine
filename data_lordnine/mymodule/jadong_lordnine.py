@@ -535,7 +535,7 @@ def spot_get(where):
                 read_yourokina = file.read().splitlines()
                 for i in range(len(read_yourokina)):
                     all_list.append(read_yourokina[i])
-        print("all_list", all_list)
+        # print("all_list", all_list)
 
 
         for i in range(len(all_list)):
