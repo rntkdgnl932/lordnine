@@ -24,7 +24,7 @@ def go_test():
     from potion_lordnine import potion_buy_start
     from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary
     from jadong_lordnine import jadong_start, spot_go
-    from dead_die import dead_recorvery
+    from dead_die import dead_recorvery, dead_check
     from dungeon_lordnine import dun_in
 
 
@@ -59,8 +59,8 @@ def go_test():
         # dun_in(cla, where)
 
         #################################################
-        get_diary(cla)
-
+        # get_diary(cla)
+        dead_check(cla)
         ######################################
 
         # v_.onCollecion = True

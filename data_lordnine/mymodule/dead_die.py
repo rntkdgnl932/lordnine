@@ -19,7 +19,7 @@ def dead_check(cla):
     from action_lordnine import out_check, loading_check
 
     try:
-        print("dead_check")
+        print("dead_check...")
 
         dead = False
 
@@ -48,6 +48,50 @@ def dead_check(cla):
 
             dead = True
 
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_dead.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(300, 630, 630, 700, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("juljun_dead", imgs_)
+
+                juljun_off(cla)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(250, 400, 750, 900, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    time.sleep(0.3)
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(250, 400, 750, 900, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("boohwal_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    for i in range(5):
+                        result_loading = loading_check(cla)
+                        if result_loading == True:
+                            break
+                        time.sleep(0.2)
+
+                    for i in range(5):
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            break
+                        time.sleep(0.2)
+
+                dead = True
+
         if dead == True:
             result_schedule = myQuest_play_check(cla, "check")
             result_schedule_ = result_schedule[0][2]
@@ -71,7 +115,7 @@ def dead_recorvery(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen_lordnine import clean_screen_start
-    from action_lordnine import out_check
+    from action_lordnine import out_check, juljun_off
 
     try:
         print("dead_recorvery")
@@ -80,6 +124,14 @@ def dead_recorvery(cla):
             result_out = out_check(cla)
             if result_out == True:
                 break
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    juljun_off(cla)
+
             time.sleep(0.5)
 
         is_cross = False
