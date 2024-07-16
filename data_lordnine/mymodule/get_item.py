@@ -348,7 +348,7 @@ def get_gold_sohwan_start(cla):
     import numpy as np
     import cv2
 
-    from function_game import imgs_set_, drag_pos, click_pos_2
+    from function_game import imgs_set_, drag_pos, click_pos_2, click_pos_reg
     from action_lordnine import confirm_all
     from massenger import line_to_me
 
@@ -387,60 +387,86 @@ def get_gold_sohwan_start(cla):
                     else:
 
                         is_sohwan = True
+                        is_sold_out = False
 
                         for c in range(5):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.7)
+                            imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("avatar_sohwan_title", imgs_)
                                 # 확인 누르고 그전에 푸시 있으면 푸시 하고...
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\clicked_sold_out.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(320, 500, 400, 540, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_sold_out = True
                                 break
                             else:
                                 click_pos_2(x_reg, 200, cla)
                             time.sleep(0.5)
+                        if is_sold_out == True:
 
-                        for c in range(20):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_title.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.7)
-                            if imgs_ is not None and imgs_ != False:
-                                confirm_all(cla)
-                            else:
-                                result_confirm = confirm_all(cla)
-                                if result_confirm == True:
-                                    time.sleep(2)
-                                    break
-                                else:
-                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\push_right_drag.PNG"
+                            for e in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_close.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(300, 700, 750, 1040, cla, img, 0.7)
+                                    imgs_ = imgs_set_(650, 340, 730, 400, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("avatar_sohwan_title", imgs_)
-                                        drag_pos(450, 500, 450, 800, cla)
-
-                                        why = "작살나는 아바타 나왔다. 확인해라"
-                                        line_to_me(cla, why)
-
-                                        time.sleep(3)
-                            time.sleep(1)
-
-                        for c in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sangjum.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
-                            if imgs_ is not None and imgs_ != False:
-                                print("battle_pass", imgs_)
-                                break
-                            else:
-                                confirm_all(cla)
-                            time.sleep(0.2)
-                        if is_sohwan == True:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        break
+                                time.sleep(0.5)
                             break
+                        else:
+                            for c in range(20):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    confirm_all(cla)
+                                else:
+                                    result_confirm = confirm_all(cla)
+                                    if result_confirm == True:
+                                        time.sleep(2)
+                                        break
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\push_right_drag.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(300, 700, 750, 1040, cla, img, 0.7)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("avatar_sohwan_title", imgs_)
+                                            drag_pos(450, 500, 450, 800, cla)
+
+                                            why = "작살나는 아바타 나왔다. 확인해라"
+                                            line_to_me(cla, why)
+
+                                            time.sleep(3)
+                                time.sleep(1)
+
+                            for c in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sangjum.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("sangjum", imgs_)
+                                    time.sleep(1)
+                                    break
+                                else:
+                                    confirm_all(cla)
+                                time.sleep(0.2)
+                            if is_sohwan == True:
+                                break
 
                 time.sleep(0.2)
 
