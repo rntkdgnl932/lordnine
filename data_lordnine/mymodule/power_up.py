@@ -169,6 +169,8 @@ def power_up_sungmool(cla):
                                                     time.sleep(1)
 
                                                 break
+                                            else:
+                                                up_end = True
                                             time.sleep(0.2)
                                         if up_end == True:
                                             print("up_end in..", up_end)
