@@ -26,6 +26,7 @@ def go_test():
     from jadong_lordnine import jadong_start, spot_go
     from dead_die import dead_recorvery, dead_check
     from dungeon_lordnine import dun_in
+    from power_up import power_up_sungmool
 
 
     print("test")
@@ -60,59 +61,9 @@ def go_test():
 
         #################################################
         # get_diary(cla)
-        is_point = False
+        power_up_sungmool(cla)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(300, 560, 640, 740, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("touch_me", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-        else:
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\post_get_confirm.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(460, 560, 640, 640, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("post_get_confirm", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
 
-            else:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.65)
-                if imgs_ is not None and imgs_ != False:
-                    print("menu_point_1", imgs_)
-                    click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
-
-                    is_point = True
-
-                else:
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.65)
-                    if imgs_ is not None and imgs_ != False:
-                        print("menu_point_2", imgs_)
-                        click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
-
-                        is_point = True
-
-                    else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\post_point_1.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.65)
-                        if imgs_ is not None and imgs_ != False:
-                            print("post_point_1", imgs_)
-                            click_pos_reg(imgs_.x - 20, imgs_.y + 15, cla)
-
-                            is_point = True
-
-                        else:
-                            print("안보여 시팔12121212")
         ######################################
 
         # v_.onCollecion = True

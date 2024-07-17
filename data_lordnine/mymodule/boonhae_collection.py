@@ -76,6 +76,7 @@ def collection_start(cla):
                         imgs_ = imgs_set_(820, 880, 940, 940, cla, img, 0.75)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
                     else:
                         collection = True
                         clean_screen_start(cla)

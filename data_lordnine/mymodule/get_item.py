@@ -744,7 +744,7 @@ def get_post(cla):
     import os
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import menu_open
+    from action_lordnine import menu_open_last
     from clean_screen_lordnine import clean_screen_start
 
     try:
@@ -879,7 +879,7 @@ def get_post(cla):
                 clean_screen_start(cla)
 
             else:
-                menu_open(cla)
+                menu_open_last(cla)
 
                 get_point = False
 
@@ -1187,3 +1187,6 @@ def get_monster_dogam(cla):
     except Exception as e:
         print(e)
         return 0
+
+
+
