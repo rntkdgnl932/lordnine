@@ -50,7 +50,7 @@ def game_check(cla):
     import cv2
     import os
 
-    from function_game import imgs_set_
+    from function_game import imgs_set_, click_pos_reg
     from action_lordnine import confirm_all
     from character_select_and_game_start import game_ready
     from massenger import line_to_me
@@ -120,6 +120,32 @@ def game_check(cla):
                     imgs_ = imgs_set_(350, 500, 500, 600, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         confirm_all(cla)
+
+
+                        for i in range(30):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\skip\\out_skip.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.75)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\long_time.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(350, 500, 500, 600, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        confirm_all(cla)
+                            time.sleep(1)
+
 
                     game_ready(cla)
 
