@@ -14,10 +14,12 @@ def get_start(cla):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import skip_start
-    from tuto_lordnine import way_check
+    from potion_lordnine import potion_buy_start
 
     try:
         print("get_start")
+
+        potion_buy_start(cla)
 
         get_gold_sohwan(cla)
 
