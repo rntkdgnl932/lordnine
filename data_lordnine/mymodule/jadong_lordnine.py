@@ -35,12 +35,24 @@ def jadong_start(cla, where):
 
         if result_juljun == True:
 
+            zero = False
+
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_bag_check_time\\zero.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(534, 315, 567, 360, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
-                print("zero", imgs_)
+                print("zero 2", imgs_)
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_bag_check_time\\zero.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(512, 315, 542, 360, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("zero 1", imgs_)
+
+                    zero = True
+            if zero == True:
                 # 가방 체크...한시간 마다
                 col_boon_start(cla)
                 juljun_on(cla)

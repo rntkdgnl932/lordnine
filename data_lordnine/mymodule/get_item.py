@@ -13,7 +13,7 @@ def get_start(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import skip_start
+    from power_up import power_up_sungmool
     from potion_lordnine import potion_buy_start
 
     try:
@@ -29,6 +29,8 @@ def get_start(cla):
         get_post(cla)
         get_upjuk(cla)
         get_monster_dogam(cla)
+
+        power_up_sungmool(cla)
 
 
 
