@@ -15,7 +15,7 @@ def jadong_start(cla, where):
     import os
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_on
+    from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_on, zero_check_hour
     from potion_lordnine import potion_check
     from dead_die import dead_check
     from boonhae_collection import col_boon_start
@@ -35,23 +35,9 @@ def jadong_start(cla, where):
 
         if result_juljun == True:
 
-            zero = False
+            zero = zero_check_hour(cla)
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_bag_check_time\\zero.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(534, 315, 567, 360, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("zero 2", imgs_)
 
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_bag_check_time\\zero.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(512, 315, 542, 360, cla, img, 0.7)
-                if imgs_ is not None and imgs_ != False:
-                    print("zero 1", imgs_)
-
-                    zero = True
             if zero == True:
                 # 가방 체크...한시간 마다
                 col_boon_start(cla)
@@ -114,7 +100,7 @@ def spot_in_ready(cla, where):
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("worldmap", imgs_)
         else:
@@ -132,7 +118,7 @@ def spot_in_ready(cla, where):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("worldmap", imgs_)
 
@@ -156,7 +142,7 @@ def spot_in_ready(cla, where):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\hunt_move_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.7)
+                            imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
 
                                 world = True
@@ -245,7 +231,7 @@ def spot_in_ready(cla, where):
                                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\hunt_move_title.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.7)
+                                    imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
                                         break
                                     else:
@@ -283,7 +269,7 @@ def spot_in_ready(cla, where):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             break
                         time.sleep(0.3)
@@ -335,7 +321,7 @@ def spot_in(cla, where):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("worldmap", imgs_)
 
@@ -367,7 +353,7 @@ def spot_in(cla, where):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\hunt_spot_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.7)
+                            imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
 
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\up.PNG"
@@ -383,7 +369,7 @@ def spot_in(cla, where):
                                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\monster_info_title.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(500, 70, 640, 110, cla, img, 0.7)
+                                    imgs_ = imgs_set_(500, 70, 640, 110, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
                                         world = True
 
@@ -400,7 +386,7 @@ def spot_in(cla, where):
                                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\hunt_spot_title.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.7)
+                                    imgs_ = imgs_set_(750, 60, 860, 110, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
                                         break
                                     else:
@@ -438,7 +424,7 @@ def spot_in(cla, where):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             break
                         time.sleep(0.3)
@@ -467,7 +453,7 @@ def spot_go(cla):
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\monster_info_title.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(500, 70, 640, 110, cla, img, 0.7)
+        imgs_ = imgs_set_(500, 70, 640, 110, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("monster_info_title", imgs_)
 

@@ -48,12 +48,14 @@ from schedule import myQuest_play_check, myQuest_play_add
 
 
 from stop_event18 import _stop_please
-from tuto_lordnine import tuto_start
+from tuto_lordnine import tuto_start, way_check
 from character_select_and_game_start import game_start_screen
 from get_item import get_start
 from potion_lordnine import potion_buy_start
 from jadong_lordnine import jadong_start
 from dungeon_lordnine import dungeon_start
+from mission_lordnine import mission_get
+from tower_trial import tower_start
 
 from test_ import go_test
 
@@ -1064,7 +1066,7 @@ class FirstTab(QWidget):
         # 마을 의뢰
         self.com_group6 = QGroupBox('육성, 각종템받기, 거래소등록하기, 의뢰')
         cb6 = QComboBox()
-        list6 = ['스케쥴 선택', '각종템받기', '버프와물약사기', '거래소등록', '튜토육성']
+        list6 = ['스케쥴 선택', '각종템받기', '버프와물약사기', '시련의탑', '거래소등록', '튜토육성']
         cb6.addItems(list6)
         vbox6 = QHBoxLayout()
         vbox6.addWidget(cb6)
@@ -1102,15 +1104,15 @@ class FirstTab(QWidget):
         self.dun_group_1.setLayout(dun_box_1)
 
         # 던전 종류
-        self.dun_group_2 = QGroupBox('심연')
+        self.dun_group_2 = QGroupBox('임무')
         dun_g2_name = QComboBox()
         # list4 = ['던전 선택', '일반_업보', '일반_지옥', '일반_죄악', '일반_저주', '특수_마족', '특수_아르카스', '파티_묘지']
         # dun_g2_list = ['던전 선택', '다크디멘젼', '레이드', '기간토마키아']
-        dun_g2_list = ['뒤틀린 심연 선택', '뒤틀린심연']
+        dun_g2_list = ['임무 선택', '일일임무']
         dun_g2_name.addItems(dun_g2_list)
 
         dun_g2_stair = QComboBox()
-        dun_g2_stair_list = ['층', '1', '2']
+        dun_g2_stair_list = ['장소', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
         dun_g2_stair.addItems(dun_g2_stair_list)
 
         # dun_g2_step = QComboBox()
@@ -1122,7 +1124,7 @@ class FirstTab(QWidget):
         dun_box_2.addWidget(dun_g2_stair)
         # dun_box_2.addWidget(dun_g2_step)
 
-        dungeon_2 = QPushButton('심연 추가')
+        dungeon_2 = QPushButton('임무 추가')
         dungeon_2.clicked.connect(self.onActivated_dunjeon_2_add)
 
         dun_box_2.addWidget(dungeon_2)
@@ -1780,21 +1782,21 @@ class FirstTab(QWidget):
 
     def onActivated_dunjeon_2(self, text):
         global onDunjeon_2
-        if text != 0 and text != '뒤틀린 심연 선택':
+        if text != 0 and text != '임무 선택':
             onDunjeon_2 = text
             print('onDunjeon_2', onDunjeon_2)
         else:
             onDunjeon_2 = 'none'
-            print("던전을 선택해 주세요.")
+            print("임무를 선택해 주세요.")
 
     def onActivated_dunjeon_2_level(self, text):
         global onDunjeon_2_level
-        if text != 0 and text != '층':
+        if text != 0 and text != '장소':
             onDunjeon_2_level = text
             print('onDunjeon_2_level', onDunjeon_2_level)
         else:
             onDunjeon_2_level = 0
-            print("던전 층수를 선택해 주세요.")
+            print("임무장소를 선택해 주세요.")
 
 
     def onActivated_dunjeon_3(self, text):
@@ -1922,14 +1924,14 @@ class FirstTab(QWidget):
             self.onActivated_dunjeon_add2(data)
     def onActivated_dunjeon_2_add(self):
         char_ = onCharacter
-        dun_ = "던전/심연/" + str(onDunjeon_2) + "_" + str(onDunjeon_2_level)
+        dun_ = str(onDunjeon_2) + "_" + str(onDunjeon_2_level)
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onCla == 'none':
             pyautogui.alert(button='넵', text='몇 클라인지 선택해 주시지예', title='뭐합니꺼')
-        elif onDunjeon_2 == '던전 선택' or onDunjeon_2 == 'none' or onDunjeon_2_level == 0 or onDunjeon_2_level == "층":
+        elif onDunjeon_2 == '임무 선택' or onDunjeon_2 == 'none' or onDunjeon_2_level == 0 or onDunjeon_2_level == "장소":
             pyautogui.alert(button='넵', text='던전 및 층수를 선택해 주시지예', title='아 진짜 뭐합니꺼')
-        elif onCharacter != 0 and (onDunjeon_2 != '던전 선택' or onDunjeon_2 != 'none'):
+        elif onCharacter != 0 and (onDunjeon_2 != '임무 선택' or onDunjeon_2 != 'none'):
             print('char_', char_)
             print('dun_', dun_)
 
@@ -3692,7 +3694,8 @@ class game_Playing(QThread):
                                 game_start_screen(v_.now_cla, character_id)
 
 
-
+                                # # 화살표 체크하기
+                                # way_check(v_.now_cla)
 
 
 
@@ -3731,6 +3734,12 @@ class game_Playing(QThread):
 
                                 elif "던전" in result_schedule_:
                                     dungeon_start(v_.now_cla, result_schedule_)
+
+                                elif "임무" in result_schedule_:
+                                    mission_get(v_.now_cla, result_schedule_)
+
+                                elif "시련의탑" in result_schedule_:
+                                    tower_start(v_.now_cla)
 
 
 

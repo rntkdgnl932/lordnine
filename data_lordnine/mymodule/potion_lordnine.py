@@ -52,7 +52,7 @@ def potion_check(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting_title.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(690, 750, 870, 800, cla, img, 0.8)
+                    imgs_ = imgs_set_(690, 750, 870, 800, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         print("potion_setting_title", imgs_)
                         x_1 = 700
@@ -81,7 +81,7 @@ def potion_check(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(690, 750, 870, 800, cla, img, 0.8)
+                            imgs_ = imgs_set_(690, 750, 870, 800, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
                                 break
                             time.sleep(0.1)
@@ -130,7 +130,7 @@ def potion_check(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting_title.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(190, 750, 370, 800, cla, img, 0.8)
+                        imgs_ = imgs_set_(190, 750, 370, 800, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             print("potion_setting_title", imgs_)
 
@@ -160,7 +160,7 @@ def potion_check(cla):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting_title.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(190, 750, 370, 800, cla, img, 0.8)
+                                imgs_ = imgs_set_(190, 750, 370, 800, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
                                     break
                                 time.sleep(0.1)
@@ -193,6 +193,8 @@ def potion_buy_start(cla):
     from action_lordnine import juljun_off, juljun_check, go_maul, move_check
     from boonhae_collection import col_boon_start
     from schedule import myQuest_play_check, myQuest_play_add
+    from clean_screen_lordnine import clean_screen_start
+    from massenger import line_to_me
 
     try:
         print("potion_buy_start")
@@ -207,7 +209,11 @@ def potion_buy_start(cla):
             elif "1회" in result_schedule_:
                 myQuest_play_add(cla, result_schedule_)
 
-        go_maul(cla)
+        result_maul = go_maul(cla)
+        if result_maul == True:
+            col_boon_start(cla)
+
+
 
         buy_potion = False
         buy_potion_count = 0
@@ -220,11 +226,13 @@ def potion_buy_start(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\title_jabhwa_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 150, 80, cla, img, 0.75)
+            imgs_ = imgs_set_(0, 30, 150, 80, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("title_jabhwa_1", imgs_)
 
                 buy_potion = True
+
+                anymore = False
 
                 for i in range(5):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\enough_item.PNG"
@@ -235,19 +243,33 @@ def potion_buy_start(cla):
                         print("enough_item", imgs_)
                         break
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_buy_confirm.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\anymore_buy_item.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(460, 660, 600, 720, cla, img, 0.75)
+                        imgs_ = imgs_set_(300, 100, 660, 150, cla, img, 0.75)
                         if imgs_ is not None and imgs_ != False:
-                            print("potion_buy_confirm", imgs_)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            print("anymore_buy_item", imgs_)
+                            anymore = True
                             break
                         else:
-                            click_pos_2(150, 1005, cla)
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_buy_confirm.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(460, 660, 600, 720, cla, img, 0.75)
+                            if imgs_ is not None and imgs_ != False:
+                                print("potion_buy_confirm", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
+                            else:
+                                click_pos_2(150, 1005, cla)
                     time.sleep(0.5)
 
-                col_boon_start(cla)
+                if anymore == True:
+                    why = "물약 살때 오류"
+                    line_to_me(cla, why)
+
+                # 나가기
+                clean_screen_start(cla)
 
             else:
 
@@ -264,7 +286,7 @@ def potion_buy_start(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\title_jabhwa_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 30, 150, 80, cla, img, 0.75)
+                        imgs_ = imgs_set_(0, 30, 150, 80, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             break
                     time.sleep(0.3)

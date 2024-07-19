@@ -12,6 +12,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def go_test():
     import numpy as np
     import cv2
+    from datetime import datetime
     import pyautogui
     import random
     import pydirectinput
@@ -28,6 +29,7 @@ def go_test():
     from dungeon_lordnine import dun_in
     from power_up import power_up_sungmool
     from mission_lordnine import mission_get
+    from guild_lordnine import guild_start
 
 
     print("test")
@@ -63,23 +65,28 @@ def go_test():
         #################################################
         # get_diary(cla)
 
-        text_check_get(512, 315, 542, 360, cla)
+        # text_check_get(512, 315, 542, 360, cla)
 
-        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\juljun_complete.PNG"
-        # img_array = np.fromfile(full_path, np.uint8)
-        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        # imgs_ = imgs_set_(0, 700, 200, 900, cla, img, 0.7)
-        # if imgs_ is not None and imgs_ != False:
-        #     print("juljun_complete", imgs_)
-        #     # 절전 공격중 확인하기
-        #
-        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\out_complete.PNG"
-        # img_array = np.fromfile(full_path, np.uint8)
-        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        # imgs_ = imgs_set_(840, 100, 900, 280, cla, img, 0.7)
-        # if imgs_ is not None and imgs_ != False:
-        #     print("juljun_complete", imgs_)
-        #     # 최상단 드래그 하기
+        nowMinute = int(datetime.today().strftime("%M"))
+        print("nowMinute", nowMinute)
+        result_m = nowMinute % 10
+        print("result_m", result_m)
+
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\auto_on.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(830, 820, 890, 870, cla, img, 0.95)
+        if imgs_ is not None and imgs_ != False:
+            print("auto_on", imgs_)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\auto_off.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(830, 820, 890, 870, cla, img, 0.95)
+        if imgs_ is not None and imgs_ != False:
+            print("auto_off", imgs_)
+
 
 
         ######################################

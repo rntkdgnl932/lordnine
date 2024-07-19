@@ -1,3 +1,4 @@
+import random
 import time
 # import os
 import sys
@@ -9,35 +10,69 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 
-def mission_get(cla):
+def mission_get(cla, data):
     import numpy as np
     import cv2
+    from datetime import datetime
+
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import skip_start
+    from potion_lordnine import potion_check
+    from action_lordnine import juljun_check, juljun_off, zero_check_minute, juljun_on
+    from dead_die import dead_check
     from tuto_lordnine import way_check
+    from boonhae_collection import col_boon_start
 
     try:
-        print("mission_get")
+        print("mission_get", data)
 
-        skip_start(cla)
-        way_check(cla)
+        dead_check(cla)
 
-        # full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder) + "\\imgs\\18\\18_1.PNG"
-        # img_array = np.fromfile(full_path, np.uint8)
-        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        # imgs_ = imgs_set_(70, 670, 300, 770, cla, img, 0.7)
-        # if imgs_ is not None and imgs_ != False:
-        #     print("18_1")
-        #     click_pos_reg(imgs_.x, imgs_.y, cla)
-        #     time.sleep(1)
-        # full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(v_.data_folder) + "\\imgs\\18\\18_2.PNG"
-        # img_array = np.fromfile(full_path, np.uint8)
-        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        # imgs_ = imgs_set_(70, 670, 300, 770, cla, img, 0.7)
-        # if imgs_ is not None and imgs_ != False:
-        #     print("18_1")
-        #     click_pos_reg(imgs_.x, imgs_.y, cla)
 
+
+        if v_.daily_mission_ready == True:
+
+            print("v_.daily_mission_ready", v_.daily_mission_ready)
+
+            mission_get_week(cla)
+            v_.daily_mission_ready = False
+        else:
+            result_juljun = juljun_check(cla)
+            if result_juljun == True:
+
+                zero = zero_check_minute(cla)
+
+                if zero == True:
+                    # 가방 체크...10분 마다
+                    mission_get_daily(cla, data)
+
+                else:
+                    nowMinute = int(datetime.today().strftime("%M"))
+                    print("nowMinute", nowMinute)
+                    result_m = nowMinute % 10
+                    print("result_m", result_m)
+
+                    if result_m == 0:
+                        # 가방 체크...10분 마다
+                        mission_get_daily(cla, data)
+                    else:
+                        potion_check(cla)
+
+            else:
+                for i in range(3):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\out_complete.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(840, 100, 900, 280, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("juljun_complete", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+                way_check(cla)
+
+
+                # 미션 얻고 공격까지하고, 미션 얻다가 더이상 실행할 수 있는 것이 없으면 add
+                mission_get_daily(cla, data)
 
 
     except Exception as e:
@@ -45,17 +80,22 @@ def mission_get(cla):
         return 0
 
 
-def mission_get_daily(cla):
+def mission_get_daily(cla, data):
     import numpy as np
     import cv2
     import os
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action_lordnine import menu_open, confirm_all
+    from action_lordnine import menu_open, confirm_all, loading_check, move_check, juljun_on
     from clean_screen_lordnine import clean_screen_start
+    from schedule import myQuest_play_add
 
     try:
         print("mission_get_daily")
+        # 일일임무_2
+
+        result_spot = data.split("_")
+        y_num = int(result_spot[1])
 
         get = False
         get_count = 0
@@ -68,7 +108,7 @@ def mission_get_daily(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\mission.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("mission", imgs_)
 
@@ -92,7 +132,76 @@ def mission_get_daily(cla):
                             break
                         time.sleep(1)
 
-                    # 일일 임무를 얻쟈
+                    # 일일 임무 해당 장소를 클릭하자
+                    # 125, 160, 195...
+
+                    y_click = 90 + (y_num * 35)
+
+                    for a in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\list\\" + str(y_num) + ".PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(610, 100, 750, 140, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("click ok")
+                            break
+                        else:
+                            click_pos_2(50, y_click, cla)
+                        time.sleep(1)
+
+                    # 일일 임무 완료 보상을 받자
+
+                    for a in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("complete")
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("complete_btn")
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                for g in range(10):
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(390, 390, 550, 450, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_get.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(540, 560, 650, 650, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            time.sleep(0.5)
+                                            result_ran = random.randint(1, 5)
+                                            x_get = 315 + (result_ran * 55)
+                                            y_get = imgs_.y
+                                            # 370, 425, 480, 535, 590
+                                            for com in range(5):
+                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_title.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(390, 390, 550, 450, cla, img, 0.85)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    click_pos_2(x_get, y_get, cla)
+                                                else:
+                                                    break
+                                                time.sleep(0.5)
+                                            break
+                                    time.sleep(0.5)
+                        else:
+                            break
+                        time.sleep(1)
+
+                    # 일일 임무를 얻쟈()
                     for i in range(40):
 
                         anymore = False
@@ -146,10 +255,74 @@ def mission_get_daily(cla):
                         if anymore == True:
                             break
 
+                    # 진행중이 있으면 임무 수행...없으면 add
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(1)
+                        for att in range(10):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\soongan_move_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(710, 980, 810, 1030, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+
+                                for con in range(5):
+                                    result_move_confirm = confirm_all(cla)
+                                    if result_move_confirm == True:
+                                        break
+                                    time.sleep(0.1)
 
 
-                    # 나가자
-                    clean_screen_start(cla)
+                                for load in range(5):
+                                    loading_check(cla)
+                                    time.sleep(0.2)
+                                break
+
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.2)
+                                else:
+                                    loading_check(cla)
+
+                            time.sleep(0.5)
+                        # 나간 후
+                        attacked = False
+                        attacked_count = 0
+
+                        while attacked is False:
+                            attacked_count += 1
+                            if attacked_count > 12:
+                                attacked = True
+                                click_pos_2(870, 850, cla)
+                                time.sleep(0.5)
+                                juljun_on(cla)
+
+                            result_move = move_check(cla)
+                            if result_move == False:
+                                attacked_count += 1
+                                result_loading = loading_check(cla)
+                                if result_loading == True:
+                                    attacked_count -= 1
+                                else:
+                                    attacked_count += 2
+                            time.sleep(0.5)
+
+                    else:
+                        myQuest_play_add(cla, data)
+                        clean_screen_start(cla)
+
 
 
                 else:
@@ -163,7 +336,7 @@ def mission_get_daily(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\mission.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
@@ -192,7 +365,7 @@ def mission_get_week(cla):
     from clean_screen_lordnine import clean_screen_start
 
     try:
-        print("mission_get_daily")
+        print("mission_get_week")
 
         get = False
         get_count = 0
@@ -205,7 +378,7 @@ def mission_get_week(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\mission.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("mission", imgs_)
 
@@ -238,7 +411,7 @@ def mission_get_week(cla):
                             time.sleep(1)
 
                         # 주간 임무를 얻자
-                        for w in range(10):
+                        for w in range(6):
 
                             anymore = False
 
@@ -257,7 +430,7 @@ def mission_get_week(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\gamjung_1.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_for = imgs_set_for(170, 100, 400, y_reg, cla, img, 0.9)
+                            imgs_for = imgs_set_for(170, 100, 400, y_reg - 20, cla, img, 0.9)
                             if imgs_for is not None and imgs_for != False:
                                 print("gamjung_1", imgs_for)
                                 if len(imgs_for) > 0:
@@ -314,7 +487,7 @@ def mission_get_week(cla):
                             time.sleep(0.5)
 
                         # 나가자
-                        clean_screen_start(cla)
+                        # clean_screen_start(cla)
                     else:
                         click_pos_2(148, 88, cla)
 
@@ -329,7 +502,7 @@ def mission_get_week(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\mission.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:

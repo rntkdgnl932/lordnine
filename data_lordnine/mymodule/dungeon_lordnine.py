@@ -100,7 +100,7 @@ def dun_in(cla, where):
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
+        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("던전 고르는 중")
         else:
@@ -117,7 +117,7 @@ def dun_in(cla, where):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("dungeon", imgs_)
 
@@ -176,7 +176,7 @@ def dun_in(cla, where):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
+                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             print("dungeon", imgs_)
                             click_pos_2(805, 1005, cla)
@@ -218,7 +218,7 @@ def dun_in(cla, where):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:

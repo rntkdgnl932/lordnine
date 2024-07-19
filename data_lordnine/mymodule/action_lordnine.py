@@ -19,42 +19,22 @@ def confirm_all(cla):
 
         is_confirm = False
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\confirm_btn_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(470, 570, 640, 640, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("confirm_btn_1 : 무엇", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            is_confirm = True
-
-        # 소환
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\confirm_btn_2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 980, 960, 1040, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("confirm_btn_2 : 소환 확인", imgs_)
-            x_reg = imgs_.x
-            y_reg = imgs_.y
-
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\sohwan_not_checked.PNG"
+        if is_confirm == False:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\confirm_btn_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 980, 40, 1040, cla, img, 0.8)
+            imgs_ = imgs_set_(470, 570, 640, 640, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
+                print("confirm_btn_1 : 무엇", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
-                time.sleep(0.3)
-
-            click_pos_reg(x_reg, y_reg, cla)
-            is_confirm = True
-        else:
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sohwan_confirm.PNG"
+                is_confirm = True
+        if is_confirm == False:
+            # 소환
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\confirm_btn_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(0, 980, 960, 1040, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                print("sohwan_confirm : 소환 확인", imgs_)
                 print("confirm_btn_2 : 소환 확인", imgs_)
                 x_reg = imgs_.x
                 y_reg = imgs_.y
@@ -69,65 +49,87 @@ def confirm_all(cla):
 
                 click_pos_reg(x_reg, y_reg, cla)
                 is_confirm = True
-        # 이동
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\move_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(470, 570, 960, 1040, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("move_confirm", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            is_confirm = True
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sohwan_confirm.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 980, 960, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("sohwan_confirm : 소환 확인", imgs_)
+                    print("confirm_btn_2 : 소환 확인", imgs_)
+                    x_reg = imgs_.x
+                    y_reg = imgs_.y
 
-        # 감정
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\gamjung_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(380, 570, 960, 770, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("gamjung_confirm", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            is_confirm = True
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\sohwan_not_checked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 980, 40, 1040, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.3)
 
-        # 포션
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_buy_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(460, 660, 600, 720, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("potion_buy_confirm", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            is_confirm = True
-
-        # 우편
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\post_get_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(460, 560, 640, 640, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("post_get_confirm", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            is_confirm = True
-
-        # 자동사냥 이동
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 540, 640, 600, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("jadong_confirm", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            is_confirm = True
-
-        # 던전 나가기
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\dun_exit_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 540, 640, 640, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("dun_exit_btn", imgs_)
-            click_pos_reg(imgs_.x, imgs_.y, cla)
-            is_confirm = True
+                    click_pos_reg(x_reg, y_reg, cla)
+                    is_confirm = True
+        if is_confirm == False:
+            # 이동
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\move_confirm.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(470, 570, 960, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("move_confirm", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_confirm = True
+        if is_confirm == False:
+            # 감정
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\gamjung_confirm.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(380, 570, 960, 770, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("gamjung_confirm", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_confirm = True
+        if is_confirm == False:
+            # 포션
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_buy_confirm.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(460, 660, 600, 720, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("potion_buy_confirm", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_confirm = True
+        if is_confirm == False:
+            # 우편
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\post_get_confirm.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(460, 560, 640, 640, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("post_get_confirm", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_confirm = True
+        if is_confirm == False:
+            # 자동사냥 이동
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(480, 540, 640, 600, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("jadong_confirm", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_confirm = True
+        if is_confirm == False:
+            # 던전 나가기
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\dun_exit_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(480, 540, 640, 640, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("dun_exit_btn", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                is_confirm = True
 
         return is_confirm
 
@@ -447,6 +449,14 @@ def skip_start(cla):
             if imgs_ is not None and imgs_ != False:
                 print("touch_me", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\touch_me.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 600, 600, 700, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("touch_me", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
 
         return is_skip
 
@@ -734,7 +744,7 @@ def go_maul(cla):
     try:
         print("go_maul")
 
-
+        is_maul = False
 
         for i in range(10):
             result_juljun = juljun_check(cla)
@@ -747,6 +757,7 @@ def go_maul(cla):
                 imgs_ = imgs_set_(730, 770, 810, 850, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("jabhwa", imgs_)
+                    is_maul = True
                     break
 
                 else:
@@ -759,6 +770,7 @@ def go_maul(cla):
                         result_out = out_check(cla)
                         if result_out == False:
                             clean_screen_start(cla)
+                            is_maul = True
                         break
                     else:
                         result_loading = loading_check(cla)
@@ -776,6 +788,7 @@ def go_maul(cla):
                                 clean_screen_start(cla)
             time.sleep(0.5)
 
+        return is_maul
 
     except Exception as e:
         print(e)
@@ -846,9 +859,17 @@ def attack_on(cla):
         if imgs_ is not None and imgs_ != False:
             juljun_off(cla)
 
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\auto_off.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(830, 820, 890, 870, cla, img, 0.95)
+        if imgs_ is not None and imgs_ != False:
+            print("auto_off", imgs_)
+            click_pos_2(870, 850, cla)
+
         attack = False
 
-        for i in range(10):
+        for i in range(20):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\attack_on.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -860,16 +881,106 @@ def attack_on(cla):
             time.sleep(0.3)
 
         if attack == False:
-            click_pos_2(865, 850, cla)
+            click_pos_2(870, 850, cla)
             time.sleep(0.3)
 
     except Exception as e:
         print(e)
 
 
+def attack_on_tower(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_2
+    try:
+
+        print("attack_on_tower")
+
+
+        for i in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\auto_on.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(830, 820, 890, 870, cla, img, 0.95)
+            if imgs_ is not None and imgs_ != False:
+                print("auto_on", imgs_)
+                break
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\auto_off.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(830, 820, 890, 870, cla, img, 0.95)
+                if imgs_ is not None and imgs_ != False:
+                    print("auto_off", imgs_)
+                    click_pos_2(870, 850, cla)
+                    time.sleep(0.5)
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+
+
+def zero_check_hour(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg
+    try:
+
+        print("zero_check_hour")
+
+        zero = False
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_bag_check_time\\zero.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(534, 315, 567, 360, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("zero 2", imgs_)
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_bag_check_time\\zero.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(512, 315, 542, 360, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("zero 1", imgs_)
+
+                zero = True
+
+        return zero
+
+    except Exception as e:
+        print(e)
+
+
+def zero_check_minute(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg
+    try:
+
+        print("zero_check_minute")
+
+        zero = False
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_bag_check_time\\zero.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(534, 315, 567, 360, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("zero 2", imgs_)
+
+            zero = True
 
 
 
+        return zero
+
+    except Exception as e:
+        print(e)
 
 
 

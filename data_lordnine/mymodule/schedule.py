@@ -64,8 +64,8 @@ def myQuest_play_check(cla, data):
 
                     with open(file_path2, "w", encoding='utf-8-sig') as file:
                         file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
-                        # 새로 갱신이니 1번 캐릭 선택으로...and 스케쥴 초기화 tttttttttttttttttttttttttttttttttttttttttttt
-                        print("새로 갱신..and 스케쥴 초기화")
+                        # 월요일 갱신
+                        print("월요일 갱신")
                         reset_schedule_ = ""
                         with open(file_path, "r", encoding='utf-8-sig') as file:
                             lines = file.read().splitlines()
@@ -103,8 +103,8 @@ def myQuest_play_check(cla, data):
                 else:
                     with open(file_path2, "w", encoding='utf-8-sig') as file:
                         file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
-                        # 새로 갱신이니 1번 캐릭 선택으로...and 스케쥴 초기화 tttttttttttttttttttttttttttttttttttttttttttt
-                        print("새로 갱신..and 스케쥴 초기화")
+                        # 월요일을 제외한 갱신
+                        print("월요일을 제외한 갱신")
                         reset_schedule_ = ""
                         with open(file_path, "r", encoding='utf-8-sig') as file:
                             lines = file.read().splitlines()
@@ -145,6 +145,7 @@ def myQuest_play_check(cla, data):
                 refresh_ = True
                 # 초기화 할때 변경해야할 전역 변수
                 v_.dead_count = 0
+                v_.daily_mission_ready = True
 
 
         else:
@@ -459,8 +460,8 @@ def myQuest_play_add(cla, data):
 
                 with open(file_path2, "w", encoding='utf-8-sig') as file:
                     file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
-                    # 새로 갱신이니 1번 캐릭 선택으로...and 스케쥴 초기화 tttttttttttttttttttttttttttttttttttttttttttt
-                    print("새로 갱신..and 스케쥴 초기화")
+                    # 월요일 갱신
+                    print("월요일 갱신")
                     reset_schedule_ = ""
                     with open(file_path, "r", encoding='utf-8-sig') as file:
                         lines = file.read().splitlines()
@@ -498,8 +499,8 @@ def myQuest_play_add(cla, data):
             else:
                 with open(file_path2, "w", encoding='utf-8-sig') as file:
                     file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
-                    # 새로 갱신이니 1번 캐릭 선택으로...and 스케쥴 초기화 tttttttttttttttttttttttttttttttttttttttttttt
-                    print("새로 갱신..and 스케쥴 초기화")
+                    # 월요일을 제외한 갱신
+                    print("월요일을 제외한 갱신")
                     reset_schedule_ = ""
                     with open(file_path, "r", encoding='utf-8-sig') as file:
                         lines = file.read().splitlines()
@@ -542,6 +543,7 @@ def myQuest_play_add(cla, data):
 
             # 초기화 할때 변경해야할 전역 변수
             v_.dead_count = 0
+            v_.daily_mission_ready = True
 
 
         add_result = 'check'

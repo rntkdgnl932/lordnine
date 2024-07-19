@@ -14,7 +14,7 @@ def dead_check(cla):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from schedule import myQuest_play_add, myQuest_play_check
-    from massenger import line_to_me
+    from clean_screen_lordnine import clean_screen_start
     from potion_lordnine import potion_buy_start
     from action_lordnine import out_check, loading_check, juljun_off
 
@@ -100,8 +100,11 @@ def dead_check(cla):
                 myQuest_play_add(cla, result_schedule_)
             elif "1회" in result_schedule_:
                 myQuest_play_add(cla, result_schedule_)
+            elif "시련의탑" in result_schedule_:
+                myQuest_play_add(cla, result_schedule_)
 
             potion_buy_start(cla)
+            clean_screen_start(cla)
             dead_recorvery(cla)
 
         return dead

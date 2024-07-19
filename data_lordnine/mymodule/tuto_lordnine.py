@@ -147,7 +147,7 @@ def way_check(cla):
 
         print("way_check")
 
-        for i in range(5):
+        for i in range(10):
 
             is_way = False
 
@@ -252,7 +252,7 @@ def quest_checking(cla):
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\character_info_title.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(60, 90, 170, 130, cla, img, 0.8)
+        imgs_ = imgs_set_(60, 90, 170, 130, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("character_info_title", imgs_)
 
@@ -281,7 +281,7 @@ def quest_checking(cla):
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\ability.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 200, 150, cla, img, 0.8)
+        imgs_ = imgs_set_(0, 30, 200, 150, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("ability", imgs_)
 
@@ -372,7 +372,7 @@ def quest_checking(cla):
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\jejak.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 170, 100, cla, img, 0.8)
+        imgs_ = imgs_set_(0, 30, 170, 100, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("jejak", imgs_)
 

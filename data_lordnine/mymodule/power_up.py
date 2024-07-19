@@ -33,7 +33,7 @@ def power_up_sungmool(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sungmool.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("sungmool", imgs_)
 
@@ -79,7 +79,7 @@ def power_up_sungmool(cla):
                                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\hwalsunghwa_title.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(400, 400, 550, 500, cla, img, 0.7)
+                                    imgs_ = imgs_set_(400, 400, 550, 500, cla, img, 0.85)
                                     if imgs_ is not None and imgs_ != False:
                                         print("hwalsunghwa_title", imgs_)
                                         result_confirm = confirm_all(cla)
@@ -140,7 +140,7 @@ def power_up_sungmool(cla):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\ganghwa_title.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(770, 70, 885, 115, cla, img, 0.7)
+                                imgs_ = imgs_set_(770, 70, 885, 115, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
                                     print("ganghwa_title", imgs_)
 
@@ -208,7 +208,7 @@ def power_up_sungmool(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sungmool.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.7)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:

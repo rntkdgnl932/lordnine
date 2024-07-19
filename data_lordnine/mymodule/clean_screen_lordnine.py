@@ -69,7 +69,7 @@ def clean_screen_just_on_start(cla):
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\title_exit.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(880, 30, 960, 100, cla, img, 0.7)
+        imgs_ = imgs_set_(880, 30, 960, 100, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("title_exit : top_right")
             click_pos_reg(imgs_.x, imgs_.y, cla)
