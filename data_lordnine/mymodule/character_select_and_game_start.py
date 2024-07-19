@@ -310,6 +310,15 @@ def game_ready(cla):
             imgs_ = imgs_set_(420, 820, 540, 940, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
 
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(500, 500, cla)
+
+                    time.sleep(1)
+
                 down = False
 
                 result_confirm = confirm_all(cla)
