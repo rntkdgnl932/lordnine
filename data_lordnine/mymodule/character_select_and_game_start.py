@@ -309,12 +309,24 @@ def game_ready(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(420, 820, 540, 940, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                confirm_all(cla)
-                time.sleep(0.5)
 
-                down = True
+                down = False
+
+                result_confirm = confirm_all(cla)
+                if result_confirm == True:
+
+                    for i in range(20):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\downloading_time.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 950, 200, 1040, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            down = True
+                            break
+
+                        time.sleep(0.5)
+
                 down_count = 0
-
                 while down is True:
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_join_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -322,12 +334,20 @@ def game_ready(cla):
                     imgs_ = imgs_set_(530, 900, 660, 1000, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         down = False
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            down = False
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_2(500, 500, cla)
+                        down = False
                     else:
                         down_count += 1
                         print("다운로드 중", down_count, "초")
