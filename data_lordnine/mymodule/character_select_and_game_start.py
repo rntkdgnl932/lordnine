@@ -303,7 +303,7 @@ def game_ready(cla):
         if imgs_ is not None and imgs_ != False:
             click_pos_reg(imgs_.x, imgs_.y, cla)
         else:
-            # 완전 바깥일 경우 일딴 들어가기(touch_to_start)
+            # 완전 바깥일 경우 일딴 들어가기(터치)
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -318,6 +318,15 @@ def game_ready(cla):
                 imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     click_pos_2(500, 500, cla)
+                    time.sleep(1)
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(500, 500, cla)
+
 
                     time.sleep(1)
 
@@ -360,17 +369,35 @@ def game_ready(cla):
                         click_pos_2(500, 500, cla)
                         down = False
                     else:
-                        down_count += 1
-                        print("다운로드 중", down_count, "초")
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(500, 500, cla)
+                            down = False
+                        else:
+                            down_count += 1
+                            print("다운로드 중", down_count, "초")
                     time.sleep(1)
             else:
                 print("lordnine_mark 안 보여여")
 
+            is_touch = False
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
+                is_touch = True
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    is_touch = True
+            if is_touch == True:
                 for i in range(20):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_join_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -386,6 +413,14 @@ def game_ready(cla):
                         if imgs_ is not None and imgs_ != False:
                             # click_pos_reg(imgs_.x, imgs_.y, cla)
                             click_pos_2(500, 500, cla)
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                # click_pos_reg(imgs_.x, imgs_.y, cla)
+                                click_pos_2(500, 500, cla)
                     time.sleep(0.5)
 
         # 완전 바깥일 경우 일딴 들어가기
