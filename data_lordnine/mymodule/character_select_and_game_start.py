@@ -303,6 +303,9 @@ def game_ready(cla):
         if imgs_ is not None and imgs_ != False:
             click_pos_reg(imgs_.x, imgs_.y, cla)
         else:
+
+            down = False
+
             # 완전 바깥일 경우 일딴 들어가기(터치)
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -343,7 +346,7 @@ def game_ready(cla):
                                 break
                             time.sleep(0.5)
 
-                down = False
+
 
                 result_confirm = confirm_all(cla)
                 if result_confirm == True:
@@ -366,7 +369,15 @@ def game_ready(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("downloading_time")
                         down = True
-
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\downloading_time.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 950, 200, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("downloading_time")
+                    down = True
+            if down == True:
                 down_count = 0
                 while down is True:
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_join_btn.PNG"
@@ -401,8 +412,6 @@ def game_ready(cla):
                             down_count += 1
                             print("다운로드 중", down_count, "초")
                     time.sleep(1)
-            else:
-                print("lordnine_mark 안 보여여")
 
             is_touch = False
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
