@@ -427,7 +427,7 @@ def boonhae_start(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from clean_screen_lordnine import clean_screen_start
+    from clean_screen_lordnine import clean_screen_start, clean_screen_just_on_start
     from tuto_lordnine import way_check
 
     try:
@@ -496,6 +496,16 @@ def boonhae_start(cla):
 
             time.sleep(0.5)
 
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\not_selected.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(240, 500, 500, 600, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                clean_screen_start(cla)
+            else:
+                break
+            time.sleep(1)
 
     except Exception as e:
         print(e)
