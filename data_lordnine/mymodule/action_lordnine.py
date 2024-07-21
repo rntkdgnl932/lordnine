@@ -975,6 +975,7 @@ def zero_check_hour(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(534, 315, 567, 360, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
+            # 일
             print("zero 2", imgs_)
 
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_bag_check_time\\zero.PNG"
@@ -982,6 +983,7 @@ def zero_check_hour(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(512, 315, 542, 360, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
+                # 십
                 print("zero 1", imgs_)
 
                 zero = True

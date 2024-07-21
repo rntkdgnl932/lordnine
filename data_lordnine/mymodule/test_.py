@@ -68,10 +68,16 @@ def go_test():
 
         # text_check_get(512, 315, 542, 360, cla)
 
-        # nowMinute = int(datetime.today().strftime("%M"))
-        # print("nowMinute", nowMinute)
-        # result_m = nowMinute % 10
-        # print("result_m", result_m)
+        nowMinute = int(datetime.today().strftime("%M"))
+        print("nowMinute", nowMinute)
+        result_m = nowMinute % 10
+        print("result_m", result_m)
+
+        if nowMinute == 0:
+            print("00000")
+        else:
+            print("result_m")
+
 
         # 성물 레벨
         # result_level_ready = text_check_get(65, 110, 135, 140, cla)
@@ -91,7 +97,7 @@ def go_test():
 
         # 판매수량 구하기
 
-        auction_start(cla)
+        # auction_start(cla)
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_enroll_btn.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

@@ -12,7 +12,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def jadong_start(cla, where):
     import numpy as np
     import cv2
-    import os
+    from datetime import datetime
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_on, zero_check_hour
@@ -45,25 +45,33 @@ def jadong_start(cla, where):
 
             else:
 
+                nowMinute = int(datetime.today().strftime("%M"))
+                print("nowMinute", nowMinute)
 
-                # result_spot[1] => 큰 맵
-                # result_spot[2] => 중간 맵 // 200 235 270 ...
-                # result_spot[3] => 세부 맵
-
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_spot\\" + str(result_spot[1]) + "\\" + str(result_spot[2]) + ".PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(10, 890, 130, 940, cla, img, 0.7)
-                if imgs_ is not None and imgs_ != False:
-                    print("juljun big_map", result_spot[1], imgs_)
-                    result_juljun_attack = juljun_attack_check(cla)
-
-                    if result_juljun_attack == True:
-                        potion_check(cla)
-                    else:
-                        attack_on(cla)
+                if nowMinute == 0:
+                    col_boon_start(cla)
+                    juljun_on(cla)
                 else:
-                    spot_in(cla, result_where)
+
+
+                    # result_spot[1] => 큰 맵
+                    # result_spot[2] => 중간 맵 // 200 235 270 ...
+                    # result_spot[3] => 세부 맵
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\juljun_spot\\" + str(result_spot[1]) + "\\" + str(result_spot[2]) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(10, 890, 130, 940, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("juljun big_map", result_spot[1], imgs_)
+                        result_juljun_attack = juljun_attack_check(cla)
+
+                        if result_juljun_attack == True:
+                            potion_check(cla)
+                        else:
+                            attack_on(cla)
+                    else:
+                        spot_in(cla, result_where)
         else:
             dead_check(cla)
             spot_in(cla, result_where)
