@@ -41,6 +41,16 @@ def collection_start(cla):
     try:
         print("collection_start")
 
+
+        ### +5강 추가하기
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("plus_5 : ", imgs_)
+
         collection_count = 0
         collection = False
 
@@ -78,9 +88,27 @@ def collection_start(cla):
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                             time.sleep(0.5)
                     else:
-                        collection = True
-                        clean_screen_start(cla)
-                        break
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\col_point_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            print("col_point_2 : ", imgs_)
+                            click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
+
+                            time.sleep(0.5)
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\col_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(820, 880, 940, 940, cla, img, 0.75)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+
+                        else:
+                            collection = True
+                            clean_screen_start(cla)
+                            break
                     time.sleep(0.5)
             else:
                 menu_open(cla)

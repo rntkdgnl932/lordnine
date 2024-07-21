@@ -204,9 +204,9 @@ def potion_buy_start(cla):
             result_schedule = myQuest_play_check(cla, "check")
             result_schedule_ = result_schedule[0][2]
 
-            if result_schedule_ == "튜토육성":
-                myQuest_play_add(cla, result_schedule_)
-            elif "1회" in result_schedule_:
+            # if result_schedule_ == "튜토육성":
+            #     myQuest_play_add(cla, result_schedule_)
+            if "1회" in result_schedule_:
                 myQuest_play_add(cla, result_schedule_)
 
         result_maul = go_maul(cla)

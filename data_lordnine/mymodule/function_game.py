@@ -60,14 +60,20 @@ def isNumber_(s):
         return False
 
 
-def change_number(many_potion):
+def change_number_float(many_potion):
+    import re
     try:
 
         potion_ = many_potion
 
+        print("num ??? ", potion_)
+        potion_.strip()
         if " " in potion_:
             potion_ = potion_.replace(' ', '')
             print("!!!!!! ['   '] !!!!!!!", potion_)
+        # if "\n" in potion_:
+        #     potion_ = potion_.replace('\n', '')
+        #     print("!!!!!! [' 엔터 제거  '] !!!!!!!", potion_)
         if "고" in potion_:
             potion_ = potion_.replace('고', '2')
             print("!!!!!! [' 고 => 2 '] !!!!!!!", potion_)
@@ -128,6 +134,108 @@ def change_number(many_potion):
         if "g" in potion_:
             potion_ = potion_.replace('g', '9')
             print("!!!!!!!!![  g => 9  ]!!!!!!!!!!!!!", potion_)
+        if "i" in potion_:
+            potion_ = potion_.replace('i', '1')
+            print("!!!!!!!!![  i => 1  ]!!!!!!!!!!!!!", potion_)
+        if "l" in potion_:
+            potion_ = potion_.replace('l', '1')
+            print("!!!!!!!!![  l => 1  ]!!!!!!!!!!!!!", potion_)
+        if "u" in potion_:
+            potion_ = potion_.replace('u', '11')
+            print("!!!!!!!!![  u => 11  ]!!!!!!!!!!!!!", potion_)
+        if "s" in potion_:
+            potion_ = potion_.replace('s', '5')
+            print("!!!!!!!!![  s => 5  ]!!!!!!!!!!!!!", potion_)
+
+        potion_ = potion_.replace(',', '').strip()
+        potion_ = float(potion_)
+
+
+        return potion_
+    except Exception as e:
+        print(e)
+def change_number(many_potion):
+    try:
+
+        potion_ = many_potion
+
+        for i in range(5):
+            print("i", i)
+            print("num ??? ", potion_)
+            result_digit = potion_.isdigit()
+
+            if result_digit == True:
+                break
+            else:
+                if " " in potion_:
+                    potion_ = potion_.replace(' ', '')
+                    print("!!!!!! ['   '] !!!!!!!", potion_)
+                if "고" in potion_:
+                    potion_ = potion_.replace('고', '2')
+                    print("!!!!!! [' 고 => 2 '] !!!!!!!", potion_)
+                if "ㄷ" in potion_:
+                    potion_ = potion_.replace('ㄷ', '5')
+                    print("!!!!!! [' ㄷ => 5 '] !!!!!!!", potion_)
+                if "요" in potion_:
+                    potion_ = potion_.replace('요', '8')
+                    print("!!!!!! [' 요 => 8 '] !!!!!!!", potion_)
+                if "°" in potion_:
+                    potion_ = potion_.replace('°', '0')
+                    print("!!!!!! [   ° => 0   ] !!!!!!!", potion_)
+                if ")" in potion_:
+                    potion_ = potion_.replace(')', '1')
+                    print("!!!!!! [   ) => 1   ] !!!!!!!", potion_)
+                if "‘" in potion_:
+                    potion_ = potion_.replace('‘', '1')
+                    print("!!!!!! [   ‘ => 1   ] !!!!!!!", potion_)
+                if "?" in potion_:
+                    potion_ = potion_.replace('?', '2')
+                    print("!!!!!! [   ? => 2  ] !!!!!!!", potion_)
+                if "L" in potion_:
+                    potion_ = potion_.replace('L', '1')
+                    print("!!!!!! [   L => 1  ] !!!!!!!", potion_)
+                if "|" in potion_:
+                    potion_ = potion_.replace('|', '1')
+                    print("!!!!!!![   | => 1  ]!!!!!!!!!!!", potion_)
+                if "A" in potion_:
+                    potion_ = potion_.replace('A', '4')
+                    print("!!!!!!!!![  A => 4 ]!!!!!!!!!!!!!", potion_)
+                if "D" in potion_:
+                    potion_ = potion_.replace('D', '2')
+                    print("!!!!!!!!![  D => 2 ]!!!!!!!!!!!!!", potion_)
+                if "G" in potion_:
+                    potion_ = potion_.replace('G', '6')
+                    print("!!!!!!!!![  G => 6 ]!!!!!!!!!!!!!", potion_)
+                if "B" in potion_:
+                    potion_ = potion_.replace('B', '8')
+                    print("!!!!!!!!![  B => 8  ]!!!!!!!!!!!!!", potion_)
+                if "T" in potion_:
+                    potion_ = potion_.replace('T', '7')
+                    print("!!!!!!!!![  T => 7  ]!!!!!!!!!!!!!", potion_)
+                if "S" in potion_:
+                    potion_ = potion_.replace('S', '5')
+                    print("!!!!!!!!![  S => 5  ]!!!!!!!!!!!!!", potion_)
+                if "Q" in potion_:
+                    potion_ = potion_.replace('Q', '9')
+                    print("!!!!!!!!![  Q => 9  ]!!!!!!!!!!!!!", potion_)
+                if "F" in potion_:
+                    potion_ = potion_.replace('F', '9')
+                    print("!!!!!!!!![  F => 9  ]!!!!!!!!!!!!!", potion_)
+                if "R" in potion_:
+                    potion_ = potion_.replace('R', '8')
+                    print("!!!!!!!!![  R => 8  ]!!!!!!!!!!!!!", potion_)
+                if "a" in potion_:
+                    potion_ = potion_.replace('a', '4')
+                    print("!!!!!!!!![  a => 4  ]!!!!!!!!!!!!!", potion_)
+                if "g" in potion_:
+                    potion_ = potion_.replace('g', '9')
+                    print("!!!!!!!!![  g => 9  ]!!!!!!!!!!!!!", potion_)
+                if "u" in potion_:
+                    potion_ = potion_.replace('u', '11')
+                    print("!!!!!!!!![  u => 11  ]!!!!!!!!!!!!!", potion_)
+                if "s" in potion_:
+                    potion_ = potion_.replace('s', '5')
+                    print("!!!!!!!!![  s => 5  ]!!!!!!!!!!!!!", potion_)
 
         potion_ = int_put_(potion_)
 
@@ -141,6 +249,23 @@ def change_number(many_potion):
 
 
 def int_put_(data):
+    try:
+        import re
+        data_ = data.replace(',', '').strip()
+        data_2 = data_.replace('.', '').strip()
+        data_3 = data_2.replace(' ', '').strip()
+        data_4 = data_3.replace('/', '').strip()
+
+        # data_2 = data_.strip().replace('.', '')
+        # data_3 = data_2.strip().replace(' ', '')
+        # data_4 = data_3.strip().replace('/', '')
+        result = re.sub(r'[^0-9]', '', data_4)
+        return result
+    except ValueError:
+        return False
+
+
+def float_put_(data):
     try:
         import re
         data_ = data.replace(',', '').strip()
@@ -1518,6 +1643,79 @@ def text_check_get_reg(posX1, posY1, posX2, posY2):
 
         ##
         return result
+    except Exception as e:
+        print(e)
+        return 0
+
+def text_check_get_num(posX1, posY1, posX2, posY2, cla):
+    try:
+        from PIL import ImageGrab
+        from functools import partial
+        import cv2
+        import pytesseract
+        import numpy
+        from PIL import Image
+        import pyautogui
+        # color change
+        coordinate = 0
+        if cla == 'one':
+            coordinate = 0
+        if cla == 'two':
+            coordinate = 960
+        if cla == 'three':
+            coordinate = 960 * 2
+        if cla == 'four':
+            coordinate = 960 * 3
+        if cla == 'five':
+            coordinate = 960 * 4
+        if cla == 'six':
+            coordinate = 960 * 5
+        pos = (posX1 + coordinate, posY1, posX2 - posX1, posY2 - posY1)
+        pyautogui.screenshot("asd.png", region=pos)
+        pic = cv2.imread("asd.png", cv2.IMREAD_COLOR)  # 사진을 컬러로 읽어오기
+        cv2.imwrite("asd.png", pic)
+        ##
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+        # path = Image.open(r'asd.png')
+        pic_ = numpy.array(pic)
+        rgb_image = cv2.cvtColor(pic_, cv2.COLOR_BGR2RGB)
+        result = pytesseract.image_to_string(rgb_image, config='--psm 6')
+
+        ##
+        return result
+    except Exception as e:
+        print(e)
+        return 0
+
+def text_check_get_reg_num(posX1, posY1, posX2, posY2):
+    try:
+        from PIL import Image
+        from PIL import ImageGrab
+        from functools import partial
+        import cv2
+        import pytesseract
+        import numpy
+        import pyautogui
+
+        ImageGrab.grab = partial(ImageGrab.grab, all_screens=True)
+
+        coordinate = 0
+        pos = (posX1 + coordinate, posY1, posX2 - posX1, posY2 - posY1)
+        pyautogui.screenshot("asd.png", region=pos)
+        pic = cv2.imread("asd.png", cv2.IMREAD_COLOR)  # 사진을 컬러로 읽어오기
+        cv2.imwrite("asd.png", pic)
+        ##
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+        # path = Image.open(r'asd.png')
+        pic_ = numpy.array(pic)
+        rgb_image = cv2.cvtColor(pic_, cv2.COLOR_BGR2RGB)
+        result = pytesseract.image_to_string(rgb_image, config='--psm 6')
+
+        ##
+        return result
+    except Exception as e:
+        print(e)
+        return 0
     except Exception as e:
         print(e)
         return 0

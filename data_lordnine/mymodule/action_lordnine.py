@@ -141,14 +141,36 @@ def confirm_all(cla):
 def out_check(cla):
     import numpy as np
     import cv2
+    import random
 
-    from function_game import imgs_set_
+    from function_game import imgs_set_, click_pos_2
     from stop_event18 import game_check
     from character_select_and_game_start import game_start_screen, game_ready
     from schedule import myQuest_play_check
     try:
 
         print("out_check 하면서 게임체크도 하기")
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_get.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(540, 560, 650, 650, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            time.sleep(0.5)
+            result_ran = random.randint(1, 5)
+            x_get = 315 + (result_ran * 55)
+            y_get = imgs_.y
+            # 370, 425, 480, 535, 590
+            for com in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(390, 390, 550, 450, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(x_get, y_get, cla)
+                else:
+                    break
+                time.sleep(0.5)
 
         game_check(cla)
 
@@ -189,12 +211,19 @@ def out_check(cla):
         result_menu_open = menu_open_check(cla)
         if result_menu_open == False:
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_3.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+            imgs_ = imgs_set_(0, 100, 960, 1040, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
-                is_out = True
+                print("close_3 : 아직 안 꺼짐", imgs_)
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    is_out = True
 
         return is_out
 

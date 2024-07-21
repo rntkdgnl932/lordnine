@@ -93,6 +93,25 @@ def clean_screen_just_on_start(cla):
             click_pos_reg(imgs_.x, imgs_.y, cla)
             time.sleep(0.5)
 
+        # 거래소 취소
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\cancle.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(360, 660, 470, 700, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("cancle", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(0.5)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_3.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 100, 960, 1040, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_3")
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(0.5)
+
     except Exception as e:
         print(e)
         return 0
