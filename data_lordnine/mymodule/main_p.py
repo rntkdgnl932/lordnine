@@ -56,6 +56,7 @@ from jadong_lordnine import jadong_start
 from dungeon_lordnine import dungeon_start
 from mission_lordnine import mission_get
 from tower_trial import tower_start
+from auction_game import auction_start
 
 from test_ import go_test
 
@@ -3718,6 +3719,10 @@ class game_Playing(QThread):
 
                                 if result_schedule_ == "튜토육성":
                                     tuto_start(v_.now_cla)
+
+                                elif result_schedule_ == "거래소등록":
+                                    auction_start(v_.now_cla)
+                                    myQuest_play_add(v_.now_cla, result_schedule_)
 
                                 elif result_schedule_ == "각종템받기":
                                     get_start(v_.now_cla)
