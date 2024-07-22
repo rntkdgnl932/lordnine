@@ -726,7 +726,18 @@ def juljun_on(cla):
                 result_out = out_check(cla)
                 if result_out == True:
                     click_pos_2(35, 790, cla)
-                    time.sleep(0.5)
+
+
+                    for j in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            print("juljun_on", imgs_)
+                            break
+                        time.sleep(0.5)
+
                 else:
                     clean_screen_start(cla)
             time.sleep(0.5)
