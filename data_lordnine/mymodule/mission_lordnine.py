@@ -255,6 +255,8 @@ def mission_get_daily(cla, data):
                         if anymore == True:
                             break
 
+                        time.sleep(0.2)
+
                     # 진행중이 있으면 임무 수행...없으면 add
 
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
@@ -313,10 +315,8 @@ def mission_get_daily(cla, data):
                             if result_move == False:
                                 attacked_count += 1
                                 result_loading = loading_check(cla)
-                                if result_loading == True:
-                                    attacked_count -= 1
-                                else:
-                                    attacked_count += 2
+                                if result_loading == False:
+                                    attacked_count += 1
                             time.sleep(0.5)
 
                     else:
@@ -406,6 +406,58 @@ def mission_get_week(cla):
                             imgs_ = imgs_set_(300, 100, 660, 160, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("아직 수락할 수 없다는 글이 보인다.")
+                            else:
+                                break
+                            time.sleep(1)
+
+                        # 주간 임무 완료 보상을 받자
+
+                        for a in range(10):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("complete")
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(800, 980, 960, 1040, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("complete_btn")
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    for g in range(10):
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_title.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(390, 390, 550, 450, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_get.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(540, 560, 650, 650, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                time.sleep(0.5)
+                                                result_ran = random.randint(1, 5)
+                                                x_get = 315 + (result_ran * 55)
+                                                y_get = imgs_.y
+                                                # 370, 425, 480, 535, 590
+                                                for com in range(5):
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_title.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(390, 390, 550, 450, cla, img, 0.85)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        click_pos_2(x_get, y_get, cla)
+                                                    else:
+                                                        break
+                                                    time.sleep(0.5)
+                                                break
+                                        time.sleep(0.5)
                             else:
                                 break
                             time.sleep(1)
