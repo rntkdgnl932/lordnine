@@ -109,7 +109,7 @@ def collection_start(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.86)
+                            imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
                             if imgs_ is not None and imgs_ != False:
                                 print("plus_5 : ", imgs_)
                                 click_pos_reg(imgs_.x - 15, imgs_.y - 15, cla)
