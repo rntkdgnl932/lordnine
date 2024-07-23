@@ -129,12 +129,12 @@ def collection_start(cla):
                                         break
                                     time.sleep(0.1)
                             else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5.PNG"
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5_3.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("plus_5 : ", imgs_)
+                                    print("plus_5_3 : ", imgs_)
                                     click_pos_reg(imgs_.x - 15, imgs_.y - 15, cla)
                                     time.sleep(0.2)
                                     for c in range(5):
