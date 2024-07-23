@@ -86,7 +86,47 @@ def auction_start(cla):
 
                 auction = True
 
-                # 먼저 콜분...
+                # 먼저 정산...
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\scan_option_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 980, 150, 1040, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("scan_option_btn", imgs_)
+                        break
+                    time.sleep(1)
+
+                # 정산하기
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\ilgwal_jungsan_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(820, 980, 960, 1040, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("ilgwal_jungsan_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.2)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.2)
+                        break
+                    else:
+                        click_pos_2(250, 90, cla)
+                    time.sleep(1)
+
+                # 팔기 준비
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\scan_option_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 980, 150, 1040, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("scan_option_btn", imgs_)
+                        break
+                    else:
+                        click_pos_2(50, 90, cla)
+                    time.sleep(1)
+
 
 
                 # 장비...
@@ -171,15 +211,8 @@ def auction_jangbi(cla):
 
                 auction = True
 
-                for i in range(10):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\scan_option_btn.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 980, 150, 1040, cla, img, 0.85)
-                    if imgs_ is not None and imgs_ != False:
-                        print("scan_option_btn", imgs_)
-                        break
-                    time.sleep(1)
+
+
 
                 # 장비...
 

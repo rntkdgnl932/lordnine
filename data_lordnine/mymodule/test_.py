@@ -21,7 +21,7 @@ def go_test():
     from tuto_lordnine import way_check
     from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check
     from clean_screen_lordnine import clean_screen_just_on_start
-    from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start
+    from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start, collection_start
     from potion_lordnine import potion_buy_start
     from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary
     from jadong_lordnine import jadong_start, spot_go
@@ -78,6 +78,10 @@ def go_test():
         else:
             print("result_m")
 
+        # get_gold_sohwan(cla)
+
+        # auction_start(cla)
+
 
         # 성물 레벨
         # result_level_ready = text_check_get(65, 110, 135, 140, cla)
@@ -119,12 +123,10 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("col_point_2 : ", imgs_)
         #
-        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5.PNG"
-        # img_array = np.fromfile(full_path, np.uint8)
-        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        # imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.85)
-        # if imgs_ is not None and imgs_ != False:
-        #     print("plus_5 : ", imgs_)
+        collection_start(cla)
+
+
+
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_3.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

@@ -318,6 +318,10 @@ def get_gold_sohwan(cla):
                 # 200 ~ 350, 400 ~ 550
                 get_gold_sohwan_start(cla)
 
+                # 방어구 강화석 사기
+                # 200 ~ 350, 400 ~ 550
+                get_ganghwasuk_sohwan_start(cla)
+
 
 
                 # 마무리 나가기
@@ -471,6 +475,127 @@ def get_gold_sohwan_start(cla):
                                 else:
                                     confirm_all(cla)
                                 time.sleep(0.2)
+                            if is_sohwan == True:
+                                break
+
+                time.sleep(0.2)
+
+            if is_sohwan == False:
+                sohwan = False
+
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def get_ganghwasuk_sohwan_start(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, drag_pos, click_pos_2, click_pos_reg
+    from action_lordnine import confirm_all
+    from massenger import line_to_me
+
+    try:
+        print("get_ganghwasuk_sohwan_start")
+
+        sohwan = True
+        sohwan_count = 0
+
+        while sohwan is True:
+            sohwan_count += 1
+            if sohwan_count > 7:
+                sohwan = False
+
+            is_sohwan = False
+
+            for i in range(2):
+
+                # 무기 강화석 까지 사려면 x_1 =200, range(4)
+                x_1 = 600 + (i * 200)
+                x_2 = x_1 + 150
+                x_reg = (x_1 + x_2) / 2
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\moogi_level_not_enough.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_1, 360, x_2, 460, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print(str(i + 1) + "번째는 무기레벨 제한이다.")
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sold_out.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(x_1, 360, x_2, 460, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print(str(i + 1) + "번째는 품절")
+                    else:
+
+                        is_sohwan = True
+                        is_sold_out = False
+
+                        for c in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\ganghwasuk_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("ganghwasuk_title", imgs_)
+                                # 확인 누르고 그전에 푸시 있으면 푸시 하고...
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\clicked_sold_out.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(320, 500, 400, 540, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_sold_out = True
+                                break
+                            else:
+                                click_pos_2(x_reg, 400, cla)
+                            time.sleep(0.5)
+                        if is_sold_out == True:
+
+                            for e in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\ganghwasuk_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_close.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(650, 340, 730, 400, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        break
+                                time.sleep(0.5)
+                            break
+                        else:
+
+                            for c in range(20):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\ganghwasuk_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\max.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(370, 600, 450, 650, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        click_pos_2(415, 625, cla)
+                                    time.sleep(0.5)
+
+                                    confirm_all(cla)
+                                else:
+                                    break
+
+                                time.sleep(1)
                             if is_sohwan == True:
                                 break
 
