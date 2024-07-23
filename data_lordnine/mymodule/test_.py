@@ -96,6 +96,20 @@ def go_test():
 
         ##############
 
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\network_error.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(70, 300, 670, 1000, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("network_error")
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\network_error2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(70, 300, 670, 1000, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("network_error2")
+
         # result_price_ready = text_check_get_num(415, 546, 456, 556, cla)
         # print("1. result_price_ready", result_price_ready)
 
@@ -123,7 +137,7 @@ def go_test():
         # if imgs_ is not None and imgs_ != False:
         #     print("col_point_2 : ", imgs_)
         #
-        collection_start(cla)
+        # collection_start(cla)
 
 
 
