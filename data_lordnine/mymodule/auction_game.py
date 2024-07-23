@@ -175,7 +175,7 @@ def auction_jangbi(cla):
 
                 is_jangbi = False
 
-                for i in range(5):
+                for i in range(10):
                     x_reg = 0
                     y_reg = 0
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_1.PNG"
