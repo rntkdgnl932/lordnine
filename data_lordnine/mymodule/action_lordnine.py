@@ -595,6 +595,14 @@ def loading_check(cla):
                 is_move = True
                 is_loading = True
                 break
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\loading\\middle_loading.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 300, 700, 750, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("middle_loading : loading...")
+                    time.sleep(0.2)
             time.sleep(0.2)
 
         is_move_count = 0
