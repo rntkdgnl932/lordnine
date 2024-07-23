@@ -82,7 +82,7 @@ def go_test():
 
         # auction_start(cla)
 
-        # collection_start(cla)
+        collection_start('three')
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5.PNG"
         img_array = np.fromfile(full_path, np.uint8)
