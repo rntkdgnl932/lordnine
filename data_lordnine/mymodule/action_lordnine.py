@@ -208,29 +208,38 @@ def out_check(cla):
 
         is_out = False
 
-        result_menu_open = menu_open_check(cla)
-        if result_menu_open == False:
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("out check : 절전모드임", imgs_)
+        else:
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_3.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 100, 960, 1040, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("close_3 : 아직 안 꺼짐", imgs_)
-            else:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+            result_menu_open = menu_open_check(cla)
+            if result_menu_open == False:
+
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_3.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                imgs_ = imgs_set_(0, 100, 960, 1040, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    is_out = True
+                    print("close_3 : 아직 안 꺼짐", imgs_)
                 else:
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\juljun_btn.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 750, 60, 810, cla, img, 0.75)
+                    imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
                         is_out = True
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\juljun_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 750, 60, 810, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            is_out = True
 
         return is_out
 
