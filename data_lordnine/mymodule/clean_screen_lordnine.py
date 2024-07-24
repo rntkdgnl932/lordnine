@@ -37,7 +37,7 @@ def clean_screen_just_on_start(cla):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
-    from action_lordnine import skip_start, juljun_off
+    from action_lordnine import skip_start, juljun_off, confirm_all
 
     try:
         print("clean_screen_just_on_start")
@@ -45,6 +45,8 @@ def clean_screen_just_on_start(cla):
         juljun_off(cla)
 
         skip_start(cla)
+
+        confirm_all(cla)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
