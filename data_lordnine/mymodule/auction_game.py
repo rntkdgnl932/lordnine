@@ -216,11 +216,14 @@ def auction_jangbi(cla):
 
                 # 장비...
 
-                is_jangbi = False
+
 
                 for i in range(10):
                     x_reg = 0
                     y_reg = 0
+
+                    is_jangbi = False
+
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -420,11 +423,13 @@ def auction_item(cla):
                 auction = True
 
                 # 아이템...
-                is_jangbi = False
+
                 # 판매시작
                 for i in range(len(file_list)):
                     result_file_list = file_list[i].split(".")
                     read_data = result_file_list[0]
+
+                    is_jangbi = False
 
                     x_reg = 0
                     y_reg = 0
