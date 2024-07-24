@@ -28,8 +28,9 @@ def dungeon_start(cla, where):
 
         # result_spot[1] => 던전종류류
         # resut_spot[2] => 층수
-
-        if result_spot[1] == "어둠의숲":
+        if result_spot[1] == "검은실험실":
+            dun_name = "black"
+        elif result_spot[1] == "어둠의숲":
             dun_name = "adoom"
         elif result_spot[1] == "조각의숲":
             dun_name = "jogag"
@@ -82,9 +83,9 @@ def dun_in(cla, where):
 
         # result_spot[1] => 던전종류
         # resut_spot[2] => 층수
-        if result_spot[1] == "어둠의숲":
+        if result_spot[1] == "검은실험실":
             y_1 = 130
-            dun_name = "adoom"
+            dun_name = "black"
         elif result_spot[1] == "어둠의숲":
             y_1 = 250
             dun_name = "adoom"
