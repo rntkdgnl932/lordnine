@@ -82,28 +82,12 @@ def go_test():
 
         # auction_start(cla)
 
-        collection_start('three')
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5.PNG"
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\seven_point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
+        imgs_ = imgs_set_(190, 325, 240, 740, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("plus_5 : ", imgs_)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5_2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            print("plus_5_2 : ", imgs_)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5_3.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("plus_5_3 : ", imgs_)
+            print("seven_point_1", imgs_)
 
 
         # 성물 레벨
@@ -118,20 +102,6 @@ def go_test():
         # print("result_price_change", result_price_ready)
 
         ##############
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\network_error.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(70, 300, 670, 1000, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("network_error")
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\network_error2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(70, 300, 670, 1000, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("network_error2")
 
         # result_price_ready = text_check_get_num(415, 546, 456, 556, cla)
         # print("1. result_price_ready", result_price_ready)

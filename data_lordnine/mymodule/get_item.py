@@ -145,26 +145,65 @@ def get_event_click(cla):
                     click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\seven_point_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(190, 325, 240, 740, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
-                print("menu_point_1", imgs_)
+                print("seven_point_1", imgs_)
                 click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
                 is_point = True
             else:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(190, 325, 240, 740, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    print("menu_point_2", imgs_)
+                    print("menu_point_1", imgs_)
                     click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
                     is_point = True
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(190, 325, 240, 740, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("menu_point_2", imgs_)
+                        click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
+                        is_point = True
             time.sleep(0.5)
 
             if is_point == True:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\seven_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                if imgs_for is not None and imgs_for != False:
+                    print("seven_point_1", imgs_for)
+                    # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
+                    if len(imgs_for) > 0:
+                        for i in range(len(imgs_for)):
+                            click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
+                            time.sleep(0.5)
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("touch_me", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("monster_close", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.5)
+
+
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
