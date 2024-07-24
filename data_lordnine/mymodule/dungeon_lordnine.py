@@ -82,18 +82,20 @@ def dun_in(cla, where):
 
         # result_spot[1] => 던전종류
         # resut_spot[2] => 층수
-
         if result_spot[1] == "어둠의숲":
             y_1 = 130
             dun_name = "adoom"
-        elif result_spot[1] == "조각의숲":
+        elif result_spot[1] == "어둠의숲":
             y_1 = 250
+            dun_name = "adoom"
+        elif result_spot[1] == "조각의숲":
+            y_1 = 370
             dun_name = "jogag"
         elif result_spot[1] == "타락한미궁":
-            y_1 = 370
+            y_1 = 480
             dun_name = "talag"
         elif result_spot[1] == "가르바나지하수로":
-            y_1 = 480
+            y_1 = 590
             dun_name = "garbana"
 
         # 던전 가기전 물약 사자
@@ -127,14 +129,16 @@ def dun_in(cla, where):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                if str(dun_name) == "adoom":
+                if str(dun_name) == "black":
                     imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
-                elif str(dun_name) == "jogag":
+                elif str(dun_name) == "adoom":
                     imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
-                elif str(dun_name) == "talag":
+                elif str(dun_name) == "jogag":
                     imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
-                elif str(dun_name) == "garbana":
+                elif str(dun_name) == "talag":
                     imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                elif str(dun_name) == "garbana":
+                    imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("dun_complete_1", imgs_)
 
@@ -151,7 +155,7 @@ def dun_in(cla, where):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(500, 70, 800, 110, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            if result_spot[1] == "가르바나지하수로":
+                            if result_spot[1] == "검은실험실" or result_spot[1] == "가르바나지하수로":
                                 int_step = int(result_spot[2])
                                 if int_step > 2:
                                     x_1 = 2
