@@ -15,13 +15,20 @@ def tuto_start(cla):
     import cv2
 
     from function_game import click_pos_2, imgs_set_
-    from action_lordnine import skip_start, confirm_all, move_check
+    from action_lordnine import skip_start, confirm_all, move_check, juljun_off
     from dead_die import dead_check
     from potion_lordnine import potion_check
 
     try:
 
         print("tuto_start")
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            juljun_off(cla)
 
         result_dead = dead_check(cla)
 
