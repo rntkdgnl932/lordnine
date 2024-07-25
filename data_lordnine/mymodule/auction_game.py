@@ -97,15 +97,17 @@ def auction_start(cla):
                 click_pos_2(855, 120, cla)
                 time.sleep(0.2)
 
-                auction_jangbi(cla)
+                result_full_list = auction_jangbi(cla)
 
-                # 아이템...
-                click_pos_2(915, 120, cla)
-                time.sleep(0.2)
-                click_pos_2(915, 120, cla)
-                time.sleep(0.2)
+                if result_full_list == False:
 
-                auction_item(cla)
+                    # 아이템...
+                    click_pos_2(915, 120, cla)
+                    time.sleep(0.2)
+                    click_pos_2(915, 120, cla)
+                    time.sleep(0.2)
+
+                    auction_item(cla)
 
                 # 마무리 나가기
                 clean_screen_start(cla)
@@ -276,6 +278,8 @@ def auction_jangbi(cla):
     try:
         print("auction_jangbi")
 
+        anymore_sell = False
+
         auction = False
         auction_count = 0
 
@@ -432,7 +436,7 @@ def auction_jangbi(cla):
 
                             if result_price > 10:
                                 print("판매하자")
-                                sell_click(cla, result_price)
+                                anymore_sell = sell_click(cla, result_price)
 
 
                     else:
@@ -467,6 +471,7 @@ def auction_jangbi(cla):
                     auction = True
             time.sleep(0.5)
 
+        return anymore_sell
 
     except Exception as e:
         print(e)
@@ -486,6 +491,8 @@ def auction_item(cla):
 
     try:
         print("auction_item")
+
+        anymore_sell = False
 
         auction = False
         auction_count = 0
@@ -700,7 +707,7 @@ def auction_item(cla):
 
                             if result_price > 10:
                                 print("판매하자")
-                                sell_click(cla, result_price)
+                                anymore_sell = sell_click(cla, result_price)
                     else:
                         print("접자")
                     time.sleep(0.5)
@@ -733,6 +740,7 @@ def auction_item(cla):
                     auction = True
             time.sleep(0.5)
 
+        return anymore_sell
 
     except Exception as e:
         print(e)
@@ -914,6 +922,8 @@ def sell_click(cla, result_price):
     try:
         print("sell_click", result_price)
 
+        anymore_sell = False
+
         for i in range(5):
 
 
@@ -973,7 +983,7 @@ def sell_click(cla, result_price):
 
             time.sleep(0.5)
 
-        for i in range(5):
+        for i in range(7):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -1029,9 +1039,20 @@ def sell_click(cla, result_price):
                     click_pos_reg(imgs_.x, imgs_.y, cla)
             else:
                 break
-
-
             time.sleep(0.5)
+
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_list_full.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 100, 660, 160, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("auction_list_full", imgs_)
+                anymore_sell = True
+                break
+            time.sleep(0.1)
+
+        return anymore_sell
 
     except Exception as e:
         print(e)
