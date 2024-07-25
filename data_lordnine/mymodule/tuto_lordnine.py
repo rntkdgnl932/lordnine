@@ -403,6 +403,15 @@ def quest_checking(cla):
                             print("jejak_3", imgs_)
                             click_pos_2(865, 1005, cla)
                             break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_4.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("jejak_4", imgs_)
+                                click_pos_2(865, 1005, cla)
+                                break
 
                 time.sleep(0.5)
             for i in range(5):
