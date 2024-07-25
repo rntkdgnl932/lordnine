@@ -90,11 +90,17 @@ def myQuest_play_check(cla, data):
                                     if j < 3:
                                         reset_schedule_ += complete_[j] + ":"
                                     if j == 3:
-                                        reset_schedule_ += '대기중:'
+                                        if "1회" in complete_[2]:
+                                            reset_schedule_ += complete_[j] + ":"
+                                        else:
+                                            reset_schedule_ += '대기중:'
                                     if 3 < j < 7:
                                         reset_schedule_ += complete_[j] + ":"
                                     if j == 7:
-                                        reset_schedule_ += "대기중\n"
+                                        if "1회" in complete_[6]:
+                                            reset_schedule_ += complete_[j] + "\n"
+                                        else:
+                                            reset_schedule_ += '대기중\n'
                             print('reset_schedule_', reset_schedule_)
                             with open(file_path, "w", encoding='utf-8-sig') as file:
                                 file.write(reset_schedule_)
@@ -129,13 +135,17 @@ def myQuest_play_check(cla, data):
                                     if j < 3:
                                         reset_schedule_ += complete_[j] + ":"
                                     if j == 3:
-
-                                        reset_schedule_ += '대기중:'
+                                        if "1회" in complete_[2]:
+                                            reset_schedule_ += complete_[j] + ":"
+                                        else:
+                                            reset_schedule_ += '대기중:'
                                     if 3 < j < 7:
                                         reset_schedule_ += complete_[j] + ":"
                                     if j == 7:
-
-                                        reset_schedule_ += '대기중\n'
+                                        if "1회" in complete_[6]:
+                                            reset_schedule_ += complete_[j] + "\n"
+                                        else:
+                                            reset_schedule_ += '대기중\n'
 
                             print('reset_schedule_', reset_schedule_)
                             with open(file_path, "w", encoding='utf-8-sig') as file:
@@ -486,11 +496,17 @@ def myQuest_play_add(cla, data):
                                 if j < 3:
                                     reset_schedule_ += complete_[j] + ":"
                                 if j == 3:
-                                    reset_schedule_ += '대기중:'
+                                    if "1회" in complete_[2]:
+                                        reset_schedule_ += complete_[j] + ":"
+                                    else:
+                                        reset_schedule_ += '대기중:'
                                 if 3 < j < 7:
                                     reset_schedule_ += complete_[j] + ":"
                                 if j == 7:
-                                    reset_schedule_ += '대기중\n'
+                                    if "1회" in complete_[6]:
+                                        reset_schedule_ += complete_[j] + "\n"
+                                    else:
+                                        reset_schedule_ += '대기중\n'
                         print('reset_schedule_', reset_schedule_)
                         with open(file_path, "w", encoding='utf-8-sig') as file:
                             file.write(reset_schedule_)
@@ -525,12 +541,18 @@ def myQuest_play_add(cla, data):
                                 if j < 3:
                                     reset_schedule_ += complete_[j] + ":"
                                 if j == 3:
-                                    reset_schedule_ += '대기중:'
+                                    if "1회" in complete_[2]:
+                                        reset_schedule_ += complete_[j] + ":"
+                                    else:
+                                        reset_schedule_ += '대기중:'
                                 if 3 < j < 7:
                                     reset_schedule_ += complete_[j] + ":"
                                 if j == 7:
 
-                                    reset_schedule_ += '대기중\n'
+                                    if "1회" in complete_[6]:
+                                        reset_schedule_ += complete_[j] + "\n"
+                                    else:
+                                        reset_schedule_ += '대기중\n'
 
                         print('reset_schedule_', reset_schedule_)
                         with open(file_path, "w", encoding='utf-8-sig') as file:
