@@ -494,7 +494,7 @@ def get_gold_sohwan_start(cla):
                                         imgs_ = imgs_set_(300, 700, 750, 1040, cla, img, 0.7)
                                         if imgs_ is not None and imgs_ != False:
                                             print("push_right_drag", imgs_)
-                                            drag_pos(450, 500, 450, 800, cla)
+                                            drag_pos(450, 500, 850, 500, cla)
 
                                             why = "작살나는 아바타 나왔다. 확인해라"
                                             line_to_me(cla, why)
