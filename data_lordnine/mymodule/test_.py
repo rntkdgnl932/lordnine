@@ -89,6 +89,7 @@ def go_test():
             imgs_ = imgs_set_(300, 700, 750, 1040, "three", img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 print("push_right_drag", imgs_)
+                click_pos_2(400, 500, cla)
                 drag_pos(400, 500, 850, 500, cla)
 
             time.sleep(1)
