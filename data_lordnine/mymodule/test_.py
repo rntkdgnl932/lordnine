@@ -82,13 +82,16 @@ def go_test():
 
         # auction_start(cla)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\push_right_drag.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(300, 700, 750, 1040, "three", img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("push_right_drag", imgs_)
-            drag_pos(400, 500, 850, 500, cla)
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\push_right_drag.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(300, 700, 750, 1040, "three", img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("push_right_drag", imgs_)
+                drag_pos(400, 500, 850, 500, cla)
+
+            time.sleep(1)
 
 
         # 성물 레벨
