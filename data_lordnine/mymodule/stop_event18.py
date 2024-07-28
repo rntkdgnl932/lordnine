@@ -84,12 +84,22 @@ def game_check(cla):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\fix_ing.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(350, 470, 470, 550, cla, img, 0.7)
+                imgs_ = imgs_set_(350, 470, 500, 550, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     print("fix_ing")
                     is_error = True
                     error_code = 3
                     why = str(v_.this_game) + "점검진행"
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\fix_ing_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 470, 500, 550, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("fix_ing_2")
+                        is_error = True
+                        error_code = 3
+                        why = str(v_.this_game) + "서버 안정화 점검진행"
 
         if error_code == 2:
             print("재접해보자")
@@ -152,6 +162,16 @@ def game_check(cla):
                 time.sleep(1)
 
         if is_error == True:
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\end_game_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(450, 550, 650, 750, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("end_game_btn")
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+
             print(why)
             line_to_me(v_.now_cla, why)
 
