@@ -181,7 +181,7 @@ class MyApp(QDialog):
         elif last_monitor_number == 3:
             x_reg = 960 * 2
 
-        self.setGeometry(10 + x_reg, 100, 900, 800)
+        self.setGeometry(10 + x_reg, 120, 900, 820)
         self.show()
     def my_title(self):
         self.setWindowTitle(v_.this_game + "(ver " + version + ")")

@@ -770,7 +770,7 @@ def get_low_price(cla, data):
         plus = 960 * 5
 
     try:
-        print("auction_item")
+        print("get_low_price", data)
 
         x_1 = 400 + plus
         x_2 = 456 + plus
@@ -803,10 +803,13 @@ def get_low_price(cla, data):
         x_1 = result_min - 5
         x_2 = x_1 + 10
 
+        # x_1 = result_min - 7
+        # x_2 = x_1 + 12
+
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\num_point.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_reg(415 + plus, y_1, 455 + plus, y_2, cla, img, 0.85)
+        imgs_ = imgs_set_reg(415 + plus, y_1, 455 + plus, y_2, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
             print("num_point", imgs_)
             point_reg = imgs_.x
@@ -815,11 +818,20 @@ def get_low_price(cla, data):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\num_point2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_reg(415 + plus, y_1, 455 + plus, y_2, cla, img, 0.85)
+            imgs_ = imgs_set_reg(415 + plus, y_1, 455 + plus, y_2, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
                 print("num_point2", imgs_)
                 point_reg = imgs_.x
                 is_point = True
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\num_point3.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_reg(415 + plus, y_1, 455 + plus, y_2, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("num_point3", imgs_)
+                    point_reg = imgs_.x
+                    is_point = True
 
 
         print("################")
@@ -827,11 +839,12 @@ def get_low_price(cla, data):
         print("x_2", x_2)
         print("################")
 
+        # 소수점 이전
         num = False
         num_count = 0
         result_num = ""
         while num is False:
-            # print("x_1...", x_1)
+            # print("x_1...", x_1, num_count)
             # print("num_count...", num_count)
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\price_num\\" + str(num_count) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -840,14 +853,23 @@ def get_low_price(cla, data):
             if imgs_ is not None and imgs_ != False:
                 print("is num...", str(num_count), imgs_)
 
-                x_1 = imgs_.x - 1
+                if str(num_count) == "4":
+                    x_1 = imgs_.x # - 1
+
+                # elif str(num_count) == "1":
+                #     x_1 = imgs_.x + 1
+
+                else:
+                    x_1 = imgs_.x - 1
                 x_2 = x_1 + 10
 
                 if is_point == True:
-                    if x_2 > point_reg:
+                    if imgs_.x > point_reg:
                         num = True
-
-                result_num += str(num_count)
+                    else:
+                        result_num += str(num_count)
+                else:
+                    result_num += str(num_count)
                 # print("result_num...", result_num)
                 num_count = 0
             else:
@@ -855,6 +877,7 @@ def get_low_price(cla, data):
                 if num_count > 9:
                     num = True
 
+        # 소수점 이후
         if is_point == True:
 
             x_1 = point_reg - 2
@@ -867,7 +890,7 @@ def get_low_price(cla, data):
             num = False
             num_count = 0
             while num is False:
-                # print("x_1...", x_1)
+                # print("x_1...", x_1, num_count)
                 # print("num_count...", num_count)
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\price_num\\" + str(
                     num_count) + ".PNG"
@@ -877,15 +900,32 @@ def get_low_price(cla, data):
                 if imgs_ is not None and imgs_ != False:
                     print("is num...", str(num_count), imgs_)
 
-                    x_1 = imgs_.x - 1
+                    if str(num_count) == "4":
+                        x_1 = imgs_.x  # - 1
+                    else:
+                        x_1 = imgs_.x - 1
                     x_2 = x_1 + 10
                     result_num += str(num_count)
                     # print("result_num...", result_num)
                     num_count = 0
                 else:
-                    num_count += 1
-                    if num_count > 9:
-                        num = True
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\price_num\\1_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("is num...1",  imgs_)
+
+                        x_1 = imgs_.x - 1
+                        x_2 = x_1 + 10
+                        result_num += "1"
+                        # print("result_num...", result_num)
+                        num_count = 0
+
+                    else:
+                        num_count += 1
+                        if num_count > 9:
+                            num = True
         result_num = float(result_num)
         print("result_num", result_num)
 

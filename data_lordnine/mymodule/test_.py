@@ -17,7 +17,7 @@ def go_test():
     import random
     import pydirectinput
 
-    from function_game import text_check_get_num, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
+    from function_game import drag_pos_Press, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
     from tuto_lordnine import way_check
     from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check
     from clean_screen_lordnine import clean_screen_just_on_start
@@ -67,32 +67,35 @@ def go_test():
         # get_diary(cla)
 
         # text_check_get(512, 315, 542, 360, cla)
+        time.sleep(1)
+        # drag_pos(400, 500, 850, 500, cla)
+        drag_pos_Press()
 
-        nowMinute = int(datetime.today().strftime("%M"))
-        print("nowMinute", nowMinute)
-        result_m = nowMinute % 10
-        print("result_m", result_m)
-
-        if nowMinute == 0:
-            print("00000")
-        else:
-            print("result_m")
-
-        # get_gold_sohwan(cla)
-
-        # auction_start(cla)
-
-        for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\push_right_drag.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(300, 700, 750, 1040, "three", img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                print("push_right_drag", imgs_)
-                click_pos_2(400, 500, cla)
-                drag_pos(400, 500, 850, 500, cla)
-
-            time.sleep(1)
+        # nowMinute = int(datetime.today().strftime("%M"))
+        # print("nowMinute", nowMinute)
+        # result_m = nowMinute % 10
+        # print("result_m", result_m)
+        #
+        # if nowMinute == 0:
+        #     print("00000")
+        # else:
+        #     print("result_m")
+        #
+        # # get_gold_sohwan(cla)
+        #
+        # # auction_start(cla)
+        #
+        # for i in range(5):
+        #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\push_right_drag.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(300, 700, 750, 1040, "three", img, 0.7)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("push_right_drag", imgs_)
+        #         click_pos_2(400, 500, cla)
+        #         drag_pos(400, 500, 850, 500, cla)
+        #
+        #     time.sleep(1)
 
 
         # 성물 레벨
@@ -269,6 +272,56 @@ def go_test():
         #                 click_pos_reg(imgs_[last][0] - 30, imgs_[last][1] + 10, cla)
         #                 time.sleep(0.5)
 
+
+    except Exception as e:
+        print(e)
+
+def go_def_test(cla):
+    import numpy as np
+    import cv2
+    from datetime import datetime
+    import pyautogui
+    import random
+    import pydirectinput
+
+    from function_game import text_check_get_num, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
+    from tuto_lordnine import way_check
+    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check
+    from clean_screen_lordnine import clean_screen_just_on_start
+    from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start, collection_start
+    from potion_lordnine import potion_buy_start
+    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary
+    from jadong_lordnine import jadong_start, spot_go
+    from dead_die import dead_recorvery, dead_check
+    from dungeon_lordnine import dun_in
+    from power_up import power_up_sungmool
+    from mission_lordnine import mission_get
+    from guild_lordnine import guild_start
+    from auction_game import auction_start, get_low_price
+
+
+
+    cla = "one"
+
+    plus = 0
+
+
+    if cla == "one":
+        plus = 0
+    elif cla == "two":
+        plus = 960
+    elif cla == "three":
+        plus = 960 * 2
+    elif cla == "four":
+        plus = 960 * 3
+    elif cla == "five":
+        plus = 960 * 4
+    elif cla == "six":
+        plus = 960 * 5
+
+
+    try:
+        print("test")
 
     except Exception as e:
         print(e)
