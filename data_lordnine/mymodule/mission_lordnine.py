@@ -17,7 +17,7 @@ def mission_get(cla, data):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from potion_lordnine import potion_check
-    from action_lordnine import juljun_check, juljun_off, zero_check_minute, juljun_on
+    from action_lordnine import juljun_check, juljun_off, zero_check_minute, juljun_attack_check
     from dead_die import dead_check
     from tuto_lordnine import way_check
     from boonhae_collection import col_boon_start
@@ -55,7 +55,35 @@ def mission_get(cla, data):
                         # 가방 체크...10분 마다
                         mission_get_daily(cla, data)
                     else:
-                        potion_check(cla)
+                        result_attack_check = juljun_attack_check(cla)
+                        if result_attack_check == False:
+
+                            is_action = False
+
+                            for i in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_attack_on.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_action = True
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_move_on.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
+                                    if imgs_ is not None and imgs_ != False:
+                                        is_action = True
+                                        break
+                                time.sleep(1)
+
+                            if is_action == False:
+                                mission_get_daily(cla, data)
+                            else:
+                                potion_check(cla)
+                        else:
+                            potion_check(cla)
 
             else:
                 for i in range(3):
@@ -362,7 +390,6 @@ def mission_get_week(cla):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action_lordnine import menu_open, confirm_all
-    from clean_screen_lordnine import clean_screen_start
 
     try:
         print("mission_get_week")
