@@ -28,7 +28,7 @@ def go_test():
     from dead_die import dead_recorvery, dead_check
     from dungeon_lordnine import dun_in
     from power_up import power_up_sungmool
-    from mission_lordnine import mission_get
+    from mission_lordnine import mission_get, mission_get_daily
     from guild_lordnine import guild_start
     from auction_game import auction_start, get_low_price
 
@@ -69,7 +69,15 @@ def go_test():
         # text_check_get(512, 315, 542, 360, cla)
         time.sleep(1)
         # drag_pos(400, 500, 850, 500, cla)
-        drag_pos_Press()
+        data = "일일임무_3"
+
+        result_spot = data.split("_")
+
+        data = result_spot[0] + "_" + result_spot[1] + "_모험"
+
+        print("data", data)
+
+        # mission_get_daily(cla, data)
 
         # nowMinute = int(datetime.today().strftime("%M"))
         # print("nowMinute", nowMinute)
