@@ -17,7 +17,7 @@ def mission_get(cla, data):
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from potion_lordnine import potion_check
-    from action_lordnine import juljun_check, juljun_off, zero_check_minute, juljun_attack_check
+    from action_lordnine import juljun_check, out_check, zero_check_minute, juljun_attack_check
     from dead_die import dead_check
     from tuto_lordnine import way_check
     from boonhae_collection import col_boon_start
@@ -86,15 +86,20 @@ def mission_get(cla, data):
                             potion_check(cla)
 
             else:
-                for i in range(3):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\out_complete.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(840, 100, 900, 280, cla, img, 0.7)
-                    if imgs_ is not None and imgs_ != False:
-                        print("juljun_complete", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                        time.sleep(0.5)
+
+                result_out = out_check(cla)
+
+                if result_out == True:
+
+                    for i in range(3):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\out_complete.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(840, 100, 900, 280, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("juljun_complete", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
 
                 way_check(cla)
 
@@ -350,37 +355,44 @@ def mission_get_daily(cla, data):
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         time.sleep(1)
                         for att in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\soongan_move_btn.PNG"
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\mission.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(710, 980, 810, 1030, cla, img, 0.8)
+                            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(0.5)
-
-                                for con in range(5):
-                                    result_move_confirm = confirm_all(cla)
-                                    if result_move_confirm == True:
-                                        break
-                                    time.sleep(0.1)
 
 
-                                for load in range(5):
-                                    loading_check(cla)
-                                    time.sleep(0.2)
-                                break
-
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\soongan_move_btn.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
+                                imgs_ = imgs_set_(710, 980, 810, 1030, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    time.sleep(0.2)
-                                else:
-                                    loading_check(cla)
+                                    time.sleep(0.5)
 
+                                    for con in range(5):
+                                        result_move_confirm = confirm_all(cla)
+                                        if result_move_confirm == True:
+                                            break
+                                        time.sleep(0.1)
+
+
+                                    for load in range(5):
+                                        loading_check(cla)
+                                        time.sleep(0.2)
+
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.2)
+                                    else:
+                                        loading_check(cla)
+                            else:
+                                break
                             time.sleep(0.5)
                         # 나간 후
                         attacked = False

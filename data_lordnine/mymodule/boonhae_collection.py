@@ -71,33 +71,24 @@ def collection_start(cla):
                 way_check(cla)
 
                 collection_scan_option(cla)
+                time.sleep(0.3)
 
-                ganghwa = True
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(380, 380, 540, 440, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    collection_scan_option(cla)
+                else:
+                    ganghwa = True
 
-                for i in range(20):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\col_point_1.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.75)
-                    if imgs_ is not None and imgs_ != False:
-                        print("col_point_1 : ", imgs_)
-                        click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
-
-                        time.sleep(0.5)
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\col_btn.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(820, 880, 940, 940, cla, img, 0.75)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.5)
-                    else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\col_point_2.PNG"
+                    for i in range(20):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\col_point_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.75)
                         if imgs_ is not None and imgs_ != False:
-                            print("col_point_2 : ", imgs_)
+                            print("col_point_1 : ", imgs_)
                             click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
 
                             time.sleep(0.5)
@@ -108,39 +99,37 @@ def collection_start(cla):
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.5)
-
                         else:
-                            if ganghwa == True:
-                                is_item = True
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\col_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.75)
+                            if imgs_ is not None and imgs_ != False:
+                                print("col_point_2 : ", imgs_)
+                                click_pos_reg(imgs_.x - 15, imgs_.y + 15, cla)
 
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5.PNG"
+                                time.sleep(0.5)
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\col_btn.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
+                                imgs_ = imgs_set_(820, 880, 940, 940, cla, img, 0.75)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("plus_5 : ", imgs_)
-                                    click_pos_reg(imgs_.x - 15, imgs_.y - 15, cla)
-                                    time.sleep(0.2)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.5)
 
-                                    for c in range(5):
-                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\not_registery_item.PNG"
-                                        img_array = np.fromfile(full_path, np.uint8)
-                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.85)
-                                        if imgs_ is not None and imgs_ != False:
-                                            print("not_registery_item : ", imgs_)
-                                            is_item = False
-                                            break
-                                        time.sleep(0.1)
-                                else:
-                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5_3.PNG"
+                            else:
+                                if ganghwa == True:
+                                    is_item = True
+
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                     imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("plus_5_3 : ", imgs_)
+                                        print("plus_5 : ", imgs_)
                                         click_pos_reg(imgs_.x - 15, imgs_.y - 15, cla)
                                         time.sleep(0.2)
+
                                         for c in range(5):
                                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\not_registery_item.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
@@ -152,63 +141,82 @@ def collection_start(cla):
                                                 break
                                             time.sleep(0.1)
                                     else:
-                                        is_item = False
-                                #
-                                if is_item == True:
-                                    print("강화 후 등록하자")
-
-                                    ganghwa = False
-
-                                    for c in range(10):
-                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\fail_is_destroy.PNG"
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5_3.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(280, 650, 465, 690, cla, img, 0.85)
+                                        imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
                                         if imgs_ is not None and imgs_ != False:
-                                            ganghwa = True
-                                            click_pos_2(830, 305, cla)
-                                            time.sleep(0.5)
-                                            break
-
+                                            print("plus_5_3 : ", imgs_)
+                                            click_pos_reg(imgs_.x - 15, imgs_.y - 15, cla)
+                                            time.sleep(0.2)
+                                            for c in range(5):
+                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\not_registery_item.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.85)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    print("not_registery_item : ", imgs_)
+                                                    is_item = False
+                                                    break
+                                                time.sleep(0.1)
                                         else:
-                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_title.PNG"
+                                            is_item = False
+                                    #
+                                    if is_item == True:
+                                        print("강화 후 등록하자")
+
+                                        ganghwa = False
+
+                                        for c in range(10):
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\fail_is_destroy.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(240, 270, 465, 335, cla, img, 0.85)
+                                            imgs_ = imgs_set_(280, 650, 465, 690, cla, img, 0.85)
                                             if imgs_ is not None and imgs_ != False:
-                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5_btn.PNG"
-                                                img_array = np.fromfile(full_path, np.uint8)
-                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                imgs_ = imgs_set_(240, 600, 400, 650, cla, img, 0.85)
-                                                if imgs_ is not None and imgs_ != False:
-                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                                                    time.sleep(0.1)
-                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                                                    time.sleep(0.1)
-                                                    click_pos_2(365, 705, cla)
-                                                    for f in range(10):
-                                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\fail_is_destroy.PNG"
-                                                        img_array = np.fromfile(full_path, np.uint8)
-                                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                        imgs_ = imgs_set_(280, 650, 465, 690, cla, img, 0.85)
-                                                        if imgs_ is not None and imgs_ != False:
-                                                            break
-                                                        time.sleep(1)
+                                                ganghwa = True
+                                                click_pos_2(830, 305, cla)
+                                                time.sleep(0.5)
+                                                break
+
                                             else:
-                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\ganghwa_btn.PNG"
+                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_title.PNG"
                                                 img_array = np.fromfile(full_path, np.uint8)
                                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                imgs_ = imgs_set_(730, 880, 820, 930, cla, img, 0.85)
+                                                imgs_ = imgs_set_(240, 270, 465, 335, cla, img, 0.85)
                                                 if imgs_ is not None and imgs_ != False:
-                                                    print("ganghwa_btn : ", imgs_)
-                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                                        time.sleep(0.5)
-                                    if ganghwa == False:
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_5_btn.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(240, 600, 400, 650, cla, img, 0.85)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                        time.sleep(0.1)
+                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                        time.sleep(0.1)
+                                                        click_pos_2(365, 705, cla)
+                                                        for f in range(10):
+                                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\fail_is_destroy.PNG"
+                                                            img_array = np.fromfile(full_path, np.uint8)
+                                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                            imgs_ = imgs_set_(280, 650, 465, 690, cla, img, 0.85)
+                                                            if imgs_ is not None and imgs_ != False:
+                                                                break
+                                                            time.sleep(1)
+                                                else:
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\ganghwa_btn.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(730, 880, 820, 930, cla, img, 0.85)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        print("ganghwa_btn : ", imgs_)
+                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.5)
+                                        if ganghwa == False:
+                                            clean_screen_start(cla)
+                                    else:
                                         clean_screen_start(cla)
-                                else:
-                                    clean_screen_start(cla)
-                                    break
-                    time.sleep(0.5)
+                                        break
+                        time.sleep(0.5)
             else:
                 menu_open(cla)
 
@@ -252,7 +260,7 @@ def collection_scan_option(cla):
 
         while collection is False:
             collection_count += 1
-            if collection_count > 7:
+            if collection_count > 10:
                 collection = True
 
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_title.PNG"
