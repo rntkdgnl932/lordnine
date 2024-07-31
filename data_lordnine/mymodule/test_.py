@@ -68,7 +68,7 @@ def go_test():
 
         # text_check_get(512, 315, 542, 360, cla)
         time.sleep(1)
-        dead_check(cla)
+        dead_recorvery(cla)
 
         # mission_get_daily(cla, data)
 
