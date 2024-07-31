@@ -49,7 +49,7 @@ def dungeon_start(cla, where):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\" + str(dun_name) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.7)
+                imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     result_juljun_attack = juljun_attack_check(cla)
                     if result_juljun_attack == True:

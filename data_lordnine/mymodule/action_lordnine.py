@@ -232,6 +232,7 @@ def out_check(cla):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
+                        print("talk", imgs_)
                         is_out = True
                     else:
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\juljun_btn.PNG"
@@ -749,7 +750,7 @@ def juljun_on(cla):
             else:
                 result_out = out_check(cla)
                 if result_out == True:
-                    click_pos_2(35, 790, cla)
+                    click_pos_2(35, 830, cla)
 
 
                     for j in range(10):
