@@ -551,10 +551,10 @@ def get_ganghwasuk_sohwan_start(cla):
 
             is_sohwan = False
 
-            for i in range(2):
+            for i in range(4):
 
-                # 무기 강화석 까지 사려면 x_1 =200, range(4)
-                x_1 = 600 + (i * 200)
+                # 무기 강화석 까지 사려면 x_1 =200, range(4), 방어구만 사려면 600, range(2)
+                x_1 = 200 + (i * 200)
                 x_2 = x_1 + 150
                 x_reg = (x_1 + x_2) / 2
 
