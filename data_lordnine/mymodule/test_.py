@@ -30,7 +30,7 @@ def go_test():
     from power_up import power_up_sungmool
     from mission_lordnine import mission_get, mission_get_daily
     from guild_lordnine import guild_start
-    from auction_game import auction_start, get_low_price
+    from auction_game import auction_start, get_low_price, auction_jangbi
 
 
     print("test")
@@ -68,7 +68,7 @@ def go_test():
 
         # text_check_get(512, 315, 542, 360, cla)
         time.sleep(1)
-        dead_recorvery(cla)
+        auction_jangbi("three")
 
         # mission_get_daily(cla, data)
 
