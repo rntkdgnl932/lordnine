@@ -147,9 +147,12 @@ def out_check(cla):
     from stop_event18 import game_check
     from character_select_and_game_start import game_start_screen, game_ready
     from schedule import myQuest_play_check
+    from dead_die import dead_check
     try:
 
         print("out_check 하면서 게임체크도 하기")
+
+        dead_check(cla)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_get.PNG"
         img_array = np.fromfile(full_path, np.uint8)
