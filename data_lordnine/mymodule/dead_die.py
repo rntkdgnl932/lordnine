@@ -164,30 +164,58 @@ def dead_recorvery(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(90, 430, 260, 490, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    print("boohwal_cross_btn")
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    v_.dead_count += 1
 
-                    if v_.dead_count > 3:
-                        why = "하루 3번 이상 죽었다 문제있다. 게임 종료 하겠다."
-                        line_to_me(cla, why)
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorvery_time.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 30, 300, 400, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
+                        print("recorvery_time", imgs_)
+                        click_pos_2(110, 410, cla)
 
-                        dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
-                        file_path = dir_path + "\\start.txt"
-                        # cla.txt
-                        cla_data = str(v_.now_cla) + "cla"
-                        file_path2 = dir_path + "\\" + cla_data + ".txt"
-                        with open(file_path, "w", encoding='utf-8-sig') as file:
-                            data = 'no'
-                            file.write(str(data))
-                            time.sleep(0.2)
-                        with open(file_path2, "w", encoding='utf-8-sig') as file:
-                            data = v_.now_cla
-                            file.write(str(data))
-                            time.sleep(0.2)
-                        os.execl(sys.executable, sys.executable, *sys.argv)
+                        time.sleep(0.5)
 
-                    break
+                        click_pos_reg(imgs_.x + 50, imgs_.y + 10, cla)
+
+                        time.sleep(0.5)
+
+                        click_pos_2(110, 410, cla)
+
+                        time.sleep(0.5)
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorver_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(90, 430, 260, 490, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+
+
+                    else:
+                        v_.dead_count += 1
+
+                        if v_.dead_count > 5:
+                            why = "하루 5번 이상 죽었다 문제있다. 게임 종료 하겠다."
+                            line_to_me(cla, why)
+
+                            dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                            file_path = dir_path + "\\start.txt"
+                            # cla.txt
+                            cla_data = str(v_.now_cla) + "cla"
+                            file_path2 = dir_path + "\\" + cla_data + ".txt"
+                            with open(file_path, "w", encoding='utf-8-sig') as file:
+                                data = 'no'
+                                file.write(str(data))
+                                time.sleep(0.2)
+                            with open(file_path2, "w", encoding='utf-8-sig') as file:
+                                data = v_.now_cla
+                                file.write(str(data))
+                                time.sleep(0.2)
+                            os.execl(sys.executable, sys.executable, *sys.argv)
+                        else:
+                            break
+
                 else:
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_cross_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -208,6 +236,8 @@ def dead_recorvery(cla):
             if imgs_ is not None and imgs_ != False:
 
 
+
+
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -215,7 +245,7 @@ def dead_recorvery(cla):
                 if imgs_ is not None and imgs_ != False:
                     recorver_item = False
                 else:
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_1.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.9)
@@ -240,7 +270,7 @@ def dead_recorvery(cla):
                         if imgs_ is not None and imgs_ != False:
                             end_fix = True
                         else:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_1.PNG"
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\dead_zero_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(165, 90, 240, 130, cla, img, 0.9)
