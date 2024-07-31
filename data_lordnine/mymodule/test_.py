@@ -72,7 +72,7 @@ def go_test():
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorvery_time.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 300, 400, "three", img, 0.75)
+        imgs_ = imgs_set_(0, 30, 300, 400, "one", img, 0.75)
         if imgs_ is not None and imgs_ != False:
             print("recorvery_time", imgs_)
 
