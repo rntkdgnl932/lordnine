@@ -16,6 +16,7 @@ def dungeon_start(cla, where):
     from action_lordnine import juljun_check, juljun_attack_check, attack_on
     from potion_lordnine import potion_check
     from dead_die import dead_check
+    from schedule import myQuest_play_add
 
     try:
         print("dungeon_start")
@@ -26,37 +27,40 @@ def dungeon_start(cla, where):
 
         result_spot = where.split("_")
 
-        # result_spot[1] => 던전종류류
-        # resut_spot[2] => 층수
         if result_spot[1] == "검은실험실":
-            dun_name = "black"
-        elif result_spot[1] == "어둠의숲":
-            dun_name = "adoom"
-        elif result_spot[1] == "조각의숲":
-            dun_name = "jogag"
-        elif result_spot[1] == "타락한미궁":
-            dun_name = "talag"
-        elif result_spot[1] == "가르바나지하수로":
-            dun_name = "garbana"
-
-        result_juljun = juljun_check(cla)
-
-        if result_juljun == True:
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\" + str(dun_name) + ".PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                result_juljun_attack = juljun_attack_check(cla)
-                if result_juljun_attack == True:
-                    potion_check(cla)
-                else:
-                    attack_on(cla)
-            else:
-                dun_in(cla, where)
+            myQuest_play_add(cla, where)
         else:
-            dead_check(cla)
-            dun_in(cla, where)
+            # result_spot[1] => 던전종류류
+            # resut_spot[2] => 층수
+            if result_spot[1] == "검은실험실":
+                dun_name = "black"
+            elif result_spot[1] == "어둠의숲":
+                dun_name = "adoom"
+            elif result_spot[1] == "조각의숲":
+                dun_name = "jogag"
+            elif result_spot[1] == "타락한미궁":
+                dun_name = "talag"
+            elif result_spot[1] == "가르바나지하수로":
+                dun_name = "garbana"
+
+            result_juljun = juljun_check(cla)
+
+            if result_juljun == True:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\" + str(dun_name) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    result_juljun_attack = juljun_attack_check(cla)
+                    if result_juljun_attack == True:
+                        potion_check(cla)
+                    else:
+                        attack_on(cla)
+                else:
+                    dun_in(cla, where)
+            else:
+                dead_check(cla)
+                dun_in(cla, where)
 
     except Exception as e:
         print(e)
@@ -137,14 +141,19 @@ def dun_in(cla, where):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 if str(dun_name) == "black":
                     imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
+                    imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
                 elif str(dun_name) == "adoom":
                     imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                    imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
                 elif str(dun_name) == "jogag":
                     imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                    imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
                 elif str(dun_name) == "talag":
                     imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                    imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
                 elif str(dun_name) == "garbana":
                     imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
+                    imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("dun_complete_1", imgs_)
 
