@@ -195,8 +195,8 @@ def dead_recorvery(cla):
                     else:
                         v_.dead_count += 1
 
-                        if v_.dead_count > 5:
-                            why = "하루 5번 이상 죽었다 문제있다. 게임 종료 하겠다."
+                        if v_.dead_count > 4:
+                            why = "하루 4번 이상 죽었다 문제있다. 게임 종료 하겠다."
                             line_to_me(cla, why)
 
                             dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
