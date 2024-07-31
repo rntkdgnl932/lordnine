@@ -85,18 +85,23 @@ def dun_in(cla, where):
         # resut_spot[2] => 층수
         if result_spot[1] == "검은실험실":
             y_1 = 130
+            y_1 = 590
             dun_name = "black"
         elif result_spot[1] == "어둠의숲":
             y_1 = 250
+            y_1 = 130
             dun_name = "adoom"
         elif result_spot[1] == "조각의숲":
             y_1 = 370
+            y_1 = 250
             dun_name = "jogag"
         elif result_spot[1] == "타락한미궁":
             y_1 = 480
+            y_1 = 370
             dun_name = "talag"
         elif result_spot[1] == "가르바나지하수로":
             y_1 = 590
+            y_1 = 480
             dun_name = "garbana"
 
         # 던전 가기전 물약 사자

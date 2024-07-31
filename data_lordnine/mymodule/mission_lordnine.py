@@ -27,7 +27,13 @@ def mission_get(cla, data):
 
         dead_check(cla)
 
-
+        # result_spot = data.split("_")
+        # y_num = int(result_spot[1])
+        # # 시간 time_jogag 모험 adventure 우호 friendship
+        # selected = result_spot[2]
+        #
+        # # 일일임무_2_모험
+        # # data = "일일임무_" + str(y_num) + "_우호"
 
         if v_.daily_mission_ready == True:
 
