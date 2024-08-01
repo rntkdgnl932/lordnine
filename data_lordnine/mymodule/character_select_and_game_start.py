@@ -289,7 +289,7 @@ def game_ready(cla):
 
     from function_game import imgs_set_, click_pos_2, text_check_get, int_put_, click_pos_reg
     from action_lordnine import confirm_all
-
+    from massenger import line_to_me
 
     try:
 
@@ -528,6 +528,9 @@ def game_ready(cla):
                 imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     ready_ = False
+                    # 점검중일때만 켜기
+                    why = "대기열 끝나고 게임시작"
+                    line_to_me(cla, why)
             time.sleep(1)
 
 
