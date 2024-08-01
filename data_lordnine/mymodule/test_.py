@@ -68,7 +68,12 @@ def go_test():
 
         # text_check_get(512, 315, 542, 360, cla)
         time.sleep(1)
-        auction_jangbi("three")
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(480, 540, 640, 600, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("jadong_confirm", imgs_)
 
         # mission_get_daily(cla, data)
 
