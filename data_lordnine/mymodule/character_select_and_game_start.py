@@ -512,10 +512,10 @@ def game_ready(cla):
             imgs_ = imgs_set_(400, 380, 550, 450, cla, img, 0.8)
             if imgs_ is not None and imgs_ != False:
 
-                game_ready_count += 1
+                game_ready_count += 5
 
                 result = "none"
-                result = text_check_get(502, 512, 560, 550, cla)
+                result = text_check_get(505, 512, 560, 550, cla)
                 result_num = int_put_(result)
                 print("result", result_num)
 
@@ -532,7 +532,7 @@ def game_ready(cla):
                     # 점검중일때만 켜기
                     why = str(game_ready_count) + "초 기다렸다. 대기열 끝나고 게임시작한다."
                     line_to_me(cla, why)
-            time.sleep(1)
+            time.sleep(5)
 
 
 
