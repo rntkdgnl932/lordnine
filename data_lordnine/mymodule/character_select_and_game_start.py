@@ -529,7 +529,7 @@ def game_ready(cla):
                 if imgs_ is not None and imgs_ != False:
                     ready_ = False
                     # 점검중일때만 켜기
-                    why = "대기열 끝나고 게임시작한다."
+                    why = str(game_ready_count) + "초 기다렸다. 대기열 끝나고 게임시작한다."
                     line_to_me(cla, why)
             time.sleep(1)
 
