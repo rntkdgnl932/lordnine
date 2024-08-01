@@ -253,6 +253,75 @@ def out_check(cla):
 
 
 
+def game_title_check(cla):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_reg
+    from massenger import line_to_me
+    try:
+
+        print("game_title_check")
+
+        game_title = False
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\game_title_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            game_title = True
+        else:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\game_title_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                game_title = True
+
+        if game_title == False:
+            for i in range(10):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\game_title_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    game_title = True
+                    break
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\game_title_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        game_title = True
+                        break
+                time.sleep(1)
+            if game_title == False:
+                why = str(v_.this_game) + " 꺼진게 확실하다"
+                print(why)
+                line_to_me(cla, why)
+
+                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                file_path = dir_path + "\\start.txt"
+                # cla.txt
+                cla_data = str(cla) + "cla"
+                file_path2 = dir_path + "\\" + cla_data + ".txt"
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    data = 'no'
+                    file.write(str(data))
+                    time.sleep(0.2)
+                with open(file_path2, "w", encoding='utf-8-sig') as file:
+                    data = cla
+                    file.write(str(data))
+                    time.sleep(0.2)
+                os.execl(sys.executable, sys.executable, *sys.argv)
+
+
+    except Exception as e:
+        print(e)
+
 def menu_open_check(cla):
     import numpy as np
     import cv2
