@@ -515,7 +515,7 @@ def game_ready(cla):
                 game_ready_count += 1
 
                 result = "none"
-                result = text_check_get(495, 512, 560, 550, cla)
+                result = text_check_get(498, 512, 560, 550, cla)
                 result_num = int_put_(result)
                 print("result", result_num)
 
