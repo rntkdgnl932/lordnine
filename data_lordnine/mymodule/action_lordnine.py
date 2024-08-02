@@ -869,6 +869,7 @@ def juljun_off(cla):
                         break
                     else:
                         time.sleep(0.2)
+                    time.sleep(0.5)
 
             else:
                 break
