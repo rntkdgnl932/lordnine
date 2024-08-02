@@ -40,7 +40,7 @@ def dead_check(cla):
                 result_out = out_check(cla)
                 if result_out == True:
                     break
-                time.sleep(0.2)
+                time.sleep(0.5)
             #
             # why = "죽었으니 당장 눈으로 확인하라. 10초 준다..."
             # line_to_me(cla, why)

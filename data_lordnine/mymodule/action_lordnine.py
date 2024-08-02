@@ -402,16 +402,21 @@ def menu_open(cla):
                     get_post(cla)
                     menu_open_last(cla)
             else:
-                clean_screen_start(cla)
-                click_pos_2(915, 50, cla)
-                for i in range(5):
+                for i in range(10):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\character_change_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(860, 890, 960, 1000, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
                         break
-                    time.sleep(0.2)
+                    else:
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            click_pos_2(915, 50, cla)
+                        else:
+                            clean_screen_start(cla)
+                        time.sleep(0.5)
+                    time.sleep(0.5)
             time.sleep(0.5)
 
 

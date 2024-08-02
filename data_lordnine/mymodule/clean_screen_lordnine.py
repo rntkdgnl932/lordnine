@@ -27,7 +27,7 @@ def clean_screen_start(cla):
                 break
             else:
                 clean_screen_just_on_start(cla)
-            time.sleep(0.2)
+            time.sleep(0.5)
 
     except Exception as e:
         print(e)
