@@ -67,19 +67,92 @@ def go_test():
         # get_diary(cla)
 
         # text_check_get(512, 315, 542, 360, cla)
-        for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 330, 540, 400, cla, img, 0.75)
-            if imgs_ is not None and imgs_ != False:
-                click_pos_2(530, 400, cla)
+        # 설정하기
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 330, 540, 400, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+
+            click_pos_2(530, 400, cla)
+            time.sleep(0.1)
+            click_pos_2(530, 400, cla)
+            time.sleep(0.5)
+
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(715, 435, 760, 475, cla, img, 0.95)
+                if imgs_ is not None and imgs_ != False:
+                    print("속도증가주문서", imgs_)
+                    break
+                else:
+                    click_pos_2(525, 455, cla)
+                    time.sleep(0.5)
+                    click_pos_2(615, 455, cla)
+                    time.sleep(0.5)
+                time.sleep(0.3)
+
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(715, 540, 760, 580, cla, img, 0.95)
+                if imgs_ is not None and imgs_ != False:
+                    print("회복증가주문서", imgs_)
+                    break
+                else:
+                    click_pos_2(525, 565, cla)
+                    time.sleep(0.5)
+                    click_pos_2(615, 565, cla)
+                    time.sleep(0.5)
+                time.sleep(0.3)
+
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\20.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(715, 600, 760, 630, cla, img, 0.95)
+                if imgs_ is not None and imgs_ != False:
+                    print("순간이동주문서", imgs_)
+                    break
+                else:
+                    click_pos_2(525, 620, cla)
+                    time.sleep(0.5)
+                    click_pos_2(615, 620, cla)
+                    time.sleep(0.5)
+                time.sleep(0.3)
+
+            # 드래그
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\gamjung_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(215, 580, 320, 620, cla, img, 0.95)
+                if imgs_ is not None and imgs_ != False:
+                    print("감정주문서(귀속)", imgs_)
+                else:
+                    drag_pos(740, 600, 740, 400, cla)
                 time.sleep(0.5)
-                click_pos_2(550, 700, cla)
-                time.sleep(0.5)
-                break
-            else:
-                click_pos_2(20, 1010, cla)
+
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(715, 580, 760, 620, cla, img, 0.95)
+                if imgs_ is not None and imgs_ != False:
+                    print("감정주문서", imgs_)
+                    break
+                else:
+                    click_pos_2(525, 605, cla)
+                    time.sleep(0.5)
+                    click_pos_2(615, 605, cla)
+                    time.sleep(0.5)
+                time.sleep(0.3)
+
+            # 마무리
+            click_pos_2(550, 700, cla)
             time.sleep(0.5)
 
         # mission_get_daily(cla, data)
