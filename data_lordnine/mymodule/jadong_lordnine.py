@@ -88,7 +88,7 @@ def spot_in_ready(cla, where):
     import random
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg, imgs_set_for
-    from action_lordnine import go_maul, out_check, loading_check
+    from action_lordnine import go_maul, out_check, loading_check, confirm_all
     from clean_screen_lordnine import clean_screen_start
 
     try:
@@ -224,12 +224,16 @@ def spot_in_ready(cla, where):
                                     result_loading = loading_check(cla)
                                     if result_loading == True:
                                         break
+                                    else:
+                                        confirm_all(cla)
                                     time.sleep(0.2)
 
                                 for s in range(5):
                                     result_out_check= out_check(cla)
                                     if result_out_check == True:
                                         break
+                                    else:
+                                        confirm_all(cla)
                                     time.sleep(0.5)
                                 break
 
