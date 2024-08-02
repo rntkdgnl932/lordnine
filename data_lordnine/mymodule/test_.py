@@ -67,13 +67,20 @@ def go_test():
         # get_diary(cla)
 
         # text_check_get(512, 315, 542, 360, cla)
-        time.sleep(1)
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(480, 540, 640, 600, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("jadong_confirm", imgs_)
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 330, 540, 400, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                click_pos_2(530, 400, cla)
+                time.sleep(0.5)
+                click_pos_2(550, 700, cla)
+                time.sleep(0.5)
+                break
+            else:
+                click_pos_2(20, 1010, cla)
+            time.sleep(0.5)
 
         # mission_get_daily(cla, data)
 

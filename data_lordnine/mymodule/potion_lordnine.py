@@ -232,36 +232,64 @@ def potion_buy_start(cla):
 
                 buy_potion = True
 
-                anymore = False
-
+                # 80% 설정하기
                 for i in range(5):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\enough_item.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(400, 100, 660, 150, cla, img, 0.75)
+                    imgs_ = imgs_set_(400, 330, 540, 400, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
-                        print("enough_item", imgs_)
                         break
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\anymore_buy_item.PNG"
+                        click_pos_2(20, 1010, cla)
+                    time.sleep(0.5)
+
+
+
+                # 구매하기
+
+                anymore = False
+
+                for i in range(7):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 330, 540, 400, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
+                        print("potion_setting", imgs_)
+                        click_pos_2(530, 400, cla)
+                        time.sleep(0.5)
+                        click_pos_2(550, 700, cla)
+                        time.sleep(0.5)
+
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\enough_item.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(300, 100, 660, 150, cla, img, 0.75)
+                        imgs_ = imgs_set_(400, 100, 660, 150, cla, img, 0.75)
                         if imgs_ is not None and imgs_ != False:
-                            print("anymore_buy_item", imgs_)
-                            anymore = True
+                            print("enough_item", imgs_)
                             break
                         else:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_buy_confirm.PNG"
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\anymore_buy_item.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(460, 660, 600, 720, cla, img, 0.75)
+                            imgs_ = imgs_set_(300, 100, 660, 150, cla, img, 0.75)
                             if imgs_ is not None and imgs_ != False:
-                                print("potion_buy_confirm", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                print("anymore_buy_item", imgs_)
+                                anymore = True
                                 break
                             else:
-                                click_pos_2(150, 1005, cla)
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_buy_confirm.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(460, 660, 600, 720, cla, img, 0.75)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("potion_buy_confirm", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    break
+                                else:
+                                    click_pos_2(150, 1005, cla)
                     time.sleep(0.5)
 
                 if anymore == True:
