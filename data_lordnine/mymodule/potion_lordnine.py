@@ -55,26 +55,35 @@ def potion_check(cla):
                     imgs_ = imgs_set_(690, 750, 870, 800, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         print("potion_setting_title", imgs_)
-                        x_1 = 700
-                        y_1 = 905
-                        x_2 = 722
-                        y_2 = 923
 
-                        # text_check_get(x_1, y_1, x_2, y_2, cla)
+                        for p in range(3):
+                            if p == 0:
+                                print("소형")
+                            elif p == 1:
+                                print("중형")
+                            elif p == 2:
+                                print("대형")
+                            x_1 = 700 + (p * 70)
+                            y_1 = 905
+                            x_2 = 722 + (p * 70)
+                            y_2 = 923
 
-                        for i in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_num\\big\\" + str(
-                                i) + ".PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(x_1, y_1, x_2, y_2, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("절전 i", i)
-                                is_num = True
+                            # text_check_get(x_1, y_1, x_2, y_2, cla)
 
-                                if v_.potion_buy_count > 0:
-                                    v_.potion_buy_count -= 1
-                        break
+                            for i in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_num\\big\\" + str(
+                                    i) + ".PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(x_1, y_1, x_2, y_2, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("절전 i", i)
+                                    is_num = True
+
+                                    if v_.potion_buy_count > 0:
+                                        v_.potion_buy_count -= 1
+                            if is_num == True:
+                                break
                     else:
                         click_pos_2(880, 975, cla)
                         for g in range(10):
@@ -85,7 +94,10 @@ def potion_check(cla):
                             if imgs_ is not None and imgs_ != False:
                                 break
                             time.sleep(0.1)
+                    if is_num == True:
+                        break
                     time.sleep(0.5)
+
 
                 if is_num == False:
 
@@ -134,26 +146,35 @@ def potion_check(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("potion_setting_title", imgs_)
 
-                            x_1 = 200
-                            y_1 = 900
-                            x_2 = 217
-                            y_2 = 920
+                            for p in range(3):
+                                if p == 0:
+                                    print("소형")
+                                elif p == 1:
+                                    print("중형")
+                                elif p == 2:
+                                    print("대형")
 
-                            # text_check_get(x_1, y_1, x_2, y_2, cla)
+                                x_1 = 200 + (p * 70)
+                                y_1 = 900
+                                x_2 = 217 + (p * 70)
+                                y_2 = 920
 
-                            for i in range(10):
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_num\\big\\" + str(
-                                    i) + ".PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(x_1, y_1, x_2, y_2, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("아웃 i", i)
-                                    is_num = True
+                                # text_check_get(x_1, y_1, x_2, y_2, cla)
 
-                                    if v_.potion_buy_count > 0:
-                                        v_.potion_buy_count -= 1
-                            break
+                                for i in range(10):
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_num\\big\\" + str(
+                                        i) + ".PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(x_1, y_1, x_2, y_2, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("아웃 i", i)
+                                        is_num = True
+
+                                        if v_.potion_buy_count > 0:
+                                            v_.potion_buy_count -= 1
+                                if is_num == True:
+                                    break
                         else:
                             click_pos_2(280, 975, cla)
                             for g in range(10):
@@ -165,6 +186,9 @@ def potion_check(cla):
                                     break
                                 time.sleep(0.1)
 
+                        if is_num == True:
+                            break
+
                     if is_num == False:
                         print("아웃 : 숫자 안 보여", v_.potion_buy_count)
 
@@ -174,8 +198,45 @@ def potion_check(cla):
                             potion_buy_start(cla)
 
             else:
-                print("파악 안됨")
-                is_num = True
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_setting_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(190, 750, 370, 800, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("potion_setting_title", imgs_)
+
+                    for p in range(3):
+                        if p == 0:
+                            print("소형")
+                        elif p == 1:
+                            print("중형")
+                        elif p == 2:
+                            print("대형")
+
+                        x_1 = 200 + (p * 70)
+                        y_1 = 900
+                        x_2 = 217 + (p * 70)
+                        y_2 = 920
+
+                        # text_check_get(x_1, y_1, x_2, y_2, cla)
+
+                        for i in range(10):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\potion_num\\big\\" + str(
+                                i) + ".PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(x_1, y_1, x_2, y_2, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("아웃 i", i)
+                                is_num = True
+
+                                if v_.potion_buy_count > 0:
+                                    v_.potion_buy_count -= 1
+                        if is_num == True:
+                            break
+                else:
+                    print("파악 안됨")
+                    is_num = True
 
         return is_num
 
