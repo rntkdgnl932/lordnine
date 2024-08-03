@@ -68,35 +68,7 @@ def go_test():
 
         # text_check_get(512, 315, 542, 360, cla)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            y_reg = imgs_.y
-        else:
-            y_reg = 700
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\time_jogag.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(180, 100, 350, y_reg, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("time_jogag", imgs_)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\adventure.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(180, 100, 350, y_reg, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("adventure", imgs_)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\friendship.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(180, 100, 350, y_reg, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("friendship", imgs_)
+        potion_buy_start(cla)
 
         # mission_get_daily(cla, data)
 
