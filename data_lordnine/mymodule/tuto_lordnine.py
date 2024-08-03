@@ -14,7 +14,7 @@ def tuto_start(cla):
     import numpy as np
     import cv2
 
-    from function_game import click_pos_2, imgs_set_
+    from function_game import click_pos_2, imgs_set_, click_pos_reg
     from action_lordnine import skip_start, confirm_all, move_check, juljun_off
     from dead_die import dead_check
     from potion_lordnine import potion_check
@@ -47,23 +47,142 @@ def tuto_start(cla):
                 skip_start(cla)
                 way_check(cla)
 
-                # 퀘스트 클릭
-                click_pos_2(870, 120, cla)
-                time.sleep(0.3)
-                confirm_all(cla)
 
-                for i in range(5):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\near_aim_description.PNG"
+                y_sub = 0
+                if v_.sub_mission == True:
+                    v_.sub_mission_count += 1
+                    if v_.sub_mission_count > 4:
+                        v_.sub_mission = False
+                    else:
+                        y_sub = 45
+
+                print("서브", v_.sub_mission)
+
+                # 퀘스트 클릭
+                click_pos_2(870, 120 + y_sub, cla)
+                time.sleep(0.5)
+                result_confirm = confirm_all(cla)
+                if result_confirm == True:
+                    for i in range(25):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\near_aim_description.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(300, 30, 600, 250, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("near_aim_description", imgs_)
+                            break
+                        time.sleep(0.2)
+
+                click_pos_2(780, 130 + y_sub, cla)
+                time.sleep(0.3)
+                result_confirm = confirm_all(cla)
+                if result_confirm == True:
+                    time.sleep(5)
+
+
+                is_sub = False
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\quest_click_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(200, 150, 850, 850, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("quest_click_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    is_sub = True
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\quest_click_btn2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(300, 30, 600, 250, cla, img, 0.8)
+                    imgs_ = imgs_set_(200, 150, 850, 850, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
-                        print("near_aim_description", imgs_)
-                        click_pos_2(780, 130, cla)
-                        time.sleep(0.3)
-                        confirm_all(cla)
-                        break
-                    time.sleep(0.2)
+                        print("quest_click_btn2", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        is_sub = True
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\quest_click_btn3.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(200, 150, 850, 850, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("quest_click_btn3", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            is_sub = True
+
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\quest_click_btn4.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 150, 850, 850, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("quest_click_btn4", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                is_sub = True
+                                time.sleep(1)
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\quest_click_btn3.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 150, 850, 850, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("quest_click_btn3", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                is_sub = True
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\sub_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(680, 520, 730, 570, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\sub_ing_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(860, 520, 950, 570, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\skip\\exit_1.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(0, 30, 960, 1040, cla, img, 0.75)
+                                        if imgs_ is not None and imgs_ != False:
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        is_sub = True
+
+                if is_sub == True:
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\sub_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(680, 520, 730, 570, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sub_btn", imgs_)
+                            v_.sub_mission = True
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+                            skip_start(cla)
+
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\sub_confirm.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(480, 650, 570, 690, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("sub_confirm", imgs_)
+                                break
+                        time.sleep(0.2)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_check\\sub_confirm.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(480, 650, 570, 690, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sub_confirm", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            skip_start(cla)
+                            break
+                        time.sleep(0.2)
 
 
                 quest_checking(cla)

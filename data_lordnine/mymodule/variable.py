@@ -9,6 +9,9 @@ potion_buy_count = 0
 dead_count = 0
 daily_mission_ready = True
 
+sub_mission = False
+sub_mission_count = 0
+
 # 게임 및 폴더 관련
 this_game = "lordnine"
 game_folder = "lordnine"
