@@ -639,6 +639,8 @@ def move_check(cla):
 
         is_move = False
 
+        move_end = False
+
         for i in range(5):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\move\\move_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -672,6 +674,7 @@ def move_check(cla):
                     is_move_count += 1
                     if is_move_count > 3:
                         is_move = False
+                        move_end = True
                 else:
                     result_loading = loading_check(cla)
                     if result_loading == True:
@@ -684,7 +687,7 @@ def move_check(cla):
             time.sleep(1)
 
 
-        return is_move
+        return move_end
 
     except Exception as e:
         print(e)
