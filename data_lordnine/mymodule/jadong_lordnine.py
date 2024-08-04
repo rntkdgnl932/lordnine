@@ -494,7 +494,9 @@ def spot_go(cla):
                 clean_screen_start(cla)
 
             for i in range(10):
-                move_check(cla)
+                result_move = move_check(cla)
+                if result_move == True:
+                    break
                 time.sleep(0.5)
 
             attack_on(cla)
