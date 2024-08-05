@@ -3252,8 +3252,8 @@ class FirstTab(QWidget):
                                     if complete_[j] == "대기중":
                                         print("대기중??????????")
                                         reset_schedule_ += '완료:'
-                                    # elif complete_[j] == "완료":
-                                    #     reset_schedule_ += '대기중:'
+                                    elif complete_[j] == "완료":
+                                        reset_schedule_ += complete_[j] + ":"
                                 else:
                                     reset_schedule_ += complete_[j] + ":"
 
@@ -3264,8 +3264,8 @@ class FirstTab(QWidget):
                                     if complete_[j] == "대기중":
                                         print("대기중?????!!!!!!!!!?????")
                                         reset_schedule_ += '완료\n'
-                                    # elif complete_[j] == "완료":
-                                    #     reset_schedule_ += '대기중\n'
+                                    elif complete_[j] == "완료":
+                                        reset_schedule_ += complete_[j] + "\n"
                                 else:
                                     reset_schedule_ += complete_[j] + "\n"
 
