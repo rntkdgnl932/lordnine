@@ -2659,103 +2659,106 @@ class FirstTab(QWidget):
                 else:
                     print("up 수정 실패 1")
 
+                print("")
+                # 백엔드 스케쥴 수정
+
+                last_result = ""
+                modi_result = ""
+                last_1 = ""
+                last_2 = ""
+                with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    lines = file.read().splitlines()
+                    modi_ready_ = ' '.join(lines).split()
+
+                    print("이거!!!!!!!!!!!!!!!!!!!!!! 222 ", modi_ready_)
+
+                    for i in range(len(modi_ready_)):
+
+                        # if i + 1 == len(modi_ready_):
+                        #     modi_result += modi_ready_[i]
+
+                        if i == thisRow - 2:
+                            modi_result += modi_ready_[i + 1] + "\n"
+
+                        elif i == thisRow - 1:
+                            modi_result += modi_ready_[i - 1] + "\n"
+
+                        else:
+                            modi_result += modi_ready_[i] + "\n"
+
+                    modi_result__ = modi_result.split("\n")
+                    print("modi_ready__!!!!!!!!!!!!!", modi_ready__)
+                    print("modi_result__!!!!!!!!!!!", modi_result__)
+
+                    print("thisRowthisRowthisRow 2", thisRow)
+
+                    modi_spl_1 = modi_ready_[thisRow - 2].split(":")  # 바뀌기전 5678 => 그대로
+                    modi_spl_2 = modi_ready_[thisRow - 1].split(":")  # 바뀌기전 5678 => 그대로
+
+                    modi_spl_3 = modi_result__[thisRow - 2].split(":")  # 바뀐 후 1234 => 바꾸기 b
+                    modi_spl_4 = modi_result__[thisRow - 1].split(":")  # 바뀐후 1234 => 바꾸기 a
+
+                    #      4번기준
+                    #      thisRow - 2
+                    #      modi_spl_3 + modi_spl_2
+                    #      thisRow - 1
+                    #      modi_spl_1 + modi_spl_4
+                    # else:
+                    #     thisRow - 2
+                    #     modi_spl_1 + modi_spl_4
+                    #     thisRow - 1
+                    #     modi_spl_3 + modi_spl_2##################나중에 마지막줄을 올릴때 잘못 처리되는거 수정하기
+
+                    if thisCol < 5:
+
+                        last_1 = str(modi_spl_3[0]) + ":" + str(modi_spl_3[1]) + ":" + str(modi_spl_3[2]) + ":" + str(
+                            modi_spl_3[3]) + ":" + str(modi_spl_1[4]) + ":" + str(modi_spl_1[5]) + ":" + str(
+                            modi_spl_1[6]) + ":" + str(modi_spl_1[7])
+                        last_2 = str(modi_spl_4[0]) + ":" + str(modi_spl_4[1]) + ":" + str(modi_spl_4[2]) + ":" + str(
+                            modi_spl_4[3]) + ":" + str(modi_spl_2[4]) + ":" + str(modi_spl_2[5]) + ":" + str(
+                            modi_spl_2[6]) + ":" + str(modi_spl_2[7])
+                    else:
+
+                        last_1 = str(modi_spl_1[0]) + ":" + str(modi_spl_1[1]) + ":" + str(modi_spl_1[2]) + ":" + str(
+                            modi_spl_1[3]) + ":" + str(modi_spl_3[4]) + ":" + str(modi_spl_3[5]) + ":" + str(
+                            modi_spl_3[6]) + ":" + str(modi_spl_3[7])
+                        last_2 = str(modi_spl_2[0]) + ":" + str(modi_spl_2[1]) + ":" + str(modi_spl_2[2]) + ":" + str(
+                            modi_spl_2[3]) + ":" + str(modi_spl_4[4]) + ":" + str(modi_spl_4[5]) + ":" + str(
+                            modi_spl_4[6]) + ":" + str(modi_spl_4[7])
+
+                    for i in range(len(modi_result__)):
+                        print("last_result", modi_result__[i])
+                        # if i == len(modi_result__) - 1:
+                        #     last_result += str(modi_result__[i]) + 'a'
+                        #     # last_result += str(i) + str(modi_result__[i])
+                        #     print("i", i)
+                        if thisRow - 1 == i:
+                            last_result += last_2 + "\n"
+                        elif thisRow - 2 == i:
+                            last_result += last_1 + "\n"
+                        elif i == len(modi_result__) - 1:
+                            last_result += str(modi_result__[i]) + ''
+                            # last_result += str(i) + str(modi_result__[i])
+                            print("i", i)
+                        else:
+                            last_result += str(modi_result__[i]) + "\n"
+
+                    print("last_result_up", last_result)
+                    how_ = 'modify'
+                    modi_result_ = self.mySchedule_change2(how_, last_result)
+
+                    if modi_result_ == True:
+                        thisRow -= 1
+                        self.set_rand_int()
+                    else:
+                        print("up 수정 실패 2")
+
 
             else:
                 pyautogui.alert(button='넵', text='수정할 행을 선택해 주세요', title='확인해주이소')
                 print("수정할 행을 선택해 주세요. 추후 알러트로...")
 
-            # 백엔드 스케쥴 수정
 
-            last_result = ""
-            modi_result = ""
-            last_1 = ""
-            last_2 = ""
-            with open(file_path3, "r", encoding='utf-8-sig') as file:
-                lines = file.read().splitlines()
-                modi_ready_ = ' '.join(lines).split()
-
-                print("이거!!!!!!!!!!!!!!!!!!!!!! 222 ", modi_ready_)
-
-                for i in range(len(modi_ready_)):
-
-                    # if i + 1 == len(modi_ready_):
-                    #     modi_result += modi_ready_[i]
-
-                    if i == thisRow - 2:
-                        modi_result += modi_ready_[i + 1] + "\n"
-
-                    elif i == thisRow - 1:
-                        modi_result += modi_ready_[i - 1] + "\n"
-
-                    else:
-                        modi_result += modi_ready_[i] + "\n"
-
-                modi_result__ = modi_result.split("\n")
-                print("modi_ready__!!!!!!!!!!!!!", modi_ready__)
-                print("modi_result__!!!!!!!!!!!", modi_result__)
-
-                print("thisRowthisRowthisRow 2", thisRow)
-
-                modi_spl_1 = modi_ready_[thisRow - 2].split(":")  # 바뀌기전 5678 => 그대로
-                modi_spl_2 = modi_ready_[thisRow - 1].split(":")  # 바뀌기전 5678 => 그대로
-
-                modi_spl_3 = modi_result__[thisRow - 2].split(":")  # 바뀐 후 1234 => 바꾸기 b
-                modi_spl_4 = modi_result__[thisRow - 1].split(":")  # 바뀐후 1234 => 바꾸기 a
-
-                #      4번기준
-                #      thisRow - 2
-                #      modi_spl_3 + modi_spl_2
-                #      thisRow - 1
-                #      modi_spl_1 + modi_spl_4
-                # else:
-                #     thisRow - 2
-                #     modi_spl_1 + modi_spl_4
-                #     thisRow - 1
-                #     modi_spl_3 + modi_spl_2##################나중에 마지막줄을 올릴때 잘못 처리되는거 수정하기
-
-                if thisCol < 5:
-
-                    last_1 = str(modi_spl_3[0]) + ":" + str(modi_spl_3[1]) + ":" + str(modi_spl_3[2]) + ":" + str(
-                        modi_spl_3[3]) + ":" + str(modi_spl_1[4]) + ":" + str(modi_spl_1[5]) + ":" + str(
-                        modi_spl_1[6]) + ":" + str(modi_spl_1[7])
-                    last_2 = str(modi_spl_4[0]) + ":" + str(modi_spl_4[1]) + ":" + str(modi_spl_4[2]) + ":" + str(
-                        modi_spl_4[3]) + ":" + str(modi_spl_2[4]) + ":" + str(modi_spl_2[5]) + ":" + str(
-                        modi_spl_2[6]) + ":" + str(modi_spl_2[7])
-                else:
-
-                    last_1 = str(modi_spl_1[0]) + ":" + str(modi_spl_1[1]) + ":" + str(modi_spl_1[2]) + ":" + str(
-                        modi_spl_1[3]) + ":" + str(modi_spl_3[4]) + ":" + str(modi_spl_3[5]) + ":" + str(
-                        modi_spl_3[6]) + ":" + str(modi_spl_3[7])
-                    last_2 = str(modi_spl_2[0]) + ":" + str(modi_spl_2[1]) + ":" + str(modi_spl_2[2]) + ":" + str(
-                        modi_spl_2[3]) + ":" + str(modi_spl_4[4]) + ":" + str(modi_spl_4[5]) + ":" + str(
-                        modi_spl_4[6]) + ":" + str(modi_spl_4[7])
-
-                for i in range(len(modi_result__)):
-                    print("last_result", modi_result__[i])
-                    # if i == len(modi_result__) - 1:
-                    #     last_result += str(modi_result__[i]) + 'a'
-                    #     # last_result += str(i) + str(modi_result__[i])
-                    #     print("i", i)
-                    if thisRow - 1 == i:
-                        last_result += last_2 + "\n"
-                    elif thisRow - 2 == i:
-                        last_result += last_1 + "\n"
-                    elif i == len(modi_result__) - 1:
-                        last_result += str(modi_result__[i]) + ''
-                        # last_result += str(i) + str(modi_result__[i])
-                        print("i", i)
-                    else:
-                        last_result += str(modi_result__[i]) + "\n"
-
-                print("last_result_up", last_result)
-                how_ = 'modify'
-                modi_result_ = self.mySchedule_change2(how_, last_result)
-
-                if modi_result_ == True:
-                    thisRow -= 1
-                    self.set_rand_int()
-                else:
-                    print("up 수정 실패 2")
 
         #      4번기준
         #      thisRow - 2
@@ -2847,74 +2850,77 @@ class FirstTab(QWidget):
                 else:
                     print("down 수정 실패 1")
 
+                print("")
+                # 백엔드 스케쥴 수정
+
+                last_result = ""
+                modi_result = ""
+                last_1 = ""
+                last_2 = ""
+                with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    lines = file.read().splitlines()
+                    modi_ready_ = ' '.join(lines).split()
+
+                    for i in range(len(modi_ready_)):
+
+                        # if i + 1 == len(modi_ready_):
+                        #     modi_result += modi_ready_[i]
+                        if thisRow == i:
+                            modi_result += modi_ready_[i - 1] + "\n"
+                        elif thisRow - 1 == i:
+                            modi_result += modi_ready_[i + 1] + "\n"
+                        else:
+                            modi_result += modi_ready_[i] + "\n"
+
+                    modi_result__ = modi_result.split("\n")
+
+                    modi_spl_1 = modi_ready_[thisRow - 1].split(":")  # 바뀌기전 1234 => 바꾸기
+                    modi_spl_2 = modi_ready_[thisRow].split(":")  # 바뀌기전 5678 => 그대로
+                    modi_spl_3 = modi_result__[thisRow - 1].split(":")  # 바뀐 후 1234 => 바꾸기
+                    modi_spl_4 = modi_result__[thisRow].split(":")  # 바뀐후 5678 => 그대로
+
+                    if thisCol < 5:
+
+                        last_1 = str(modi_spl_3[0]) + ":" + str(modi_spl_3[1]) + ":" + str(modi_spl_3[2]) + ":" + str(
+                            modi_spl_3[3]) + ":" + str(modi_spl_1[4]) + ":" + str(modi_spl_1[5]) + ":" + str(
+                            modi_spl_1[6]) + ":" + str(modi_spl_1[7])
+                        last_2 = str(modi_spl_4[0]) + ":" + str(modi_spl_4[1]) + ":" + str(modi_spl_4[2]) + ":" + str(
+                            modi_spl_4[3]) + ":" + str(modi_spl_2[4]) + ":" + str(modi_spl_2[5]) + ":" + str(
+                            modi_spl_2[6]) + ":" + str(modi_spl_2[7])
+                    else:
+
+                        last_1 = str(modi_spl_1[0]) + ":" + str(modi_spl_1[1]) + ":" + str(modi_spl_1[2]) + ":" + str(
+                            modi_spl_1[3]) + ":" + str(modi_spl_3[4]) + ":" + str(modi_spl_3[5]) + ":" + str(
+                            modi_spl_3[6]) + ":" + str(modi_spl_3[7])
+                        last_2 = str(modi_spl_2[0]) + ":" + str(modi_spl_2[1]) + ":" + str(modi_spl_2[2]) + ":" + str(
+                            modi_spl_2[3]) + ":" + str(modi_spl_4[4]) + ":" + str(modi_spl_4[5]) + ":" + str(
+                            modi_spl_4[6]) + ":" + str(modi_spl_4[7])
+
+                    for i in range(len(modi_result__)):
+
+                        if i + 1 == len(modi_result__):
+                            last_result += str(modi_result__[i])
+                        elif thisRow - 1 == i:
+                            last_result += last_1 + "\n"
+                        elif thisRow == i:
+                            last_result += last_2 + "\n"
+                        else:
+                            last_result += str(modi_result__[i]) + "\n"
+
+                    print("last_result_down", last_result)
+                    how_ = 'modify'
+                    modi_result_ = self.mySchedule_change2(how_, last_result)
+                    if modi_result_ == True:
+                        thisRow += 1
+                        self.set_rand_int()
+                    else:
+                        print("down 수정 실패 2")
+
             else:
                 pyautogui.alert(button='넵', text='수정할 행을 선택해 주세요', title='확인해주이소')
                 print("수정할 행을 선택해 주세요. 추후 알러트로...")
 
-            # 백엔드 스케쥴 수정
 
-            last_result = ""
-            modi_result = ""
-            last_1 = ""
-            last_2 = ""
-            with open(file_path3, "r", encoding='utf-8-sig') as file:
-                lines = file.read().splitlines()
-                modi_ready_ = ' '.join(lines).split()
-
-                for i in range(len(modi_ready_)):
-
-                    # if i + 1 == len(modi_ready_):
-                    #     modi_result += modi_ready_[i]
-                    if thisRow == i:
-                        modi_result += modi_ready_[i - 1] + "\n"
-                    elif thisRow - 1 == i:
-                        modi_result += modi_ready_[i + 1] + "\n"
-                    else:
-                        modi_result += modi_ready_[i] + "\n"
-
-                modi_result__ = modi_result.split("\n")
-
-                modi_spl_1 = modi_ready_[thisRow - 1].split(":")  # 바뀌기전 1234 => 바꾸기
-                modi_spl_2 = modi_ready_[thisRow].split(":")  # 바뀌기전 5678 => 그대로
-                modi_spl_3 = modi_result__[thisRow - 1].split(":")  # 바뀐 후 1234 => 바꾸기
-                modi_spl_4 = modi_result__[thisRow].split(":")  # 바뀐후 5678 => 그대로
-
-                if thisCol < 5:
-
-                    last_1 = str(modi_spl_3[0]) + ":" + str(modi_spl_3[1]) + ":" + str(modi_spl_3[2]) + ":" + str(
-                        modi_spl_3[3]) + ":" + str(modi_spl_1[4]) + ":" + str(modi_spl_1[5]) + ":" + str(
-                        modi_spl_1[6]) + ":" + str(modi_spl_1[7])
-                    last_2 = str(modi_spl_4[0]) + ":" + str(modi_spl_4[1]) + ":" + str(modi_spl_4[2]) + ":" + str(
-                        modi_spl_4[3]) + ":" + str(modi_spl_2[4]) + ":" + str(modi_spl_2[5]) + ":" + str(
-                        modi_spl_2[6]) + ":" + str(modi_spl_2[7])
-                else:
-
-                    last_1 = str(modi_spl_1[0]) + ":" + str(modi_spl_1[1]) + ":" + str(modi_spl_1[2]) + ":" + str(
-                        modi_spl_1[3]) + ":" + str(modi_spl_3[4]) + ":" + str(modi_spl_3[5]) + ":" + str(
-                        modi_spl_3[6]) + ":" + str(modi_spl_3[7])
-                    last_2 = str(modi_spl_2[0]) + ":" + str(modi_spl_2[1]) + ":" + str(modi_spl_2[2]) + ":" + str(
-                        modi_spl_2[3]) + ":" + str(modi_spl_4[4]) + ":" + str(modi_spl_4[5]) + ":" + str(
-                        modi_spl_4[6]) + ":" + str(modi_spl_4[7])
-
-                for i in range(len(modi_result__)):
-
-                    if i + 1 == len(modi_result__):
-                        last_result += str(modi_result__[i])
-                    elif thisRow - 1 == i:
-                        last_result += last_1 + "\n"
-                    elif thisRow == i:
-                        last_result += last_2 + "\n"
-                    else:
-                        last_result += str(modi_result__[i]) + "\n"
-
-                print("last_result_down", last_result)
-                how_ = 'modify'
-                modi_result_ = self.mySchedule_change2(how_, last_result)
-                if modi_result_ == True:
-                    thisRow += 1
-                    self.set_rand_int()
-                else:
-                    print("down 수정 실패 2")
 
 
         except Exception as e:
