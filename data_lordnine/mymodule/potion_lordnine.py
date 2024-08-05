@@ -473,6 +473,21 @@ def potion_setting(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(715, 420, 760, 455, cla, img, 0.95)
+            if imgs_ is not None and imgs_ != False:
+                print("무게증가주문서", imgs_)
+                break
+            else:
+                click_pos_2(525, 440, cla)
+                time.sleep(0.5)
+                click_pos_2(615, 440, cla)
+                time.sleep(0.5)
+            time.sleep(0.3)
+
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(715, 475, 760, 515, cla, img, 0.95)
             if imgs_ is not None and imgs_ != False:
                 print("회복증가주문서", imgs_)
