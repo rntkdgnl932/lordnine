@@ -2941,6 +2941,7 @@ class FirstTab(QWidget):
             print("result", result)
             how_ = "modify"
             self.mySchedule_change(how_, result)
+            self.mySchedule_change2(how_, result)
             self.mystatus_refresh()
 
         except Exception as e:
@@ -3253,7 +3254,7 @@ class FirstTab(QWidget):
                                         print("대기중??????????")
                                         reset_schedule_ += '완료:'
                                     elif complete_[j] == "완료":
-                                        reset_schedule_ += complete_[j] + ":"
+                                        reset_schedule_ += '대기중:'
                                 else:
                                     reset_schedule_ += complete_[j] + ":"
 
@@ -3265,7 +3266,7 @@ class FirstTab(QWidget):
                                         print("대기중?????!!!!!!!!!?????")
                                         reset_schedule_ += '완료\n'
                                     elif complete_[j] == "완료":
-                                        reset_schedule_ += complete_[j] + "\n"
+                                        reset_schedule_ += '대기중\n'
                                 else:
                                     reset_schedule_ += complete_[j] + "\n"
 
@@ -3273,38 +3274,7 @@ class FirstTab(QWidget):
                     with open(file_path, "w", encoding='utf-8-sig') as file:
                         file.write(reset_schedule_)
 
-                with open(file_path3, "r", encoding='utf-8-sig') as file:
-                    lines = file.read().splitlines()
-                    lines = ' '.join(lines).split()
 
-                    # 리프레쉬 표 수정
-                    reset_schedule_ = ""
-                    for i in range(len(lines)):
-                        complete_ = lines[i].split(":")
-                        for j in range(len(complete_)):
-                            if j < 3:
-                                reset_schedule_ += complete_[j] + ":"
-                            if j == 3:
-                                if thisValue in complete_[2] and thisCol < 5:
-                                    if complete_[j] == "대기중":
-                                        print("대기중??????????")
-                                        reset_schedule_ += '완료:'
-                                    # elif complete_[j] == "완료":
-                                    #     reset_schedule_ += '대기중:'
-                                else:
-                                    reset_schedule_ += complete_[j] + ":"
-
-                            if 3 < j < 7:
-                                reset_schedule_ += complete_[j] + ":"
-                            if j == 7:
-                                if thisValue in complete_[6] and thisCol > 4:
-                                    if complete_[j] == "대기중":
-                                        print("대기중?????!!!!!!!!!?????")
-                                        reset_schedule_ += '완료\n'
-                                    # elif complete_[j] == "완료":
-                                    #     reset_schedule_ += '대기중\n'
-                                else:
-                                    reset_schedule_ += complete_[j] + "\n"
 
                     with open(file_path3, "w", encoding='utf-8-sig') as file:
                         file.write(reset_schedule_)
@@ -3408,6 +3378,7 @@ class FirstTab(QWidget):
             how_ = 'add'
             datas = str(data)
             result = self.mySchedule_change(how_, datas)
+            result = self.mySchedule_change2(how_, datas)
             print("added_", result)
             if result == True:
                 schedule_add = True
