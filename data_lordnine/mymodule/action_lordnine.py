@@ -631,8 +631,10 @@ def skip_start(cla):
 def move_check(cla):
     import numpy as np
     import cv2
+    import os
 
     from function_game import imgs_set_, click_pos_reg
+    from massenger import line_to_me
     try:
 
         print("move_check")
@@ -657,32 +659,40 @@ def move_check(cla):
         while is_move is True:
             is_move_second += 1
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\move\\move_1.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(440, 570, 550, 700, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("이동중", is_move_second, "초")
-                is_move_count = 0
+            if is_move_second > 600:
+
+                why = "이동 오류 있는 듯 하다."
+                line_to_me(cla, why)
+                time.sleep(600)
 
             else:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\move\\move_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                imgs_ = imgs_set_(440, 570, 550, 700, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    is_move_count += 1
-                    if is_move_count > 3:
-                        is_move = False
-                        move_end = True
+                    print("이동중", is_move_second, "초")
+                    is_move_count = 0
+
                 else:
-                    result_loading = loading_check(cla)
-                    if result_loading == True:
-                        is_move_count = 0
-                    else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
                         is_move_count += 1
                         if is_move_count > 3:
                             is_move = False
+                            move_end = True
+                    else:
+                        result_loading = loading_check(cla)
+                        if result_loading == True:
+                            is_move_count = 0
+                        else:
+                            is_move_count += 1
+                            if is_move_count > 3:
+                                is_move = False
 
             time.sleep(1)
 
