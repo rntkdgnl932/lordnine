@@ -815,7 +815,7 @@ def juljun_attack_check(cla):
                 imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("juljun_move_on", imgs_)
-                    for r in range(25):
+                    for r in range(30):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_attack_on.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -825,6 +825,7 @@ def juljun_attack_check(cla):
                             is_attack = True
                             break
                         time.sleep(0.2)
+                    break
                 else:
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_rest_on.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -832,7 +833,7 @@ def juljun_attack_check(cla):
                     imgs_ = imgs_set_(350, 630, 600, 700, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
                         print("juljun_rest_on", imgs_)
-                        for r in range(25):
+                        for r in range(30):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_attack_on.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -842,6 +843,7 @@ def juljun_attack_check(cla):
                                 is_attack = True
                                 break
                             time.sleep(0.2)
+                        break
             time.sleep(0.2)
 
         return is_attack
