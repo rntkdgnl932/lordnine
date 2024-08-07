@@ -68,7 +68,17 @@ def go_test():
 
         # text_check_get(512, 315, 542, 360, cla)
 
-        boonhae_option(cla)
+        for s in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("sell_title", imgs_)
+                click_pos_2(710, 435, cla)
+            else:
+                break
+            time.sleep(0.5)
 
         # x_1 = 200 + 70
         # y_1 = 900

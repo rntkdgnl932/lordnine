@@ -371,6 +371,8 @@ def auction_jangbi(cla):
                                         click_pos_reg(x_reg, y_reg, cla)
                             time.sleep(0.5)
 
+                        no_informaiton = False
+
                         # 현재 최저가 구하기
 
                         for s in range(10):
@@ -382,13 +384,22 @@ def auction_jangbi(cla):
 
                                 print("sell_title", imgs_)
 
-                                low_price_1 = get_low_price(cla, "low")
-                                low_price_2 = get_low_price(cla, "yesterday")
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 530, 465, 565, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("no_information", imgs_)
+                                    no_informaiton = True
 
-                                if int(low_price_1) > int(low_price_2):
-                                    low_price = low_price_1
                                 else:
-                                    low_price = (low_price_1 + low_price_2) / 2
+                                    low_price_1 = get_low_price(cla, "low")
+                                    low_price_2 = get_low_price(cla, "yesterday")
+
+                                    if int(low_price_1) > int(low_price_2):
+                                        low_price = low_price_1
+                                    else:
+                                        low_price = (low_price_1 + low_price_2) / 2
 
                                 break
                             else:
@@ -401,42 +412,55 @@ def auction_jangbi(cla):
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                             time.sleep(0.5)
 
-                        # 판매수량 구하기
-
-                        quantity = 1
-
-                        # 다이아 재화 선택하기
-                        for s in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("diamond", imgs_)
-                                break
-                            else:
+                        if no_informaiton == True:
+                            for s in range(10):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_2(670, 470, cla)
+                                    print("sell_title", imgs_)
+                                    click_pos_2(710, 435, cla)
                                 else:
-                                    confirm_all(cla)
-                            time.sleep(0.5)
+                                    break
+                                time.sleep(0.5)
+                        else:
+                            # 판매수량 구하기
 
-                        # 계산하기
+                            quantity = 1
 
-                        print("low_price", low_price)
-                        print("quantity", quantity)
+                            # 다이아 재화 선택하기
+                            for s in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("diamond", imgs_)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_2(670, 470, cla)
+                                    else:
+                                        confirm_all(cla)
+                                time.sleep(0.5)
 
-                        if low_price != 0:
-                            result_price = int(low_price)
-                            print("result_price", result_price)
+                            # 계산하기
 
-                            if result_price > 10:
-                                print("판매하자")
-                                anymore_sell = sell_click(cla, result_price)
+                            print("low_price", low_price)
+                            print("quantity", quantity)
+
+                            if low_price != 0:
+                                result_price = int(low_price)
+                                print("result_price", result_price)
+
+                                if result_price > 10:
+                                    print("판매하자")
+                                    anymore_sell = sell_click(cla, result_price)
 
 
                     else:
@@ -577,21 +601,32 @@ def auction_item(cla):
 
                         # 현재 최저가 구하기
 
+                        no_informaiton = False
+
                         for s in range(10):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-
                                 print("sell_title", imgs_)
-                                low_price_1 = get_low_price(cla, "low")
-                                low_price_2 = get_low_price(cla, "yesterday")
 
-                                if int(low_price_1) > int(low_price_2):
-                                    low_price = low_price_1
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 530, 465, 565, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("no_information", imgs_)
+                                    no_informaiton = True
+
                                 else:
-                                    low_price = (low_price_1 + low_price_2) / 2
+                                    low_price_1 = get_low_price(cla, "low")
+                                    low_price_2 = get_low_price(cla, "yesterday")
+
+                                    if int(low_price_1) > int(low_price_2):
+                                        low_price = low_price_1
+                                    else:
+                                        low_price = (low_price_1 + low_price_2) / 2
 
                                 break
                             else:
@@ -604,110 +639,123 @@ def auction_item(cla):
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                             time.sleep(0.5)
 
-                        # 판매수량 구하기
 
-                        for s in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\cancle.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(360, 660, 470, 700, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("cancle", imgs_)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\max.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(510, 620, 580, 660, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("max", imgs_)
-
-                                    result_many_ = 0
-
-                                    for r in range(3):
-                                        result_many_ready = text_check_get_num(420, 465, 520, 492, cla)
-                                        print("result_many_ready", result_many_ready)
-
-                                        result_many_ready = result_many_ready.replace('\n', '')
-
-                                        if result_many_ready != "":
-
-                                            result_many_ready = change_number_float(result_many_ready)
-                                            print("result_price_change", result_many_ready)
-
-                                            result_many_ = float(result_many_ready)
-                                            print("result_many_", result_many_)
-
-                                            if result_many_ == 1:
-                                                print("숫자 1")
-                                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                                time.sleep(0.5)
-                                            else:
-                                                print("숫자 1 아니다")
-                                                break
-                                        time.sleep(0.5)
-                                    if result_many_ != 0:
-
-                                        print(type(result_many_))
-
-                                        if str(type(result_many_)) == "<class 'float'>":
-                                            print("숫자", result_many_)
-                                            quantity = result_many_
-                                        else:
-                                            print("숫자 아니다. 망했다.")
-
-                                        for t in range(10):
-                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
-                                            img_array = np.fromfile(full_path, np.uint8)
-                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
-                                            if imgs_ is not None and imgs_ != False:
-                                                break
-                                            else:
-                                                confirm_all(cla)
-                                            time.sleep(0.5)
-
-                                    break
-                                else:
-                                    click_pos_2(670, 500, cla)
-                            time.sleep(0.5)
-                        # 다이아 재화 선택하기
-                        for s in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("diamond", imgs_)
-                                break
-                            else:
+                        if no_informaiton == True:
+                            for s in range(10):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_2(670, 470, cla)
+                                    print("sell_title", imgs_)
+                                    click_pos_2(710, 435, cla)
                                 else:
-                                    confirm_all(cla)
-                            time.sleep(0.5)
+                                    break
+                                time.sleep(0.5)
+                        else:
+                            # 판매수량 구하기
+                            for s in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\cancle.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(360, 660, 470, 700, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("cancle", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\max.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(510, 620, 580, 660, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("max", imgs_)
 
-                        # 계산하기
+                                        result_many_ = 0
 
-                        print("low_price", low_price)
-                        print("quantity", quantity)
+                                        for r in range(3):
+                                            result_many_ready = text_check_get_num(420, 465, 520, 492, cla)
+                                            print("result_many_ready", result_many_ready)
 
-                        if low_price != 0 and quantity != 0:
-                            result_price = int(low_price * quantity)
-                            print("result_price", result_price)
+                                            result_many_ready = result_many_ready.replace('\n', '')
 
-                            if result_price > 10:
-                                print("판매하자")
-                                anymore_sell = sell_click(cla, result_price)
+                                            if result_many_ready != "":
+
+                                                result_many_ready = change_number_float(result_many_ready)
+                                                print("result_price_change", result_many_ready)
+
+                                                result_many_ = float(result_many_ready)
+                                                print("result_many_", result_many_)
+
+                                                if result_many_ == 1:
+                                                    print("숫자 1")
+                                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                    time.sleep(0.5)
+                                                else:
+                                                    print("숫자 1 아니다")
+                                                    break
+                                            time.sleep(0.5)
+                                        if result_many_ != 0:
+
+                                            print(type(result_many_))
+
+                                            if str(type(result_many_)) == "<class 'float'>":
+                                                print("숫자", result_many_)
+                                                quantity = result_many_
+                                            else:
+                                                print("숫자 아니다. 망했다.")
+
+                                            for t in range(10):
+                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    break
+                                                else:
+                                                    confirm_all(cla)
+                                                time.sleep(0.5)
+
+                                        break
+                                    else:
+                                        click_pos_2(670, 500, cla)
+                                time.sleep(0.5)
+                            # 다이아 재화 선택하기
+                            for s in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("diamond", imgs_)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_2(670, 470, cla)
+                                    else:
+                                        confirm_all(cla)
+                                time.sleep(0.5)
+
+                            # 계산하기
+
+                            print("low_price", low_price)
+                            print("quantity", quantity)
+
+                            if low_price != 0 and quantity != 0:
+                                result_price = int(low_price * quantity)
+                                print("result_price", result_price)
+
+                                if result_price > 10:
+                                    print("판매하자")
+                                    anymore_sell = sell_click(cla, result_price)
                     else:
                         print("접자")
                     time.sleep(0.5)
