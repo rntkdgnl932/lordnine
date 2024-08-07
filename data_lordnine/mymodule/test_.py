@@ -68,7 +68,7 @@ def go_test():
 
         # text_check_get(512, 315, 542, 360, cla)
 
-        potion_check(cla)
+        boonhae_option(cla)
 
         # x_1 = 200 + 70
         # y_1 = 900

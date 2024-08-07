@@ -686,7 +686,7 @@ def boonhae_option(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(270, 515, 350, 600, cla, img, 0.7)
+                    imgs_ = imgs_set_(270, 515, 450, 600, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         check_end = False
                     else:
@@ -832,7 +832,7 @@ def boonhae_option(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(280, 520, 355, 610, cla, img, 0.8)
+                        imgs_ = imgs_set_(280, 520, 450, 610, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("boonhae_checked : ", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
