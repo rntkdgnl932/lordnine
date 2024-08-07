@@ -3384,7 +3384,6 @@ class FirstTab(QWidget):
                 schedule_add = True
                 self.mystatus_refresh()
                 print('스케쥴 추가 됨')
-
             return schedule_add
         except Exception as e:
             print(e)
