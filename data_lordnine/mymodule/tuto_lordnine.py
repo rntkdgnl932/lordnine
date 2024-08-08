@@ -53,10 +53,11 @@ def tuto_start(cla):
                     v_.sub_mission_count += 1
                     if v_.sub_mission_count > 4:
                         v_.sub_mission = False
+                        v_.sub_mission_count = 0
                     else:
                         y_sub = 45
 
-                print("서브", v_.sub_mission)
+                print("서브", v_.sub_mission, v_.sub_mission_count)
 
                 # 퀘스트 클릭
                 click_pos_2(870, 120 + y_sub, cla)
