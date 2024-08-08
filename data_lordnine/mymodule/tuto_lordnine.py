@@ -15,7 +15,7 @@ def tuto_start(cla):
     import cv2
 
     from function_game import click_pos_2, imgs_set_, click_pos_reg
-    from action_lordnine import skip_start, confirm_all, move_check, juljun_off
+    from action_lordnine import skip_start, confirm_all, move_check, juljun_off, loading_check
     from dead_die import dead_check
     from potion_lordnine import potion_check
 
@@ -71,6 +71,15 @@ def tuto_start(cla):
                         if imgs_ is not None and imgs_ != False:
                             print("near_aim_description", imgs_)
                             break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\loading\\tip.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(0, 900, 150, 1040, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("tip : loading...")
+                                loading_check(cla)
+                                break
                         time.sleep(0.2)
 
                 click_pos_2(780, 130 + y_sub, cla)
