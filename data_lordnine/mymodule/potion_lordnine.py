@@ -437,7 +437,7 @@ def potion_setting(cla):
             y_cal = 0
 
 
-        click_pos_2(530, 400 + y_cal, cla)
+        click_pos_2(630, 400 + y_cal, cla)
         time.sleep(0.1)
         click_pos_2(530, 400 + y_cal, cla)
         time.sleep(0.5)

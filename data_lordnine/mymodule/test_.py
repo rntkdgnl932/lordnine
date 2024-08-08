@@ -20,7 +20,7 @@ def go_test():
     from function_game import text_check_get, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
     from tuto_lordnine import way_check
     from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check
-    from clean_screen_lordnine import clean_screen_just_on_start
+    from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start, collection_start
     from potion_lordnine import potion_buy_start, potion_check
     from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary
@@ -63,7 +63,42 @@ def go_test():
         #
         # dun_in(cla, where)
 
-        potion_buy_start("three")
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\jabhwa.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(730, 770, 810, 850, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("jabhwa : map 체크", imgs_)
+
+            for i in range(10):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\map.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(185, 100, 220, 130, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("map", imgs_)
+                    break
+                else:
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\party_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(40, 140, 160, 240, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("party_1", imgs_)
+                        click_pos_2(35, 125, cla)
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\party_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(40, 140, 160, 240, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("party_2", imgs_)
+                            click_pos_2(35, 125, cla)
+                        else:
+                            clean_screen_start(cla)
+                            click_pos_2(35, 125, cla)
+                time.sleep(0.7)
 
         #################################################
         # get_diary(cla)

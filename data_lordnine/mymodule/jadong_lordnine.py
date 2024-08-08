@@ -276,6 +276,10 @@ def spot_in_ready(cla, where):
             else:
                 result_out = out_check(cla)
                 if result_out == True:
+
+                    # 피티 확인
+
+
                     click_pos_2(130, 170, cla)
                     for i in range(10):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"

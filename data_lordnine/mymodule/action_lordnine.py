@@ -986,6 +986,43 @@ def go_maul(cla):
                                 clean_screen_start(cla)
             time.sleep(0.5)
 
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\jabhwa.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(730, 770, 810, 850, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("jabhwa : map 체크", imgs_)
+
+            for i in range(10):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\map.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(185, 100, 220, 130, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("map", imgs_)
+                    break
+                else:
+
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\party_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(40, 140, 160, 240, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("party_1", imgs_)
+                        click_pos_2(35, 125, cla)
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\party_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(40, 140, 160, 240, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("party_2", imgs_)
+                            click_pos_2(35, 125, cla)
+                        else:
+                            clean_screen_start(cla)
+                            click_pos_2(35, 125, cla)
+                time.sleep(0.7)
         return is_maul
 
     except Exception as e:
