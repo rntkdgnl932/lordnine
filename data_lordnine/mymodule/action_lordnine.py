@@ -792,7 +792,7 @@ def juljun_attack_check(cla):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import skip_start
-    from tuto_lordnine import way_check
+    from dead_die import dead_check
 
     try:
         print("juljun_attack_check")
@@ -844,6 +844,15 @@ def juljun_attack_check(cla):
                                 break
                             time.sleep(0.2)
                         break
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_dead.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(300, 630, 630, 700, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            print("juljun_dead", imgs_)
+                            dead_check(cla)
+                            break
             time.sleep(0.2)
 
         return is_attack
