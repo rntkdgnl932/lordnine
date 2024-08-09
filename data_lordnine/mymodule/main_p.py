@@ -2970,6 +2970,9 @@ class FirstTab(QWidget):
     def mySchedule_del(self):
         global rowcount, colcount
         try:
+            print("thisCol", thisCol)
+            print("thisRow", thisRow)
+
             self.table_load()
             rowcount = self.tableWidget.rowCount()
             print("rowcount", rowcount)
@@ -2981,12 +2984,168 @@ class FirstTab(QWidget):
             print("result", result)
             how_ = "modify"
             self.mySchedule_change(how_, result)
-            self.mySchedule_change2(how_, result)
+            # 잠김
+            self.del_mySchedule(thisRow - 1)
             self.mystatus_refresh()
 
         except Exception as e:
             print(e)
             return 0
+
+    def del_mySchedule(self, is_row):
+        try:
+
+            print("is_row", is_row)
+
+            if thisValue != "none":
+
+                v_.one_cla_count = 0
+                v_.two_cla_count = 0
+                v_.one_cla_ing = 'check'
+                v_.two_cla_ing = 'check'
+
+                v_.dead_count = 0
+
+                # myQuest_number_check('all', 'refresh')
+
+                dir_path = "C:\\my_games\\" + str(v_.game_folder)
+                file_path = dir_path + "\\mysettings\\myschedule\\schedule.txt"
+                file_path2 = dir_path + "\\mysettings\\refresh_time\\quest.txt"
+                file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+                file_path13 = dir_path + "\\mysettings\\refresh_time\\refresh_time.txt"
+
+                if os.path.isdir(dir_path) == False:
+                    print('디렉토리 존재하지 않음')
+                    os.makedirs(dir_path)
+
+                ######################
+
+                ######################
+
+                with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    lines = file.read().splitlines()
+                    lines = ' '.join(lines).split()
+
+                    isSchedule_ = False
+                    while isSchedule_ is False:
+                        if lines == [] or lines == "":
+                            print("스케쥴이 비었다 : myQuest_play_check")
+                            with open(file_path3, "r", encoding='utf-8-sig') as file:
+                                schedule_ready = file.read()
+                            with open(file_path, "w", encoding='utf-8-sig') as file:
+                                file.write(schedule_ready)
+                            with open(file_path, "r", encoding='utf-8-sig') as file:
+                                lines = file.read().splitlines()
+                                lines = ' '.join(lines).split()
+                        else:
+                            isSchedule_ = True
+                    # 표 수정
+                    reset_schedule_ = ""
+                    for i in range(len(lines)):
+                        complete_ = lines[i].split(":")
+                        for j in range(len(complete_)):
+                            if i == is_row:
+                                print("삭제된것")
+                            else:
+
+                                if j < 3:
+                                    reset_schedule_ += complete_[j] + ":"
+                                if j == 3:
+                                    reset_schedule_ += complete_[j] + ":"
+
+                                if 3 < j < 7:
+                                    reset_schedule_ += complete_[j] + ":"
+                                if j == 7:
+                                    reset_schedule_ += complete_[j] + "\n"
+
+                    print('reset_schedule_표 수정', reset_schedule_)
+                    with open(file_path3, "w", encoding='utf-8-sig') as file:
+                        file.write(reset_schedule_)
+
+                # with open(file_path3, "r", encoding='utf-8-sig') as file:
+                #     lines = file.read().splitlines()
+                #     lines = ' '.join(lines).split()
+                #     # 백업 수정
+                #     reset_schedule_ = ""
+                #     for i in range(len(lines)):
+                #         complete_ = lines[i].split(":")
+                #         for j in range(len(complete_)):
+                #             if j < 3:
+                #                 reset_schedule_ += complete_[j] + ":"
+                #             if j == 3:
+                #                 reset_schedule_ += '대기중:'
+                #             if 3 < j < 7:
+                #                 reset_schedule_ += complete_[j] + ":"
+                #             if j == 7:
+                #                 reset_schedule_ += '대기중\n'
+                #
+                #     print('reset_schedule_백업 수정', reset_schedule_)
+                #     with open(file_path3, "w", encoding='utf-8-sig') as file:
+                #         file.write(reset_schedule_)
+
+                #######################################################
+
+                isRefresh = False
+                while isRefresh is False:
+                    if os.path.isfile(file_path13) == True:
+                        with open(file_path13, "r", encoding='utf-8-sig') as file:
+                            refresh_time = file.read()
+                            refresh_time_bool = refresh_time.isdigit()
+                            if refresh_time_bool == True:
+                                isRefresh = True
+                                print("refresh_time", refresh_time)
+                            else:
+                                with open(file_path13, "w", encoding='utf-8-sig') as file:
+                                    file.write(str(4))
+                    else:
+                        with open(file_path13, "w", encoding='utf-8-sig') as file:
+                            file.write(str(4))
+
+                # with open(file_path3, "r", encoding='utf-8-sig') as file:
+                #     lines = file.read()
+                #     # lines = file.read().splitlines()
+                #     print('line_refresh', lines)
+                # with open(file_path, "w", encoding='utf-8-sig') as file:
+                #     file.write(lines)
+
+                with open(file_path, "r", encoding='utf-8-sig') as file:
+                    lines = file.read()
+
+                ############################################################
+
+                nowDay_ = datetime.today().strftime("%Y%m%d")
+                nowDay = int(nowDay_)
+                nowTime = int(datetime.today().strftime("%H"))
+                yesterday_ = date.today() - timedelta(1)
+                yesterday = int(yesterday_.strftime('%Y%m%d'))
+
+                if nowTime >= int(refresh_time):
+                    nowDay = str(nowDay)
+                else:
+                    nowDay = yesterday
+                    nowDay = str(nowDay)
+                with open(file_path2, "w", encoding='utf-8-sig') as file:
+                    file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
+
+                remove_ = self.tableWidget.rowCount()
+                print("remove_", remove_)
+                for i in range(remove_ - 1):
+                    self.tableWidget.removeRow(0)
+
+                refresh_result = lines.split("\n")
+                rowcount = self.tableWidget.rowCount()
+                print("refresh_rowcount", self.tableWidget.rowCount())
+                count_ = len(refresh_result) - rowcount - 1
+                for i in range(count_):
+                    self.tableWidget.insertRow(self.tableWidget.rowCount())
+                print("refresh_rowcount2", self.tableWidget.rowCount())
+                self.set_rand_int()
+            else:
+                print("해당 스케쥴을 클릭해라")
+        except Exception as e:
+            print(e)
+            return 0
+
 
     def mySchedule_refresh(self):
         try:
@@ -3072,6 +3231,7 @@ class FirstTab(QWidget):
             ##############스케쥴 변경
             print("thisValue", thisValue)
             print("thisCol", thisCol)
+            print("thisRow", thisRow)
 
             if thisValue != "none":
 
@@ -3557,7 +3717,7 @@ class FirstTab(QWidget):
 
             elif how_ == "modify":
 
-
+                # 잠김
 
                 with open(file_path3, "w", encoding='utf-8-sig') as file:
                     file.write(datas)
