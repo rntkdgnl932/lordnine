@@ -1424,6 +1424,7 @@ class FirstTab(QWidget):
 
 
             self.perfect_pause.setText("정지 중")
+            self.perfect_pause.setStyleSheet("color:black; background:blue")
             self.perfect_pause.setDisabled(True)
             QTest.qWait(1000)
 
@@ -1453,6 +1454,7 @@ class FirstTab(QWidget):
         # change_ready_step = False
 
         self.again_restart.setText("업뎃 중")
+        self.again_restart.setStyleSheet("color:black; background:blue")
         self.again_restart.setDisabled(True)
         QTest.qWait(1000)
 
