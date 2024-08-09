@@ -1,8 +1,9 @@
 # * QTabWidget 탭에 다양한 위젯 추가
 import numpy as np
 from PyQt5.QtWidgets import *
-# from PyQt5.QtGui import QIcon, QFont       #아이콘
+from PyQt5.QtGui import QIcon, QFont, QColor       #아이콘
 from PyQt5.QtCore import Qt, QThread
+from PyQt5.QtTest import *
 
 import sys
 
@@ -1420,6 +1421,12 @@ class FirstTab(QWidget):
 
     def moonlight_stop_perfect(self):
         try:
+
+
+            self.perfect_pause.setText("정지 중")
+            self.perfect_pause.setDisabled(True)
+            QTest.qWait(1000)
+
             print("game_Playing(self): " + str(v_.game_folder) + "_stop")
             dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
             file_path = dir_path + "\\start.txt"
@@ -1444,6 +1451,10 @@ class FirstTab(QWidget):
     def again_restart_game(self):
         # change_ready_main = False
         # change_ready_step = False
+
+        self.again_restart.setText("업뎃 중")
+        self.again_restart.setDisabled(True)
+        QTest.qWait(1000)
 
         print("업데이트 후 재시작")
         # git pull 실행 부분
@@ -2324,6 +2335,8 @@ class FirstTab(QWidget):
                 # 파일 읽기
                 with open(file_path, "r", encoding='utf-8-sig') as file:
                     lines = file.read().splitlines()
+                with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    shcedule = file.read().splitlines()
             else:
                 print('파일 없당')
                 if os.path.isdir(dir_path) == True:
@@ -2363,6 +2376,27 @@ class FirstTab(QWidget):
                     self.tableWidget.item(i, j).setText(str(result[j].replace("\n", "")))
                     self.tableWidget.item(i, j).setTextAlignment(Qt.AlignCenter | Qt.AlignVCenter)
                     # self.tableWidget.resizeColumnsToContents()
+
+            for i in range(len(lines)):
+                result = str(lines[i]).split(":")
+                for j in range(len(result)):
+                    data = self.tableWidget.item(i, j).text()
+                    if data == "완료":
+                        print("완료", i, j)
+                        self.tableWidget.item(i, j).setBackground(QColor(100, 100, 150))
+
+            # rowcount = self.tableWidget.rowCount()
+            # colcount = self.tableWidget.columnCount()
+            # print("rowcount, colcount", rowcount, colcount)
+            #
+            # for i in range(0, rowcount):
+            #     for j in range(0, colcount):
+            #         data = self.tableWidget.item(i, j).text()
+            #         print()
+            #         if data == "대기중":
+            #             print("대기중", i, j)
+            #         else:
+            #             print('blank')
 
         except Exception as e:
             print(e)
