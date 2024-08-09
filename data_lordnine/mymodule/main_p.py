@@ -2335,8 +2335,10 @@ class FirstTab(QWidget):
                 # 파일 읽기
                 with open(file_path, "r", encoding='utf-8-sig') as file:
                     lines = file.read().splitlines()
+                    lines = ' '.join(lines).split()
                 with open(file_path3, "r", encoding='utf-8-sig') as file:
                     shcedule = file.read().splitlines()
+                    shcedule = ' '.join(shcedule).split()
             else:
                 print('파일 없당')
                 if os.path.isdir(dir_path) == True:
@@ -2377,10 +2379,12 @@ class FirstTab(QWidget):
                     self.tableWidget.item(i, j).setTextAlignment(Qt.AlignCenter | Qt.AlignVCenter)
                     # self.tableWidget.resizeColumnsToContents()
 
-            for i in range(len(lines)):
-                result = str(lines[i]).split(":")
-                for j in range(len(result)):
-                    data = self.tableWidget.item(i, j).text()
+            # 잠김
+            for i in range(len(shcedule)):
+                result_2 = str(shcedule[i]).split(":")
+                # if i + 1 == thisRow:
+                for j in range(len(result_2)):
+                    data = str(result_2[j])
                     if data == "완료":
                         print("완료", i, j)
                         self.tableWidget.item(i, j).setBackground(QColor(100, 100, 150))
@@ -3117,7 +3121,7 @@ class FirstTab(QWidget):
                             if j < 3:
                                 reset_schedule_ += complete_[j] + ":"
                             if j == 3:
-                                if thisValue in complete_[2] and thisCol < 5:
+                                if thisValue in complete_[2] and thisCol < 5 and thisRow == i + 1:
                                     if complete_[j] == "대기중":
                                         print("대기중??????????")
                                         reset_schedule_ += '완료:'
@@ -3129,7 +3133,7 @@ class FirstTab(QWidget):
                             if 3 < j < 7:
                                 reset_schedule_ += complete_[j] + ":"
                             if j == 7:
-                                if thisValue in complete_[6] and thisCol > 4:
+                                if thisValue in complete_[6] and thisCol > 4 and thisRow == i + 1:
                                     if complete_[j] == "대기중":
                                         print("대기중?????!!!!!!!!!?????")
                                         reset_schedule_ += '완료\n'
@@ -3229,9 +3233,11 @@ class FirstTab(QWidget):
 
     def mySchedule_refresh_all_2(self):
         try:
-            ##############스케쥴 잠금 row:
+            ##############스케쥴 잠금 잠김 row:
             print("thisValue", thisValue)
             print("thisCol", thisCol)
+            print("thisRow", thisRow)
+
 
             if thisValue != "none":
 
@@ -3258,23 +3264,23 @@ class FirstTab(QWidget):
 
                 ######################
 
-                with open(file_path, "r", encoding='utf-8-sig') as file:
+                with open(file_path3, "r", encoding='utf-8-sig') as file:
                     lines = file.read().splitlines()
                     lines = ' '.join(lines).split()
 
-                    isSchedule_ = False
-                    while isSchedule_ is False:
-                        if lines == [] or lines == "":
-                            print("스케쥴이 비었다 : myQuest_play_check")
-                            with open(file_path3, "r", encoding='utf-8-sig') as file:
-                                schedule_ready = file.read()
-                            with open(file_path, "w", encoding='utf-8-sig') as file:
-                                file.write(schedule_ready)
-                            with open(file_path, "r", encoding='utf-8-sig') as file:
-                                lines = file.read().splitlines()
-                                lines = ' '.join(lines).split()
-                        else:
-                            isSchedule_ = True
+                    # isSchedule_ = False
+                    # while isSchedule_ is False:
+                    #     if lines == [] or lines == "":
+                    #         print("스케쥴이 비었다 : myQuest_play_check")
+                    #         with open(file_path3, "r", encoding='utf-8-sig') as file:
+                    #             schedule_ready = file.read()
+                    #         with open(file_path, "w", encoding='utf-8-sig') as file:
+                    #             file.write(schedule_ready)
+                    #         with open(file_path, "r", encoding='utf-8-sig') as file:
+                    #             lines = file.read().splitlines()
+                    #             lines = ' '.join(lines).split()
+                    #     else:
+                    #         isSchedule_ = True
                     # 표 수정
                     reset_schedule_ = ""
                     for i in range(len(lines)):
@@ -3283,7 +3289,7 @@ class FirstTab(QWidget):
                             if j < 3:
                                 reset_schedule_ += complete_[j] + ":"
                             if j == 3:
-                                if thisValue in complete_[2] and thisCol < 5:
+                                if thisValue in complete_[2] and thisCol < 5 and thisRow == i + 1:
                                     if complete_[j] == "대기중":
                                         print("대기중??????????")
                                         reset_schedule_ += '완료:'
@@ -3295,7 +3301,7 @@ class FirstTab(QWidget):
                             if 3 < j < 7:
                                 reset_schedule_ += complete_[j] + ":"
                             if j == 7:
-                                if thisValue in complete_[6] and thisCol > 4:
+                                if thisValue in complete_[6] and thisCol > 4 and thisRow == i + 1:
                                     if complete_[j] == "대기중":
                                         print("대기중?????!!!!!!!!!?????")
                                         reset_schedule_ += '완료\n'
@@ -3304,9 +3310,9 @@ class FirstTab(QWidget):
                                 else:
                                     reset_schedule_ += complete_[j] + "\n"
 
-                    print('reset_schedule_표 수정', reset_schedule_)
-                    with open(file_path, "w", encoding='utf-8-sig') as file:
-                        file.write(reset_schedule_)
+                    # print('reset_schedule_표 수정', reset_schedule_)
+                    # with open(file_path, "w", encoding='utf-8-sig') as file:
+                    #     file.write(reset_schedule_)
 
 
 
