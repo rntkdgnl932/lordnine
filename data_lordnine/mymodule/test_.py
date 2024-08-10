@@ -62,7 +62,14 @@ def go_test():
         # where = "던전_가르바나지하수로_5"
         #
         # dun_in(cla, where)
-        guild_start(cla)
+
+
+        # guild_start(cla)
+
+        for i in range(50):
+            click_pos_2(430, 725, cla)
+            time.sleep(0.5)
+
 
         #################################################
         # get_diary(cla)
