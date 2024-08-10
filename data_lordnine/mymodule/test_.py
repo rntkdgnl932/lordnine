@@ -67,7 +67,7 @@ def go_test():
         # guild_start(cla)
 
         for i in range(50):
-            click_pos_2(430, 725, cla)
+            click_pos_2(430, 725, "three")
             time.sleep(0.5)
 
 
