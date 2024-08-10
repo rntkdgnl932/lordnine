@@ -1455,6 +1455,7 @@ class FirstTab(QWidget):
 
         self.again_restart.setText("업뎃 중")
         self.again_restart.setStyleSheet("color:black; background:blue")
+        QTest.qWait(10)
         self.again_restart.setDisabled(True)
         QTest.qWait(1000)
 
