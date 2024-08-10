@@ -62,7 +62,7 @@ def go_test():
         # where = "던전_가르바나지하수로_5"
         #
         # dun_in(cla, where)
-        potion_check("three")
+        guild_start(cla)
 
         #################################################
         # get_diary(cla)
