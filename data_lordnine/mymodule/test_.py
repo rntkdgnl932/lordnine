@@ -68,9 +68,9 @@ def go_test():
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\guild.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+        imgs_ = imgs_set_(0, 30, 200, 100, "three", img, 0.85)
         if imgs_ is not None and imgs_ != False:
-            guild_start(cla)
+            guild_start("three")
         else:
 
             for i in range(50):
