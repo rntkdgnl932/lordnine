@@ -19,7 +19,7 @@ def go_test():
 
     from function_game import text_check_get, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
     from tuto_lordnine import way_check
-    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check
+    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, menu_open_check
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start, collection_start
     from potion_lordnine import potion_buy_start, potion_check
@@ -78,7 +78,6 @@ def go_test():
                 for i in range(50):
                     click_pos_2(430, 725, "three")
                     time.sleep(0.5)
-            else:
 
 
 
