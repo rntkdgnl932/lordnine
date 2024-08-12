@@ -72,10 +72,14 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             guild_start("three")
         else:
+            result_menu_open = menu_open_check(cla)
+            if result_menu_open == False:
 
-            for i in range(50):
-                click_pos_2(430, 725, "three")
-                time.sleep(0.5)
+                for i in range(50):
+                    click_pos_2(430, 725, "three")
+                    time.sleep(0.5)
+            else:
+
 
 
         #################################################
