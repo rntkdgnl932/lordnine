@@ -151,7 +151,7 @@ def auction_ready(cla):
     import cv2
     import os
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from action_lordnine import menu_open, out_check
     from clean_screen_lordnine import clean_screen_start
     from boonhae_collection import col_boon_start
@@ -207,13 +207,23 @@ def auction_ready(cla):
 
                 # 판매 실패한 상품 취소하기
                 for i in range(10):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_cancle.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_point_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(800, 150, 960, 1040, cla, img, 0.85)
+                    imgs_ = imgs_set_(250, 60, 290, 90, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
-                        print("sell_cancle", imgs_)
-                        click_pos_reg(imgs_.x, imgs_.y + 30, cla)
+                        print("auction_point_1", imgs_)
+
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_cancle.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 150, 960, 1040, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("sell_cancle", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y + 30, cla)
+                        else:
+                            drag_pos(540, 740, 540, 240, cla)
                     else:
                         break
                     time.sleep(0.5)
