@@ -63,21 +63,7 @@ def go_test():
         #
         # dun_in(cla, where)
 
-
-        # guild_start(cla)
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\guild.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 200, 100, "three", img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            guild_start("three")
-        else:
-            result_menu_open = menu_open_check(cla)
-            if result_menu_open == False:
-
-                for i in range(50):
-                    click_pos_2(430, 725, "three")
-                    time.sleep(0.5)
+        collection_start(cla)
 
 
 
