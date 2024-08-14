@@ -1216,7 +1216,7 @@ class FirstTab(QWidget):
         cb5.addItems(list5)
         jadong1 = QPushButton('디엔 연속')
         jadong1.clicked.connect(self.onActivated_hunt_add)
-        jadong11 = QPushButton('디엔 1회')
+        jadong11 = QPushButton('디엔 5회')
         jadong11.clicked.connect(self.onActivated_hunt_add_justOne)
 
         cb55 = QComboBox()
@@ -1224,7 +1224,7 @@ class FirstTab(QWidget):
         cb55.addItems(list55)
         jadong2 = QPushButton('린드리스 연속')
         jadong2.clicked.connect(self.onActivated_hunt_add_2)
-        jadong22 = QPushButton('린드리스 1회')
+        jadong22 = QPushButton('린드리스 5회')
         jadong22.clicked.connect(self.onActivated_hunt_add_2_justOne)
 
         cb555 = QComboBox()
@@ -1232,7 +1232,7 @@ class FirstTab(QWidget):
         cb555.addItems(list555)
         jadong3 = QPushButton('울란 연속')
         jadong3.clicked.connect(self.onActivated_hunt_add_3)
-        jadong33 = QPushButton('울란 1회')
+        jadong33 = QPushButton('울란 5회')
         jadong33.clicked.connect(self.onActivated_hunt_add_3_justOne)
 
         cb5555 = QComboBox()
@@ -1240,7 +1240,7 @@ class FirstTab(QWidget):
         cb5555.addItems(list5555)
         jadong4 = QPushButton('세르비스 연속')
         jadong4.clicked.connect(self.onActivated_hunt_add_4)
-        jadong44 = QPushButton('세르비스 1회')
+        jadong44 = QPushButton('세르비스 5회')
         jadong44.clicked.connect(self.onActivated_hunt_add_4_justOne)
 
         vbox5_1_1 = QVBoxLayout()
@@ -2059,7 +2059,7 @@ class FirstTab(QWidget):
         global onCharacter, onHunt
         char_ = onCharacter
         # hun_ = onHunt
-        hun_ = "1회_" + onHunt
+        hun_ = "5회_" + onHunt
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onHunt == '< 디엔 >' or onHunt == 'none':
@@ -2108,7 +2108,7 @@ class FirstTab(QWidget):
         global onCharacter, onHunt2
         char_ = onCharacter
         # hun_ = onHunt2
-        hun_ = "1회_" + onHunt2
+        hun_ = "5회_" + onHunt2
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onHunt2 == '< 린드리스 >' or onHunt2 == 'none':
@@ -2157,7 +2157,7 @@ class FirstTab(QWidget):
         global onCharacter, onHunt3
         char_ = onCharacter
         # hun_ = "사냥_" + "첼라노_" + onHunt3
-        hun_ = "1회_" + onHunt3
+        hun_ = "5회_" + onHunt3
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onHunt3 == '< 울란 >' or onHunt3 == 'none':
@@ -2204,7 +2204,7 @@ class FirstTab(QWidget):
     def onActivated_hunt_add_4_justOne(self):
         global onCharacter, onHunt4
         char_ = onCharacter
-        hun_ = "1회_" + onHunt4
+        hun_ = "5회_" + onHunt4
         if onCharacter == 0:
             pyautogui.alert(button='넵', text='캐릭터를 선택해 주시지예', title='뭐합니꺼')
         elif onHunt4 == '< 세르비스 >' or onHunt4 == 'none':
@@ -4311,7 +4311,7 @@ class game_Playing(QThread):
                                     potion_buy_start(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, result_schedule_)
                                 elif "/" in result_schedule_:
-                                    if "1회" in result_schedule_:
+                                    if "5회" in result_schedule_:
                                         result_spot = result_schedule_.split("_")
                                         jadong_start(v_.now_cla, result_spot[1])
                                     else:

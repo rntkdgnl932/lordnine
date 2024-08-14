@@ -98,8 +98,6 @@ def dead_check(cla):
 
             if result_schedule_ == "튜토육성":
                 myQuest_play_add(cla, result_schedule_)
-            elif "1회" in result_schedule_:
-                myQuest_play_add(cla, result_schedule_)
             elif "시련의탑" in result_schedule_:
                 myQuest_play_add(cla, result_schedule_)
 
@@ -198,18 +196,14 @@ def dead_recorvery(cla):
                         result_schedule = myQuest_play_check(cla, "check")
                         result_schedule_ = result_schedule[0][2]
 
-                        if "/" in result_schedule_:
+                        if "5회" in result_schedule_:
 
                             v_.dead_count += 1
 
                             if v_.dead_count > 4:
                                 if v_.dead_count < 6:
-                                    why = "자동 사냥에서 하루 4번 이상 죽었다. 다음 자동 사냥 시작하겠다."
-                                    line_to_me(cla, why)
+
                                     myQuest_play_add(cla, result_schedule_)
-                                else:
-                                    why = "자동 사냥에서 계속 죽는다."
-                                    line_to_me(cla, why)
 
                                 # dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
                                 # file_path = dir_path + "\\start.txt"
