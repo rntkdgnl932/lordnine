@@ -943,9 +943,39 @@ def juljun_off(cla):
                 else:
                     break
                 time.sleep(0.5)
-            if is_out == False:
-                why = "절전 off가 안된다."
-                line_to_me(cla, why)
+
+        if is_out == False:
+
+            click_pos_2(430, 530, cla)
+
+            time.sleep(0.1)
+
+            for i in range(10):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+
+
+
+                    drag_pos(430, 530, 830, 530, cla)
+
+                    for o in range(5):
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            is_out = True
+                            break
+                        else:
+                            time.sleep(0.2)
+                        time.sleep(0.5)
+
+                else:
+                    break
+                time.sleep(0.5)
+
+        return is_out
+
     except Exception as e:
         print(e)
         return 0
