@@ -63,7 +63,7 @@ def go_test():
         #
         # dun_in(cla, where)
 
-        # homoon_clear("three")
+        homoon_clear("three")
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\321.PNG"
         img_array = np.fromfile(full_path, np.uint8)
