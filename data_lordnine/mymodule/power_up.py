@@ -40,7 +40,7 @@ def power_up_sungmool(cla):
                 sungmool = False
 
                 # 차례대로 성물 등록하쟈
-                # 110, 110 180 250
+                # 110, 120 190 260
 
                 # for 로 3개짜리 씌우자자
 
@@ -48,6 +48,9 @@ def power_up_sungmool(cla):
 
                 for list in range(3):
                     num = list + 1
+                    y_reg = num * 70
+
+                    click_pos_2(110, 50 + y_reg, cla)
 
                     up_start = False
 
