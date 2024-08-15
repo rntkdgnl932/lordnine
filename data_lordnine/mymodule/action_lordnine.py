@@ -348,6 +348,66 @@ def menu_open_check(cla):
         print(e)
 
 
+
+def attack_setting(cla, m):
+    import numpy as np
+    import cv2
+
+    from clean_screen_lordnine import clean_screen_start
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    try:
+
+        print("attack_setting", m)
+
+        if m == "15":
+            x_reg = 665
+        elif m == "30":
+            x_reg = 775
+        elif m == "all":
+            x_reg = 885
+
+        menu_open(cla)
+
+        for i in range(10):
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\setting.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("setting", imgs_)
+                click_pos_2(x_reg, 180, cla)
+                time.sleep(0.2)
+                click_pos_2(x_reg, 180, cla)
+                time.sleep(0.2)
+                break
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\menu_setting.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(780, 890, 960, 1000, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    print("menu_setting", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(0.5)
+
+        for i in range(3):
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\setting.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                clean_screen_start(cla)
+            else:
+                break
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+
 def menu_open(cla):
     import numpy as np
     import cv2
@@ -1135,6 +1195,7 @@ def attack_on(cla):
     import cv2
 
     from function_game import imgs_set_, click_pos_2
+    from schedule import myQuest_play_check
     try:
 
         print("attack_on")
@@ -1145,6 +1206,15 @@ def attack_on(cla):
         imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
         if imgs_ is not None and imgs_ != False:
             juljun_off(cla)
+
+        # 자사 인지 아닌지...
+        result_schedule = myQuest_play_check(cla, "check")
+        result_schedule_ = result_schedule[0][2]
+
+        if "/" in result_schedule_:
+            attack_setting(cla, "30")
+        else:
+            attack_setting(cla, "all")
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\auto_off.PNG"
         img_array = np.fromfile(full_path, np.uint8)
