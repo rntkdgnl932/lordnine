@@ -1337,6 +1337,42 @@ def zero_check_minute(cla):
         print(e)
 
 
+def homoon_clear(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    try:
+
+        print("homoon_clear")
+
+        for i in range(10):
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\homoon_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(650, 140, 710, 190, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("homoon_btn", imgs_)
+                click_pos_2(870, 160, cla)
+
+                time.sleep(0.5)
+
+                result_confirm = confirm_all(cla)
+
+                if result_confirm == True:
+                    time.sleep(5)
+                    click_pos_2(780, 180, cla)
+                    time.sleep(2)
+
+                skip_start(cla)
+            time.sleep(0.5)
+
+
+
+    except Exception as e:
+        print(e)
+
 
 
 
