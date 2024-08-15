@@ -1346,7 +1346,7 @@ def homoon_clear(cla):
 
         print("homoon_clear")
 
-        for i in range(10):
+        for i in range(9):
 
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\homoon.PNG"
             img_array = np.fromfile(full_path, np.uint8)
@@ -1403,10 +1403,10 @@ def homoon_clear(cla):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\homoon_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(650, 140, 710, 190, cla, img, 0.75)
+                imgs_ = imgs_set_(650, 140, 710, 235, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("homoon_btn", imgs_)
-                    click_pos_2(870, 160, cla)
+                    click_pos_reg(imgs_.x + 85, imgs_.y, cla)
 
                     time.sleep(0.5)
 
