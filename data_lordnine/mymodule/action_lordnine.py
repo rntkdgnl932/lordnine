@@ -1348,24 +1348,65 @@ def homoon_clear(cla):
 
         for i in range(10):
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\homoon_btn.PNG"
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\homoon.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(650, 140, 710, 190, cla, img, 0.75)
+            imgs_ = imgs_set_(0, 30, 100, 100, cla, img, 0.75)
             if imgs_ is not None and imgs_ != False:
-                print("homoon_btn", imgs_)
-                click_pos_2(870, 160, cla)
+                print("homoon", imgs_)
 
-                time.sleep(0.5)
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\refresh.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(330, 980, 470, 1040, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    print("refresh", imgs_)
 
-                result_confirm = confirm_all(cla)
+                    for t in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\321.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(420, 910, 630, 960, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("321", imgs_)
+                            click_pos_2(555, 1010, cla)
+                            time.sleep(0.2)
+                            break
+                        else:
+                            click_pos_2(405, 1010, cla)
+                            time.sleep(0.2)
 
-                if result_confirm == True:
-                    time.sleep(5)
-                    click_pos_2(780, 180, cla)
-                    time.sleep(2)
+                            for h in range(7):
+                                click_pos_2(830, 505, cla)
+                                time.sleep(0.2)
+                            for h in range(2):
+                                click_pos_2(830, 570, cla)
+                                time.sleep(0.2)
+                            for h in range(1):
+                                click_pos_2(830, 145, cla)
+                                time.sleep(0.2)
+                        time.sleep(0.3)
+                else:
+                    click_pos_2(165, 90, cla)
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\homoon_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(650, 140, 710, 190, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    print("homoon_btn", imgs_)
+                    click_pos_2(870, 160, cla)
 
-                skip_start(cla)
+                    time.sleep(0.5)
+
+                    result_confirm = confirm_all(cla)
+
+                    if result_confirm == True:
+                        time.sleep(5)
+                        click_pos_2(780, 180, cla)
+                        time.sleep(2)
+
+                    skip_start(cla)
             time.sleep(0.5)
 
 
