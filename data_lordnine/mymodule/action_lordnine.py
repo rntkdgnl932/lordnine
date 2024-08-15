@@ -1406,7 +1406,7 @@ def homoon_clear(cla):
                 imgs_ = imgs_set_(650, 140, 710, 235, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("homoon_btn", imgs_)
-                    click_pos_reg(imgs_.x + 85, imgs_.y, cla)
+                    click_pos_reg(imgs_.x + 185, imgs_.y, cla)
 
                     time.sleep(0.5)
 
@@ -1414,7 +1414,7 @@ def homoon_clear(cla):
 
                     if result_confirm == True:
                         time.sleep(5)
-                        click_pos_reg(imgs_.x + 45, imgs_.y, cla)
+                        click_pos_reg(imgs_.x + 85, imgs_.y, cla)
                         time.sleep(2)
 
                     skip_start(cla)
