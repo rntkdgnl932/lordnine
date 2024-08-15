@@ -1414,7 +1414,7 @@ def homoon_clear(cla):
 
                     if result_confirm == True:
                         time.sleep(5)
-                        click_pos_2(780, 180, cla)
+                        click_pos_reg(imgs_.x + 45, imgs_.y, cla)
                         time.sleep(2)
 
                     skip_start(cla)
