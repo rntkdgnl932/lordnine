@@ -98,7 +98,7 @@ def power_up_sungmool(cla):
                                                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\ganghwa_btn_1.PNG"
                                                     img_array = np.fromfile(full_path, np.uint8)
                                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                    imgs_ = imgs_set_(800, 985, 860, 1030, cla, img, 0.7)
+                                                    imgs_ = imgs_set_(700, 985, 860, 1030, cla, img, 0.7)
                                                     if imgs_ is not None and imgs_ != False:
                                                         print("ganghwa_btn_1", imgs_)
                                                         up_start = True
@@ -150,14 +150,13 @@ def power_up_sungmool(cla):
                                     imgs_ = imgs_set_(840, 985, 940, 1030, cla, img, 0.7)
                                     if imgs_ is not None and imgs_ != False:
                                         print("ganghwa_btn_ilgwal", imgs_)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
 
                                         for c in range(5):
                                             result_g_confirm = confirm_all(cla)
                                             if result_g_confirm == True:
                                                 up_end = False
 
-                                                time.sleep(2)
+                                                time.sleep(3)
 
                                                 for b in range(10):
                                                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\ganghwa_btn_ilgwal.PNG"
@@ -178,13 +177,21 @@ def power_up_sungmool(cla):
                                         else:
                                             print("up_end in....", up_end)
                                 else:
-                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\ganghwa_btn_1.PNG"
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\ganghwa_btn_ilgwal.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(800, 985, 860, 1030, cla, img, 0.7)
+                                    imgs_ = imgs_set_(840, 985, 940, 1030, cla, img, 0.8)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("ganghwa_btn_1", imgs_)
+                                        print("ganghwa_btn_ilgwal", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\ganghwa_btn_1.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(700, 985, 860, 1030, cla, img, 0.7)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("ganghwa_btn_1", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.5)
 
                             if up_end == True:
