@@ -73,7 +73,7 @@ def go_test():
             print("sungmool", imgs_)
             power_up_sungmool(cla)
         else:
-            homoon_clear("three")
+            homoon_clear(cla)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\321.PNG"
         img_array = np.fromfile(full_path, np.uint8)
