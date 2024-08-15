@@ -58,7 +58,7 @@ def power_up_sungmool(cla):
 
                     print("num......................", num)
 
-                    for i in range(10):
+                    for i in range(5):
                         # 활성화 되어 있음
                         # 오른쪽 성물 리스트 확인
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\list_" + str(num) + ".PNG"
@@ -139,7 +139,7 @@ def power_up_sungmool(cla):
 
                             up_end = True
 
-                            for g in range(5):
+                            for g in range(2):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\ilgwal_ganghwa_title.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
