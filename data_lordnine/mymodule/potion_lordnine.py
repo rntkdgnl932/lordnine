@@ -19,6 +19,8 @@ def potion_check(cla):
     try:
         print("potion_check", v_.potion_buy_count)
 
+        x_plus = 66
+
         # 우선 절전모드인지 아웃 모드인지 파악하기
 
         is_num = False
@@ -63,9 +65,9 @@ def potion_check(cla):
                                 print("중형")
                             elif p == 2:
                                 print("대형")
-                            x_1 = 700 + (p * 70)
+                            x_1 = 700 + (p * x_plus)
                             y_1 = 905
-                            x_2 = 722 + (p * 70)
+                            x_2 = 722 + (p * x_plus)
                             y_2 = 923
 
                             # text_check_get(x_1, y_1, x_2, y_2, cla)
@@ -154,9 +156,9 @@ def potion_check(cla):
                                 elif p == 2:
                                     print("대형")
 
-                                x_1 = 200 + (p * 70)
+                                x_1 = 200 + (p * x_plus)
                                 y_1 = 900
-                                x_2 = 217 + (p * 70)
+                                x_2 = 217 + (p * x_plus)
                                 y_2 = 920
 
                                 # text_check_get(x_1, y_1, x_2, y_2, cla)
@@ -213,9 +215,9 @@ def potion_check(cla):
                         elif p == 2:
                             print("대형")
 
-                        x_1 = 200 + (p * 70)
+                        x_1 = 200 + (p * x_plus)
                         y_1 = 900
-                        x_2 = 217 + (p * 70)
+                        x_2 = 217 + (p * x_plus)
                         y_2 = 920
 
                         # text_check_get(x_1, y_1, x_2, y_2, cla)
