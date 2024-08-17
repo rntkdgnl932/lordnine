@@ -109,7 +109,7 @@ def potion_check(cla):
 
 
                     v_.potion_buy_count += 1
-                    if v_.potion_buy_count > 3:
+                    if v_.potion_buy_count > 2:
                         v_.potion_buy_count = 0
                         potion_buy_start(cla)
 
@@ -195,7 +195,7 @@ def potion_check(cla):
                         print("아웃 : 숫자 안 보여", v_.potion_buy_count)
 
                         v_.potion_buy_count += 1
-                        if v_.potion_buy_count > 3:
+                        if v_.potion_buy_count > 2:
                             v_.potion_buy_count = 0
                             potion_buy_start(cla)
 
