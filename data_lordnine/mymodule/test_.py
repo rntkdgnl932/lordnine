@@ -30,7 +30,7 @@ def go_test():
     from power_up import power_up_sungmool
     from mission_lordnine import mission_get, mission_get_daily
     from guild_lordnine import guild_start
-    from auction_game import auction_start, get_low_price, auction_jangbi
+    from auction_game import auction_start, get_low_price, auction_jangbi, mine_check
 
 
     print("test")
@@ -63,9 +63,16 @@ def go_test():
         #
         # dun_in(cla, where)
 
-        potion_check(cla)
+        # result_dia = text_check_get(745, 45, 805, 58, cla)
+        # print("result_dia", result_dia)
 
+        # result_gold = text_check_get(840, 45, 903, 58, cla)
+        # print("result_gold", result_gold)
 
+        # result_dia = text_check_get(782 - 5, 45, 782 + 5, 58, cla)
+        # print("result_dia", result_dia)
+
+        auction_start(cla)
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sungmool.PNG"
         # img_array = np.fromfile(full_path, np.uint8)

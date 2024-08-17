@@ -17,35 +17,75 @@ def mine_check(cla):
     from function_game import imgs_set_, text_check_get_reg, in_number_check, int_put_, change_number
     try:
 
+        if cla == 'one':
+            plus = 0
+        elif cla == 'two':
+            plus = 960
+        elif cla == 'three':
+            plus = 960 * 2
+        elif cla == 'four':
+            plus = 960 * 3
+        elif cla == 'five':
+            plus = 960 * 4
+        elif cla == 'six':
+            plus = 960 * 5
+
         result_dia = 0
-        result_silver = 0
+        result_silver = 7777777
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\dia_reg.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(680, 30, 900, 80, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("dia_reg", imgs_)
+        x_standard = 805
 
-            result_text = text_check_get_reg(imgs_.x + 8, imgs_.y - 10, imgs_.x + 45, imgs_.y + 8)
-            result_text = change_number(result_text)
-            result_dia = int_put_(result_text)
-            result_dia_num = in_number_check(result_dia)
-            print("result_text", result_dia_num, result_dia)
+        for i in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\my_property\\" + str(i) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(745, 45, 805, 58, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                # print("num", i, imgs_)
+                if x_standard > imgs_.x:
+                    x_standard = imgs_.x - plus
 
-        full_path = "c:\\my_games\\arthdal\\data_arthdal\\imgs\\auction\\silver_reg.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(680, 30, 900, 80, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("silver_reg", imgs_)
-            result_text2 = text_check_get_reg(imgs_.x + 8, imgs_.y - 10, imgs_.x + 70, imgs_.y + 8)
-            result_text2 = change_number(result_text2)
-            result_silver = int_put_(result_text2)
-            result_silver_num = in_number_check(result_silver)
-            print("result_text2", result_silver_num, result_silver)
+        print("x_standard", x_standard)
+
+        x_standard = x_standard - 5
+
+        # text_check_get(x_standard, 45, x_standard + 10, 58, cla)
+
+        num = ""
+
+        property_start = True
+
+        while property_start is True:
+
+            is_num = False
+
+            for i in range(10):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\my_property\\" + str(i) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_standard, 45, x_standard + 10, 58, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    # print("while num", x_standard, i, imgs_)
+
+                    is_num = True
+
+                    num = num + str(i)
+
+                    x_standard = imgs_.x - plus
+                    break
+            if is_num == False:
+                property_start = False
+
+        print("num", num)
+
+        result_dia = num
+        result_dia_num = in_number_check(result_dia)
+        print("result_text", result_dia_num, result_dia)
+
 
         if result_dia_num == True:
+
+            result_dia = int(result_dia)
 
             return result_silver, result_dia
 
@@ -62,6 +102,7 @@ def auction_start(cla):
     from action_lordnine import menu_open, out_check
     from clean_screen_lordnine import clean_screen_start
     from boonhae_collection import col_boon_start
+    from property_game import my_property_upload
 
     try:
         print("auction_start")
@@ -96,6 +137,9 @@ def auction_start(cla):
                 time.sleep(0.2)
                 click_pos_2(855, 120, cla)
                 time.sleep(0.2)
+
+                # 서버에 재화 업로드
+                my_property_upload(cla)
 
                 result_full_list = auction_jangbi(cla)
 
@@ -485,6 +529,10 @@ def auction_jangbi(cla):
 
                     else:
                         print("접자")
+
+                    if anymore_sell == True:
+                        break
+
                     time.sleep(0.5)
 
 
@@ -778,6 +826,10 @@ def auction_item(cla):
                                     anymore_sell = sell_click(cla, result_price)
                     else:
                         print("접자")
+
+                    if anymore_sell == True:
+                        break
+
                     time.sleep(0.5)
 
 
