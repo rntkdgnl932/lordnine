@@ -206,7 +206,7 @@ def auction_ready(cla):
                     time.sleep(1)
 
                 # 판매 실패한 상품 취소하기
-                for i in range(10):
+                for i in range(20):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_point_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
