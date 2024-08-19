@@ -72,17 +72,17 @@ def go_test():
         # result_dia = text_check_get(782 - 5, 45, 782 + 5, 58, cla)
         # print("result_dia", result_dia)
 
-        auction_start(cla)
+        # auction_start(cla)
 
-        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sungmool.PNG"
-        # img_array = np.fromfile(full_path, np.uint8)
-        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        # imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
-        # if imgs_ is not None and imgs_ != False:
-        #     print("sungmool", imgs_)
-        #     power_up_sungmool(cla)
-        # else:
-        #     homoon_clear(cla)
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sungmool.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("sungmool", imgs_)
+            power_up_sungmool(cla)
+        else:
+            homoon_clear(cla)
         #
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\321.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
