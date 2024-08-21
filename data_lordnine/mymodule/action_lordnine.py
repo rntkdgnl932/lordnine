@@ -143,108 +143,230 @@ def out_check(cla):
     import cv2
     import random
 
-    from function_game import imgs_set_, click_pos_2
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
     from stop_event18 import game_check
     from character_select_and_game_start import game_start_screen, game_ready
     from schedule import myQuest_play_check
     from dead_die import dead_check
+    from massenger import line_to_me
     try:
 
         print("out_check 하면서 게임체크도 하기")
 
-        dead_check(cla)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_get.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(540, 560, 650, 650, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            time.sleep(0.5)
-            result_ran = random.randint(1, 5)
-            x_get = 315 + (result_ran * 55)
-            y_get = imgs_.y
-            # 370, 425, 480, 535, 590
-            for com in range(5):
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_title.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(390, 390, 550, 450, cla, img, 0.85)
-                if imgs_ is not None and imgs_ != False:
-                    click_pos_2(x_get, y_get, cla)
-                else:
-                    break
-                time.sleep(0.5)
-
-        game_check(cla)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(420, 820, 540, 940, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("lordnine_mark")
-            game_ready(cla)
-
-
-        out_screen = False
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            out_screen = True
-        else:
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                out_screen = True
-
-
-        if out_screen == True:
-            result_schedule = myQuest_play_check(cla, "check")
-            character_id = result_schedule[0][1]
-            result_schedule_ = result_schedule[0][2]
-
-            game_start_screen(cla, character_id)
-
         is_out = False
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+        game_title = False
+
+        full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+            v_.data_folder) + "\\imgs\\check\\game_title_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+        imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("out check : 절전모드임", imgs_)
-        else:
+            game_title = True
 
-            result_menu_open = menu_open_check(cla)
-            if result_menu_open == False:
+        full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+            v_.data_folder) + "\\imgs\\check\\game_title_2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            game_title = True
 
+        if game_title == True:
 
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_3.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 100, 960, 1040, cla, img, 0.85)
-                if imgs_ is not None and imgs_ != False:
-                    print("close_3 : 아직 안 꺼짐", imgs_)
-                else:
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+            look_title = False
+
+            full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                v_.data_folder) + "\\imgs\\check\\game_start_ready_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                look_title = True
+            full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                v_.data_folder) + "\\imgs\\check\\game_start_ready_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                look_title = True
+            if look_title == True:
+                print("매크로를 내려야 실행됨...10초", imgs_)
+                for i in range(10):
+                    full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                        v_.data_folder) + "\\imgs\\check\\game_start_ready_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                    imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
-                        print("talk", imgs_)
-                        is_out = True
+                        if i > 8:
+                            full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                                v_.data_folder) + "\\imgs\\check\\game_threebutton.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x - 40, imgs_.y, v_.now_cla)
+                            break
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\juljun_btn.PNG"
+                        full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                            v_.data_folder) + "\\imgs\\check\\game_start_ready_2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 800, 60, 860, cla, img, 0.75)
+                        imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
-                            print("juljun_btn", imgs_)
-                            is_out = True
+                            if i > 8:
+                                full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                                    v_.data_folder) + "\\imgs\\check\\game_threebutton.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x - 40, imgs_.y, v_.now_cla)
+                                break
+                        else:
+                            break
+                    time.sleep(1)
+
+            else:
+                dead_check(cla)
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_get.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(540, 560, 650, 650, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    time.sleep(0.5)
+                    result_ran = random.randint(1, 5)
+                    x_get = 315 + (result_ran * 55)
+                    y_get = imgs_.y
+                    # 370, 425, 480, 535, 590
+                    for com in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(390, 390, 550, 450, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(x_get, y_get, cla)
+                        else:
+                            break
+                        time.sleep(0.5)
+
+                game_check(cla)
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(420, 820, 540, 940, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("lordnine_mark")
+                    game_ready(cla)
+
+                out_screen = False
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    out_screen = True
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        out_screen = True
+
+                if out_screen == True:
+                    result_schedule = myQuest_play_check(cla, "check")
+                    character_id = result_schedule[0][1]
+                    result_schedule_ = result_schedule[0][2]
+
+                    game_start_screen(cla, character_id)
+
+
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    print("out check : 절전모드임", imgs_)
+                else:
+
+                    result_menu_open = menu_open_check(cla)
+                    if result_menu_open == False:
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_3.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 100, 960, 1040, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("close_3 : 아직 안 꺼짐", imgs_)
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                            if imgs_ is not None and imgs_ != False:
+                                print("talk", imgs_)
+                                is_out = True
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\juljun_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(0, 800, 60, 860, cla, img, 0.75)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("juljun_btn", imgs_)
+                                    is_out = True
+
+
+        else:
+            print(str(v_.this_game), " 꺼져있는지 10초간 다시 검사하기")
+            is_game = False
+
+            for i in range(10):
+                full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                    v_.data_folder) + "\\imgs\\check\\game_title_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    is_game = True
+                    break
+                else:
+                    full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
+                        v_.data_folder) + "\\imgs\\check\\game_title_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        is_game = True
+                        break
+                time.sleep(1)
+            if is_game == False:
+                why = str(v_.this_game) + " 꺼진게 확실하다"
+                print(why)
+                line_to_me(v_.now_cla, why)
+
+                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                file_path = dir_path + "\\start.txt"
+                # cla.txt
+                cla_data = str(v_.now_cla) + "cla"
+                file_path2 = dir_path + "\\" + cla_data + ".txt"
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    data = 'no'
+                    file.write(str(data))
+                    time.sleep(0.2)
+                with open(file_path2, "w", encoding='utf-8-sig') as file:
+                    data = v_.now_cla
+                    file.write(str(data))
+                    time.sleep(0.2)
+                os.execl(sys.executable, sys.executable, *sys.argv)
+
+
+
 
         return is_out
 
