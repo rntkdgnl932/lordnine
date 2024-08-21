@@ -81,6 +81,9 @@ def dun_in(cla, where):
     try:
         print("dun_in", where)
 
+        # 검은 실험실 이벤트 여부
+        black_laboratory = True
+
         # 던전_어둠의숲_3
 
         result_spot = where.split("_")
@@ -88,24 +91,34 @@ def dun_in(cla, where):
         # result_spot[1] => 던전종류
         # resut_spot[2] => 층수
         if result_spot[1] == "검은실험실":
-            y_1 = 130
-            y_1 = 590
+            if black_laboratory == True:
+                y_1 = 130
+            else:
+                y_1 = 590
             dun_name = "black"
         elif result_spot[1] == "어둠의숲":
-            y_1 = 250
-            y_1 = 130
+            if black_laboratory == True:
+                y_1 = 250
+            else:
+                y_1 = 130
             dun_name = "adoom"
         elif result_spot[1] == "조각의숲":
-            y_1 = 370
-            y_1 = 250
+            if black_laboratory == True:
+                y_1 = 370
+            else:
+                y_1 = 250
             dun_name = "jogag"
         elif result_spot[1] == "타락한미궁":
-            y_1 = 480
-            y_1 = 370
+            if black_laboratory == True:
+                y_1 = 480
+            else:
+                y_1 = 370
             dun_name = "talag"
         elif result_spot[1] == "가르바나지하수로":
-            y_1 = 590
-            y_1 = 480
+            if black_laboratory == True:
+                y_1 = 590
+            else:
+                y_1 = 480
             dun_name = "garbana"
 
         # 던전 가기전 물약 사자
@@ -135,28 +148,77 @@ def dun_in(cla, where):
 
                 dun = True
 
+                complete = False
+
                 # 만료여부
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 if str(dun_name) == "black":
-                    imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
-                    imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
+                    if black_laboratory == True:
+                        imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
+                    else:
+                        imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
                 elif str(dun_name) == "adoom":
-                    imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
-                    imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
+                    if black_laboratory == True:
+                        imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                    else:
+                        imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
                 elif str(dun_name) == "jogag":
-                    imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
-                    imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                    if black_laboratory == True:
+                        imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                    else:
+                        imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
                 elif str(dun_name) == "talag":
-                    imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
-                    imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                    if black_laboratory == True:
+                        imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                    else:
+                        imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
                 elif str(dun_name) == "garbana":
-                    imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
-                    imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                    if black_laboratory == True:
+                        imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
+                    else:
+                        imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     print("dun_complete_1", imgs_)
 
+                    # 만료여부
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    if str(dun_name) == "black":
+                        if black_laboratory == True:
+                            imgs_ = imgs_set_(205, 160, 255, 190, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
+                    elif str(dun_name) == "adoom":
+                        if black_laboratory == True:
+                            imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 160, 255, 190, cla, img, 0.8)
+                    elif str(dun_name) == "jogag":
+                        if black_laboratory == True:
+                            imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
+                    elif str(dun_name) == "talag":
+                        if black_laboratory == True:
+                            imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
+                    elif str(dun_name) == "garbana":
+                        if black_laboratory == True:
+                            imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("dun_complete_2", imgs_)
+
+                        complete = True
+
+
+
+                if complete == True:
 
                     myQuest_play_add(cla, where)
 
