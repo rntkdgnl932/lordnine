@@ -27,7 +27,8 @@ def dungeon_start(cla, where):
 
         result_spot = where.split("_")
 
-        if result_spot[1] == "검은실험실":
+        # 검은실험실
+        if result_spot[1] == "하얀실험실":
             myQuest_play_add(cla, where)
         else:
             # result_spot[1] => 던전종류류
