@@ -33,7 +33,7 @@ def guild_in(cla):
     import cv2
     import os
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from action_lordnine import menu_open, skip_start
     from clean_screen_lordnine import clean_screen_start
 
@@ -185,7 +185,21 @@ def guild_in(cla):
                                         break
                                     time.sleep(0.5)
                             else:
-                                break
+                                anymore = True
+                                for c in range(5):
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\guild_before_day.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(850, 150, 950, 1000, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        anymore = False
+                                        break
+                                    else:
+                                        drag_pos(770, 850, 770, 250, cla)
+                                    time.sleep(0.5)
+
+                                if anymore == True:
+                                    break
 
                         else:
                             click_pos_2(415, 120, cla)
