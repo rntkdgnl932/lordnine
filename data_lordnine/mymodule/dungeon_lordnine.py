@@ -13,7 +13,7 @@ def dungeon_start(cla, where):
     import numpy as np
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import juljun_check, juljun_attack_check, attack_on
+    from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_time_check
     from potion_lordnine import potion_check
     from dead_die import dead_check
     from schedule import myQuest_play_add
@@ -47,6 +47,9 @@ def dungeon_start(cla, where):
             result_juljun = juljun_check(cla)
 
             if result_juljun == True:
+
+                juljun_time_check(cla)
+
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\" + str(dun_name) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

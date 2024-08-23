@@ -15,7 +15,7 @@ def jadong_start(cla, where):
     from datetime import datetime
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_on, zero_check_hour
+    from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_on, zero_check_hour, juljun_time_check
     from potion_lordnine import potion_check
     from dead_die import dead_check
     from boonhae_collection import col_boon_start
@@ -34,6 +34,9 @@ def jadong_start(cla, where):
         result_juljun = juljun_check(cla)
 
         if result_juljun == True:
+
+            juljun_time_check(cla)
+
 
             zero = zero_check_hour(cla)
 

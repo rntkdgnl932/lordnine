@@ -19,7 +19,7 @@ def go_test():
 
     from function_game import text_check_get, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
     from tuto_lordnine import way_check
-    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear
+    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear, juljun_time_check
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start, collection_start
     from potion_lordnine import potion_buy_start, potion_check
@@ -58,6 +58,8 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
+        juljun_time_check(cla)
+
         # get_gold_sohwan(cla)
         # where = "던전_가르바나지하수로_5"
         #
@@ -74,15 +76,15 @@ def go_test():
 
         # auction_start(cla)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sungmool.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
-        if imgs_ is not None and imgs_ != False:
-            print("sungmool", imgs_)
-            power_up_sungmool(cla)
-        else:
-            homoon_clear(cla)
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sungmool.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("sungmool", imgs_)
+        #     power_up_sungmool(cla)
+        # else:
+        #     homoon_clear(cla)
         #
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\homoon\\321.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
