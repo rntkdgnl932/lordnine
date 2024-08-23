@@ -8,6 +8,7 @@ now_arduino = "none"
 potion_buy_count = 0
 dead_count = 0
 daily_mission_ready = True
+time_count = 0
 
 sub_mission = False
 sub_mission_count = 0

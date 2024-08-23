@@ -1566,7 +1566,7 @@ def juljun_time_check(cla):
     import numpy as np
     import cv2
     import os
-    from function_game import imgs_set_
+    from function_game import imgs_set_, text_check_get
     from datetime import datetime
     from massenger import line_to_me
     try:
@@ -1617,7 +1617,7 @@ def juljun_time_check(cla):
                     x_start = imgs_.x - plus
                     now_time += str(i)
                     break
-
+            text_check_get(x_start, 305, x_start + 40, 365, cla)
             for i in range(10):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -1626,6 +1626,7 @@ def juljun_time_check(cla):
                 if imgs_ is not None and imgs_ != False:
                     print("1 자리", i, imgs_)
                     now_time += str(i)
+
                     break
 
 
@@ -1647,27 +1648,32 @@ def juljun_time_check(cla):
                 if result_cal > 19:
                     print("멈춰있는 상태", result_cal)
 
-                    why = str(result_cal) + "분 차이...다운되거나 인터넷이 끊긴것이 확실하다"
-                    print(why)
-                    line_to_me(cla, why)
+                    v_.time_count += 1
 
-                    dir_path = "C:\\my_games\\load\\ares"
-                    file_path = dir_path + "\\start.txt"
-                    # cla.txt
-                    cla_data = str(cla) + "cla"
-                    file_path2 = dir_path + "\\" + cla_data + ".txt"
-                    with open(file_path, "w", encoding='utf-8-sig') as file:
-                        data = 'no'
-                        file.write(str(data))
-                        time.sleep(0.2)
-                    with open(file_path2, "w", encoding='utf-8-sig') as file:
-                        data = cla
-                        file.write(str(data))
-                        time.sleep(0.2)
-                    os.execl(sys.executable, sys.executable, *sys.argv)
+                    if v_.time_count > 5:
+
+                        why = "현재분 : " + str(nowTime) + "파악된분 : " + str(now_time) + str(result_cal) + "분 차이...다운되거나 인터넷이 끊긴것이 확실하다"
+                        print(why)
+                        line_to_me(cla, why)
+
+                        dir_path = "C:\\my_games\\load\\ares"
+                        file_path = dir_path + "\\start.txt"
+                        # cla.txt
+                        cla_data = str(cla) + "cla"
+                        file_path2 = dir_path + "\\" + cla_data + ".txt"
+                        with open(file_path, "w", encoding='utf-8-sig') as file:
+                            data = 'no'
+                            file.write(str(data))
+                            time.sleep(0.2)
+                        with open(file_path2, "w", encoding='utf-8-sig') as file:
+                            data = cla
+                            file.write(str(data))
+                            time.sleep(0.2)
+                        os.execl(sys.executable, sys.executable, *sys.argv)
 
                 else:
                     print("정상 작동 중", result_cal)
+                    v_.time_count  = 0
 
     except Exception as e:
         print(e)
