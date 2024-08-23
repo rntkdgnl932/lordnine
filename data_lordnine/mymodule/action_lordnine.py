@@ -1128,30 +1128,30 @@ def juljun_off(cla):
                     break
                 time.sleep(0.5)
 
-        if is_out == False:
-            for i in range(10):
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
-                if imgs_ is not None and imgs_ != False:
+            if is_out == False:
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
 
 
 
-                    drag_pos(400, 530, 830, 330, cla)
+                        drag_pos(400, 530, 830, 330, cla)
 
-                    for o in range(5):
-                        result_out = out_check(cla)
-                        if result_out == True:
-                            is_out = True
-                            break
-                        else:
-                            time.sleep(0.2)
-                        time.sleep(0.5)
+                        for o in range(5):
+                            result_out = out_check(cla)
+                            if result_out == True:
+                                is_out = True
+                                break
+                            else:
+                                time.sleep(0.2)
+                            time.sleep(0.5)
 
-                else:
-                    break
-                time.sleep(0.5)
+                    else:
+                        break
+                    time.sleep(0.5)
 
         return is_out
 

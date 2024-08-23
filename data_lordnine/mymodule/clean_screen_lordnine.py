@@ -12,6 +12,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def clean_screen_start(cla):
     import numpy as np
     import cv2
+    from PyQt5.QtTest import *
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action_lordnine import out_check
 
@@ -21,13 +22,15 @@ def clean_screen_start(cla):
         clean_screen_just_on_start(cla)
 
         for i in range(5):
-            print("i.........", i)
+
             result_out = out_check(cla)
+            print("i.........", i, result_out)
             if result_out == True:
                 break
             else:
                 clean_screen_just_on_start(cla)
-            time.sleep(0.5)
+            # time.sleep(0.5)
+            QTest.qWait(500)
 
     except Exception as e:
         print(e)
