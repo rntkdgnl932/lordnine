@@ -1,6 +1,7 @@
 import time
 # import os
 import sys
+from PyQt5.QtTest import *
 
 
 import variable as v_
@@ -12,7 +13,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 def clean_screen_start(cla):
     import numpy as np
     import cv2
-    from PyQt5.QtTest import *
+
     from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
     from action_lordnine import out_check
 
