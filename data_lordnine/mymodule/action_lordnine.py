@@ -1617,7 +1617,7 @@ def juljun_time_check(cla):
                     x_start = imgs_.x - plus
                     now_time += str(i)
                     break
-            text_check_get(x_start, 305, x_start + 40, 365, cla)
+            # text_check_get(x_start, 305, x_start + 40, 365, cla)
             for i in range(10):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\juljun_time\\" + str(i) + ".PNG"
                 img_array = np.fromfile(full_path, np.uint8)
