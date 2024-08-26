@@ -31,6 +31,7 @@ def go_test():
     from mission_lordnine import mission_get, mission_get_daily
     from guild_lordnine import guild_start
     from auction_game import auction_start, get_low_price, auction_jangbi, mine_check
+    from jejak_lordnine import item_jejak
 
 
     print("test")
@@ -58,7 +59,14 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
-        juljun_time_check(cla)
+        item_jejak(cla)
+
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jejak\\tarket_upgrade_whetstone.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(190, 70, 340, 400, cla, img, 0.95)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("tarket_upgrade_whetstone", imgs_)
 
         # get_gold_sohwan(cla)
         # where = "던전_가르바나지하수로_5"

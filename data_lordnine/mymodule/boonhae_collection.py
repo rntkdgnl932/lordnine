@@ -10,11 +10,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 def col_boon_start(cla):
-    import numpy as np
-    import cv2
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import menu_open
-    from tuto_lordnine import way_check
+    from jejak_lordnine import item_jejak
 
     try:
         print("col_boon_start")
@@ -22,6 +18,9 @@ def col_boon_start(cla):
         item_gamjung_start(cla)
         collection_start(cla)
         boonhae_start(cla)
+
+        # 숫돌 등 버프 아이템 제작하기
+        item_jejak(cla)
 
 
 

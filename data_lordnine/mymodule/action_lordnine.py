@@ -161,7 +161,7 @@ def out_check(cla):
             v_.data_folder) + "\\imgs\\check\\game_title_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+        imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             game_title = True
 
@@ -169,7 +169,7 @@ def out_check(cla):
             v_.data_folder) + "\\imgs\\check\\game_title_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+        imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             game_title = True
 
@@ -181,14 +181,14 @@ def out_check(cla):
                 v_.data_folder) + "\\imgs\\check\\game_start_ready_1.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+            imgs_ = imgs_set_(0, 50, 960, 1030, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 look_title = True
             full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
                 v_.data_folder) + "\\imgs\\check\\game_start_ready_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+            imgs_ = imgs_set_(0, 50, 960, 1030, cla, img, 0.7)
             if imgs_ is not None and imgs_ != False:
                 look_title = True
             if look_title == True:
@@ -198,32 +198,32 @@ def out_check(cla):
                         v_.data_folder) + "\\imgs\\check\\game_start_ready_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+                    imgs_ = imgs_set_(0, 50, 960, 1030, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         if i > 8:
                             full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
                                 v_.data_folder) + "\\imgs\\check\\game_threebutton.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+                            imgs_ = imgs_set_(0, 50, 960, 1030, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x - 40, imgs_.y, v_.now_cla)
+                                click_pos_reg(imgs_.x - 40, imgs_.y, cla)
                             break
                     else:
                         full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
                             v_.data_folder) + "\\imgs\\check\\game_start_ready_2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+                        imgs_ = imgs_set_(0, 50, 960, 1030, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             if i > 8:
                                 full_path = "c:\\my_games\\" + str(v_.game_folder) + "\\" + str(
                                     v_.data_folder) + "\\imgs\\check\\game_threebutton.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 50, 960, 1030, v_.now_cla, img, 0.7)
+                                imgs_ = imgs_set_(0, 50, 960, 1030, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x - 40, imgs_.y, v_.now_cla)
+                                    click_pos_reg(imgs_.x - 40, imgs_.y, cla)
                                 break
                         else:
                             break
@@ -374,7 +374,7 @@ def out_check(cla):
                     v_.data_folder) + "\\imgs\\check\\game_title_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+                imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
                     is_game = True
                     break
@@ -383,7 +383,7 @@ def out_check(cla):
                         v_.data_folder) + "\\imgs\\check\\game_title_2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 0, 960, 1030, v_.now_cla, img, 0.8)
+                    imgs_ = imgs_set_(0, 0, 960, 1030, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         is_game = True
                         break
@@ -391,19 +391,19 @@ def out_check(cla):
             if is_game == False:
                 why = str(v_.this_game) + " 꺼진게 확실하다"
                 print(why)
-                line_to_me(v_.now_cla, why)
+                line_to_me(cla, why)
 
                 dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
                 file_path = dir_path + "\\start.txt"
                 # cla.txt
-                cla_data = str(v_.now_cla) + "cla"
+                cla_data = str(cla) + "cla"
                 file_path2 = dir_path + "\\" + cla_data + ".txt"
                 with open(file_path, "w", encoding='utf-8-sig') as file:
                     data = 'no'
                     file.write(str(data))
                     time.sleep(0.2)
                 with open(file_path2, "w", encoding='utf-8-sig') as file:
-                    data = v_.now_cla
+                    data = cla
                     file.write(str(data))
                     time.sleep(0.2)
                 os.execl(sys.executable, sys.executable, *sys.argv)
