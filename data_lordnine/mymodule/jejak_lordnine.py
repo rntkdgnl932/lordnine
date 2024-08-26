@@ -81,25 +81,25 @@ def item_jejak(cla):
                     time.sleep(0.5)
 
 
-                # 명중 강화 숯돌
-                for i in range(5):
-
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jejak\\tarket_upgrade_whetstone_title.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(440, 70, 670, 125, cla, img, 0.95)
-                    if imgs_ is not None and imgs_ != False:
-                        print("명중 강화 숯돌", imgs_)
-                        jejak_btn_click(cla)
-                        break
-                    else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jejak\\tarket_upgrade_whetstone.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(190, 70, 340, 400, cla, img, 0.95)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.5)
+                # # 명중 강화 숯돌
+                # for i in range(5):
+                #
+                #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jejak\\tarket_upgrade_whetstone_title.PNG"
+                #     img_array = np.fromfile(full_path, np.uint8)
+                #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #     imgs_ = imgs_set_(440, 70, 670, 125, cla, img, 0.95)
+                #     if imgs_ is not None and imgs_ != False:
+                #         print("명중 강화 숯돌", imgs_)
+                #         jejak_btn_click(cla)
+                #         break
+                #     else:
+                #         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jejak\\tarket_upgrade_whetstone.PNG"
+                #         img_array = np.fromfile(full_path, np.uint8)
+                #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #         imgs_ = imgs_set_(190, 70, 340, 400, cla, img, 0.95)
+                #         if imgs_ is not None and imgs_ != False:
+                #             click_pos_reg(imgs_.x, imgs_.y, cla)
+                #     time.sleep(0.5)
 
 
 
