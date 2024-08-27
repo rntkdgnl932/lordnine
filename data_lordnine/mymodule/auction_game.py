@@ -49,7 +49,7 @@ def mine_check(cla):
 
         x_standard = x_standard - 5
 
-        # text_check_get(x_standard, 45, x_standard + 10, 58, cla)
+        # text_check_get_reg(x_standard, 45, x_standard + 10, 58)
 
         num = ""
 
@@ -65,7 +65,7 @@ def mine_check(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(x_standard, 45, x_standard + 10, 58, cla, img, 0.9)
                 if imgs_ is not None and imgs_ != False:
-                    # print("while num", x_standard, i, imgs_)
+                    print("while num", x_standard, i, imgs_)
 
                     is_num = True
 
@@ -73,6 +73,15 @@ def mine_check(cla):
 
                     x_standard = imgs_.x - plus
                     break
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\propert_point.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(x_standard, 45, x_standard + 10, 58, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("propert_point", x_standard, i, imgs_)
+                        # text_check_get_reg(x_standard, 45, x_standard + 10, 58)
+                        x_standard = imgs_.x - plus
             if is_num == False:
                 property_start = False
 

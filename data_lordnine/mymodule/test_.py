@@ -17,7 +17,7 @@ def go_test():
     import random
     import pydirectinput
 
-    from function_game import text_check_get, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
+    from function_game import text_check_get_reg, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
     from tuto_lordnine import way_check
     from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear, juljun_time_check
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
@@ -59,7 +59,43 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
-        item_jejak(cla)
+        result = mine_check(cla)
+        print("result", result)
+
+        # x_standard = 805
+        #
+        # for i in range(10):
+        #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\my_property\\" + str(i) + ".PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(745, 45, 805, 58, cla, img, 0.9)
+        #     if imgs_ is not None and imgs_ != False:
+        #         # print("num", i, imgs_)
+        #         if x_standard > imgs_.x:
+        #             x_standard = imgs_.x - plus
+        #
+        # print("x_standard", x_standard)
+        #
+        # x_standard = x_standard - 5
+        #
+        # for i in range(10):
+        #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\my_property\\" + str(i) + ".PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(x_standard, 45, x_standard + 10, 58, cla, img, 0.9)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("while num", x_standard, i, imgs_)
+        #         text_check_get_reg(x_standard, 45, x_standard + 10, 58)
+        #         x_standard = imgs_.x - plus
+        #     else:
+        #         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\propert_point.PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(x_standard, 45, x_standard + 10, 58, cla, img, 0.9)
+        #         if imgs_ is not None and imgs_ != False:
+        #             print("propert_point", x_standard, i, imgs_)
+        #             text_check_get_reg(x_standard, 45, x_standard + 10, 58)
+        #             x_standard = imgs_.x - plus
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jejak\\tarket_upgrade_whetstone.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
