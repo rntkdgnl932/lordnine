@@ -41,8 +41,8 @@ def mine_check(cla):
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(745, 45, 805, 58, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
-                # print("num", i, imgs_)
-                if x_standard > imgs_.x:
+                print("num", i, imgs_)
+                if x_standard > imgs_.x - plus:
                     x_standard = imgs_.x - plus
 
         print("x_standard", x_standard)
@@ -138,6 +138,8 @@ def auction_start(cla):
 
                 # 먼저 정산...
                 auction_ready(cla)
+
+
 
 
 
