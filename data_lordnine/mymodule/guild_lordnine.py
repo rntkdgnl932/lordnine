@@ -154,8 +154,7 @@ def guild_in(cla):
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
 
                                         for y in range(10):
-
-                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\bye_1.PNG"
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\guild_post_btn.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                             imgs_ = imgs_set_(670, 100, 800, 1040, cla, img, 0.85)
@@ -163,23 +162,39 @@ def guild_in(cla):
                                                 break
                                             time.sleep(0.2)
 
+                                        # 추방이 있다면 아래 진행, 없다면 진행하면 안됨
+                                        bye = False
                                         for y in range(10):
 
-                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\bye_2.PNG"
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\bye_1.PNG"
                                             img_array = np.fromfile(full_path, np.uint8)
                                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(470, 570, 660, 660, cla, img, 0.85)
+                                            imgs_ = imgs_set_(670, 100, 800, 1040, cla, img, 0.85)
                                             if imgs_ is not None and imgs_ != False:
-                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                bye = True
                                                 break
-                                            else:
-                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\bye_1.PNG"
+                                            time.sleep(0.2)
+
+                                        if bye == False:
+                                            break
+                                        else:
+                                            for y in range(10):
+
+                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\bye_2.PNG"
                                                 img_array = np.fromfile(full_path, np.uint8)
                                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                imgs_ = imgs_set_(670, 100, 800, 1040, cla, img, 0.85)
+                                                imgs_ = imgs_set_(470, 570, 660, 660, cla, img, 0.85)
                                                 if imgs_ is not None and imgs_ != False:
                                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                            time.sleep(0.3)
+                                                    break
+                                                else:
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\bye_1.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(670, 100, 800, 1040, cla, img, 0.85)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                time.sleep(0.3)
 
                                     else:
                                         break
