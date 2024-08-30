@@ -60,7 +60,19 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
-        my_property_upload(cla)
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(480, 540, 640, 640, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("jadong_confirm", imgs_)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\special_map\\tiriosa.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(680, 100, 930, 600, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("jadong_confirm", imgs_)
 
         # for i in range(10):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\my_property\\" + str(i) + ".PNG"
