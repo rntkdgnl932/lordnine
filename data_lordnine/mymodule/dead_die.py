@@ -202,6 +202,7 @@ def dead_recorvery(cla):
 
                             if v_.dead_count > 4:
                                 if v_.dead_count < 6:
+                                    v_.dead_count = 0
 
                                     myQuest_play_add(cla, result_schedule_)
 
