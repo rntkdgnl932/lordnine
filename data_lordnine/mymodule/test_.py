@@ -60,7 +60,7 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
-        bag_open(cla)
+        mine_check("three")
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
         img_array = np.fromfile(full_path, np.uint8)
