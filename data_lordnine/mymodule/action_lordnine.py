@@ -1326,7 +1326,16 @@ def bag_open(cla):
                 imgs_ = imgs_set_(690, 80, 830, 130, cla, img, 0.75)
                 if imgs_ is not None and imgs_ != False:
                     print("my_bag", imgs_)
-                    break
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\silhumsil.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(690, 140, 900, 960, cla, img, 0.75)
+                    if imgs_ is not None and imgs_ != False:
+                        print("silhumsil", imgs_)
+                        silhumsil_ganghwa(cla)
+                    else:
+                        break
                 else:
                     result_out = out_check(cla)
                     if result_out == True:
@@ -1349,6 +1358,194 @@ def bag_open(cla):
         return 0
 
 
+def silhumsil_ganghwa(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from clean_screen_lordnine import clean_screen_start
+    from tuto_lordnine import way_check
+
+    try:
+        print("silhumsil_ganghwa")
+
+
+        upgrade = False
+        upgrade_count = 0
+
+        while upgrade is False:
+            upgrade_count += 1
+            if upgrade_count > 7:
+                upgrade = True
+
+            result_juljun = juljun_check(cla)
+            if result_juljun == True:
+                juljun_off(cla)
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\my_bag.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(690, 80, 830, 130, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    print("silhumsil_ganghwa : my_bag", imgs_)
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\silhumsil.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(690, 140, 900, 960, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("silhumsil on", imgs_)
+
+                        for i in range(7):
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\ganghwa_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(480, 400, 570, 470, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("ganghwa_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\silhumsil.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(690, 140, 900, 960, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("silhumsil click", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+
+                        for i in range(7):
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\jadong_enroll_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(690, 690, 800, 750, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("jadong_enroll_btn", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\ganghwa_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(480, 400, 570, 470, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("ganghwa_btn", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+
+
+                        need_item = False
+                        for i in range(10):
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\plus_six.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(110, 360, 620, 480, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("plus_six", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.3)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.3)
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\need_item.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(250, 650, 500, 690, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("need_item", imgs_)
+                                    need_item = True
+                                    break
+                                else:
+                                    break
+                            time.sleep(0.5)
+                        if need_item == True:
+                            upgrade = True
+                        else:
+                            for i in range(10):
+
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\destroy_item.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(250, 650, 500, 690, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("destroy_item", imgs_)
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\ganghwa_btn_click.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(280, 680, 450, 740, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("ganghwa_btn_click", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        break
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\plus_six_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(280, 600, 440, 650, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("plus_six_btn", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                time.sleep(0.5)
+
+                            for i in range(15):
+
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\touch_me.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(380, 630, 560, 690, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("touch_me", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    break
+
+                                time.sleep(1)
+
+                            for i in range(10):
+
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\touch_me.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(380, 630, 560, 690, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("touch_me", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    upgrade = True
+                                    break
+
+                                time.sleep(0.5)
+
+
+                    else:
+
+                        upgrade = True
+
+
+
+                else:
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        click_pos_2(875, 50, cla)
+                        for c in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\my_bag.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(690, 80, 830, 130, cla, img, 0.75)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.3)
+                    else:
+                        clean_screen_start(cla)
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def attack_on(cla):
     import numpy as np
