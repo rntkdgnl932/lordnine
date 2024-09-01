@@ -2,6 +2,7 @@ import random
 import time
 # import os
 import sys
+from PyQt5.QtTest import *
 
 
 import variable as v_
@@ -652,7 +653,7 @@ def mission_get_week(cla):
 
                             if anymore == True:
                                 break
-                            time.sleep(0.5)
+                            QTest.qWait(500)
 
                         # 나가자
                         # clean_screen_start(cla)
