@@ -30,9 +30,11 @@ def jadong_start(cla, where):
         # 디엔북부/메마른호숫가_1_1_1
         # 특수/티리오사무덤/지하1층_3_3_0
 
-        result_special = result_where.split("/")
+        # result_special = result_where.split("/")
 
         result_spot = result_where.split("_")
+
+        result_special = result_spot[0].split("/")
 
         result_juljun = juljun_check(cla)
 
@@ -128,9 +130,11 @@ def spot_in_ready(cla, where):
         # 디엔북부/메마른호숫가_1_1_1
         # 특수/티리오사무덤/지하1층_3_3_0
 
-        result_special = where.split("/")
+        # result_special = where.split("/")
 
         result_spot = where.split("_")
+
+        result_special = result_spot[0].split("/")
 
         # result_spot[1] => 큰 맵
         y_1 = 85 + (int(result_spot[1]) * 45)
@@ -165,13 +169,12 @@ def spot_in_ready(cla, where):
                 print("worldmap", imgs_)
 
 
-
                 # 자세히 들어가기
                 for i in range(5):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\big_map\\" + str(result_spot[1]) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(20, 100, 120, 150, cla, img, 0.7)
+                    imgs_ = imgs_set_(20, 100, 120, 150, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         print("big_map", result_spot[1], imgs_)
 
@@ -179,6 +182,8 @@ def spot_in_ready(cla, where):
                         time.sleep(0.2)
                         click_pos_2(100, y_2, cla)
                         time.sleep(0.2)
+
+                        print("??????????", result_special[0], result_special[1])
 
                         if result_special[0] == "특수":
                             # 특수일 경우
@@ -188,6 +193,8 @@ def spot_in_ready(cla, where):
                                 spot_name = "tiriosa"
                             if result_special[1] == "죽은자의대지":
                                 spot_name = "landofdead"
+
+                            print("spot_name", spot_name)
 
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\special_list\\" + str(
                                 spot_name) + ".PNG"
@@ -386,13 +393,12 @@ def spot_in_ready(cla, where):
                             break
 
                     else:
-
                         for o in range(5):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\big_map\\" + str(
                                 result_spot[1]) + ".PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(20, 100, 120, 150, cla, img, 0.7)
+                            imgs_ = imgs_set_(20, 100, 120, 150, cla, img, 0.85)
                             if imgs_ is not None and imgs_ != False:
                                 break
                             else:
@@ -444,8 +450,9 @@ def spot_in(cla, where):
         # 디엔북부/메마른호숫가_1_1_1
         # 특수/티리오사무덤/지하1층_3_3_0
 
-        result_special = where.split("/")
+        # result_special = where.split("/")
         result_spot = where.split("_")
+        result_special = result_spot[0].split("/")
 
         # result_spot[1] => 큰 맵
         y_1 = 85 + (int(result_spot[1]) * 45)
@@ -584,6 +591,9 @@ def spot_in(cla, where):
                                         break
                                     time.sleep(0.5)
 
+                                if result_special[1] == "비밀실험실":
+                                    spot_click(cla, spot_name)
+
                                 attack_on(cla)
 
                                 juljun_on(cla)
@@ -692,6 +702,80 @@ def spot_in(cla, where):
     except Exception as e:
         print(e)
         return 0
+
+
+def spot_click(cla, where):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from action_lordnine import out_check, loading_check, move_check, attack_on, juljun_on
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("spot_in", where)
+        world = False
+        world_count = 0
+
+        while world is False:
+            world_count += 1
+            if world_count > 6:
+                world = True
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("worldmap", imgs_)
+
+
+                click_pos_2(495, 625, cla)
+                time.sleep(0.5)
+                click_pos_2(495, 625, cla)
+                time.sleep(0.5)
+
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(925, 50, cla)
+                    else:
+                        result_move = move_check(cla)
+                        if result_move == True:
+                            print("이동중")
+                            world = True
+                            break
+                    time.sleep(1)
+
+
+
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    click_pos_2(130, 170, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.3)
+
+                else:
+                    clean_screen_start(cla)
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
 
 def spot_go(cla):
     import numpy as np
