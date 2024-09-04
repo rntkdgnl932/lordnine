@@ -470,6 +470,36 @@ def game_ready(cla):
 
             click_pos_reg(imgs_.x, imgs_.y, cla)
 
+            detecter = False
+
+            for i in range(10):
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\detecter_login.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(380, 420, 600, 500, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    detecter = True
+                time.sleep(0.5)
+
+            if detecter == True:
+                why = "자동 로그인 방지"
+                line_to_me(cla, why)
+
+                dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
+                file_path = dir_path + "\\start.txt"
+                # cla.txt
+                cla_data = str(cla) + "cla"
+                file_path2 = dir_path + "\\" + cla_data + ".txt"
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    data = 'no'
+                    file.write(str(data))
+                    time.sleep(0.2)
+                with open(file_path2, "w", encoding='utf-8-sig') as file:
+                    data = cla
+                    file.write(str(data))
+                    time.sleep(0.2)
+                os.execl(sys.executable, sys.executable, *sys.argv)
 
 
             for i in range(10):
