@@ -28,7 +28,7 @@ def dungeon_start(cla, where):
         result_spot = where.split("_")
 
         # 검은실험실
-        if result_spot[1] == "하얀실험실":
+        if result_spot[1] == "검은실험실":
             myQuest_play_add(cla, where)
         else:
             # result_spot[1] => 던전종류류
@@ -86,7 +86,7 @@ def dun_in(cla, where):
         print("dun_in", where)
 
         # 검은 실험실 이벤트 여부
-        black_laboratory = True
+        black_laboratory = False
 
         # 던전_어둠의숲_3
 
