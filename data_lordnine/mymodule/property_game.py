@@ -74,7 +74,7 @@ def my_property_upload(cla):
         #     full_path = "c:\\my_games\\ares\\data_ares\\imgs\\title\\auction_title.PNG"
         #     img_array = np.fromfile(full_path, np.uint8)
         #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        #     imgs_ = imgs_set_(5, 30, 150, 80, cla, img, 0.8)
+        #     imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
         #     if imgs_ is not None and imgs_ != False:
         #         click_pos_2(940, 45, cla)
         #     else:

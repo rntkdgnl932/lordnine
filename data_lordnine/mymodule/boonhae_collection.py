@@ -61,7 +61,7 @@ def collection_start(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\item_collection.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("item_collection", imgs_)
 
@@ -289,7 +289,7 @@ def collection_start(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\item_collection.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
@@ -487,7 +487,7 @@ def collection_scan_option(cla):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\item_collection.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     for i in range(10):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_title.PNG"

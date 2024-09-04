@@ -326,9 +326,9 @@ def get_gold_sohwan(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sangjum.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
-                print("battle_pass", imgs_)
+                print("sangjum", imgs_)
 
                 get = True
 
@@ -376,7 +376,7 @@ def get_gold_sohwan(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sangjum.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         get_point = True
                         break
@@ -506,7 +506,7 @@ def get_gold_sohwan_start(cla):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\sangjum.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                                imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                                 if imgs_ is not None and imgs_ != False:
                                     print("sangjum", imgs_)
                                     time.sleep(1)
@@ -674,7 +674,7 @@ def get_diary(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\diary.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("diary", imgs_)
 
@@ -709,7 +709,7 @@ def get_diary(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\back.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                        imgs_ = imgs_set_(0, 30, 130, 100, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             break
                         else:
@@ -727,7 +727,7 @@ def get_diary(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\back.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                        imgs_ = imgs_set_(0, 30, 130, 100, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             print("back", imgs_)
 
@@ -797,7 +797,7 @@ def get_diary(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\diary.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
 
@@ -853,7 +853,7 @@ def get_battle_pass(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\battle_pass.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("battle_pass", imgs_)
 
@@ -886,7 +886,7 @@ def get_battle_pass(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\battle_pass.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         get_point = True
                         break
@@ -928,7 +928,7 @@ def get_post(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\post.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("post", imgs_)
 
@@ -1053,7 +1053,7 @@ def get_post(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\post.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
 
@@ -1108,7 +1108,7 @@ def get_upjuk(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\upjuk.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("upjuk", imgs_)
 
@@ -1191,7 +1191,7 @@ def get_upjuk(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\upjuk.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
 
@@ -1246,7 +1246,7 @@ def get_monster_dogam(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\monster_dogam.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
             if imgs_ is not None and imgs_ != False:
                 print("monster_dogam", imgs_)
 
@@ -1322,7 +1322,7 @@ def get_monster_dogam(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\monster_dogam.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 30, 200, 100, cla, img, 0.85)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                     if imgs_ is not None and imgs_ != False:
                         break
 
