@@ -164,7 +164,7 @@ def mission_get_daily(cla, data):
                 if imgs_ is not None and imgs_ != False:
                     is_in = True
                 else:
-                    for a in range(3):
+                    for a in range(6):
                         is_ = a + 1
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\list\\" + str(is_) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
