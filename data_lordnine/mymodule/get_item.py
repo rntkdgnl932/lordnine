@@ -339,8 +339,14 @@ def get_gold_sohwan(cla):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        click_pos_2(70, 130, cla)
-                        break
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(190, 100, 340, 150, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            click_pos_2(70, 130 + 70, cla)
                     else:
                         click_pos_2(150, 85, cla)
                         for g in range(10):
