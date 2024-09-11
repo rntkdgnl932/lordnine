@@ -43,6 +43,8 @@ def dungeon_start(cla, where):
                 dun_name = "talag"
             elif result_spot[1] == "가르바나지하수로":
                 dun_name = "garbana"
+            elif result_spot[1] == "이벤트":
+                dun_name = "event"
 
             result_juljun = juljun_check(cla)
 
@@ -85,6 +87,14 @@ def dun_in(cla, where):
     try:
         print("dun_in", where)
 
+        # 이벤트 던전 여부
+        event_dungeon = True
+
+        y_e_plus = 0
+        if event_dungeon == True:
+            y_e_plus = 120
+
+
         # 검은 실험실 이벤트 여부
         black_laboratory = False
 
@@ -96,34 +106,38 @@ def dun_in(cla, where):
         # resut_spot[2] => 층수
         if result_spot[1] == "검은실험실":
             if black_laboratory == True:
-                y_1 = 130
+                y_1 = 130 + y_e_plus
             else:
-                y_1 = 590
+                y_1 = 590 + y_e_plus
             dun_name = "black"
         elif result_spot[1] == "어둠의숲":
             if black_laboratory == True:
-                y_1 = 250
+                y_1 = 250 + y_e_plus
             else:
-                y_1 = 130
+                y_1 = 130 + y_e_plus
             dun_name = "adoom"
         elif result_spot[1] == "조각의숲":
             if black_laboratory == True:
-                y_1 = 370
+                y_1 = 370 + y_e_plus
             else:
-                y_1 = 250
+                y_1 = 250 + y_e_plus
             dun_name = "jogag"
         elif result_spot[1] == "타락한미궁":
             if black_laboratory == True:
-                y_1 = 480
+                y_1 = 480 + y_e_plus
             else:
-                y_1 = 370
+                y_1 = 370 + y_e_plus
             dun_name = "talag"
         elif result_spot[1] == "가르바나지하수로":
             if black_laboratory == True:
-                y_1 = 590
+                y_1 = 590 + y_e_plus
             else:
-                y_1 = 480
+                y_1 = 480 + y_e_plus
             dun_name = "garbana"
+
+        elif result_spot[1] == "이벤트":
+            y_1 = 130
+            dun_name = "event"
 
         # 던전 가기전 물약 사자
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
@@ -162,63 +176,101 @@ def dun_in(cla, where):
                     if black_laboratory == True:
                         imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
                     else:
-                        imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
+                        if event_dungeon == True:
+                            imgs_ = imgs_set_(205, 715, 255, 745, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
                 elif str(dun_name) == "adoom":
                     if black_laboratory == True:
                         imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
                     else:
-                        imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
+                        if event_dungeon == True:
+                            imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
                 elif str(dun_name) == "jogag":
                     if black_laboratory == True:
                         imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
                     else:
-                        imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                        if event_dungeon == True:
+                            imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
                 elif str(dun_name) == "talag":
                     if black_laboratory == True:
                         imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
                     else:
-                        imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                        if event_dungeon == True:
+                            imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
                 elif str(dun_name) == "garbana":
                     if black_laboratory == True:
                         imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
                     else:
-                        imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                        if event_dungeon == True:
+                            imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                elif str(dun_name) == "event":
+                    imgs_ = imgs_set_(205, 140, 255, 170, cla, img, 0.8)
+
                 if imgs_ is not None and imgs_ != False:
                     print("dun_complete_1", imgs_)
 
-                    # 만료여부
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_2.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    if str(dun_name) == "black":
-                        if black_laboratory == True:
-                            imgs_ = imgs_set_(205, 160, 255, 190, cla, img, 0.8)
-                        else:
-                            imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
-                    elif str(dun_name) == "adoom":
-                        if black_laboratory == True:
-                            imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
-                        else:
-                            imgs_ = imgs_set_(205, 160, 255, 190, cla, img, 0.8)
-                    elif str(dun_name) == "jogag":
-                        if black_laboratory == True:
-                            imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
-                        else:
-                            imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
-                    elif str(dun_name) == "talag":
-                        if black_laboratory == True:
-                            imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
-                        else:
-                            imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
-                    elif str(dun_name) == "garbana":
-                        if black_laboratory == True:
-                            imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
-                        else:
-                            imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("dun_complete_2", imgs_)
-
+                    if str(dun_name) == "event":
                         complete = True
+
+                    else:
+
+                        # 만료여부
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        if str(dun_name) == "black":
+                            if black_laboratory == True:
+                                imgs_ = imgs_set_(205, 160, 255, 190, cla, img, 0.8)
+                            else:
+                                if event_dungeon == True:
+                                    imgs_ = imgs_set_(205, 735, 255, 765, cla, img, 0.8)
+                                else:
+                                    imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
+                        elif str(dun_name) == "adoom":
+                            if black_laboratory == True:
+                                imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
+                            else:
+                                if event_dungeon == True:
+                                    imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
+                                else:
+                                    imgs_ = imgs_set_(205, 160, 255, 190, cla, img, 0.8)
+                        elif str(dun_name) == "jogag":
+                            if black_laboratory == True:
+                                imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
+                            else:
+                                if event_dungeon == True:
+                                    imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
+                                else:
+                                    imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
+                        elif str(dun_name) == "talag":
+                            if black_laboratory == True:
+                                imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+                            else:
+                                if event_dungeon == True:
+                                    imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+                                else:
+                                    imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
+                        elif str(dun_name) == "garbana":
+                            if black_laboratory == True:
+                                imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
+                            else:
+                                if event_dungeon == True:
+                                    imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
+                                else:
+                                    imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("dun_complete_2", imgs_)
+
+                            complete = True
 
 
 
