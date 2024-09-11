@@ -673,18 +673,31 @@ class SecondTab(QWidget):
     def let_is_copy_id_1(self):
         print("let_is_copy_id_1", one_id)
         clipboard.copy(one_id)
+        # 색상
+        self.pushButton_copy_id_1.setDisabled(True)
+        QTest.qWait(1500)
+        self.pushButton_copy_id_1.setDisabled(False)
 
     def let_is_copy_pw_1(self):
         print("let_is_copy_pw_1", one_pw)
         clipboard.copy(one_pw)
+        self.pushButton_copy_pw_1.setDisabled(True)
+        QTest.qWait(1500)
+        self.pushButton_copy_pw_1.setDisabled(False)
 
     def let_is_copy_id_2(self):
         print("let_is_copy_id_2", two_id)
         clipboard.copy(two_id)
+        self.pushButton_copy_id_2.setDisabled(True)
+        QTest.qWait(1500)
+        self.pushButton_copy_id_2.setDisabled(False)
 
     def let_is_copy_pw_2(self):
         print("let_is_copy_pw_2", two_pw)
         clipboard.copy(two_pw)
+        self.pushButton_copy_pw_2.setDisabled(True)
+        QTest.qWait(1500)
+        self.pushButton_copy_pw_2.setDisabled(False)
 
     def button_event1(self):
         global one_id, one_pw
@@ -693,6 +706,7 @@ class SecondTab(QWidget):
         one_cla_ps_ = self.one_cla_ps_in.text()
         one_id = one_cla_id_
         one_pw = one_cla_pw_
+
         print(one_cla_id_)
         print(one_cla_pw_)
 
