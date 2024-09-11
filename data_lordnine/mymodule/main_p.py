@@ -687,9 +687,12 @@ class SecondTab(QWidget):
         clipboard.copy(two_pw)
 
     def button_event1(self):
+        global one_id, one_pw
         one_cla_id_ = self.one_cla_id_in.text()  # line_edit text 값 가져오기
         one_cla_pw_ = self.one_cla_pw_in.text()
         one_cla_ps_ = self.one_cla_ps_in.text()
+        one_id = one_cla_id_
+        one_pw = one_cla_pw_
         print(one_cla_id_)
         print(one_cla_pw_)
 
@@ -705,9 +708,12 @@ class SecondTab(QWidget):
             file.write(shcedule)
 
     def button_event2(self):
+        global two_id, two_pw
         two_cla_id_ = self.two_cla_id_in.text()  # line_edit text 값 가져오기
         two_cla_pw_ = self.two_cla_pw_in.text()
         two_cla_ps_ = self.two_cla_ps_in.text()
+        two_id = two_cla_id_
+        two_pw = two_cla_pw_
         print(two_cla_id_)
         print(two_cla_pw_)
 
