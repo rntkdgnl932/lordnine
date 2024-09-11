@@ -94,6 +94,11 @@ onHunt3 = "none"
 onHunt4 = "none"
 onMaul = "none"
 
+one_id = "none"
+one_pw = "none"
+two_id = "none"
+two_pw = "none"
+
 
 version = v_.version_
 
@@ -373,6 +378,8 @@ class SecondTab(QWidget):
 
     def initUI(self):
 
+        global one_id, one_pw, two_id, two_pw
+
         dir_path = "C:\\my_games\\" + str(v_.game_folder)
         file_path_one = dir_path + "\\mysettings\\idpw\\onecla.txt"
         file_path_two = dir_path + "\\mysettings\\idpw\\twocla.txt"
@@ -384,6 +391,9 @@ class SecondTab(QWidget):
                 thismyid_one = lines_one[0]
                 thismypw_one = lines_one[1]
                 thismyps_one = lines_one[2]
+
+                one_id = thismyid_one
+                one_pw = thismypw_one
         else:
             print('one 파일 없당')
             thismyid_one = 'none'
@@ -397,6 +407,9 @@ class SecondTab(QWidget):
                 thismyid_two = lines_two[0]
                 thismypw_two = lines_two[1]
                 thismyps_two = lines_two[2]
+
+                two_id = thismyid_two
+                two_pw = thismypw_two
         else:
             print('two 파일 없당')
             thismyid_two = 'none'
@@ -414,6 +427,12 @@ class SecondTab(QWidget):
 
         self.pushButton_login1 = QPushButton("로그인하기")
         self.pushButton_login1.clicked.connect(self.let_is_login_1)
+
+        self.pushButton_copy_id_1 = QPushButton("현재 내 아이디 복사")
+        self.pushButton_copy_id_1.clicked.connect(self.let_is_copy_id_1)
+
+        self.pushButton_copy_pw_1 = QPushButton("패스워드 복사")
+        self.pushButton_copy_pw_1.clicked.connect(self.let_is_copy_pw_1)
 
         self.pushButton_left = QPushButton("좌로 정렬")
         self.pushButton_left.clicked.connect(self.win_left)
@@ -437,6 +456,10 @@ class SecondTab(QWidget):
         vbox1_log = QHBoxLayout()
         vbox1_log.addStretch(5)
         vbox1_log.addWidget(self.pushButton_login1)
+        vbox1_log.addStretch(5)
+        vbox1_log.addWidget(self.pushButton_copy_id_1)
+        vbox1_log.addStretch(1)
+        vbox1_log.addWidget(self.pushButton_copy_pw_1)
         vbox1_log.addStretch(5)
 
         vbox1_left = QHBoxLayout()
@@ -491,6 +514,13 @@ class SecondTab(QWidget):
         self.pushButton_login2 = QPushButton("로그인하기")
         self.pushButton_login2.clicked.connect(self.let_is_login_2)
 
+        self.pushButton_copy_id_2 = QPushButton("현재 내 아이디 복사")
+        self.pushButton_copy_id_2.clicked.connect(self.let_is_copy_id_2)
+
+        self.pushButton_copy_pw_2 = QPushButton("패스워드 복사")
+        self.pushButton_copy_pw_2.clicked.connect(self.let_is_copy_pw_2)
+
+
         self.pushButton_right = QPushButton("우로 정렬")
         self.pushButton_right.clicked.connect(self.win_right)
 
@@ -512,6 +542,10 @@ class SecondTab(QWidget):
         vbox2_log = QHBoxLayout()
         vbox2_log.addStretch(5)
         vbox2_log.addWidget(self.pushButton_login2)
+        vbox2_log.addStretch(5)
+        vbox2_log.addWidget(self.pushButton_copy_id_2)
+        vbox2_log.addStretch(1)
+        vbox2_log.addWidget(self.pushButton_copy_pw_2)
         vbox2_log.addStretch(5)
 
         vbox2_right = QHBoxLayout()
@@ -635,6 +669,22 @@ class SecondTab(QWidget):
 
     def let_is_login_2(self):
         print("로그인2 버튼 입니다.")
+
+    def let_is_copy_id_1(self):
+        print("let_is_copy_id_1", one_id)
+        clipboard.copy(one_id)
+
+    def let_is_copy_pw_1(self):
+        print("let_is_copy_pw_1", one_pw)
+        clipboard.copy(one_pw)
+
+    def let_is_copy_id_2(self):
+        print("let_is_copy_id_2", two_id)
+        clipboard.copy(two_id)
+
+    def let_is_copy_pw_2(self):
+        print("let_is_copy_pw_2", two_pw)
+        clipboard.copy(two_pw)
 
     def button_event1(self):
         one_cla_id_ = self.one_cla_id_in.text()  # line_edit text 값 가져오기
