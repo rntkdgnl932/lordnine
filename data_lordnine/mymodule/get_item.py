@@ -357,7 +357,7 @@ def get_gold_sohwan(cla):
                             if imgs_ is not None and imgs_ != False:
                                 break
                             time.sleep(0.1)
-                time.sleep(0.5)
+                    time.sleep(0.5)
 
                 # 아바타 소환하기
                 # 200 ~ 350, 400 ~ 550
