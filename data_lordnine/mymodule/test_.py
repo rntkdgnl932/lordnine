@@ -62,9 +62,28 @@ def go_test():
 
         # homoon_clear(cla)
 
-
-
-        potion_buy_start(cla)
+        # 결제하기 화면
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\pay\\lordnine_title.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(160, 60, 270, 110, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("lordnine_title", imgs_)
+            for i in range(10):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\pay\\lordnine_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(160, 60, 270, 110, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(420, 50, cla)
+                    time.sleep(1)
+                    click_pos_2(480, 615, cla)
+                    time.sleep(1)
+                    click_pos_2(930, 50, cla)
+                    time.sleep(1)
+                else:
+                    break
+                time.sleep(0.1)
 
 
 
