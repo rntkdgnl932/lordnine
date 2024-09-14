@@ -63,28 +63,16 @@ def go_test():
         # homoon_clear(cla)
 
         # 결제하기 화면
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\pay\\lordnine_title.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(160, 60, 270, 110, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("lordnine_title", imgs_)
-            for i in range(10):
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\pay\\lordnine_title.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(160, 60, 270, 110, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    click_pos_2(420, 50, cla)
-                    time.sleep(1)
-                    click_pos_2(480, 615, cla)
-                    time.sleep(1)
-                    click_pos_2(930, 50, cla)
-                    time.sleep(1)
-                else:
-                    break
-                time.sleep(0.1)
+        data = "Three:1:각종템받기:대기중:Four:1:각종템받기:대기중\nThree:1:거래소등록:대기중:Four:1:튜토육성:대기중\nThree:1:튜토육성:대기중:Four:1:일일임무_3_우호:대기중\nThree:1:일일임무_5_우호:대기중:Four:1:던전_어둠의숲_2:대기중\nThree:1:버프와물약사기:대기중:Four:1:던전_타락한미궁_2:대기중\nThree:1:던전_검은실험실_2:대기중:Four:1:각종템받기:대기중\nThree:1:던전_어둠의숲_3:대기중:Four:1:거래소등록:대기중\nThree:1:던전_조각의숲_3:대기중:Four:1:거래소등록:대기중\nThree:1:던전_타락한미궁_3:대기중:Four:1:던전_어둠의숲_3:대기중\nThree:1:각종템받기:대기중:Four:1:던전_조각의숲_3:대기중\nThree:1:던전_이벤트_3:대기중:Four:1:던전_타락한미궁_3:대기중\nThree:1:시련의탑:대기중:Four:1:일일임무_4_우호:대기중\nThree:1:거래소등록:대기중:Four:1:일일임무_3_우호:대기중\nThree:1:특수/티리오사무덤/지하1층:대기중:Four:1:던전_이벤트_3:대기중\n"
 
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        file_path = dir_path + "\\mysettings\\myschedule\\schedule.txt"
+        file_path3 = dir_path + "\\mysettings\\myschedule\\schedule2.txt"
+
+        with open(file_path, "w", encoding='utf-8-sig') as file:
+            file.write(str(data))
+        with open(file_path3, "w", encoding='utf-8-sig') as file:
+            file.write(str(data))
 
 
 
