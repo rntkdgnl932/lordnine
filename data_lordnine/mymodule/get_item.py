@@ -332,6 +332,34 @@ def get_gold_sohwan(cla):
 
                 get = True
 
+                #######################
+                # 추석 이벤트
+                #######################
+                # 골드소환
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(190, 100, 340, 150, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        click_pos_2(70, 130, cla)
+                    time.sleep(0.5)
+
+                # 아바타 소환하기
+                # 200 ~ 350, 400 ~ 550
+                get_gold_sohwan_start(cla)
+
+                # 방어구 강화석 사기
+                # 200 ~ 350, 400 ~ 550
+                get_ganghwasuk_sohwan_start(cla)
+
+                click_pos_2(70, 130 + 70, cla)
+                time.sleep(0.2)
+                click_pos_2(70, 130 + 70, cla)
+                time.sleep(0.2)
+
                 # 골드소환
                 for i in range(10):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
