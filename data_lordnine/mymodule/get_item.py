@@ -340,7 +340,7 @@ def get_gold_sohwan(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.8)
+                    imgs_ = imgs_set_(0, 100, 70, 230, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -356,7 +356,7 @@ def get_gold_sohwan(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.8)
+                            imgs_ = imgs_set_(0, 100, 70, 230, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 break
                             time.sleep(0.1)
@@ -380,7 +380,7 @@ def get_gold_sohwan(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.8)
+                    imgs_ = imgs_set_(0, 100, 70, 230, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -396,7 +396,7 @@ def get_gold_sohwan(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(0, 100, 70, 160, cla, img, 0.8)
+                            imgs_ = imgs_set_(0, 100, 70, 230, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 break
                             time.sleep(0.1)
