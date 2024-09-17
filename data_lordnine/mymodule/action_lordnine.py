@@ -911,7 +911,7 @@ def move_check(cla):
 
                 why = "이동 오류 있는 듯 하다."
                 line_to_me(cla, why)
-                time.sleep(600)
+                time.sleep(400)
 
             else:
 
