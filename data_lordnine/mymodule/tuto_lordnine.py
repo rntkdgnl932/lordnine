@@ -345,6 +345,15 @@ def way_check(cla):
                 click_pos_reg(imgs_.x + 23, imgs_.y, cla)
                 is_way = True
 
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\way\\right2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 30, 960, 1040, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("right2", imgs_)
+                click_pos_reg(imgs_.x + 23, imgs_.y, cla)
+                is_way = True
+
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\way\\left.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -383,6 +392,35 @@ def quest_checking(cla):
     try:
 
         print("quest_checking")
+
+        # 서브캐릭 튜토 관련
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\bag\\my_bag.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(690, 80, 830, 130, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("my_bag", imgs_)
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\yasangma_wanjang.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(690, 110, 900, 500, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("yasangma_wanjang", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(0.5)
+                click_pos_2(680, 440, cla)
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\yasangma_sayong_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(470, 600, 660, 660, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        break
+                    time.sleep(0.2)
+
 
         # hwal
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\hwal_1.PNG"
