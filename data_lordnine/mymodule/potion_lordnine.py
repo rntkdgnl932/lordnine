@@ -1,7 +1,7 @@
 import time
 # import os
 import sys
-
+from PyQt5.QtTest import *
 
 import variable as v_
 
@@ -390,6 +390,7 @@ def potion_buy_start(cla):
                             break
                     time.sleep(0.3)
             time.sleep(0.5)
+            QTest.qWait(100)
 
 
 
