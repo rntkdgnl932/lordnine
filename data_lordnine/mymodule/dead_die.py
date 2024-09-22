@@ -1,7 +1,7 @@
 import time
 # import os
 import sys
-
+from PyQt5.QtTest import *
 
 import variable as v_
 
@@ -104,6 +104,8 @@ def dead_check(cla):
             potion_buy_start(cla)
             clean_screen_start(cla)
             dead_recorvery(cla)
+
+            QTest.qWait(500)
 
         return dead
     except Exception as e:

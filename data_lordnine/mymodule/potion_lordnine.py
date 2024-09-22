@@ -328,8 +328,6 @@ def potion_buy_start(cla):
                     imgs_ = imgs_set_(400, 330, 540, 400, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
                         print("potion_setting", imgs_)
-                        click_pos_2(530, 400, cla)
-                        time.sleep(0.5)
                         click_pos_2(550, 700, cla)
                         time.sleep(0.5)
 
