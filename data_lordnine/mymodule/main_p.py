@@ -4371,7 +4371,7 @@ class game_Playing(QThread):
                                     tuto_start(v_.now_cla)
 
                                 elif result_schedule_ == "거래소등록":
-                                    auction_start(v_.now_cla)
+                                    # auction_start(v_.now_cla)
                                     myQuest_play_add(v_.now_cla, result_schedule_)
 
                                 elif result_schedule_ == "각종템받기":
