@@ -138,6 +138,19 @@ def guild_in(cla):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(240, 980, 350, 1040, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\down_way.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(915, 125, 950, 160, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                print("good", imgs_)
+                            else:
+                                click_pos_2(935, 145, cla)
+                                time.sleep(0.5)
+
+
+
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\guild_before_day.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

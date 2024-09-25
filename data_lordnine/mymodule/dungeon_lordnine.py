@@ -88,7 +88,7 @@ def dun_in(cla, where):
         print("dun_in", where)
 
         # 이벤트 던전 여부
-        event_dungeon = True
+        event_dungeon = False
 
         y_e_plus = 0
         if event_dungeon == True:

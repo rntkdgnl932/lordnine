@@ -60,6 +60,16 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\down_way.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(915, 125, 950, 160, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("good", imgs_)
+        else:
+            click_pos_2(935, 145, cla)
+            time.sleep(0.5)
+
         # homoon_clear(cla)
 
         # data = "Three:1:각종템받기:대기중:Four:1:각종템받기:대기중\nThree:1:거래소등록:대기중:Four:1:튜토육성:대기중\nThree:1:튜토육성:대기중:Four:1:일일임무_3_우호:대기중\nThree:1:일일임무_5_우호:대기중:Four:1:던전_어둠의숲_2:대기중\nThree:1:버프와물약사기:대기중:Four:1:던전_타락한미궁_2:대기중\nThree:1:던전_검은실험실_2:대기중:Four:1:각종템받기:대기중\nThree:1:던전_어둠의숲_3:대기중:Four:1:거래소등록:대기중\nThree:1:던전_조각의숲_3:대기중:Four:1:거래소등록:대기중\nThree:1:던전_타락한미궁_3:대기중:Four:1:던전_어둠의숲_3:대기중\nThree:1:각종템받기:대기중:Four:1:던전_조각의숲_3:대기중\nThree:1:던전_이벤트_3:대기중:Four:1:던전_타락한미궁_3:대기중\nThree:1:시련의탑:대기중:Four:1:일일임무_4_우호:대기중\nThree:1:거래소등록:대기중:Four:1:일일임무_3_우호:대기중\nThree:1:특수/티리오사무덤/지하1층:대기중:Four:1:던전_이벤트_3:대기중\n"
