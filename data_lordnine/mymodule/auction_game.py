@@ -408,6 +408,16 @@ def auction_jangbi(cla):
                                 x_reg = imgs_.x + 15
                                 y_reg = imgs_.y + 15
                                 is_jangbi = True
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\skill_book_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(760, 130, 950, 1000, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("skill_book_2", imgs_)
+                                    x_reg = imgs_.x + 15
+                                    y_reg = imgs_.y + 15
+                                    is_jangbi = True
 
                     if is_jangbi == True:
                         print("팔자")
