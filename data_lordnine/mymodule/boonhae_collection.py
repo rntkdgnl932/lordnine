@@ -20,7 +20,8 @@ def col_boon_start(cla):
         boonhae_start(cla)
 
         # 숫돌 등 버프 아이템 제작하기
-        item_jejak(cla)
+        # 잠시 보류
+        # item_jejak(cla)
 
 
 
