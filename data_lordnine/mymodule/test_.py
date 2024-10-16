@@ -23,7 +23,8 @@ def go_test():
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start, collection_start
     from potion_lordnine import potion_buy_start, potion_check
-    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary
+    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary, get_ganghwasuk_sohwan_start
+
     from jadong_lordnine import jadong_start, spot_go
     from dead_die import dead_recorvery, dead_check
     from dungeon_lordnine import dun_in
@@ -59,6 +60,9 @@ def go_test():
         where = "오염된분지/감춰진언덕"
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
+
+        get_ganghwasuk_sohwan_start(cla)
+
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\skill_book_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)

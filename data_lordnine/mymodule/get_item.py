@@ -2,6 +2,7 @@ import time
 # import os
 import sys
 
+from PyQt5.QtTest import *
 
 import variable as v_
 
@@ -696,6 +697,37 @@ def get_ganghwasuk_sohwan_start(cla):
                 sohwan = False
 
             time.sleep(0.5)
+
+        # 마지막으로 오른쪽에 있는 200만원짜리 사기
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\talgut_box.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(760, 110, 840, 140, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sold_out.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(800, 235, 860, 270, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("200만원은 품절")
+                    break
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\talgut_box_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(370, 330, 480, 400, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(415, 615, cla)
+                        time.sleep(0.5)
+                        click_pos_2(570, 690, cla)
+                    else:
+                        click_pos_2(830, 215, cla)
+            else:
+                drag_pos(800, 300, 300, 300, cla)
+            QTest.qWait(500)
+
+
 
 
     except Exception as e:
