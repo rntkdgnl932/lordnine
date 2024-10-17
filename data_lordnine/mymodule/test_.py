@@ -37,7 +37,7 @@ def go_test():
 
 
     print("test")
-    cla = "two"
+    cla = "one"
 
     plus = 0
 
@@ -61,7 +61,12 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
-        boonhae_start(cla)
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_ready_check\\adoom.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(500, 70, 800, 110, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("어둠??")
 
         # for i in range(15):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\right_checked.PNG"

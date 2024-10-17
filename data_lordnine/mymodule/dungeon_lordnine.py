@@ -286,7 +286,7 @@ def dun_in(cla, where):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_ready_check\\" + str(dun_name) + ".PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(500, 70, 800, 110, cla, img, 0.8)
+                        imgs_ = imgs_set_(500, 70, 800, 110, cla, img, 0.9)
                         if imgs_ is not None and imgs_ != False:
                             if result_spot[1] == "검은실험실" or result_spot[1] == "가르바나지하수로":
                                 int_step = int(result_spot[2])
