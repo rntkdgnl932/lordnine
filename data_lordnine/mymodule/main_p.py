@@ -954,7 +954,7 @@ class FirstTab(QWidget):
 
         ################### 콜렉션 온오프(수집 온오프) ####################
 
-        self.collection_on_off3 = QGroupBox('고급장비분해 On/Off')
+        self.collection_on_off3 = QGroupBox('고급희귀장비분해 On/Off')
 
         ################################################################
 
@@ -976,12 +976,30 @@ class FirstTab(QWidget):
         self.tgl3.setChecked(v_.onCollection_boonhae)
         self.tgl3.toggled.connect(self.onActivated_slelect_collection_boonhae_toggle)
 
+        # 4. 희귀장비분해
+        self.onActivated_slelect_collection_boonhae_rare_toggle_read()
+
+        print("onCollection_boonhae_rare", v_.onCollection_boonhae_rare)
+        if v_.onCollection_boonhae_rare == True:
+            tgl_now_rare = "On"
+        else:
+            tgl_now_rare = "Off"
+        self.now_toggle4 = QLabel("희귀장비분해 : " + tgl_now_rare + "\n")
+
+        ## 토글 버튼
+        self.tgl4 = QCheckBox("On / Off")
+        # self.tgl3.adjustSize()
+        self.tgl4.setChecked(v_.onCollection_boonhae)
+        self.tgl4.toggled.connect(self.onActivated_slelect_collection_boonhae_rare_toggle)
+
         ####################################
 
 
         tgl3333 = QVBoxLayout()
         tgl3333.addWidget(self.now_toggle3)
         tgl3333.addWidget(self.tgl3)
+        tgl3333.addWidget(self.now_toggle4)
+        tgl3333.addWidget(self.tgl4)
 
 
         collec_box = QVBoxLayout()
@@ -1798,6 +1816,63 @@ class FirstTab(QWidget):
             tgl_now = "Off"
         self.now_toggle3.setText("고급장비분해 : " + str(tgl_now) + "\n")
         self.tgl3.setChecked(v_.onCollection_boonhae)
+        #self.set_rand_int()
+
+    def onActivated_slelect_collection_boonhae_rare_toggle_read(self):
+        print('onCollection_boonhae_rare read', v_.onCollection_boonhae_rare)
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection_boonhae"
+        file_path = dir_path + "\\mysettings\\collection\\collection_boonhae_rare_toggle.txt"
+
+        isToggle = False
+        while isToggle is False:
+            if os.path.isfile(file_path) == True:
+                with open(file_path, "r", encoding='utf-8-sig') as file:
+
+                    read_tgl = file.read()
+                    if read_tgl == "on":
+                        isToggle = True
+                        v_.onCollection_boonhae_rare = True
+                    else:
+                        isToggle = True
+                        v_.onCollection_boonhae_rare = False
+            else:
+                if os.path.isdir(dir_toggle) == False:
+                    print('토글 디렉토리 존재하지 않음')
+                    os.makedirs(dir_toggle)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("off")
+        return v_.onCollection_boonhae_rare
+
+    def onActivated_slelect_collection_boonhae_rare_toggle(self, e):
+        # global onCollection_boonhae_rare
+        v_.onCollection_boonhae_rare = e
+        print('onCollection_boonhae_rare change', v_.onCollection_boonhae_rare)
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection_boonhae"
+        file_path = dir_path + "\\mysettings\\collection\\collection_boonhae_rare_toggle.txt"
+
+        isToggle = False
+        while isToggle is False:
+            if os.path.isfile(file_path) == True:
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    isToggle = True
+                    if e == True:
+                        file.write("on")
+                    else:
+                        file.write("off")
+            else:
+                if os.path.isdir(dir_toggle) == False:
+                    print('토글 디렉토리 존재하지 않음')
+                    os.makedirs(dir_toggle)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("off")
+        if v_.onCollection_boonhae_rare == True:
+            tgl_now = "On"
+        else:
+            tgl_now = "Off"
+        self.now_toggle4.setText("희귀장비분해 : " + str(tgl_now) + "\n")
+        self.tgl4.setChecked(v_.onCollection_boonhae_rare)
         #self.set_rand_int()
 
     def onActivated_cla(self, text):
@@ -4389,7 +4464,8 @@ class game_Playing(QThread):
 
                                 elif "던전" in result_schedule_:
                                     if "이벤트" in result_schedule_:
-                                        myQuest_play_add(v_.now_cla, result_schedule_)
+                                        dungeon_start(v_.now_cla, result_schedule_)
+                                        # myQuest_play_add(v_.now_cla, result_schedule_)
                                     else:
                                         dungeon_start(v_.now_cla, result_schedule_)
 

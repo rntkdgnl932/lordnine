@@ -47,6 +47,7 @@ onForceGoldSpot = "none"
 onTutoPotion = False
 onCollection = False
 onCollection_boonhae = False
+onCollection_boonhae_rare = False
 
 
 # 마우스 관련

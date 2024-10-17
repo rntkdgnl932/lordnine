@@ -667,7 +667,7 @@ def boonhae_start(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(240, 500, 500, 600, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    clean_screen_start(cla)
+                    # clean_screen_start(cla)
                     break
                 else:
                     for s in range(5):
@@ -704,6 +704,62 @@ def boonhae_start(cla):
                     time.sleep(0.5)
 
             time.sleep(0.5)
+
+        # 여기서 희귀...
+        if v_.onCollection_boonhae_rare == True:
+            boonhae_option_rare(cla)
+
+            for i in range(10):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(310, 670, 410, 740, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+
+
+
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\not_selected.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(240, 500, 500, 600, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        clean_screen_start(cla)
+                        break
+                    else:
+                        for s in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\touch_me.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(200, 600, 700, 1040, cla, img, 0.75)
+                            if imgs_ is not None and imgs_ != False:
+                                print("touch_me", imgs_)
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                break
+
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(240, 270, 465, 335, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(365, 710, cla)
+                            time.sleep(0.3)
+
+
+
+                else:
+                    click_pos_2(510, 300, cla)
+                    for s in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(310, 670, 410, 740, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.5)
+
+                time.sleep(0.5)
 
         for i in range(5):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\not_selected.PNG"
@@ -768,21 +824,22 @@ def boonhae_option(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(280, 430, 335, 475, cla, img, 0.7)
+                        imgs_ = imgs_set_(280, 425, 335, 470, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
+
                             # 고급까지 체크인지 확인
                             if v_.onCollection_boonhae == True:
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(375, 430, 430, 475, cla, img, 0.7)
+                                imgs_ = imgs_set_(375, 425, 430, 470, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
 
                                     # 체크 되지 않아야 할 부분에 체크 되어있는지 확인
                                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(450, 430, 640, 475, cla, img, 0.7)
+                                    imgs_ = imgs_set_(450, 425, 640, 470, cla, img, 0.7)
                                     if imgs_ is not None and imgs_ != False:
                                         check_end = False
                                     else:
@@ -793,7 +850,7 @@ def boonhae_option(cla):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(360, 430, 640, 475, cla, img, 0.7)
+                                imgs_ = imgs_set_(360, 425, 640, 470, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
                                     check_end = False
                                 else:
@@ -819,6 +876,9 @@ def boonhae_option(cla):
                         else:
                             break
                         time.sleep(0.5)
+
+
+
                 else:
 
 
@@ -827,14 +887,14 @@ def boonhae_option(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(280, 430, 335, 475, cla, img, 0.7)
+                        imgs_ = imgs_set_(280, 425, 335, 470, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             break
                         else:
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_not_checked.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(280, 430, 335, 475, cla, img, 0.7)
+                            imgs_ = imgs_set_(280, 425, 335, 470, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                         time.sleep(0.5)
@@ -844,17 +904,19 @@ def boonhae_option(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(280, 450, 335, 495, cla, img, 0.7)
+                        imgs_ = imgs_set_(280, 455, 335, 495, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             break
                         else:
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_not_checked.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(280, 450, 335, 495, cla, img, 0.7)
+                            imgs_ = imgs_set_(280, 455, 335, 495, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                         time.sleep(0.5)
+
+
 
                     if v_.onCollection_boonhae == True:
                         # 고급까지체크하기
@@ -863,14 +925,14 @@ def boonhae_option(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(375, 430, 430, 475, cla, img, 0.7)
+                            imgs_ = imgs_set_(375, 425, 430, 470, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 break
                             else:
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_not_checked.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(375, 430, 430, 475, cla, img, 0.7)
+                                imgs_ = imgs_set_(375, 425, 430, 470, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                             time.sleep(0.5)
@@ -880,7 +942,7 @@ def boonhae_option(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(460, 430, 640, 475, cla, img, 0.8)
+                            imgs_ = imgs_set_(460, 425, 640, 470, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("boonhae_checked : ", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -893,7 +955,7 @@ def boonhae_option(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(360, 430, 640, 475, cla, img, 0.8)
+                            imgs_ = imgs_set_(360, 425, 640, 470, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 print("boonhae_checked : ", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -945,3 +1007,286 @@ def boonhae_option(cla):
         return 0
 
 
+def boonhae_option_rare(cla):
+    import numpy as np
+    import cv2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for
+    from action_lordnine import confirm_all
+    from tuto_lordnine import way_check
+
+    try:
+        print("boonhae_option_rare")
+
+        boonhae_option_count = 0
+        boonhae_option = False
+
+        while boonhae_option is False:
+            boonhae_option_count += 1
+            if boonhae_option_count > 7:
+                boonhae_option = True
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_option_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(380, 340, 550, 440, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("boonhae_option_title", imgs_)
+
+                check_end = False
+
+                # 귀속체크
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(280, 450, 335, 495, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(270, 515, 450, 600, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        check_end = False
+                    else:
+                        # 일반만 체크된 상황
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(280, 425, 335, 470, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            # 희귀까지 체크인지 확인
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(375, 425, 430, 470, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(480, 425, 515, 470, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+
+                                    # 체크 되지 않아야 할 부분에 체크 되어있는지 확인
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(560, 425, 640, 470, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        check_end = False
+                                    else:
+                                        check_end = True
+
+
+
+                if check_end == True:
+
+                    boonhae_option = True
+
+                    for i in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_option_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(380, 340, 550, 440, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_setting_btn.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(380, 650, 550, 720, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            break
+                        time.sleep(0.5)
+
+                    # 희귀는 무기 빼주자
+
+                    print("희귀 무기 빼는 작업")
+                    for i in range(15):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\right_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(795, 360, 825, 420, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("무기 클릭됨", i)
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_1.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(620, 315, 815, 700, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_1.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_for(620, 315, 815, 700, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("item_checked_1", imgs_)
+                                    for o in range(len(imgs_)):
+                                        click_pos_reg(imgs_[o][0] - 15, imgs_[o][1], cla)
+                                        time.sleep(0.5)
+
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(620, 315, 815, 700, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_for(620, 315, 815, 700, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("item_checked_2", imgs_)
+                                        for o in range(len(imgs_)):
+                                            click_pos_reg(imgs_[o][0] - 15, imgs_[o][1], cla)
+                                            time.sleep(0.5)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_3.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(620, 315, 815, 700, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_3.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_for(620, 315, 815, 700, cla, img, 0.7)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("item_checked_3", imgs_)
+                                            for o in range(len(imgs_)):
+                                                click_pos_reg(imgs_[o][0] - 15, imgs_[o][1], cla)
+                                                time.sleep(0.5)
+                                    else:
+                                        print("더이상 없다.")
+                                        break
+                        else:
+                            click_pos_2(830, 395, cla)
+                        time.sleep(0.5)
+
+                else:
+
+
+                    # 일반체크하기
+                    for i in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(280, 425, 335, 470, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_not_checked.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(280, 425, 335, 470, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+                    # 귀속체크하기
+                    for i in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(280, 455, 335, 495, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_not_checked.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(280, 455, 335, 495, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+
+                    # 희귀까지체크하기
+
+                    for i in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(375, 425, 430, 470, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_not_checked.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(375, 425, 430, 470, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+                    for i in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(480, 425, 515, 470, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_not_checked.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(480, 425, 515, 470, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.5)
+
+                    # 나머지 해제하기 1
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(560, 425, 640, 470, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("boonhae_checked : ", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            break
+                        time.sleep(0.5)
+
+
+
+                    # 나머지 해제하기 2
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(280, 520, 450, 610, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            print("boonhae_checked : ", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            break
+                        time.sleep(0.5)
+
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(240, 270, 465, 335, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_option_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(380, 340, 550, 440, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(240, 270, 465, 335, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(830, 730, cla)
+                        time.sleep(0.3)
+            time.sleep(0.5)
+
+
+
+
+    except Exception as e:
+        print(e)
+        return 0

@@ -37,7 +37,7 @@ def go_test():
 
 
     print("test")
-    cla = "one"
+    cla = "two"
 
     plus = 0
 
@@ -61,7 +61,67 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
-        get_ganghwasuk_sohwan_start(cla)
+        boonhae_start(cla)
+
+        # for i in range(15):
+        #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\right_checked.PNG"
+        #     img_array = np.fromfile(full_path, np.uint8)
+        #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #     imgs_ = imgs_set_(795, 360, 825, 420, cla, img, 0.7)
+        #     if imgs_ is not None and imgs_ != False:
+        #         print("무기 클릭됨", i)
+        #         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_1.PNG"
+        #         img_array = np.fromfile(full_path, np.uint8)
+        #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #         imgs_ = imgs_set_(620, 315, 815, 700, cla, img, 0.7)
+        #         if imgs_ is not None and imgs_ != False:
+        #             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_1.PNG"
+        #             img_array = np.fromfile(full_path, np.uint8)
+        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #             imgs_ = imgs_set_for(620, 315, 815, 700, cla, img, 0.7)
+        #             if imgs_ is not None and imgs_ != False:
+        #                 print("item_checked_1", imgs_)
+        #                 for o in range(len(imgs_)):
+        #                     click_pos_reg(imgs_[o][0] - 15, imgs_[o][1], cla)
+        #                     time.sleep(0.5)
+        #
+        #         else:
+        #             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_2.PNG"
+        #             img_array = np.fromfile(full_path, np.uint8)
+        #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #             imgs_ = imgs_set_(620, 315, 815, 700, cla, img, 0.7)
+        #             if imgs_ is not None and imgs_ != False:
+        #                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_2.PNG"
+        #                 img_array = np.fromfile(full_path, np.uint8)
+        #                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #                 imgs_ = imgs_set_for(620, 315, 815, 700, cla, img, 0.7)
+        #                 if imgs_ is not None and imgs_ != False:
+        #                     print("item_checked_2", imgs_)
+        #                     for o in range(len(imgs_)):
+        #                         click_pos_reg(imgs_[o][0] - 15, imgs_[o][1], cla)
+        #                         time.sleep(0.5)
+        #             else:
+        #                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_3.PNG"
+        #                 img_array = np.fromfile(full_path, np.uint8)
+        #                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #                 imgs_ = imgs_set_(620, 315, 815, 700, cla, img, 0.7)
+        #                 if imgs_ is not None and imgs_ != False:
+        #                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\item_checked_3.PNG"
+        #                     img_array = np.fromfile(full_path, np.uint8)
+        #                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        #                     imgs_ = imgs_set_for(620, 315, 815, 700, cla, img, 0.7)
+        #                     if imgs_ is not None and imgs_ != False:
+        #                         print("item_checked_3", imgs_)
+        #                         for o in range(len(imgs_)):
+        #                             click_pos_reg(imgs_[o][0] - 15, imgs_[o][1], cla)
+        #                             time.sleep(0.5)
+        #                 else:
+        #                     print("더이상 없다.")
+        #                     break
+        #     else:
+        #         click_pos_2(830, 395, cla)
+        #     time.sleep(0.5)
+
 
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\skill_book_1.PNG"
