@@ -3,6 +3,8 @@ import os
 import time
 import requests
 
+from PyQt5.QtTest import *
+
 import variable as v_
 
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
@@ -61,12 +63,7 @@ def go_test():
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_ready_check\\adoom.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(500, 70, 800, 110, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            print("어둠??")
+        get_gold_sohwan(cla)
 
         # for i in range(15):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\right_checked.PNG"
