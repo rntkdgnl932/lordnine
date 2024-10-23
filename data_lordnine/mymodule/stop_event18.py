@@ -100,6 +100,16 @@ def game_check(cla):
                         is_error = True
                         error_code = 3
                         why = str(v_.this_game) + "서버 안정화 점검진행"
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\code_201.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(350, 470, 540, 650, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("code_201")
+                            is_error = True
+                            error_code = 4
+                            why = str(v_.this_game) + "code 201 점검진행인듯"
 
         if error_code == 2:
             print("재접해보자")
@@ -170,7 +180,13 @@ def game_check(cla):
             if imgs_ is not None and imgs_ != False:
                 print("end_game_btn")
                 click_pos_reg(imgs_.x, imgs_.y, cla)
-
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\etc_check\\code_201.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 470, 540, 650, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    confirm_all(cla)
 
             print(why)
             line_to_me(v_.now_cla, why)
