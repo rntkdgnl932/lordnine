@@ -402,60 +402,60 @@ def get_gold_sohwan(cla):
                 # 100일 기념 주화
                 #######################
                 # 100일 기념 주화 소환
-                for i in range(10):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\100gold.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(190, 100, 340, 150, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\wooho.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(190, 295, 340, 335, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                break
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\100days_btn.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 100, 130, 300, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-
-                        else:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\100days_btn.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(0, 100, 130, 300, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                    else:
-                        # click_pos_2(150, 85, cla)
-                        for g in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                break
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\gyohwanso_btn.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 70, 500, 110, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                            QTest.qWait(200)
-                    time.sleep(0.5)
-
-                # 아바타 소환하기
-                # 200 ~ 350, 400 ~ 550
-                get_event_sohwan_start(cla)
+                # for i in range(10):
+                #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
+                #     img_array = np.fromfile(full_path, np.uint8)
+                #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #     imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.8)
+                #     if imgs_ is not None and imgs_ != False:
+                #         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\100gold.PNG"
+                #         img_array = np.fromfile(full_path, np.uint8)
+                #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #         imgs_ = imgs_set_(190, 100, 340, 150, cla, img, 0.8)
+                #         if imgs_ is not None and imgs_ != False:
+                #             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\wooho.PNG"
+                #             img_array = np.fromfile(full_path, np.uint8)
+                #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #             imgs_ = imgs_set_(190, 295, 340, 335, cla, img, 0.8)
+                #             if imgs_ is not None and imgs_ != False:
+                #                 break
+                #             else:
+                #                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\100days_btn.PNG"
+                #                 img_array = np.fromfile(full_path, np.uint8)
+                #                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #                 imgs_ = imgs_set_(0, 100, 130, 300, cla, img, 0.8)
+                #                 if imgs_ is not None and imgs_ != False:
+                #                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                #
+                #         else:
+                #             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\100days_btn.PNG"
+                #             img_array = np.fromfile(full_path, np.uint8)
+                #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #             imgs_ = imgs_set_(0, 100, 130, 300, cla, img, 0.8)
+                #             if imgs_ is not None and imgs_ != False:
+                #                 click_pos_reg(imgs_.x, imgs_.y, cla)
+                #     else:
+                #         # click_pos_2(150, 85, cla)
+                #         for g in range(10):
+                #             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
+                #             img_array = np.fromfile(full_path, np.uint8)
+                #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #             imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.8)
+                #             if imgs_ is not None and imgs_ != False:
+                #                 break
+                #             else:
+                #                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\gyohwanso_btn.PNG"
+                #                 img_array = np.fromfile(full_path, np.uint8)
+                #                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #                 imgs_ = imgs_set_(0, 70, 500, 110, cla, img, 0.8)
+                #                 if imgs_ is not None and imgs_ != False:
+                #                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                #             QTest.qWait(200)
+                #     time.sleep(0.5)
+                #
+                # # 아바타 소환하기
+                # # 200 ~ 350, 400 ~ 550
+                # get_event_sohwan_start(cla)
 
 
                 ########################################################################

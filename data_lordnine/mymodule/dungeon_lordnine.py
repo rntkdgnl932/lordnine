@@ -45,6 +45,8 @@ def dungeon_start(cla, where):
                 dun_name = "garbana"
             elif result_spot[1] == "이벤트":
                 dun_name = "event"
+            elif result_spot[1] == "수련의전당":
+                dun_name = "soolyun"
 
             result_juljun = juljun_check(cla)
 
@@ -57,11 +59,15 @@ def dungeon_start(cla, where):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
+
                     result_juljun_attack = juljun_attack_check(cla)
                     if result_juljun_attack == True:
                         potion_check(cla)
                     else:
-                        attack_on(cla)
+                        if str(dun_name) == "soolyun":
+                            potion_check(cla)
+                        else:
+                            attack_on(cla)
                 else:
                     dun_in(cla, where)
             else:
@@ -88,7 +94,7 @@ def dun_in(cla, where):
         print("dun_in", where)
 
         # 이벤트 던전 여부
-        event_dungeon = True
+        event_dungeon = False
 
         y_e_plus = 0
         if event_dungeon == True:
@@ -138,6 +144,10 @@ def dun_in(cla, where):
         elif result_spot[1] == "이벤트":
             y_1 = 130
             dun_name = "event"
+
+        elif result_spot[1] == "수련의전당":
+            y_1 = 600
+            dun_name = "soolyun"
 
         # 던전 가기전 물약 사자
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\dungeon.PNG"
@@ -215,6 +225,9 @@ def dun_in(cla, where):
                 elif str(dun_name) == "event":
                     imgs_ = imgs_set_(205, 140, 255, 170, cla, img, 0.8)
 
+                elif str(dun_name) == "soolyun":
+                    imgs_ = imgs_set_(205, 605, 255, 630, cla, img, 0.8)
+
                 if imgs_ is not None and imgs_ != False:
                     print("dun_complete_1", imgs_)
 
@@ -267,6 +280,10 @@ def dun_in(cla, where):
                                     imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
                                 else:
                                     imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+
+                        elif str(dun_name) == "soolyun":
+                            imgs_ = imgs_set_(205, 625, 255, 650, cla, img, 0.8)
+
                         if imgs_ is not None and imgs_ != False:
                             print("dun_complete_2", imgs_)
 

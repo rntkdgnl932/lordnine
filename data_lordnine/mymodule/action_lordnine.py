@@ -373,21 +373,32 @@ def out_check(cla):
                             if imgs_ is not None and imgs_ != False:
                                 print("close_3 : 아직 안 꺼짐", imgs_)
                             else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_4.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
+                                imgs_ = imgs_set_(500, 800, 800, 900, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("talk", imgs_)
-                                    is_out = True
+                                    print("close_4")
+                                    click_pos_2(765, 850, cla)
+                                    time.sleep(0.5)
+                                    click_pos_2(835, 210, cla)
+                                    time.sleep(0.5)
                                 else:
-                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\juljun_btn.PNG"
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\talk.PNG"
                                     img_array = np.fromfile(full_path, np.uint8)
                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(0, 800, 60, 860, cla, img, 0.75)
+                                    imgs_ = imgs_set_(0, 940, 60, 990, cla, img, 0.75)
                                     if imgs_ is not None and imgs_ != False:
-                                        print("juljun_btn", imgs_)
+                                        print("talk", imgs_)
                                         is_out = True
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\out\\juljun_btn.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(0, 800, 60, 860, cla, img, 0.75)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("juljun_btn", imgs_)
+                                            is_out = True
 
 
         else:

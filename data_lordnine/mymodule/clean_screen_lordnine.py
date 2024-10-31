@@ -61,6 +61,17 @@ def clean_screen_just_on_start(cla):
             click_pos_reg(imgs_.x, imgs_.y, cla)
             time.sleep(0.5)
 
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_4.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(500, 800, 800, 900, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("close_4")
+            click_pos_2(765, 850, cla)
+            time.sleep(0.5)
+            click_pos_2(835, 210, cla)
+            time.sleep(0.5)
+
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\clean_screen\\close_2.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
