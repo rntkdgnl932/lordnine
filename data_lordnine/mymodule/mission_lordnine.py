@@ -393,11 +393,26 @@ def mission_get_daily(cla, data):
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                                     time.sleep(0.5)
 
+                                    trigger = False
+
                                     for con in range(5):
-                                        result_move_confirm = confirm_all(cla)
-                                        if result_move_confirm == True:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\trigger_arlim.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(360, 100, 650, 160, cla, img, 0.8)
+                                        if imgs_ is not None and imgs_ != False:
+                                            myQuest_play_add(cla, data)
+                                            trigger = True
                                             break
+                                        else:
+                                            result_move_confirm = confirm_all(cla)
+                                            # if result_move_confirm == True:
+                                            #     break
                                         time.sleep(0.1)
+
+                                    if trigger == True:
+                                        break
+
 
 
                                     for load in range(5):
@@ -418,24 +433,27 @@ def mission_get_daily(cla, data):
                                 break
                             time.sleep(0.5)
                         # 나간 후
-                        attacked = False
-                        attacked_count = 0
 
-                        while attacked is False:
-                            attacked_count += 1
-                            if attacked_count > 12:
-                                attacked = True
-                                click_pos_2(870, 850, cla)
-                                time.sleep(0.5)
-                                juljun_on(cla)
+                        if trigger == False:
 
-                            result_move = move_check(cla)
-                            if result_move == False:
+                            attacked = False
+                            attacked_count = 0
+
+                            while attacked is False:
                                 attacked_count += 1
-                                result_loading = loading_check(cla)
-                                if result_loading == False:
+                                if attacked_count > 12:
+                                    attacked = True
+                                    click_pos_2(870, 850, cla)
+                                    time.sleep(0.5)
+                                    juljun_on(cla)
+
+                                result_move = move_check(cla)
+                                if result_move == False:
                                     attacked_count += 1
-                            time.sleep(0.5)
+                                    result_loading = loading_check(cla)
+                                    if result_loading == False:
+                                        attacked_count += 1
+                                time.sleep(0.5)
 
                     else:
                         print("?????????????????????????????????")
