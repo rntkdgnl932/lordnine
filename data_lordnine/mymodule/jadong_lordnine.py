@@ -671,11 +671,14 @@ def spot_in(cla, where):
                                 result_spot[1]) + ".PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(20, 100, 120, 150, cla, img, 0.7)
+                            imgs_ = imgs_set_(20, 130, 120, 180, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 break
                             else:
-                                click_pos_2(15, y_1, cla)
+                                if 0 < str(result_spot[1]) < 5:
+                                    click_pos_2(50, 125, cla)
+                                    time.sleep(0.5)
+                                    click_pos_2(15, y_1, cla)
                             time.sleep(0.3)
                     time.sleep(0.5)
 
