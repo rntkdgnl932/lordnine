@@ -137,9 +137,9 @@ def spot_in_ready(cla, where):
         result_special = result_spot[0].split("/")
 
         # result_spot[1] => 큰 맵
-        y_1 = 85 + (int(result_spot[1]) * 45)
+        y_1 = 85 + 40 + (int(result_spot[1]) * 45)
         # result_spot[2] => 중간 맵 // 200 235 270 ...
-        y_2 = 165 + (int(result_spot[2]) * 35)
+        y_2 = 165 + 30 + (int(result_spot[2]) * 35)
         # result_spot[3] => 세부 맵맵
         y_3 = 95 + (int(result_spot[3]) * 36)
 
