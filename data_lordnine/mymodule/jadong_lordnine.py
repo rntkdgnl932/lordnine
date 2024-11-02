@@ -675,7 +675,7 @@ def spot_in(cla, where):
                             if imgs_ is not None and imgs_ != False:
                                 break
                             else:
-                                if 0 < str(result_spot[1]) < 5:
+                                if 0 < int(result_spot[1]) < 5:
                                     click_pos_2(50, 125, cla)
                                     time.sleep(0.5)
                                     click_pos_2(15, y_1, cla)
