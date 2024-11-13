@@ -1,7 +1,7 @@
 import time
 # import os
 import sys
-
+from PyQt5.QtTest import *
 
 import variable as v_
 
@@ -108,6 +108,7 @@ def jadong_start(cla, where):
         else:
             dead_check(cla)
             spot_in(cla, result_where)
+            QTest.qWait(100)
 
 
     except Exception as e:

@@ -4477,8 +4477,8 @@ class game_Playing(QThread):
 
 
 
-
-                                time.sleep(0.5)
+                                QTest.qWait(500)
+                                # time.sleep(0.5)
 
                         else:
                             print(str(v_.this_game), " 꺼져있는지 10초간 다시 검사하기")
@@ -4521,8 +4521,8 @@ class game_Playing(QThread):
                                     time.sleep(0.2)
                                 os.execl(sys.executable, sys.executable, *sys.argv)
 
-
-                time.sleep(5)
+                QTest.qWait(5000)
+                # time.sleep(5)
 
 
 

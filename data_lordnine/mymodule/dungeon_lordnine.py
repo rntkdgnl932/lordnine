@@ -1,7 +1,7 @@
 import time
 # import os
 import sys
-
+from PyQt5.QtTest import *
 
 import variable as v_
 
@@ -384,7 +384,8 @@ def dun_in(cla, where):
                             print("menu_dungeon", imgs_)
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.3)
-            time.sleep(0.5)
+            QTest.qWait(500)
+            # time.sleep(0.5)
 
 
     except Exception as e:

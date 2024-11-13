@@ -399,7 +399,7 @@ def out_check(cla):
                                         if imgs_ is not None and imgs_ != False:
                                             print("juljun_btn", imgs_)
                                             is_out = True
-
+                    QTest.qWait((500))
 
         else:
             print(str(v_.this_game), " 꺼져있는지 10초간 다시 검사하기")
@@ -1159,7 +1159,8 @@ def juljun_attack_check(cla):
                             print("juljun_dead", imgs_)
                             dead_check(cla)
                             break
-            time.sleep(0.2)
+            QTest.qWait(200)
+            # time.sleep(0.2)
 
         return is_attack
     except Exception as e:
