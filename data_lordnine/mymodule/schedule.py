@@ -13,6 +13,8 @@ def myQuest_play_check(cla, data):
         from datetime import datetime
         from datetime import date, timedelta
 
+        print("어디에서 스케쥴 읽나?", data)
+
         refresh_ = False
 
         # 닉네임 받아와서 전역변수 설정하기
@@ -161,7 +163,7 @@ def myQuest_play_check(cla, data):
         else:
             with open(file_path2, "w", encoding='utf-8-sig') as file:
                 file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
-                myQuest_play_check(cla, data)
+                myQuest_play_check(cla, "myQuest_play_check_1")
 
         #스케쥴 관련
         cla_schedule = ""
@@ -238,7 +240,7 @@ def myQuest_play_check(cla, data):
                     shcedule = file.read().splitlines()
                 with open(file_path, "w", encoding='utf-8-sig') as file:
                     file.write(shcedule)
-                    myQuest_play_check(cla, data)
+                    myQuest_play_check(cla, "myQuest_play_check_2")
             else:
                 print('디렉토리 존재하지 않음')
                 os.makedirs(dir_path)
@@ -246,7 +248,7 @@ def myQuest_play_check(cla, data):
                     shcedule = file.read().splitlines()
                 with open(file_path, "w", encoding='utf-8-sig') as file:
                     file.write(shcedule)
-                    myQuest_play_check(cla, data)
+                    myQuest_play_check(cla, "myQuest_play_check_3")
 
         return start, start_, refresh_
     except Exception as e:

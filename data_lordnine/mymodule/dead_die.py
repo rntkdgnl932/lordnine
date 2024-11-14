@@ -93,7 +93,7 @@ def dead_check(cla):
                 dead = True
 
         if dead == True:
-            result_schedule = myQuest_play_check(cla, "check")
+            result_schedule = myQuest_play_check(cla, "dead_check")
             result_schedule_ = result_schedule[0][2]
 
             if result_schedule_ == "튜토육성":
@@ -195,7 +195,7 @@ def dead_recorvery(cla):
 
                     else:
 
-                        result_schedule = myQuest_play_check(cla, "check")
+                        result_schedule = myQuest_play_check(cla, "dead_recorvery")
                         result_schedule_ = result_schedule[0][2]
 
                         if "5회" in result_schedule_:
