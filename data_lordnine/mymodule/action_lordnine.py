@@ -349,6 +349,7 @@ def out_check(cla):
 
                     if out_screen == True:
                         result_schedule = myQuest_play_check(cla, "check_out")
+                        print("result_schedule check_out", result_schedule)
                         character_id = result_schedule[0][1]
                         result_schedule_ = result_schedule[0][2]
 
@@ -1651,6 +1652,7 @@ def attack_on(cla):
 
         # 자사 인지 아닌지...
         result_schedule = myQuest_play_check(cla, "attack_on")
+        print("result_schedule attack_on", result_schedule)
         result_schedule_ = result_schedule[0][2]
 
         if "/" in result_schedule_:

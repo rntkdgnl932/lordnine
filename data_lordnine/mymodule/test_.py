@@ -39,7 +39,7 @@ def go_test():
 
 
     print("test")
-    cla = "two"
+    cla = "one"
 
     plus = 0
 
@@ -59,6 +59,7 @@ def go_test():
 
 
     try:
+        clean_screen_just_on_start(cla)
         where = "오염된분지/감춰진언덕"
         # where = "성전사단격전지/계승자초소"
         # jadong_start(cla, where)

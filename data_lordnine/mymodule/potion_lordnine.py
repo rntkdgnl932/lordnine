@@ -265,6 +265,7 @@ def potion_buy_start(cla):
         if v_.onCollection == True:
 
             result_schedule = myQuest_play_check(cla, "potion_buy_start")
+            print("result_schedule potion_buy_start", result_schedule)
             result_schedule_ = result_schedule[0][2]
 
             # if result_schedule_ == "튜토육성":

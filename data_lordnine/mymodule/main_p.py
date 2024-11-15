@@ -4409,7 +4409,7 @@ class game_Playing(QThread):
 
                                 # 스케쥴부터 불러오기
                                 result_schedule = myQuest_play_check(v_.now_cla, "main_p")
-                                print("result_schedule", result_schedule)
+                                print("result_schedule main_p", result_schedule)
                                 character_id = result_schedule[0][1]
                                 result_schedule_ = result_schedule[0][2]
 
