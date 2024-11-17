@@ -159,6 +159,8 @@ def dun_in(cla, where):
         else:
             potion_buy_start(cla)
 
+        QTest.qWait(500)
+
         dun = False
         dun_count = 0
 

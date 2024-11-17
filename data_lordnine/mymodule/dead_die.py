@@ -205,10 +205,10 @@ def dead_recorvery(cla):
                             v_.dead_count += 1
 
                             if v_.dead_count > 4:
-                                if v_.dead_count < 6:
-                                    v_.dead_count = 0
+                                # if v_.dead_count < 6:
+                                v_.dead_count = 0
 
-                                    myQuest_play_add(cla, result_schedule_)
+                                myQuest_play_add(cla, result_schedule_)
 
                                 # dir_path = "C:\\my_games\\load\\" + str(v_.game_folder)
                                 # file_path = dir_path + "\\start.txt"
