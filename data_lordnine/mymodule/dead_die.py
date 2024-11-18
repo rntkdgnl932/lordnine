@@ -53,12 +53,26 @@ def dead_check(cla):
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
         imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
         if imgs_ is not None and imgs_ != False:
+
+            is_dead = False
+
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_dead.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(300, 630, 630, 700, cla, img, 0.75)
             if imgs_ is not None and imgs_ != False:
                 print("juljun_dead", imgs_)
+                is_dead = True
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_cross_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(200, 50, 260, 120, cla, img, 0.7)
+            if imgs_ is not None and imgs_ != False:
+                print("boohwal_cross_btn...", imgs_)
+                is_dead = True
+
+            if is_dead == True:
 
                 juljun_off(cla)
 
@@ -92,7 +106,7 @@ def dead_check(cla):
 
                 dead = True
 
-        QTest.qWait(500)
+        # QTest.qWait(500)
 
         return dead
     except Exception as e:
@@ -127,28 +141,42 @@ def dead_recorvery(cla):
         potion_buy_start(cla)
         clean_screen_start(cla)
 
-        QTest.qWait(500)
+        # QTest.qWait(500)
 
 
 
         for i in range(7):
-            result_out = out_check(cla)
-            if result_out == True:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                juljun_off(cla)
+            else:
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_cross_btn.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(200, 50, 260, 120, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     break
-            else:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
-                if imgs_ is not None and imgs_ != False:
-                    juljun_off(cla)
-
             time.sleep(0.5)
+            # result_out = out_check(cla)
+            # if result_out == True:
+            #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_cross_btn.PNG"
+            #     img_array = np.fromfile(full_path, np.uint8)
+            #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #     imgs_ = imgs_set_(200, 50, 260, 120, cla, img, 0.7)
+            #     if imgs_ is not None and imgs_ != False:
+            #         break
+            # else:
+            #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\juljun\\juljun_on.PNG"
+            #     img_array = np.fromfile(full_path, np.uint8)
+            #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #     imgs_ = imgs_set_(350, 350, 600, 400, cla, img, 0.75)
+            #     if imgs_ is not None and imgs_ != False:
+            #         juljun_off(cla)
+            #
+            # time.sleep(0.5)
 
         is_cross = False
         for i in range(5):
