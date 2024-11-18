@@ -17,7 +17,7 @@ def jadong_start(cla, where):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_on, zero_check_hour, juljun_time_check
     from potion_lordnine import potion_check
-    from dead_die import dead_check
+    from dead_die import dead_check, dead_recorvery
     from boonhae_collection import col_boon_start
 
     try:
@@ -106,7 +106,9 @@ def jadong_start(cla, where):
                         else:
                             spot_in(cla, result_where)
         else:
-            dead_check(cla)
+            result_dead = dead_check(cla)
+            if result_dead == True:
+                dead_recorvery(cla)
             spot_in(cla, result_where)
             QTest.qWait(100)
 

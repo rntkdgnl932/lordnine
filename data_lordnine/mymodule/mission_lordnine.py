@@ -19,14 +19,16 @@ def mission_get(cla, data):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from potion_lordnine import potion_check
     from action_lordnine import juljun_check, out_check, zero_check_minute, juljun_attack_check
-    from dead_die import dead_check
+    from dead_die import dead_check, dead_recorvery
     from tuto_lordnine import way_check
     from boonhae_collection import col_boon_start
 
     try:
         print("mission_get", data)
 
-        dead_check(cla)
+        result_dead = dead_check(cla)
+        if result_dead == True:
+            dead_recorvery(cla)
 
 
         if v_.daily_mission_ready == True:

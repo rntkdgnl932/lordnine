@@ -92,24 +92,7 @@ def dead_check(cla):
 
                 dead = True
 
-        if dead == True:
-            result_schedule = myQuest_play_check(cla, "dead_check")
-            print("result_schedule dead_check", result_schedule)
-            result_schedule_ = result_schedule[0][2]
-
-            dead = False
-            print("dead???", dead)
-
-            if result_schedule_ == "튜토육성":
-                myQuest_play_add(cla, result_schedule_)
-            elif "시련의탑" in result_schedule_:
-                myQuest_play_add(cla, result_schedule_)
-
-            potion_buy_start(cla)
-            clean_screen_start(cla)
-            dead_recorvery(cla)
-
-            QTest.qWait(500)
+        QTest.qWait(500)
 
         return dead
     except Exception as e:
@@ -125,11 +108,28 @@ def dead_recorvery(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from clean_screen_lordnine import clean_screen_just_on_start
     from action_lordnine import out_check, juljun_off
-    from massenger import line_to_me
     from schedule import myQuest_play_add, myQuest_play_check
+    from clean_screen_lordnine import clean_screen_start
+    from potion_lordnine import potion_buy_start
 
     try:
         print("dead_recorvery")
+
+        result_schedule = myQuest_play_check(cla, "dead_check")
+        print("result_schedule dead_check", result_schedule)
+        result_schedule_ = result_schedule[0][2]
+
+        if result_schedule_ == "튜토육성":
+            myQuest_play_add(cla, result_schedule_)
+        elif "시련의탑" in result_schedule_:
+            myQuest_play_add(cla, result_schedule_)
+
+        potion_buy_start(cla)
+        clean_screen_start(cla)
+
+        QTest.qWait(500)
+
+
 
         for i in range(7):
             result_out = out_check(cla)

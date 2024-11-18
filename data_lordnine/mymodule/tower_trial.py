@@ -15,13 +15,15 @@ def tower_start(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import attack_on_tower
     from potion_lordnine import potion_check
-    from dead_die import dead_check
+    from dead_die import dead_check, dead_recorvery
     from schedule import myQuest_play_add
 
     try:
         print("guild_start")
 
-        dead_check(cla)
+        result_dead = dead_check(cla)
+        if result_dead == True:
+            dead_recorvery(cla)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tower\\tower_in.PNG"
         img_array = np.fromfile(full_path, np.uint8)

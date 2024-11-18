@@ -15,7 +15,7 @@ def dungeon_start(cla, where):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import juljun_check, juljun_attack_check, attack_on, juljun_time_check
     from potion_lordnine import potion_check
-    from dead_die import dead_check
+    from dead_die import dead_check, dead_recorvery
     from schedule import myQuest_play_add
 
     try:
@@ -71,7 +71,9 @@ def dungeon_start(cla, where):
                 else:
                     dun_in(cla, where)
             else:
-                dead_check(cla)
+                result_dead = dead_check(cla)
+                if result_dead == True:
+                    dead_recorvery(cla)
                 dun_in(cla, where)
 
     except Exception as e:

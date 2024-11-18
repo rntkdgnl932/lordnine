@@ -149,7 +149,7 @@ def out_check(cla):
     from stop_event18 import game_check
     from character_select_and_game_start import game_start_screen, game_ready
     from schedule import myQuest_play_check
-    from dead_die import dead_check
+    from dead_die import dead_check, dead_recorvery
     from massenger import line_to_me
     try:
 
@@ -297,7 +297,9 @@ def out_check(cla):
 
                 else:
 
-                    dead_check(cla)
+                    result_dead = dead_check(cla)
+                    if result_dead == True:
+                        dead_recorvery(cla)
 
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\complete_get.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
@@ -1101,7 +1103,7 @@ def juljun_attack_check(cla):
     import cv2
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from action_lordnine import skip_start
-    from dead_die import dead_check
+    from dead_die import dead_check, dead_recorvery
 
     try:
         print("juljun_attack_check")
@@ -1160,7 +1162,9 @@ def juljun_attack_check(cla):
                         imgs_ = imgs_set_(300, 630, 630, 700, cla, img, 0.75)
                         if imgs_ is not None and imgs_ != False:
                             print("juljun_dead", imgs_)
-                            dead_check(cla)
+                            result_dead = dead_check(cla)
+                            if result_dead == True:
+                                dead_recorvery(cla)
                             break
             QTest.qWait(200)
             # time.sleep(0.2)

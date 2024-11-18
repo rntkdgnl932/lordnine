@@ -16,7 +16,7 @@ def tuto_start(cla):
 
     from function_game import click_pos_2, imgs_set_, click_pos_reg
     from action_lordnine import skip_start, confirm_all, move_check, juljun_off, loading_check
-    from dead_die import dead_check
+    from dead_die import dead_check, dead_recorvery
     from potion_lordnine import potion_check
 
     try:
@@ -228,7 +228,9 @@ def tuto_start(cla):
 
                 quest_checking(cla)
 
-
+        else:
+            print("지켜보자")
+            # dead_recorvery(cla)
 
 
     except Exception as e:
