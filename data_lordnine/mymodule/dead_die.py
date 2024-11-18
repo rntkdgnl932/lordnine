@@ -97,6 +97,9 @@ def dead_check(cla):
             print("result_schedule dead_check", result_schedule)
             result_schedule_ = result_schedule[0][2]
 
+            dead = False
+            print("dead???", dead)
+
             if result_schedule_ == "튜토육성":
                 myQuest_play_add(cla, result_schedule_)
             elif "시련의탑" in result_schedule_:

@@ -1266,7 +1266,7 @@ def juljun_off(cla):
 
 
 
-                        drag_pos(400, 530, 830, 330, cla)
+                        drag_pos(400, 530, 860, 200, cla)
 
                         for o in range(5):
                             result_out = out_check(cla)
