@@ -359,18 +359,23 @@ def dun_in(cla, where):
                             break
                         time.sleep(0.5)
                     # 던전 입장 후
-                    for i in range(5):
-                        result_out = out_check(cla)
-                        if result_out == True:
-                            # 공격하고 절전모드 ㄱㄱ
-                            attack_on(cla)
-                            time.sleep(0.2)
-                            juljun_on(cla)
+                    attack_on(cla)
+                    time.sleep(0.2)
+                    juljun_on(cla)
 
-                            break
-                        else:
-                            loading_check(cla)
-                        time.sleep(0.5)
+
+                    # for i in range(5):
+                    #     result_out = out_check(cla)
+                    #     if result_out == True:
+                    #         # 공격하고 절전모드 ㄱㄱ
+                    #         attack_on(cla)
+                    #         time.sleep(0.2)
+                    #         juljun_on(cla)
+                    #
+                    #         break
+                    #     else:
+                    #         loading_check(cla)
+                    #     time.sleep(0.5)
 
             else:
                 menu_open(cla)
