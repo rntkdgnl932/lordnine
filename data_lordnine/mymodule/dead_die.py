@@ -208,7 +208,9 @@ def dead_recorvery(cla):
 
                         time.sleep(0.5)
 
-                        click_pos_reg(imgs_.x + 50, imgs_.y + 10, cla)
+                        for c in range(5):
+                            click_pos_reg(imgs_.x + 50, imgs_.y + 10, cla)
+                            time.sleep(0.1)
 
                         time.sleep(0.5)
 
