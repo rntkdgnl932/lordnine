@@ -100,6 +100,9 @@ def jadong_start(cla, where):
                             result_juljun_attack = juljun_attack_check(cla)
 
                             if result_juljun_attack == True:
+                                result_dead = dead_check(cla)
+                                if result_dead == True:
+                                    dead_recorvery(cla)
                                 potion_check(cla)
                             else:
                                 attack_on(cla)
