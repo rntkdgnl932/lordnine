@@ -681,6 +681,7 @@ def auction_jangbi_new(cla):
                     if is_jangbi == True:
                         print("팔자")
 
+
                         # 현재 최저가
                         low_price = 0
                         quantity = 0
@@ -736,18 +737,34 @@ def auction_jangbi_new(cla):
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                             time.sleep(1)
 
-                        # 바로 판매하기
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\ten.PNG"
+                        # 정보없음 있는지 보고 판매하기
+                        no_information = False
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(635, 460, 700, 485, cla, img, 0.95)
+                        imgs_ = imgs_set_(400, 530, 465, 565, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            print("ten", imgs_)
-                            # 닫기 버튼
+                            print("no_information", imgs_)
+                            no_information = True
+
+                        if no_information == False:
+                            # 바로 판매하기
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\ten.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(635, 460, 700, 485, cla, img, 0.95)
+                            if imgs_ is not None and imgs_ != False:
+                                print("ten", imgs_)
+                                # 닫기 버튼
+                                click_pos_2(710, 435, cla)
+                            else:
+                                print("ten 아니다.")
+                                # click_pos_2(480, 630, cla)
+                                anymore_sell = sell_click_new(cla)
                         else:
-                            print("ten 아니다.")
-                            # click_pos_2(480, 630, cla)
-                            anymore_sell = sell_click_new(cla)
+                            print("정보가 없다.")
+                            click_pos_2(710, 435, cla)
 
 
                     else:
@@ -1209,6 +1226,7 @@ def auction_item_new(cla):
                         imgs_ = imgs_set_(635, 460, 700, 485, cla, img, 0.95)
                         if imgs_ is not None and imgs_ != False:
                             print("ten", imgs_)
+                            click_pos_2(710, 435, cla)
                         else:
                             print("ten 아니다.")
                             anymore_sell = sell_click_new(cla)
