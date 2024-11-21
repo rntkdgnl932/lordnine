@@ -757,14 +757,32 @@ def auction_jangbi_new(cla):
                             if imgs_ is not None and imgs_ != False:
                                 print("ten", imgs_)
                                 # 닫기 버튼
-                                click_pos_2(710, 435, cla)
+                                for s in range(5):
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_2(710, 435, cla)
+                                    else:
+                                        break
+                                    time.sleep(0.5)
                             else:
                                 print("ten 아니다.")
                                 # click_pos_2(480, 630, cla)
                                 anymore_sell = sell_click_new(cla)
                         else:
                             print("정보가 없다.")
-                            click_pos_2(710, 435, cla)
+                            for s in range(5):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(710, 435, cla)
+                                else:
+                                    break
+                                time.sleep(0.5)
 
 
                     else:
@@ -1226,7 +1244,16 @@ def auction_item_new(cla):
                         imgs_ = imgs_set_(635, 460, 700, 485, cla, img, 0.95)
                         if imgs_ is not None and imgs_ != False:
                             print("ten", imgs_)
-                            click_pos_2(710, 435, cla)
+                            for s in range(5):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_2(710, 435, cla)
+                                else:
+                                    break
+                                time.sleep(0.5)
                         else:
                             print("ten 아니다.")
                             anymore_sell = sell_click_new(cla)
