@@ -204,6 +204,15 @@ def dead_recorvery(cla):
                     imgs_ = imgs_set_(0, 30, 300, 400, cla, img, 0.75)
                     if imgs_ is not None and imgs_ != False:
                         print("recorvery_time", imgs_)
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorver_btn.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(90, 430, 260, 490, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            time.sleep(0.5)
+
                         click_pos_2(110, 410, cla)
 
                         time.sleep(0.5)
