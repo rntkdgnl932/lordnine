@@ -106,8 +106,8 @@ def myQuest_play_check(cla, data):
                             print('reset_schedule_', reset_schedule_)
                             with open(file_path, "w", encoding='utf-8-sig') as file:
                                 file.write(reset_schedule_)
-                            with open(file_path3, "w", encoding='utf-8-sig') as file:
-                                file.write(reset_schedule_)
+                            # with open(file_path3, "w", encoding='utf-8-sig') as file:
+                            #     file.write(reset_schedule_)
                 else:
                     with open(file_path2, "w", encoding='utf-8-sig') as file:
                         file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
@@ -152,8 +152,8 @@ def myQuest_play_check(cla, data):
                             print('reset_schedule_', reset_schedule_)
                             with open(file_path, "w", encoding='utf-8-sig') as file:
                                 file.write(reset_schedule_)
-                            with open(file_path3, "w", encoding='utf-8-sig') as file:
-                                file.write(reset_schedule_)
+                            # with open(file_path3, "w", encoding='utf-8-sig') as file:
+                            #     file.write(reset_schedule_)
                 refresh_ = True
                 # 초기화 할때 변경해야할 전역 변수
                 v_.dead_count = 0
@@ -512,8 +512,8 @@ def myQuest_play_add(cla, data):
                         print('reset_schedule_', reset_schedule_)
                         with open(file_path, "w", encoding='utf-8-sig') as file:
                             file.write(reset_schedule_)
-                        with open(file_path3, "w", encoding='utf-8-sig') as file:
-                            file.write(reset_schedule_)
+                        # with open(file_path3, "w", encoding='utf-8-sig') as file:
+                        #     file.write(reset_schedule_)
             else:
                 with open(file_path2, "w", encoding='utf-8-sig') as file:
                     file.write(str(nowDay) + ":" + str(refresh_time) + "\n")
@@ -559,8 +559,8 @@ def myQuest_play_add(cla, data):
                         print('reset_schedule_', reset_schedule_)
                         with open(file_path, "w", encoding='utf-8-sig') as file:
                             file.write(reset_schedule_)
-                        with open(file_path3, "w", encoding='utf-8-sig') as file:
-                            file.write(reset_schedule_)
+                        # with open(file_path3, "w", encoding='utf-8-sig') as file:
+                        #     file.write(reset_schedule_)
 
             myQuest_play_add(cla, data)
 
