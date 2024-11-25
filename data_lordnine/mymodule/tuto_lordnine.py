@@ -638,7 +638,6 @@ def quest_checking(cla):
                                         click_pos_2(865, 1005, cla)
                                         break
                                     else:
-                                        else:
                                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_7.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
