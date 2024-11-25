@@ -141,7 +141,7 @@ def dead_recorvery(cla):
         potion_buy_start(cla)
         clean_screen_start(cla)
 
-        # QTest.qWait(500)
+        QTest.qWait(500)
 
 
 
@@ -205,6 +205,10 @@ def dead_recorvery(cla):
                     if imgs_ is not None and imgs_ != False:
                         print("recorvery_time", imgs_)
 
+                        re_t_x = imgs_.x
+                        re_t_y = imgs_.y
+
+
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorver_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -218,7 +222,7 @@ def dead_recorvery(cla):
                         time.sleep(0.5)
 
                         for c in range(5):
-                            click_pos_reg(imgs_.x + 50, imgs_.y + 10, cla)
+                            click_pos_reg(re_t_x + 50, re_t_y + 10, cla)
                             time.sleep(0.1)
 
                         time.sleep(0.5)
