@@ -184,55 +184,58 @@ def dun_in(cla, where):
 
                 complete = False
 
+                y_plus = 35
+
                 # 만료여부
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 if str(dun_name) == "black":
                     if black_laboratory == True:
-                        imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
+                        imgs_ = imgs_set_(205, 140 + y_plus, 255, 165 + y_plus, cla, img, 0.8)
                     else:
                         if event_dungeon == True:
-                            imgs_ = imgs_set_(205, 715, 255, 745, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 715 + y_plus, 255, 745 + y_plus, cla, img, 0.8)
                         else:
-                            imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 600 + y_plus, 255, 630 + y_plus, cla, img, 0.8)
                 elif str(dun_name) == "adoom":
                     if black_laboratory == True:
-                        imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                        imgs_ = imgs_set_(205, 250 + y_plus, 255, 280 + y_plus, cla, img, 0.8)
                     else:
                         if event_dungeon == True:
-                            imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 250 + y_plus, 255, 280 + y_plus, cla, img, 0.8)
                         else:
-                            imgs_ = imgs_set_(205, 140, 255, 165, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 140 + y_plus, 255, 165 + y_plus, cla, img, 0.8)
                 elif str(dun_name) == "jogag":
                     if black_laboratory == True:
-                        imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                        imgs_ = imgs_set_(205, 370 + y_plus, 255, 395 + y_plus, cla, img, 0.8)
                     else:
                         if event_dungeon == True:
-                            imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 370 + y_plus, 255, 395 + y_plus, cla, img, 0.8)
                         else:
-                            imgs_ = imgs_set_(205, 250, 255, 280, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 250 + y_plus, 255, 280 + y_plus, cla, img, 0.8)
                 elif str(dun_name) == "talag":
                     if black_laboratory == True:
-                        imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                        imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
                     else:
                         if event_dungeon == True:
-                            imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
                         else:
-                            imgs_ = imgs_set_(205, 370, 255, 395, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 370 + y_plus, 255, 395 + y_plus, cla, img, 0.8)
                 elif str(dun_name) == "garbana":
                     if black_laboratory == True:
-                        imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
+                        imgs_ = imgs_set_(205, 600 + y_plus, 255, 630 + y_plus, cla, img, 0.8)
                     else:
                         if event_dungeon == True:
-                            imgs_ = imgs_set_(205, 600, 255, 630, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
                         else:
-                            imgs_ = imgs_set_(205, 480, 255, 510, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 600 + y_plus, 255, 630 + y_plus, cla, img, 0.8)
+
                 elif str(dun_name) == "event":
-                    imgs_ = imgs_set_(205, 140, 255, 170, cla, img, 0.8)
+                    imgs_ = imgs_set_(205, 140 + y_plus, 255, 170 + y_plus, cla, img, 0.8)
 
                 elif str(dun_name) == "soolyun":
-                    imgs_ = imgs_set_(205, 605, 255, 630, cla, img, 0.8)
+                    imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
 
                 if imgs_ is not None and imgs_ != False:
                     print("dun_complete_1", imgs_)
@@ -248,47 +251,47 @@ def dun_in(cla, where):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         if str(dun_name) == "black":
                             if black_laboratory == True:
-                                imgs_ = imgs_set_(205, 160, 255, 190, cla, img, 0.8)
+                                imgs_ = imgs_set_(205, 160 + y_plus, 255, 190 + y_plus, cla, img, 0.8)
                             else:
                                 if event_dungeon == True:
-                                    imgs_ = imgs_set_(205, 735, 255, 765, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 735 + y_plus, 255, 765 + y_plus, cla, img, 0.8)
                                 else:
-                                    imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
                         elif str(dun_name) == "adoom":
                             if black_laboratory == True:
-                                imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
+                                imgs_ = imgs_set_(205, 275 + y_plus, 255, 305 + y_plus, cla, img, 0.8)
                             else:
                                 if event_dungeon == True:
-                                    imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 275 + y_plus, 255, 305 + y_plus, cla, img, 0.8)
                                 else:
-                                    imgs_ = imgs_set_(205, 160, 255, 190, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 160 + y_plus, 255, 190 + y_plus, cla, img, 0.8)
                         elif str(dun_name) == "jogag":
                             if black_laboratory == True:
-                                imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
+                                imgs_ = imgs_set_(205, 395 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
                             else:
                                 if event_dungeon == True:
-                                    imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 395 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
                                 else:
-                                    imgs_ = imgs_set_(205, 275, 255, 305, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 275 + y_plus, 255, 305 + y_plus, cla, img, 0.8)
                         elif str(dun_name) == "talag":
                             if black_laboratory == True:
-                                imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+                                imgs_ = imgs_set_(205, 505 + y_plus, 255, 535 + y_plus, cla, img, 0.8)
                             else:
                                 if event_dungeon == True:
-                                    imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 505 + y_plus, 255, 535 + y_plus, cla, img, 0.8)
                                 else:
-                                    imgs_ = imgs_set_(205, 395, 255, 415, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 390 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
                         elif str(dun_name) == "garbana":
                             if black_laboratory == True:
-                                imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
+                                imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
                             else:
                                 if event_dungeon == True:
-                                    imgs_ = imgs_set_(205, 620, 255, 650, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
                                 else:
-                                    imgs_ = imgs_set_(205, 505, 255, 535, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
 
                         elif str(dun_name) == "soolyun":
-                            imgs_ = imgs_set_(205, 625, 255, 650, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 505 + y_plus, 255, 530, cla, img, 0.8)
 
                         if imgs_ is not None and imgs_ != False:
                             print("dun_complete_2", imgs_)
