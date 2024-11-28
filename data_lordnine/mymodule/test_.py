@@ -59,57 +59,7 @@ def go_test():
 
 
     try:
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\boohwal_cross_btn.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(200, 50, 260, 120, cla, img, 0.7)
-        if imgs_ is not None and imgs_ != False:
-            print("boohwal_cross_btn...", imgs_)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\juljun_dead.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(300, 630, 630, 700, cla, img, 0.75)
-        if imgs_ is not None and imgs_ != False:
-            print("juljun_dead", imgs_)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorvery_time.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 30, 300, 400, cla, img, 0.75)
-        if imgs_ is not None and imgs_ != False:
-            print("recorvery_time", imgs_)
-            click_pos_2(110, 410, cla)
-
-            time.sleep(0.5)
-
-            for i in range(5):
-                click_pos_reg(imgs_.x + 50, imgs_.y + 10, cla)
-                time.sleep(0.1)
-
-            time.sleep(0.5)
-
-            click_pos_2(110, 410, cla)
-
-            time.sleep(0.5)
-
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dead_die\\recorver_btn.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(90, 430, 260, 490, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                time.sleep(0.5)
-
-        where = "오염된분지/감춰진언덕"
-        # where = "성전사단격전지/계승자초소"
-        # jadong_start(cla, where)
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_item\\ganghwasuk_jangsingoo_2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(750, 130, 950, 1000, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("item...", imgs_)
+        get_gold_sohwan(cla)
 
         # for i in range(15):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\right_checked.PNG"
