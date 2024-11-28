@@ -19,7 +19,7 @@ def go_test():
     import random
     import pydirectinput
 
-    from function_game import text_check_get_reg, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get_num, mouse_move_cpp, in_number_check, change_number_float
+    from function_game import text_check_get_reg, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get, mouse_move_cpp, in_number_check, change_number_float
     from tuto_lordnine import way_check
     from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear, juljun_time_check, silhumsil_ganghwa
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
@@ -59,7 +59,10 @@ def go_test():
 
 
     try:
-        get_gold_sohwan(cla)
+        potion_check(cla)
+
+
+
 
         # for i in range(15):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\right_checked.PNG"
