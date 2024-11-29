@@ -32,7 +32,9 @@ def tuto_start(cla):
 
         result_dead = dead_check(cla)
 
-        if result_dead == False:
+        if result_dead == True:
+            dead_recorvery(cla)
+        else:
 
             # v_.onTutoPotion은 여기서 튜토시 물약체크 용으로 쓴다. 죽으면 아깝기 때문에
             if v_.onTutoPotion == True:

@@ -106,6 +106,15 @@ def dead_check(cla):
 
                 dead = True
 
+        # if dead == True:
+        #     result_schedule = myQuest_play_check(cla, "dead_check")
+        #     result_schedule_ = result_schedule[0][2]
+        #
+        #     if result_schedule_ == "튜토육성":
+        #         myQuest_play_add(cla, result_schedule_)
+        #     elif "시련의탑" in result_schedule_:
+        #         myQuest_play_add(cla, result_schedule_)
+
         # QTest.qWait(500)
 
         return dead
@@ -129,8 +138,7 @@ def dead_recorvery(cla):
     try:
         print("dead_recorvery")
 
-        result_schedule = myQuest_play_check(cla, "dead_check")
-        print("result_schedule dead_check", result_schedule)
+        result_schedule = myQuest_play_check(cla, "dead_recorvery")
         result_schedule_ = result_schedule[0][2]
 
         if result_schedule_ == "튜토육성":
