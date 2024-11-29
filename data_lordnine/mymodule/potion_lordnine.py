@@ -52,7 +52,7 @@ def potion_check(cla):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(x_1, y_1, x_2, y_2, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        print("i", i)
+                        print("i", i, imgs_)
                         is_num = True
 
                         if v_.potion_buy_count > 0:

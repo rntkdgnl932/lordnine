@@ -59,7 +59,7 @@ def go_test():
 
 
     try:
-        potion_check(cla)
+        potion_check("three")
 
 
 
