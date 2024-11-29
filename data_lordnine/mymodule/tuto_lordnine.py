@@ -230,8 +230,9 @@ def tuto_start(cla):
 
                 quest_checking(cla)
 
-        else:
-            print("지켜보자")
+        # else:
+        #
+        #     print("지켜보자")
             # dead_recorvery(cla)
 
 
