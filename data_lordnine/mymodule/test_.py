@@ -59,9 +59,23 @@ def go_test():
 
 
     try:
-        potion_check("three")
+        # potion_check("three")
 
-
+        for g in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                break
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\gyohwanso_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 70, 500, 110, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+            QTest.qWait(200)
 
 
         # for i in range(15):
