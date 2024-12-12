@@ -20,7 +20,7 @@ def get_start(cla):
 
         potion_buy_start(cla)
 
-        # get_gold_sohwan(cla)
+        get_gold_sohwan(cla)
 
         get_event(cla)
 
