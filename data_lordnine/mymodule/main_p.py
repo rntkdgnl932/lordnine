@@ -181,8 +181,8 @@ class MyApp(QDialog):
         for idx, monitor in enumerate(monitors, start=1):
             last_monitor_number = idx
         if line_[0] == "ccocco":
-            x_reg = 960 * 3
-        if last_monitor_number == 1:
+            x_reg = 960 * 4
+        elif last_monitor_number == 1:
             x_reg = 0
         elif last_monitor_number == 2:
             x_reg = 960 * 2
