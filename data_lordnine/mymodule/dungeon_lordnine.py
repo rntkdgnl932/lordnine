@@ -37,44 +37,47 @@ def dungeon_start(cla, where):
                 dun_name = "black"
             elif result_spot[1] == "어둠의숲":
                 dun_name = "adoom"
-            elif result_spot[1] == "조각의숲":
+            elif result_spot[1] == "조각의숲": # 던전 없어짐...
                 dun_name = "jogag"
             elif result_spot[1] == "타락한미궁":
                 dun_name = "talag"
             elif result_spot[1] == "가르바나지하수로":
                 dun_name = "garbana"
-            elif result_spot[1] == "이벤트":
+            elif result_spot[1] == "이벤트": # 눈꽃정원
                 dun_name = "event"
             elif result_spot[1] == "수련의전당":
                 dun_name = "soolyun"
 
-            result_juljun = juljun_check(cla)
+            if result_spot[1] == "조각의숲":
+                myQuest_play_add(cla, where)
+            else:
+                result_juljun = juljun_check(cla)
 
-            if result_juljun == True:
+                if result_juljun == True:
 
-                juljun_time_check(cla)
+                    juljun_time_check(cla)
 
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\" + str(dun_name) + ".PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\" + str(dun_name) + ".PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
 
-                    result_juljun_attack = juljun_attack_check(cla)
-                    if result_juljun_attack == True:
-                        potion_check(cla)
-                    else:
-                        if str(dun_name) == "soolyun":
+                        result_juljun_attack = juljun_attack_check(cla)
+                        if result_juljun_attack == True:
                             potion_check(cla)
                         else:
-                            attack_on(cla)
+                            if str(dun_name) == "soolyun":
+                                potion_check(cla)
+                            else:
+                                attack_on(cla)
+                    else:
+                        dun_in(cla, where)
                 else:
+                    result_dead = dead_check(cla)
+                    if result_dead == True:
+                        dead_recorvery(cla)
                     dun_in(cla, where)
-            else:
-                result_dead = dead_check(cla)
-                if result_dead == True:
-                    dead_recorvery(cla)
-                dun_in(cla, where)
 
     except Exception as e:
         print(e)
@@ -96,7 +99,7 @@ def dun_in(cla, where):
         print("dun_in", where)
 
         # 이벤트 던전 여부
-        event_dungeon = False
+        event_dungeon = True
 
         y_e_plus = 0
         if event_dungeon == True:
@@ -122,33 +125,28 @@ def dun_in(cla, where):
             if black_laboratory == True:
                 y_1 = 250 + y_e_plus
             else:
-                y_1 = 130 + y_e_plus
+                y_1 = 160 + y_e_plus
             dun_name = "adoom"
-        elif result_spot[1] == "조각의숲":
-            if black_laboratory == True:
-                y_1 = 370 + y_e_plus
-            else:
-                y_1 = 250 + y_e_plus
-            dun_name = "jogag"
+
         elif result_spot[1] == "타락한미궁":
             if black_laboratory == True:
                 y_1 = 480 + y_e_plus
             else:
-                y_1 = 370 + y_e_plus
+                y_1 = 280 + y_e_plus
             dun_name = "talag"
         elif result_spot[1] == "가르바나지하수로":
             if black_laboratory == True:
                 y_1 = 590 + y_e_plus
             else:
-                y_1 = 480 + y_e_plus
+                y_1 = 500 + y_e_plus
             dun_name = "garbana"
 
         elif result_spot[1] == "이벤트":
-            y_1 = 130
+            y_1 = 170
             dun_name = "event"
 
         elif result_spot[1] == "수련의전당":
-            y_1 = 600
+            y_1 = 400
             dun_name = "soolyun"
 
         # 던전 가기전 물약 사자
@@ -206,36 +204,32 @@ def dun_in(cla, where):
                             imgs_ = imgs_set_(205, 250 + y_plus, 255, 280 + y_plus, cla, img, 0.8)
                         else:
                             imgs_ = imgs_set_(205, 140 + y_plus, 255, 165 + y_plus, cla, img, 0.8)
-                elif str(dun_name) == "jogag":
-                    if black_laboratory == True:
-                        imgs_ = imgs_set_(205, 370 + y_plus, 255, 395 + y_plus, cla, img, 0.8)
-                    else:
-                        if event_dungeon == True:
-                            imgs_ = imgs_set_(205, 370 + y_plus, 255, 395 + y_plus, cla, img, 0.8)
-                        else:
-                            imgs_ = imgs_set_(205, 250 + y_plus, 255, 280 + y_plus, cla, img, 0.8)
+
                 elif str(dun_name) == "talag":
                     if black_laboratory == True:
                         imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
                     else:
                         if event_dungeon == True:
-                            imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
-                        else:
                             imgs_ = imgs_set_(205, 370 + y_plus, 255, 395 + y_plus, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 250 + y_plus, 255, 275 + y_plus, cla, img, 0.8)
+
+                elif str(dun_name) == "soolyun":
+                    imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
+
                 elif str(dun_name) == "garbana":
                     if black_laboratory == True:
                         imgs_ = imgs_set_(205, 600 + y_plus, 255, 630 + y_plus, cla, img, 0.8)
                     else:
                         if event_dungeon == True:
-                            imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
-                        else:
                             imgs_ = imgs_set_(205, 600 + y_plus, 255, 630 + y_plus, cla, img, 0.8)
+                        else:
+                            imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
 
                 elif str(dun_name) == "event":
                     imgs_ = imgs_set_(205, 140 + y_plus, 255, 170 + y_plus, cla, img, 0.8)
 
-                elif str(dun_name) == "soolyun":
-                    imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
+
 
                 if imgs_ is not None and imgs_ != False:
                     print("dun_complete_1", imgs_)
@@ -265,22 +259,17 @@ def dun_in(cla, where):
                                     imgs_ = imgs_set_(205, 275 + y_plus, 255, 305 + y_plus, cla, img, 0.8)
                                 else:
                                     imgs_ = imgs_set_(205, 160 + y_plus, 255, 190 + y_plus, cla, img, 0.8)
-                        elif str(dun_name) == "jogag":
-                            if black_laboratory == True:
-                                imgs_ = imgs_set_(205, 395 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
-                            else:
-                                if event_dungeon == True:
-                                    imgs_ = imgs_set_(205, 395 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
-                                else:
-                                    imgs_ = imgs_set_(205, 275 + y_plus, 255, 305 + y_plus, cla, img, 0.8)
+
                         elif str(dun_name) == "talag":
                             if black_laboratory == True:
                                 imgs_ = imgs_set_(205, 505 + y_plus, 255, 535 + y_plus, cla, img, 0.8)
                             else:
                                 if event_dungeon == True:
-                                    imgs_ = imgs_set_(205, 505 + y_plus, 255, 535 + y_plus, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 390 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
                                 else:
                                     imgs_ = imgs_set_(205, 390 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
+                        elif str(dun_name) == "soolyun":
+                            imgs_ = imgs_set_(205, 505 + y_plus, 255, 530, cla, img, 0.8)
                         elif str(dun_name) == "garbana":
                             if black_laboratory == True:
                                 imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
@@ -290,8 +279,7 @@ def dun_in(cla, where):
                                 else:
                                     imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
 
-                        elif str(dun_name) == "soolyun":
-                            imgs_ = imgs_set_(205, 505 + y_plus, 255, 530, cla, img, 0.8)
+
 
                         if imgs_ is not None and imgs_ != False:
                             print("dun_complete_2", imgs_)

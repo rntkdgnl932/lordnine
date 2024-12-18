@@ -239,7 +239,7 @@ def get_event_click(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
                 if imgs_for is not None and imgs_for != False:
-                    print("menu_point_1", imgs_for)
+                    print("menu_point_2", imgs_for)
                     # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
                     if len(imgs_for) > 0:
                         for i in range(len(imgs_for)):
@@ -1582,7 +1582,7 @@ def get_post(cla):
                                 print("menu_point_2", imgs_)
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
                                 get_point = True
-                    time.sleep(0.5)
+                    QTest.qWait(500)
                 if get_point == False:
                     post = True
 
