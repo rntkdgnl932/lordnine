@@ -175,120 +175,249 @@ def get_event_click(cla):
             time.sleep(0.5)
 
             if is_point == True:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\seven_point_1.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
-                if imgs_for is not None and imgs_for != False:
-                    print("seven_point_1", imgs_for)
-                    # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
-                    if len(imgs_for) > 0:
-                        for i in range(len(imgs_for)):
-                            click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
-                            time.sleep(0.5)
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
-                            if imgs_ is not None and imgs_ != False:
-                                print("touch_me", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(0.5)
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("monster_close", imgs_)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    time.sleep(0.5)
 
 
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                # 1주차 2주차 3주차차
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\weekend\\goodbye.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                imgs_for = imgs_set_for(300, 350, 550, 460, cla, img, 0.7)
                 if imgs_for is not None and imgs_for != False:
-                    print("menu_point_1", imgs_for)
-                    # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
-                    if len(imgs_for) > 0:
-                        for i in range(len(imgs_for)):
-                            click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
-                            time.sleep(0.5)
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
-                            if imgs_ is not None and imgs_ != False:
-                                print("touch_me", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                time.sleep(0.5)
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("monster_close", imgs_)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    time.sleep(0.5)
 
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
-                if imgs_for is not None and imgs_for != False:
-                    print("menu_point_2", imgs_for)
-                    # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
-                    if len(imgs_for) > 0:
-                        for i in range(len(imgs_for)):
-                            click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
-                            time.sleep(0.5)
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
-                            if imgs_ is not None and imgs_ != False:
-                                print("touch_me", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                    for i in range(3):
+                        # 290, 375, 460
+                        x_reg = 290 + (i * 85)
+                        click_pos_2(x_reg, 470, cla)
+                        time.sleep(1)
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\seven_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                        if imgs_for is not None and imgs_for != False:
+                            print("seven_point_1", imgs_for)
+                            # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
+                            if len(imgs_for) > 0:
+                                for i in range(len(imgs_for)):
+                                    click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
+                                    time.sleep(0.5)
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("touch_me", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("monster_close", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.5)
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                        if imgs_for is not None and imgs_for != False:
+                            print("menu_point_1", imgs_for)
+                            # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
+                            if len(imgs_for) > 0:
+                                for i in range(len(imgs_for)):
+                                    click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
+                                    time.sleep(0.5)
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("touch_me", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("monster_close", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.5)
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                        if imgs_for is not None and imgs_for != False:
+                            print("menu_point_2", imgs_for)
+                            # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
+                            if len(imgs_for) > 0:
+                                for i in range(len(imgs_for)):
+                                    click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
+                                    time.sleep(0.5)
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("touch_me", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("monster_close", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.5)
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                        if imgs_for is not None and imgs_for != False:
+                            print("event_point_1", imgs_for)
+                            if len(imgs_for) > 0:
+                                for i in range(len(imgs_for)):
+                                    click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
+                                    time.sleep(0.5)
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("touch_me", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("monster_close", imgs_)
+                                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                                            time.sleep(0.5)
+                        time.sleep(1)
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\seven_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                    if imgs_for is not None and imgs_for != False:
+                        print("seven_point_1", imgs_for)
+                        # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
                                 time.sleep(0.5)
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("monster_close", imgs_)
+                                    print("touch_me", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                                     time.sleep(0.5)
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event_point_1.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
-                if imgs_for is not None and imgs_for != False:
-                    print("event_point_1", imgs_for)
-                    if len(imgs_for) > 0:
-                        for i in range(len(imgs_for)):
-                            click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
-                            time.sleep(0.5)
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
-                            if imgs_ is not None and imgs_ != False:
-                                print("touch_me", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("monster_close", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                    if imgs_for is not None and imgs_for != False:
+                        print("menu_point_1", imgs_for)
+                        # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
                                 time.sleep(0.5)
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
                                 if imgs_ is not None and imgs_ != False:
-                                    print("monster_close", imgs_)
+                                    print("touch_me", imgs_)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                                     time.sleep(0.5)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("monster_close", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                    if imgs_for is not None and imgs_for != False:
+                        print("menu_point_2", imgs_for)
+                        # click_pos_reg(imgs_.x - 30, imgs_.y + 10, cla)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
+                                time.sleep(0.5)
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("touch_me", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.5)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("monster_close", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event_point_1.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_for = imgs_set_for(245, 380, 880, 760, cla, img, 0.7)
+                    if imgs_for is not None and imgs_for != False:
+                        print("event_point_1", imgs_for)
+                        if len(imgs_for) > 0:
+                            for i in range(len(imgs_for)):
+                                click_pos_reg(imgs_for[i][0] - 30, imgs_for[i][1] + 10, cla)
+                                time.sleep(0.5)
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(300, 560, 640, 1040, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("touch_me", imgs_)
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    time.sleep(0.5)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\monster_close.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(230, 330, 870, 720, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        print("monster_close", imgs_)
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
             else:
                 get_count += 1
                 if get_count > 6:
