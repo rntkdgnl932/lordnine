@@ -61,33 +61,11 @@ def go_test():
     try:
         # potion_check("three")
 
-        for i in range(10):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.65)
-            if imgs_ is not None and imgs_ != False:
-                print("menu_point_1", imgs_)
-                break
+        nowHour = int(datetime.today().strftime("%H"))
 
-            else:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.65)
-                if imgs_ is not None and imgs_ != False:
-                    print("menu_point_2", imgs_)
-                    break
+        print("nowHour", nowHour)
 
-                else:
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\post_point_1.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(50, 50, 610, 100, cla, img, 0.65)
-                    if imgs_ is not None and imgs_ != False:
-                        print("post_point_1", imgs_)
-                        break
-            time.sleep(0.5)
+        get_gold_sohwan(cla)
 
         # for g in range(10):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"

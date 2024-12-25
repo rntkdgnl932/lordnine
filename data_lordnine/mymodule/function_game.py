@@ -6,6 +6,9 @@
 # from PIL import Image
 # import re
 # import cv2
+
+from PyQt5.QtTest import *
+
 import time
 import sys
 import variable as v_
@@ -550,6 +553,7 @@ def win_left_move(cla):
         ser.write(data.encode())
 
         ser.close()
+        QTest.qWait(10)
 
     except Exception as e:
         print(e)
@@ -575,6 +579,7 @@ def win_right_move(cla):
         ser.write(data.encode())
 
         ser.close()
+        QTest.qWait(10)
 
     except Exception as e:
         print(e)
@@ -585,6 +590,9 @@ def click_pos_2(pos_1, pos_2, cla):
     try:
         import serial
         import pyautogui
+
+        pos_1 = int(pos_1)
+        pos_2 = int(pos_2)
 
 
         coordinate = 0
@@ -617,7 +625,7 @@ def click_pos_2(pos_1, pos_2, cla):
             move_count = 0
             while move_ is False:
                 move_count += 1
-                if move_count > 300:
+                if move_count > v_.mouse_move_count:
                     print("move_count", move_count)
                     move_ = True
 
@@ -694,6 +702,7 @@ def click_pos_2(pos_1, pos_2, cla):
                 #     print("x_reg", x_reg)
                 #     print("y_reg", y_reg)
             ser.close()
+            QTest.qWait(10)
         else:
 
             # pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int())
@@ -710,7 +719,8 @@ def click_pos_reg(pos_1, pos_2, cla):
     import pyautogui
     try:
 
-
+        pos_1 = int(pos_1)
+        pos_2 = int(pos_2)
 
         coordinate = 0
         if cla == 'one':
@@ -742,7 +752,7 @@ def click_pos_reg(pos_1, pos_2, cla):
             move_count = 0
             while move_ is False:
                 move_count += 1
-                if move_count > 300:
+                if move_count > v_.mouse_move_count:
                     move_ = True
 
                 # 이동 시킬 포인트 계산
@@ -808,6 +818,7 @@ def click_pos_reg(pos_1, pos_2, cla):
                         # drag_pos_Release()
 
             ser.close()
+            QTest.qWait(10)
         else:
 
             # pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int())
@@ -823,6 +834,9 @@ def mouse_move_cpp(pos_1, pos_2, cla):
     try:
         import serial
         import pyautogui
+
+        pos_1 = int(pos_1)
+        pos_2 = int(pos_2)
 
         arduino_port = v_.COM_
         baudrate = v_.speed_
@@ -855,7 +869,7 @@ def mouse_move_cpp(pos_1, pos_2, cla):
             move_count = 0
             while move_ is False:
                 move_count += 1
-                if move_count > 300:
+                if move_count > v_.mouse_move_count:
                     move_ = True
 
 
@@ -904,6 +918,7 @@ def mouse_move_cpp(pos_1, pos_2, cla):
 
 
             ser.close()
+            QTest.qWait(10)
         else:
             pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.1)
 
@@ -914,6 +929,9 @@ def mouse_move_cpp_reg(pos_1, pos_2, cla):
     try:
         import serial
         import pyautogui
+
+        pos_1 = int(pos_1)
+        pos_2 = int(pos_2)
 
         arduino_port = v_.COM_
         baudrate = v_.speed_
@@ -934,7 +952,7 @@ def mouse_move_cpp_reg(pos_1, pos_2, cla):
             move_count = 0
             while move_ is False:
                 move_count += 1
-                if move_count > 300:
+                if move_count > v_.mouse_move_count:
                     move_ = True
 
 
@@ -983,6 +1001,7 @@ def mouse_move_cpp_reg(pos_1, pos_2, cla):
 
 
             ser.close()
+            QTest.qWait(10)
         else:
             pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.1)
 
@@ -993,6 +1012,9 @@ def mouse_move_drag(pos_1, pos_2, cla, speed):
     try:
         import serial
         import pyautogui
+
+        pos_1 = int(pos_1)
+        pos_2 = int(pos_2)
 
         arduino_port = v_.COM_
         baudrate = v_.speed_
@@ -1024,7 +1046,7 @@ def mouse_move_drag(pos_1, pos_2, cla, speed):
             move_count = 0
             while move_ is False:
                 move_count += 1
-                if move_count > 300:
+                if move_count > v_.mouse_move_count:
                     move_ = True
 
 
@@ -1073,6 +1095,7 @@ def mouse_move_drag(pos_1, pos_2, cla, speed):
 
 
             ser.close()
+            QTest.qWait(10)
         else:
             pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.1)
 
@@ -1084,6 +1107,9 @@ def mouse_move_drag_reg(pos_1, pos_2, cla, speed):
     try:
         import serial
         import pyautogui
+
+        pos_1 = int(pos_1)
+        pos_2 = int(pos_2)
 
         arduino_port = v_.COM_
         baudrate = v_.speed_
@@ -1103,7 +1129,7 @@ def mouse_move_drag_reg(pos_1, pos_2, cla, speed):
             move_count = 0
             while move_ is False:
                 move_count += 1
-                if move_count > 300:
+                if move_count > v_.mouse_move_count:
                     move_ = True
 
 
@@ -1152,6 +1178,9 @@ def mouse_move_drag_reg(pos_1, pos_2, cla, speed):
 
 
             ser.close()
+            QTest.qWait(10)
+
+
         else:
             pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.1)
 
@@ -1162,6 +1191,9 @@ def mouse_move_adu_drag(pos_1, pos_2, cla):
     try:
         import serial
         import pyautogui
+
+        pos_1 = int(pos_1)
+        pos_2 = int(pos_2)
 
         arduino_port = v_.COM_
         baudrate = v_.speed_
@@ -1192,7 +1224,7 @@ def mouse_move_adu_drag(pos_1, pos_2, cla):
         #     move_count = 0
         #     while move_ is False:
         #         move_count += 1
-        #         if move_count > 300:
+        #         if move_count > v_.mouse_move_count:
         #             move_ = True
         #
         #
@@ -1241,6 +1273,7 @@ def mouse_move_adu_drag(pos_1, pos_2, cla):
         #
         #
         #     ser.close()
+        #     QTest.qWait(10)
         # else:
         pyautogui.moveTo(pos_1 + random_int() + coordinate, pos_2 + random_int(), 0.1)
 
@@ -1267,6 +1300,7 @@ def drag_pos_Press():
 
 
         ser.close()
+        QTest.qWait(10)
 
     except Exception as e:
         print("error:", e)
@@ -1288,6 +1322,7 @@ def drag_pos_Release():
         ser.write(data.encode())
 
         ser.close()
+        QTest.qWait(10)
 
     except Exception as e:
         print("error:", e)
@@ -1583,6 +1618,7 @@ def text_check_potion(posX1, posY1, posX2, posY2, cla):
     except Exception as e:
         print(e)
         return 0
+
 def text_check_get(posX1, posY1, posX2, posY2, cla):
     try:
         from PIL import ImageGrab

@@ -53,3 +53,4 @@ onCollection_boonhae_rare = False
 # 마우스 관련
 mouse_speed = 20
 mouse_pm = 3
+mouse_move_count = 300
