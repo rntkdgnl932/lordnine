@@ -52,13 +52,14 @@ def jadong_start(cla, where):
                 juljun_on(cla)
 
             else:
-
+                nowHour = int(datetime.today().strftime("%H"))
                 nowMinute = int(datetime.today().strftime("%M"))
                 print("nowMinute", nowMinute)
 
                 if nowMinute == 0:
-                    col_boon_start(cla)
-                    juljun_on(cla)
+                    if nowHour % 2 == 1:
+                        col_boon_start(cla)
+                        juljun_on(cla)
                 else:
                     if result_special[0] == "특수":
                         if result_special[1] == "비밀실험실":
