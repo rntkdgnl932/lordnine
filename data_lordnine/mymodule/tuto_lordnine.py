@@ -585,91 +585,102 @@ def quest_checking(cla):
         imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
         if imgs_ is not None and imgs_ != False:
             print("jejak", imgs_)
+            click_pos_2(865, 1005, cla)
+            # for i in range(5):
+            #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_1.PNG"
+            #     img_array = np.fromfile(full_path, np.uint8)
+            #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #     imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #     if imgs_ is not None and imgs_ != False:
+            #         print("jejak_1", imgs_)
+            #         click_pos_2(865, 1005, cla)
+            #         break
+            #     else:
+            #         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_2.PNG"
+            #         img_array = np.fromfile(full_path, np.uint8)
+            #         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #         imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #         if imgs_ is not None and imgs_ != False:
+            #             print("jejak_2", imgs_)
+            #             click_pos_2(865, 1005, cla)
+            #             break
+            #         else:
+            #             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_3.PNG"
+            #             img_array = np.fromfile(full_path, np.uint8)
+            #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #             imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #             if imgs_ is not None and imgs_ != False:
+            #                 print("jejak_3", imgs_)
+            #                 click_pos_2(865, 1005, cla)
+            #                 break
+            #             else:
+            #                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_4.PNG"
+            #                 img_array = np.fromfile(full_path, np.uint8)
+            #                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #                 imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #                 if imgs_ is not None and imgs_ != False:
+            #                     print("jejak_4", imgs_)
+            #                     click_pos_2(865, 1005, cla)
+            #                     break
+            #                 else:
+            #                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_5.PNG"
+            #                     img_array = np.fromfile(full_path, np.uint8)
+            #                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #                     imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #                     if imgs_ is not None and imgs_ != False:
+            #                         print("jejak_5", imgs_)
+            #                         click_pos_2(865, 1005, cla)
+            #                         break
+            #                     else:
+            #                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_6.PNG"
+            #                         img_array = np.fromfile(full_path, np.uint8)
+            #                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #                         imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #                         if imgs_ is not None and imgs_ != False:
+            #                             print("jejak_6", imgs_)
+            #                             click_pos_2(865, 1005, cla)
+            #                             break
+            #                         else:
+            #                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_7.PNG"
+            #                             img_array = np.fromfile(full_path, np.uint8)
+            #                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #                             imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #                             if imgs_ is not None and imgs_ != False:
+            #                                 print("jejak_7", imgs_)
+            #                                 click_pos_2(865, 1005, cla)
+            #                                 break
+            #                             else:
+            #                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_8.PNG"
+            #                                 img_array = np.fromfile(full_path, np.uint8)
+            #                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #                                 imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #                                 if imgs_ is not None and imgs_ != False:
+            #                                     print("jejak_8", imgs_)
+            #                                     click_pos_2(865, 1005, cla)
+            #                                     break
+            #                                 else:
+            #                                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_9.PNG"
+            #                                     img_array = np.fromfile(full_path, np.uint8)
+            #                                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #                                     imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
+            #                                     if imgs_ is not None and imgs_ != False:
+            #                                         print("jejak_9", imgs_)
+            #                                         click_pos_2(865, 1005, cla)
+            #                                         break
+            #                                     else:
+            #                                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\jejak.PNG"
+            #                                         img_array = np.fromfile(full_path, np.uint8)
+            #                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            #                                         imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+            #                                         if imgs_ is not None and imgs_ != False:
+            #                                             print("jejak_title", imgs_)
+            #                                             click_pos_2(865, 1005, cla)
+            #                                             break
 
-            for i in range(5):
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_1.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
-                    print("jejak_1", imgs_)
-                    click_pos_2(865, 1005, cla)
-                    break
-                else:
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_2.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("jejak_2", imgs_)
-                        click_pos_2(865, 1005, cla)
-                        break
-                    else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_3.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("jejak_3", imgs_)
-                            click_pos_2(865, 1005, cla)
-                            break
-                        else:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_4.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("jejak_4", imgs_)
-                                click_pos_2(865, 1005, cla)
-                                break
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_5.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("jejak_5", imgs_)
-                                    click_pos_2(865, 1005, cla)
-                                    break
-                                else:
-                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_6.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("jejak_6", imgs_)
-                                        click_pos_2(865, 1005, cla)
-                                        break
-                                    else:
-                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_7.PNG"
-                                        img_array = np.fromfile(full_path, np.uint8)
-                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                                        if imgs_ is not None and imgs_ != False:
-                                            print("jejak_7", imgs_)
-                                            click_pos_2(865, 1005, cla)
-                                            break
-                                        else:
-                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_8.PNG"
-                                            img_array = np.fromfile(full_path, np.uint8)
-                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                            imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                                            if imgs_ is not None and imgs_ != False:
-                                                print("jejak_8", imgs_)
-                                                click_pos_2(865, 1005, cla)
-                                                break
-                                            else:
-                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\tuto\\quest_checking\\jejak_9.PNG"
-                                                img_array = np.fromfile(full_path, np.uint8)
-                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                                imgs_ = imgs_set_(140, 60, 220, 140, cla, img, 0.8)
-                                                if imgs_ is not None and imgs_ != False:
-                                                    print("jejak_9", imgs_)
-                                                    click_pos_2(865, 1005, cla)
-                                                    break
 
 
-                time.sleep(0.5)
+                # time.sleep(0.5)
+            time.sleep(0.5)
             for i in range(5):
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\skip\\touch_me.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
@@ -681,8 +692,19 @@ def quest_checking(cla):
                     clean_screen_just_on_start(cla)
                     break
 
+
                 time.sleep(0.2)
 
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\jejak.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("jejak", imgs_)
+
+
+                clean_screen_just_on_start(cla)
 
         # tuto 임시 정지
 
