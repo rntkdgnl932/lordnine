@@ -1659,11 +1659,6 @@ def attack_on(cla):
         print("result_schedule attack_on", result_schedule)
         result_schedule_ = result_schedule[0][2]
 
-        if "/" in result_schedule_:
-            attack_setting(cla, "30")
-        else:
-            attack_setting(cla, "all")
-
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\auto_off.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -1671,6 +1666,19 @@ def attack_on(cla):
         if imgs_ is not None and imgs_ != False:
             print("auto_off", imgs_)
             click_pos_2(870, 850, cla)
+
+        if "/" in result_schedule_:
+            attack_setting(cla, "30")
+        else:
+            attack_setting(cla, "all")
+
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\check\\attack\\auto_off.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(830, 820, 890, 870, cla, img, 0.95)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("auto_off", imgs_)
+        #     click_pos_2(870, 850, cla)
 
         attack = False
 
