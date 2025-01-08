@@ -182,7 +182,7 @@ def dun_in(cla, where):
 
                 complete = False
 
-                y_plus = 35
+                y_plus = 0
 
                 # 만료여부
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_1.PNG"
