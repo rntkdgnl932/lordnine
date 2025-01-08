@@ -506,39 +506,39 @@ def get_gold_sohwan(cla):
 
                 ########################################################################
 
-                #######################
-                # 눈꽃결정 사기
-                #######################
-                for i in range(10):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\ice_flower.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(170, 100, 770, 150, cla, img, 0.9)
-                    if imgs_ is not None and imgs_ != False:
-                        break
-                    else:
-                        click_pos_2(150, 85, cla)
-                        for g in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\ice_flower.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(170, 100, 770, 150, cla, img, 0.9)
-                            if imgs_ is not None and imgs_ != False:
-                                break
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\ice_flower_btn.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 100, 130, 500, cla, img, 0.9)
-                                if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                            QTest.qWait(200)
-                    time.sleep(0.5)
-
-                # 특별상품
-                get_event_sohwan_start_2(cla)
-
-                ########################################################################
+                # #######################
+                # # 눈꽃결정 사기
+                # #######################
+                # for i in range(10):
+                #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\ice_flower.PNG"
+                #     img_array = np.fromfile(full_path, np.uint8)
+                #     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #     imgs_ = imgs_set_(170, 100, 770, 150, cla, img, 0.9)
+                #     if imgs_ is not None and imgs_ != False:
+                #         break
+                #     else:
+                #         click_pos_2(150, 85, cla)
+                #         for g in range(10):
+                #             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\ice_flower.PNG"
+                #             img_array = np.fromfile(full_path, np.uint8)
+                #             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #             imgs_ = imgs_set_(170, 100, 770, 150, cla, img, 0.9)
+                #             if imgs_ is not None and imgs_ != False:
+                #                 break
+                #             else:
+                #                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\ice_flower_btn.PNG"
+                #                 img_array = np.fromfile(full_path, np.uint8)
+                #                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                #                 imgs_ = imgs_set_(0, 100, 130, 500, cla, img, 0.9)
+                #                 if imgs_ is not None and imgs_ != False:
+                #                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                #             QTest.qWait(200)
+                #     time.sleep(0.5)
+                #
+                # # 특별상품
+                # get_event_sohwan_start_2(cla)
+                #
+                # ########################################################################
 
 
                 #######################
@@ -1893,15 +1893,33 @@ def get_battle_pass(cla):
                 get = True
 
                 # 아템 얻자자
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\battke_pass_top_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(100, 70, 515, 110, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+
                 for i in range(10):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\anymore_battle_pass.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\battke_pass_top_point_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(300, 80, 650, 160, cla, img, 0.7)
+                    imgs_ = imgs_set_(100, 70, 515, 110, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
-                        break
-                    else:
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(1)
                         click_pos_2(660, 475, cla)
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\anymore_battle_pass.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(300, 80, 650, 160, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            time.sleep(5)
+                            pass
+                        else:
+                            break
                 time.sleep(0.4)
 
 

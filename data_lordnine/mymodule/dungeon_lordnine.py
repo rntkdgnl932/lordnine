@@ -99,7 +99,7 @@ def dun_in(cla, where):
         print("dun_in", where)
 
         # 이벤트 던전 여부
-        event_dungeon = True
+        event_dungeon = False
 
         y_e_plus = 0
         if event_dungeon == True:
@@ -125,20 +125,20 @@ def dun_in(cla, where):
             if black_laboratory == True:
                 y_1 = 250 + y_e_plus
             else:
-                y_1 = 160 + y_e_plus
+                y_1 = 280 + y_e_plus
             dun_name = "adoom"
 
         elif result_spot[1] == "타락한미궁":
             if black_laboratory == True:
                 y_1 = 480 + y_e_plus
             else:
-                y_1 = 280 + y_e_plus
+                y_1 = 400 + y_e_plus
             dun_name = "talag"
         elif result_spot[1] == "가르바나지하수로":
             if black_laboratory == True:
                 y_1 = 590 + y_e_plus
             else:
-                y_1 = 500 + y_e_plus
+                y_1 = 160 + y_e_plus
             dun_name = "garbana"
 
         elif result_spot[1] == "이벤트":
@@ -146,7 +146,7 @@ def dun_in(cla, where):
             dun_name = "event"
 
         elif result_spot[1] == "수련의전당":
-            y_1 = 400
+            y_1 = 520
             dun_name = "soolyun"
 
         # 던전 가기전 물약 사자
@@ -203,7 +203,7 @@ def dun_in(cla, where):
                         if event_dungeon == True:
                             imgs_ = imgs_set_(205, 250 + y_plus, 255, 280 + y_plus, cla, img, 0.8)
                         else:
-                            imgs_ = imgs_set_(205, 140 + y_plus, 255, 165 + y_plus, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 290 + y_plus, 255, 315 + y_plus, cla, img, 0.8)
 
                 elif str(dun_name) == "talag":
                     if black_laboratory == True:
@@ -212,10 +212,10 @@ def dun_in(cla, where):
                         if event_dungeon == True:
                             imgs_ = imgs_set_(205, 370 + y_plus, 255, 395 + y_plus, cla, img, 0.8)
                         else:
-                            imgs_ = imgs_set_(205, 250 + y_plus, 255, 275 + y_plus, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 405 + y_plus, 255, 430 + y_plus, cla, img, 0.8)
 
                 elif str(dun_name) == "soolyun":
-                    imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
+                    imgs_ = imgs_set_(205, 520 + y_plus, 255, 545 + y_plus, cla, img, 0.8)
 
                 elif str(dun_name) == "garbana":
                     if black_laboratory == True:
@@ -224,7 +224,7 @@ def dun_in(cla, where):
                         if event_dungeon == True:
                             imgs_ = imgs_set_(205, 600 + y_plus, 255, 630 + y_plus, cla, img, 0.8)
                         else:
-                            imgs_ = imgs_set_(205, 480 + y_plus, 255, 510 + y_plus, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 175 + y_plus, 255, 200 + y_plus, cla, img, 0.8)
 
                 elif str(dun_name) == "event":
                     imgs_ = imgs_set_(205, 140 + y_plus, 255, 170 + y_plus, cla, img, 0.8)
@@ -258,7 +258,7 @@ def dun_in(cla, where):
                                 if event_dungeon == True:
                                     imgs_ = imgs_set_(205, 275 + y_plus, 255, 305 + y_plus, cla, img, 0.8)
                                 else:
-                                    imgs_ = imgs_set_(205, 160 + y_plus, 255, 190 + y_plus, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 310 + y_plus, 255, 335 + y_plus, cla, img, 0.8)
 
                         elif str(dun_name) == "talag":
                             if black_laboratory == True:
@@ -267,9 +267,9 @@ def dun_in(cla, where):
                                 if event_dungeon == True:
                                     imgs_ = imgs_set_(205, 390 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
                                 else:
-                                    imgs_ = imgs_set_(205, 390 + y_plus, 255, 415 + y_plus, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 425 + y_plus, 255, 450 + y_plus, cla, img, 0.8)
                         elif str(dun_name) == "soolyun":
-                            imgs_ = imgs_set_(205, 505 + y_plus, 255, 530, cla, img, 0.8)
+                            imgs_ = imgs_set_(205, 540 + y_plus, 255, 565 + y_plus, cla, img, 0.8)
                         elif str(dun_name) == "garbana":
                             if black_laboratory == True:
                                 imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
@@ -277,7 +277,7 @@ def dun_in(cla, where):
                                 if event_dungeon == True:
                                     imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
                                 else:
-                                    imgs_ = imgs_set_(205, 620 + y_plus, 255, 650 + y_plus, cla, img, 0.8)
+                                    imgs_ = imgs_set_(205, 195 + y_plus, 255, 220 + y_plus, cla, img, 0.8)
 
 
 
@@ -305,7 +305,7 @@ def dun_in(cla, where):
                             if result_spot[1] == "검은실험실" or result_spot[1] == "가르바나지하수로":
                                 int_step = int(result_spot[2])
                                 if int_step > 2:
-                                    x_1 = 2
+                                    x_1 = 3
                                 else:
                                     x_1 = int_step
 
@@ -350,6 +350,10 @@ def dun_in(cla, where):
                             break
                         time.sleep(0.5)
                     # 던전 입장 후
+
+                    # 가르바나 지하수로 일 경우 지도 체크 후 공격
+                    if str(dun_name) == "garbana":
+                        garbana_move(cla)
                     attack_on(cla)
                     time.sleep(0.2)
                     juljun_on(cla)
@@ -401,7 +405,6 @@ def step_select(cla, x_1):
     import os
 
     from function_game import imgs_set_, click_pos_reg, drag_pos
-    from action_lordnine import menu_open
 
     try:
         print("step_select", x_1)
@@ -455,6 +458,95 @@ def step_select(cla, x_1):
                             time.sleep(0.2)
             time.sleep(0.3)
 
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def garbana_move(cla):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_lordnine import menu_open, move_check
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("garbana_move")
+
+        x_click = False
+        x_click_count = 0
+
+        while x_click is False:
+            x_click_count += 1
+            if x_click_count > 10:
+                x_click = True
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\move\\move_1.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(440, 570, 550, 700, cla, img, 0.75)
+            if imgs_ is not None and imgs_ != False:
+                print("move_check : ok")
+                x_click = True
+            else:
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("worldmap", imgs_)
+                    click_pos_2(400, 560, cla)
+                    time.sleep(0.5)
+                    click_pos_2(400, 560, cla)
+                    time.sleep(0.5)
+                    click_pos_2(400, 560, cla)
+                    time.sleep(0.5)
+                    for i in range(5):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            print("worldmap", imgs_)
+                            click_pos_2(925, 50, cla)
+                        else:
+                            break
+                        time.sleep(1)
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\map.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(185, 100, 220, 130, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("map", imgs_)
+                        click_pos_reg(imgs_.x - 50, imgs_.y + 50, cla)
+                    else:
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\party_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(40, 140, 160, 240, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("party_1", imgs_)
+                            click_pos_2(35, 125, cla)
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\maul\\party_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(40, 140, 160, 240, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                print("party_2", imgs_)
+                                click_pos_2(35, 125, cla)
+                            else:
+                                clean_screen_start(cla)
+                                click_pos_2(35, 125, cla)
+            time.sleep(1)
 
     except Exception as e:
         print(e)

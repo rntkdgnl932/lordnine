@@ -65,7 +65,12 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        get_gold_sohwan(cla)
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_step\\bottom\\not_clicked\\4.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(340, 740, 900, 850, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("not clicked : x_1", imgs_)
 
         # for g in range(10):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
