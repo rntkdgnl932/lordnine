@@ -65,6 +65,8 @@ def go_test():
 
         print("nowHour", nowHour)
 
+        clean_screen_just_on_start(cla)
+
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_step\\bottom\\not_clicked\\4.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

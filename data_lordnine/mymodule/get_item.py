@@ -121,8 +121,13 @@ def get_event_click(cla):
 
         get = False
         get_count = 0
-
+        get_count_2 = 0
         while get is False:
+
+            get_count_2 += 1
+            if get_count_2 > 12:
+                get = True
+
             print("get_count...........", get_count)
 
 
