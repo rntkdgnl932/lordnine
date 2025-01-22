@@ -65,15 +65,40 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        clean_screen_just_on_start(cla)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_step\\bottom\\not_clicked\\4.PNG"
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(340, 740, 900, 850, cla, img, 0.9)
+        imgs_ = imgs_set_(420, 820, 540, 940, cla, img, 0.7)
         if imgs_ is not None and imgs_ != False:
-            print("not clicked : x_1", imgs_)
+            print("lordnine_mark", imgs_)
 
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("touch_to_start", imgs_)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start2.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("touch_to_start2", imgs_)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_join_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(530, 900, 660, 1000, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("server_join_btn", imgs_)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("game_start_btn", imgs_)
         # for g in range(10):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
         #     img_array = np.fromfile(full_path, np.uint8)

@@ -363,7 +363,7 @@ def game_ready(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\downloading_time.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(0, 950, 200, 1040, cla, img, 0.8)
+                            imgs_ = imgs_set_(0, 950, 300, 1040, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
                                 down = True
                                 break
@@ -373,7 +373,7 @@ def game_ready(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\downloading_time.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 950, 200, 1040, cla, img, 0.8)
+                        imgs_ = imgs_set_(0, 950, 300, 1040, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             print("downloading_time")
                             down = True
@@ -381,7 +381,7 @@ def game_ready(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\downloading_time.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 950, 200, 1040, cla, img, 0.8)
+                    imgs_ = imgs_set_(0, 950, 300, 1040, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
                         print("downloading_time")
                         down = True
