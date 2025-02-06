@@ -268,6 +268,16 @@ def mission_get_daily(cla, data):
                     # 일일 임무를 얻쟈
                     for i in range(40):
 
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\mission_refresh_title.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(410, 420, 530, 470, cla, img, 0.8)
+                        if imgs_ is not None and imgs_ != False:
+                            confirm_all(cla)
+                            time.sleep(1)
+
+
+
                         anymore = False
 
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
