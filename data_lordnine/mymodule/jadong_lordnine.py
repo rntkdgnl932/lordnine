@@ -140,8 +140,11 @@ def spot_in_ready(cla, where):
     try:
         print("spot_in_ready", where)
 
+        is_special = False
+
         # 디엔북부/메마른호숫가_1_1_1
         # 특수/티리오사무덤/지하1층_3_3_0
+        # 특수/죽음의대지_4_2_0
 
         # result_special = where.split("/")
 
@@ -194,7 +197,7 @@ def spot_in_ready(cla, where):
                         click_pos_2(100, y_2, cla)
                         time.sleep(0.2)
                         click_pos_2(100, y_2, cla)
-                        time.sleep(0.2)
+                        time.sleep(0.5)
 
                         print("??????????", result_special[0], result_special[1])
 
@@ -441,6 +444,7 @@ def spot_in_ready(cla, where):
                             if imgs_ is not None and imgs_ != False:
                                 print("item...", str(read_data), imgs_)
                                 is_btn = True
+                                is_special = True
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                                 time.sleep(0.1)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
@@ -507,7 +511,16 @@ def spot_in_ready(cla, where):
                             attack_on(cla)
 
                             juljun_on(cla)
-
+                        else:
+                            click_pos_2(130, 170, cla)
+                            for i in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    break
+                                time.sleep(0.3)
                     else:
                         click_pos_2(130, 170, cla)
                         for i in range(10):
@@ -523,7 +536,7 @@ def spot_in_ready(cla, where):
                     clean_screen_start(cla)
             time.sleep(0.5)
 
-
+        return is_special
     except Exception as e:
         print(e)
         return 0
@@ -555,10 +568,11 @@ def spot_in(cla, where):
         # result_spot[3] => 세부 맵맵
         y_3 = 95 + (int(result_spot[3]) * 36)
 
-        spot_in_ready(cla, where)
+        result_special_bloon = spot_in_ready(cla, where)
 
-        if result_special[1] != "죽은자의대지":
-
+        if result_special[1] == "죽은자의대지" and result_special_bloon == True:
+            print("죽은자의대지 가즈아아아")
+        else:
             world = False
             world_count = 0
 
@@ -612,7 +626,7 @@ def spot_in(cla, where):
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                                     time.sleep(0.2)
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    time.sleep(0.2)
+                                    time.sleep(0.5)
 
                                     for m in range(7):
                                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
@@ -623,9 +637,16 @@ def spot_in(cla, where):
                                             print("jadong_confirm", imgs_)
                                             break
                                         else:
-                                            result_move = move_check(cla)
-                                            if result_move == True:
-                                                print("이동중")
+                                            result_out = out_check(cla)
+                                            if result_out == True:
+                                                result_move = move_check(cla)
+                                                print("여기문제냐", result_move, result_special[1])
+                                                if result_move == True:
+                                                    print("이동중")
+                                                else:
+                                                    if result_special[1] == "죽은자의대지":
+
+                                                        click_pos_2(100, 300, cla)
                                             else:
                                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\walking_btn.PNG"
                                                 img_array = np.fromfile(full_path, np.uint8)
@@ -648,6 +669,12 @@ def spot_in(cla, where):
 
                                         time.sleep(0.5)
 
+
+                                    # 죽은자의대지는 기다렸다가...
+                                    if result_special[1] == "죽은자의대지":
+                                        spot_name = "landofdead"
+
+
                                     for m in range(20):
                                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
@@ -655,6 +682,8 @@ def spot_in(cla, where):
                                         imgs_ = imgs_set_(480, 540, 640, 640, cla, img, 0.7)
                                         if imgs_ is not None and imgs_ != False:
                                             print("jadong_confirm", imgs_)
+                                            if result_special[1] == "죽은자의대지":
+                                                time.sleep(5)
                                             click_pos_reg(imgs_.x, imgs_.y, cla)
                                             break
                                         else:
