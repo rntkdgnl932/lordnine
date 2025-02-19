@@ -99,7 +99,7 @@ def dun_in(cla, where):
         print("dun_in", where)
 
         # 이벤트 던전 여부
-        event_dungeon = True
+        event_dungeon = False
 
         y_e_plus = 0
         if event_dungeon == True:
@@ -138,7 +138,7 @@ def dun_in(cla, where):
             if black_laboratory == True:
                 y_1 = 590 + y_e_plus
             else:
-                y_1 = 160 + y_e_plus
+                y_1 = 170 + y_e_plus
             dun_name = "garbana"
 
         elif result_spot[1] == "이벤트":
@@ -326,6 +326,16 @@ def dun_in(cla, where):
                                     x_1 = int_step
 
                                 step_select(cla, x_1)
+
+                            elif result_spot[1] == "수련의전당":
+
+                                if int_step > 4:
+                                    x_1 = 5
+                                else:
+                                    x_1 = int_step
+
+                                step_select(cla, x_1)
+
 
                             else:
                                 step_select(cla, result_spot[2])
