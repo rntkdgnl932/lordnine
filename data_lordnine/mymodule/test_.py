@@ -29,7 +29,7 @@ def go_test():
 
     from jadong_lordnine import jadong_start, spot_go
     from dead_die import dead_recorvery, dead_check
-    from dungeon_lordnine import dun_in
+    from dungeon_lordnine import dun_in, garbana_move
     from power_up import power_up_sungmool
     from mission_lordnine import mission_get, mission_get_daily
     from guild_lordnine import guild_start
@@ -65,7 +65,7 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        get_gold_sohwan(cla)
+        garbana_move(cla)
         # for g in range(10):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
         #     img_array = np.fromfile(full_path, np.uint8)

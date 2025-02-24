@@ -529,11 +529,11 @@ def garbana_move(cla):
                 imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
                     print("worldmap", imgs_)
-                    click_pos_2(400, 560, cla)
+                    click_pos_2(380, 555, cla)
                     time.sleep(0.5)
                     click_pos_2(400, 560, cla)
                     time.sleep(0.5)
-                    click_pos_2(400, 560, cla)
+                    click_pos_2(390, 565, cla)
                     time.sleep(0.5)
                     for i in range(5):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
