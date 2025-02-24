@@ -70,6 +70,8 @@ def dungeon_start(cla, where):
                             if str(dun_name) == "soolyun":
                                 potion_check(cla)
                             else:
+                                if dun_name == "garbana":
+                                    garbana_move(cla)
                                 attack_on(cla)
                     else:
                         dun_in(cla, where)
