@@ -1025,10 +1025,15 @@ def dethland_go(cla, data):
                     click_pos_2(100, 500, cla)
                     time.sleep(2)
                     for i in range(10):
-                        result_confirm = confirm_all(cla)
-                        if result_confirm == True:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("dethland_2", imgs_)
                             break
-                        else:
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == False:
                             click_pos_2(655, 600, cla)
                         time.sleep(1)
                     for i in range(10):
