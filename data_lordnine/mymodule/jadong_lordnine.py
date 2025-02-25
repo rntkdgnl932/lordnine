@@ -68,7 +68,7 @@ def jadong_start(cla, where):
                             spot_name = "secret"
                         if result_special[1] == "티리오사무덤":
                             spot_name = "tiriosa"
-                        if result_special[1] == "죽은자의대지":
+                        if "죽은자의대지" in result_special[1]:
                             spot_name = "landofdead"
 
 
@@ -144,7 +144,7 @@ def spot_in_ready(cla, where):
 
         # 디엔북부/메마른호숫가_1_1_1
         # 특수/티리오사무덤/지하1층_3_3_0
-        # 특수/죽음의대지_4_2_0
+        # 특수/죽은자의대지1층_4_2_1
 
         # result_special = where.split("/")
 
@@ -207,7 +207,7 @@ def spot_in_ready(cla, where):
                                 spot_name = "secret"
                             if result_special[1] == "티리오사무덤":
                                 spot_name = "tiriosa"
-                            if result_special[1] == "죽은자의대지":
+                            if "죽은자의대지" in result_special[1]:
                                 spot_name = "landofdead"
 
                             print("spot_name", spot_name)
@@ -429,8 +429,11 @@ def spot_in_ready(cla, where):
                 if result_out == True:
 
                     # 피티 확인
+                    # 특수/죽은자의대지1층_4_2_1, 특수/죽은자의대지2층_4_2_2
+                    if "죽은자의대지" in result_special[1]:
 
-                    if result_special[1] == "죽은자의대지":
+                        result_dethland_step = result_spot[3]
+
                         is_btn = False
                         for i in range(len(file_list)):
                             result_file_list = file_list[i].split(".")
@@ -468,24 +471,116 @@ def spot_in_ready(cla, where):
                                     result_confirm = confirm_all(cla)
 
                                     if result_confirm == False:
+                                        if result_dethland_step == "1":
+                                            y_reg_1 = 350
+                                            y_reg_2 = 430
+                                        elif result_dethland_step == "2":
+                                            y_reg_1 = 420
+                                            y_reg_2 = 490
+
                                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\unlock_step.PNG"
                                         img_array = np.fromfile(full_path, np.uint8)
                                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                        imgs_ = imgs_set_for(620, 350, 670, 670, cla, img, 0.7)
+                                        imgs_ = imgs_set_(620, y_reg_1, 670, y_reg_2, cla, img, 0.7)
                                         if imgs_ is not None and imgs_ != False:
-                                            print("unlock_step", imgs_, len(imgs_))
 
-                                            result_ran = random.randint(1, len(imgs_))
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\unlock_step.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_for(620, y_reg_1, 670, y_reg_2, cla, img, 0.7)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("unlock_step", imgs_, len(imgs_))
 
-                                            click_pos_reg(imgs_[result_ran - 1][0], imgs_[result_ran - 1][1], cla)
-                                            time.sleep(0.1)
-                                            click_pos_reg(imgs_[result_ran - 1][0], imgs_[result_ran - 1][1], cla)
-                                            time.sleep(0.5)
-                                            click_pos_2(710, 715, cla)
+                                                result_ran = random.randint(1, len(imgs_))
+
+                                                click_pos_reg(imgs_[result_ran - 1][0], imgs_[result_ran - 1][1], cla)
+                                                time.sleep(0.1)
+                                                click_pos_reg(imgs_[result_ran - 1][0], imgs_[result_ran - 1][1], cla)
+                                                time.sleep(0.5)
+                                                click_pos_2(710, 715, cla)
+                                        else:
+
+                                            if result_dethland_step == "1":
+
+                                                for x in range(10):
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\move_stone_title.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(350, 320, 630, 360, cla, img, 0.85)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        click_pos_2(760, 345, cla)
+                                                        time.sleep(1)
+                                                    else:
+                                                        break
+                                                    time.sleep(0.3)
+
+                                                click_pos_2(130, 170, cla)
+                                                for x in range(10):
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        break
+                                                    time.sleep(0.3)
+                                            else:
+                                                if result_dethland_step == "2":
+                                                    y_reg_1 = 350
+                                                    y_reg_2 = 430
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\unlock_step.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_for(620, y_reg_1, 670, y_reg_2, cla, img, 0.7)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        print("unlock_step", imgs_, len(imgs_))
+
+                                                        result_ran = random.randint(1, len(imgs_))
+
+                                                        click_pos_reg(imgs_[result_ran - 1][0],
+                                                                      imgs_[result_ran - 1][1], cla)
+                                                        time.sleep(0.1)
+                                                        click_pos_reg(imgs_[result_ran - 1][0],
+                                                                      imgs_[result_ran - 1][1], cla)
+                                                        time.sleep(0.5)
+                                                        click_pos_2(710, 715, cla)
+
+                                                    for s in range(10):
+                                                        result_loading = loading_check(cla)
+                                                        if result_loading == True:
+                                                            world = True
+                                                            break
+                                                        else:
+                                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\jadong_confirm.PNG"
+                                                            img_array = np.fromfile(full_path, np.uint8)
+                                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                            imgs_ = imgs_set_(480, 540, 640, 640, cla, img, 0.7)
+                                                            if imgs_ is not None and imgs_ != False:
+                                                                print("jadong_confirm", imgs_)
+                                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+
+                                                        time.sleep(0.5)
+
+                                                    for s in range(10):
+                                                        result_out_check = out_check(cla)
+                                                        if result_out_check == True:
+                                                            break
+                                                        time.sleep(0.5)
+
+                                                    click_pos_2(130, 170, cla)
+                                                    for x in range(10):
+                                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                                                        img_array = np.fromfile(full_path, np.uint8)
+                                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                                                        if imgs_ is not None and imgs_ != False:
+                                                            break
+                                                        time.sleep(0.3)
+                                                    # 2층으로 수동 이동해주깅
+                                                    dethland_go(cla, result_dethland_step)
                                 else:
                                     break
                                 time.sleep(0.3)
-
+                            # 후처리
                             for s in range(10):
                                 result_loading = loading_check(cla)
                                 if result_loading == True:
@@ -556,10 +651,13 @@ def spot_in(cla, where):
 
         # 디엔북부/메마른호숫가_1_1_1
         # 특수/티리오사무덤/지하1층_3_3_0
+        # 특수/죽은자의대지/1구역_4_2_0
 
         # result_special = where.split("/")
         result_spot = where.split("_")
         result_special = result_spot[0].split("/")
+
+        result_dethland_step = result_spot[3]
 
         # result_spot[1] => 큰 맵 // 170, 215, 260, 305
         y_1 = 85 + 40 + (int(result_spot[1]) * 45)
@@ -569,8 +667,8 @@ def spot_in(cla, where):
         y_3 = 95 + (int(result_spot[3]) * 36)
 
         result_special_bloon = spot_in_ready(cla, where)
-
-        if result_special[1] == "죽은자의대지" and result_special_bloon == True:
+        # 특수/죽은자의대지_1, 특수/죽은자의대지_2, 특수/죽은자의대지_3...
+        if "죽은자의대지" in result_special[1] and result_special_bloon == True:
             print("죽은자의대지 가즈아아아")
         else:
             world = False
@@ -612,7 +710,7 @@ def spot_in(cla, where):
                                     spot_name = "secret"
                                 if result_special[1] == "티리오사무덤":
                                     spot_name = "tiriosa"
-                                if result_special[1] == "죽은자의대지":
+                                if "죽은자의대지" in result_special[1]:
                                     spot_name = "landofdead"
 
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\special_map\\" + str(spot_name) + ".PNG"
@@ -644,7 +742,7 @@ def spot_in(cla, where):
                                                 if result_move == True:
                                                     print("이동중")
                                                 else:
-                                                    if result_special[1] == "죽은자의대지":
+                                                    if "죽은자의대지" in result_special[1]:
 
                                                         click_pos_2(100, 300, cla)
                                             else:
@@ -671,7 +769,7 @@ def spot_in(cla, where):
 
 
                                     # 죽은자의대지는 기다렸다가...
-                                    if result_special[1] == "죽은자의대지":
+                                    if "죽은자의대지" in result_special[1]:
                                         spot_name = "landofdead"
 
 
@@ -682,7 +780,7 @@ def spot_in(cla, where):
                                         imgs_ = imgs_set_(480, 540, 640, 640, cla, img, 0.7)
                                         if imgs_ is not None and imgs_ != False:
                                             print("jadong_confirm", imgs_)
-                                            if result_special[1] == "죽은자의대지":
+                                            if "죽은자의대지" in result_special[1]:
                                                 time.sleep(5)
                                             click_pos_reg(imgs_.x, imgs_.y, cla)
                                             break
@@ -717,6 +815,16 @@ def spot_in(cla, where):
 
                                     if result_special[1] == "비밀실험실":
                                         spot_click(cla, spot_name)
+
+                                    # 여기서 죽은자의 대지는 1층 도착한 상태임.
+                                    # 그래서 2층과 3층 가는거 한번더 추가해야함.
+
+                                    if "죽은자의대지" in result_special[1]:
+                                        if result_dethland_step == "2":
+                                            print("2층 가는거 추가")
+                                            dethland_go(cla, result_dethland_step)
+                                        if result_dethland_step == "3":
+                                            print("3층 가는거 추가")
 
                                     attack_on(cla)
 
@@ -830,6 +938,102 @@ def spot_in(cla, where):
         print(e)
         return 0
 
+
+def dethland_go(cla, data):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from action_lordnine import out_check, loading_check, move_check, attack_on, juljun_on
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("spot_in", data)
+        world = False
+        world_count = 0
+
+        while world is False:
+            world_count += 1
+            if world_count > 6:
+                world = True
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("worldmap", imgs_)
+
+                if data == "2":
+                    print("2구역으로 가자자")
+                    y_reg_1 = 475
+                    y_reg_2 = 135
+
+                click_pos_2(120, y_reg_1, cla)
+                time.sleep(0.5)
+                click_pos_2(120, y_reg_1, cla)
+                time.sleep(0.5)
+                click_pos_2(800, y_reg_2, cla)
+                time.sleep(0.5)
+                click_pos_2(800, y_reg_2, cla)
+                time.sleep(0.5)
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\walking_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(700, 980, 920, 1030, cla, img, 0.85)
+                if imgs_ is not None and imgs_ != False:
+                    print("walking_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.2)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    time.sleep(0.2)
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(925, 50, cla)
+
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(925, 50, cla)
+                    else:
+                        result_move = move_check(cla)
+                        if result_move == True:
+                            print("이동중")
+                            world = True
+                            break
+                    time.sleep(1)
+
+
+
+            else:
+                result_out = out_check(cla)
+                if result_out == True:
+                    click_pos_2(130, 170, cla)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        time.sleep(0.3)
+
+                else:
+                    clean_screen_start(cla)
+            time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
 
 def spot_click(cla, where):
     import numpy as np

@@ -21,13 +21,13 @@ def go_test():
 
     from function_game import text_check_get_reg, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get, mouse_move_cpp, in_number_check, change_number_float
     from tuto_lordnine import way_check
-    from action_lordnine import skip_start, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear, juljun_time_check, silhumsil_ganghwa
+    from action_lordnine import attack_on, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear, juljun_time_check, silhumsil_ganghwa
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start, collection_start
     from potion_lordnine import potion_buy_start, potion_check
     from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary, get_ganghwasuk_sohwan_start
 
-    from jadong_lordnine import jadong_start, spot_go
+    from jadong_lordnine import jadong_start, spot_go, dethland_go
     from dead_die import dead_recorvery, dead_check
     from dungeon_lordnine import dun_in, garbana_move
     from power_up import power_up_sungmool
@@ -65,7 +65,11 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        garbana_move(cla)
+        dethland_go(cla, "2")
+
+        attack_on(cla)
+
+        juljun_on(cla)
         # for g in range(10):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
         #     img_array = np.fromfile(full_path, np.uint8)
