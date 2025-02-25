@@ -945,7 +945,7 @@ def dethland_go(cla, data):
     import os
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg
-    from action_lordnine import out_check, loading_check, move_check, attack_on, juljun_on
+    from action_lordnine import out_check, loading_check, move_check, confirm_all, juljun_on
     from clean_screen_lordnine import clean_screen_start
 
     try:
@@ -996,7 +996,7 @@ def dethland_go(cla, data):
                     if imgs_ is not None and imgs_ != False:
                         click_pos_2(925, 50, cla)
 
-                for i in range(5):
+                for i in range(10):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -1009,8 +1009,40 @@ def dethland_go(cla, data):
                             print("이동중")
                             world = True
                             break
-                    time.sleep(1)
+                    time.sleep(0.5)
 
+                is_loading = False
+                for i in range(10):
+                    result_loading = loading_check(cla)
+                    if result_loading == True:
+                        is_loading = True
+                        break
+                    time.sleep(0.5)
+
+                # 만약 바로 2층으로 안 넘어갈 경우
+                if is_loading == False:
+                    time.sleep(3)
+                    click_pos_2(100, 500, cla)
+                    time.sleep(2)
+                    for i in range(10):
+                        result_confirm = confirm_all(cla)
+                        if result_confirm == True:
+                            break
+                        else:
+                            click_pos_2(655, 600, cla)
+                        time.sleep(1)
+                    for i in range(10):
+                        result_loading = loading_check(cla)
+                        if result_loading == True:
+                            is_loading = True
+                            break
+                        time.sleep(0.5)
+                # 마지막 도착 점검
+                for i in range(10):
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        break
+                    time.sleep(1)
 
 
             else:
