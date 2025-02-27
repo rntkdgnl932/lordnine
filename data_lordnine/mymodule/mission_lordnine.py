@@ -289,18 +289,48 @@ def mission_get_daily(cla, data):
                         else:
                             y_reg = 800
 
-                        is_selected = False
 
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\time_jogag.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(180, 100, 350, y_reg, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(0.5)
-                            is_selected = True
+                        ################## suko 요청
+
+                        dir_path = "C:\\my_games"
+                        file_path = dir_path + "\\line\\line.txt"
+
+                        if os.path.isdir(dir_path) == False:
+                            os.makedirs(dir_path)
+                        isFile = False
+                        while isFile is False:
+                            if os.path.isfile(file_path) == True:
+                                isFile = True
+                                # 파일 읽기
+                                with open(file_path, "r", encoding='utf-8-sig') as file:
+                                    line = file.read()
+                                    line_ = line.split(":")
+                                    print('line', line)
+                            else:
+                                print('line 파일 없당')
+                                with open(file_path, "w", encoding='utf-8-sig') as file:
+                                    file.write("ccocco:메롱")
+
+                        ##################
+
+                        if line_[0] == "suko":
+
+                            is_selected = False
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\" + str(selected) + ".PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(180, 100, 350, y_reg, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                time.sleep(0.5)
+                                is_selected = True
+
                         else:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\adventure.PNG"
+
+                            is_selected = False
+
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\time_jogag.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(180, 100, 350, y_reg, cla, img, 0.8)
@@ -309,7 +339,7 @@ def mission_get_daily(cla, data):
                                 time.sleep(0.5)
                                 is_selected = True
                             else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\friendship.PNG"
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\adventure.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(180, 100, 350, y_reg, cla, img, 0.8)
@@ -317,6 +347,15 @@ def mission_get_daily(cla, data):
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
                                     time.sleep(0.5)
                                     is_selected = True
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\friendship.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(180, 100, 350, y_reg, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                        time.sleep(0.5)
+                                        is_selected = True
 
                         if is_selected == True:
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\daily_soolock_btn.PNG"
