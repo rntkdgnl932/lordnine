@@ -65,12 +65,22 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+        imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("dethland_2", imgs_)
+            print("ing", imgs_)
+            y_reg = imgs_.y - 20
+        else:
+            y_reg = 700
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\guild_donation.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(170, 100, 400, y_reg, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("rare_jangbi_boonhae", imgs_)
         # for g in range(10):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
         #     img_array = np.fromfile(full_path, np.uint8)

@@ -701,6 +701,15 @@ def mission_get_week(cla):
                                             print("rare_jangbi_boonhae", imgs_)
                                             click_pos_reg(imgs_.x, imgs_.y, cla)
                                             clicked = True
+                                        else:
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\guild_donation.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(170, 100, 400, y_reg, cla, img, 0.9)
+                                            if imgs_ is not None and imgs_ != False:
+                                                print("rare_jangbi_boonhae", imgs_)
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                clicked = True
                             if clicked == True:
                                 time.sleep(0.5)
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\daily_soolock_btn.PNG"
