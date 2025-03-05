@@ -1730,6 +1730,8 @@ def attack_on_tower(cla):
                 imgs_ = imgs_set_(830, 820, 890, 870, cla, img, 0.95)
                 if imgs_ is not None and imgs_ != False:
                     print("auto_off", imgs_)
+                    click_pos_2(330, 1005, cla)
+                    time.sleep(0.5)
                     click_pos_2(870, 850, cla)
                     time.sleep(0.5)
             time.sleep(0.5)
