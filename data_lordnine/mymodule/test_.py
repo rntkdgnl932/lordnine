@@ -19,7 +19,7 @@ def go_test():
     import random
     import pydirectinput
 
-    from function_game import text_check_get_reg, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get, mouse_move_cpp, in_number_check, change_number_float
+    from function_game import text_check_get_reg, drag_pos, imgs_set_, imgs_set_for, click_pos_reg, click_pos_2, text_check_get, text_check_get_black_white, in_number_check, change_number_float
     from tuto_lordnine import way_check
     from action_lordnine import attack_on, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear, juljun_time_check, silhumsil_ganghwa
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
@@ -33,13 +33,15 @@ def go_test():
     from power_up import power_up_sungmool
     from mission_lordnine import mission_get, mission_get_daily
     from guild_lordnine import guild_start
-    from auction_game import auction_start, get_low_price, auction_jangbi, mine_check, sell_click_new
+    from auction_game import auction_start, get_low_price, auction_jangbi, mine_check, sell_click_new, auction_jangbi_new_sell
     from jejak_lordnine import item_jejak
     from property_game import my_property_upload
 
+    from auction_game import get_now_low_price
+
 
     print("test")
-    cla = "one"
+    cla = "three"
 
     plus = 0
 
@@ -65,22 +67,71 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\ing.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(500, 100, 620, 700, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("ing", imgs_)
-            y_reg = imgs_.y - 20
-        else:
-            y_reg = 700
+        # get_now_low_price(cla)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\guild_donation.PNG"
+        # sell_click_new(cla, "item")
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(170, 100, 400, y_reg, cla, img, 0.9)
+        imgs_ = imgs_set_for(760, 130, 950, 1000, cla, img, 0.9)
         if imgs_ is not None and imgs_ != False:
-            print("rare_jangbi_boonhae", imgs_)
+            print("list_q_1", imgs_)
+            for o in range(len(imgs_)):
+                result_anymore = auction_jangbi_new_sell(cla, imgs_[len(imgs_) - 1 - o][0] + 15, imgs_[len(imgs_) - 1 - o][1] + 15)
+                time.sleep(0.5)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 530, 465, 565, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("no_information 1", imgs_)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(640, 530, 700, 565, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("no_information 2", imgs_)
+
+        # result_get_price_ready = str(get_now_low_price(cla))
+        # result_get_price = result_get_price_ready.split(".")
+        # print("result_get_price", result_get_price)
+        # print("len(result_get_price[0])", len(result_get_price[0]))
+
+
+        # x_reg = 700
+        #
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_num_point.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(650, 540, 700, 695, cla, img, 0.9)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("auction : auction_num_point", imgs_)
+        #     x_reg = imgs_.x
+        # if x_reg != 700:
+        #     result_get_1 = text_check_get_black_white(640, 540, x_reg - plus, 697, cla)
+        #     print("auction : result_get_1", result_get_1)
+        # else:
+        #     # 제일 먼저....
+        #     print("1")
+
+
+        # for i in range(30):
+        #     result_get_2 = text_check_get_black_white(630, 540, 700, 560, cla)
+        #     print("auction : result_get_2", result_get_2)
+        #     if result_get_1 != result_get_2:
+        #         is_data = True
+        #         break
+        #     time.sleep(1)
+
+        # print("attack : last result", result_get_1, result_get_2)
+
+
+        #################################################
+
+
         # for g in range(10):
         #     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
         #     img_array = np.fromfile(full_path, np.uint8)

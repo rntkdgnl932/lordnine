@@ -120,8 +120,7 @@ def auction_start(cla):
     try:
         print("auction_start")
 
-        # 팔기전에 콜렉션 및 분해 진행하기
-        col_boon_start(cla)
+
 
         auction = False
         auction_count = 0
@@ -197,7 +196,8 @@ def auction_start(cla):
                 if get_point == False:
                     auction = True
             time.sleep(0.5)
-
+        # 팔고 난 후에 콜렉션 및 분해 진행하기
+        col_boon_start(cla)
 
     except Exception as e:
         print(e)
@@ -600,7 +600,7 @@ def auction_jangbi_new(cla):
     import cv2
     import os
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2, text_check_get_num, change_number_float
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, change_number_float
     from action_lordnine import menu_open, confirm_all
 
     try:
@@ -629,169 +629,68 @@ def auction_jangbi_new(cla):
 
 
                 # 장비...
+                # 1
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(760, 130, 950, 1000, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("list_q_1", imgs_)
+                    for o in range(len(imgs_)):
+                        result_anymore = auction_jangbi_new_sell(cla, imgs_[len(imgs_) - 1 - o][0] + 15, imgs_[len(imgs_) - 1 - o][1] + 15)
+                        if result_anymore == True:
+                            break
+                        time.sleep(0.5)
+
+                # 2
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(760, 130, 950, 1000, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("list_q_1", imgs_)
+                    for o in range(len(imgs_)):
+                        result_anymore = auction_jangbi_new_sell(cla, imgs_[len(imgs_) - 1 - o][0] + 15,
+                                                                 imgs_[len(imgs_) - 1 - o][1] + 15)
+                        if result_anymore == True:
+                            break
+                        time.sleep(0.5)
+
+                # 아이템...
+                click_pos_2(915, 120, cla)
+                time.sleep(0.2)
+                click_pos_2(915, 120, cla)
+                time.sleep(0.2)
+                # 3
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\skill_book_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(760, 130, 950, 1000, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("list_q_1", imgs_)
+                    for o in range(len(imgs_)):
+                        result_anymore = auction_jangbi_new_sell(cla, imgs_[len(imgs_) - 1 - o][0] + 15,
+                                                                 imgs_[len(imgs_) - 1 - o][1] + 15)
+                        if result_anymore == True:
+                            break
+                        time.sleep(0.5)
+
+                # 4
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\skill_book_2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_for(760, 130, 950, 1000, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    print("list_q_1", imgs_)
+                    for o in range(len(imgs_)):
+                        result_anymore = auction_jangbi_new_sell(cla, imgs_[len(imgs_) - 1 - o][0] + 15,
+                                                                 imgs_[len(imgs_) - 1 - o][1] + 15)
+                        if result_anymore == True:
+                            break
+                        time.sleep(0.5)
 
 
-
-                for i in range(10):
-                    x_reg = 0
-                    y_reg = 0
-
-                    is_jangbi = False
-
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_1.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(760, 130, 950, 1000, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-                        print("list_q_1", imgs_)
-                        x_reg = imgs_.x + 15
-                        y_reg = imgs_.y + 15
-                        is_jangbi = True
-                    else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_2.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(760, 130, 950, 1000, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("list_q_2", imgs_)
-                            x_reg = imgs_.x + 15
-                            y_reg = imgs_.y + 15
-                            is_jangbi = True
-                        else:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\skill_book_1.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(760, 130, 950, 1000, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("skill_book_1", imgs_)
-                                x_reg = imgs_.x + 15
-                                y_reg = imgs_.y + 15
-                                is_jangbi = True
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\skill_book_2.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(760, 130, 950, 1000, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("skill_book_2", imgs_)
-                                    x_reg = imgs_.x + 15
-                                    y_reg = imgs_.y + 15
-                                    is_jangbi = True
-
-                    if is_jangbi == True:
-                        print("팔자")
-
-
-                        # 현재 최저가
-                        low_price = 0
-                        quantity = 0
-
-                        # 해당 템 클릭
-                        for s in range(10):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_btn.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(650, 680, 755, 725, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                print("sell_btn", imgs_)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                                break
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\cancle.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(360, 660, 470, 700, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        print("cancle", imgs_)
-                                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                                else:
-                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_2(710, 435, cla)
-                                    else:
-                                        click_pos_reg(x_reg, y_reg, cla)
-                            time.sleep(0.5)
-
-                        for s in range(5):
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                break
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_btn.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(650, 680, 755, 725, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    print("sell_btn", imgs_)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                            time.sleep(1)
-
-                        # 정보없음 있는지 보고 판매하기
-                        no_information = False
-
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(400, 530, 465, 565, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            print("no_information", imgs_)
-                            no_information = True
-
-                        if no_information == False:
-                            # 바로 판매하기
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\ten.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(635, 460, 700, 485, cla, img, 0.95)
-                            if imgs_ is not None and imgs_ != False:
-                                print("ten", imgs_)
-                                # 닫기 버튼
-                                for s in range(5):
-                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
-                                    img_array = np.fromfile(full_path, np.uint8)
-                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
-                                    if imgs_ is not None and imgs_ != False:
-                                        click_pos_2(710, 435, cla)
-                                    else:
-                                        break
-                                    time.sleep(0.5)
-                            else:
-                                print("ten 아니다.")
-                                # click_pos_2(480, 630, cla)
-                                anymore_sell = sell_click_new(cla)
-                        else:
-                            print("정보가 없다.")
-                            for s in range(5):
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    click_pos_2(710, 435, cla)
-                                else:
-                                    break
-                                time.sleep(0.5)
-
-
-                    else:
-                        print("접자")
-
-                    if anymore_sell == True:
-                        break
-
-                    time.sleep(0.5)
+                ########
 
 
             else:
@@ -823,6 +722,131 @@ def auction_jangbi_new(cla):
 
         return anymore_sell
 
+    except Exception as e:
+        print(e)
+        return 0
+
+
+def auction_jangbi_new_sell(cla, x_reg, y_reg):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, imgs_set_for, change_number_float
+    from action_lordnine import menu_open, confirm_all
+
+    try:
+        print("auction_jangbi_new")
+
+        anymore_sell = False
+
+        # 해당 템 클릭
+        for s in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_btn.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(650, 680, 755, 725, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("sell_btn", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                break
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\cancle.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(360, 660, 470, 700, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("cancle", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(710, 435, cla)
+                    else:
+                        click_pos_reg(x_reg, y_reg, cla)
+            time.sleep(0.5)
+
+        for s in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                break
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(650, 680, 755, 725, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("sell_btn", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(1)
+
+        # 정보없음 있는지 보고 판매하기
+        no_information = False
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(400, 530, 465, 565, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("no_information 1", imgs_)
+            no_information = True
+        else:
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(640, 530, 700, 565, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("no_information 2", imgs_)
+                no_information = True
+
+        if no_information == False:
+            # 바로 판매하기
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\ten.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(635, 460, 700, 485, cla, img, 0.95)
+            if imgs_ is not None and imgs_ != False:
+                print("ten", imgs_)
+                # 닫기 버튼
+                for s in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(710, 435, cla)
+                    else:
+                        break
+                    time.sleep(0.5)
+            else:
+                print("ten 아니다.")
+                # click_pos_2(480, 630, cla)
+                # 장비팔기
+                anymore_sell = sell_click_new(cla, "jangbi")
+        else:
+            print("정보가 없다.")
+            for s in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(710, 435, cla)
+                else:
+                    break
+                time.sleep(0.5)
+        return anymore_sell
     except Exception as e:
         print(e)
         return 0
@@ -1255,8 +1279,25 @@ def auction_item_new(cla):
                                     break
                                 time.sleep(0.5)
                         else:
-                            print("ten 아니다.")
-                            anymore_sell = sell_click_new(cla)
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(640, 530, 700, 565, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                print("no_information 2", imgs_)
+                                for s in range(5):
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_2(710, 435, cla)
+                                    else:
+                                        break
+                                    time.sleep(0.5)
+                            else:
+                                print("ten 아니고 정보없음 아니다.")
+                                anymore_sell = sell_click_new(cla, "item")
                     else:
                         print("접자")
 
@@ -1487,6 +1528,126 @@ def get_low_price(cla, data):
         return 0
 
 
+def get_now_low_price(cla):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_reg, imgs_set_
+
+    if cla == 'one':
+        plus = 0
+    if cla == 'two':
+        plus = 960
+    if cla == 'three':
+        plus = 960 * 2
+    if cla == 'four':
+        plus = 960 * 3
+    if cla == 'five':
+        plus = 960 * 4
+    if cla == 'six':
+        plus = 960 * 5
+
+    try:
+        print("get_now_low_price")
+
+        is_point = False
+
+        x_reg = 700
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_num_point.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(650, 540, 700, 695, cla, img, 0.9)
+        if imgs_ is not None and imgs_ != False:
+            print("auction : auction_num_point", imgs_)
+            x_reg = imgs_.x
+            is_point = True
+
+
+        x_1 = 640 + plus
+        x_2 = x_reg
+
+        y_1 = 540
+        y_2 = 565
+
+
+
+        #
+        result_min = 0
+        list_x = []
+        for i in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_num\\" + str(i) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("x_1", i, imgs_)
+                list_x.append(imgs_.x)
+                print("list_x", list_x)
+                result_min = min(list_x)
+        print("result_min", result_min)
+        x_1 = result_min - 5
+        x_2 = x_1 + 10
+
+        # x_1 = result_min - 7
+        # x_2 = x_1 + 12
+
+
+
+        print("################")
+        print("x_1", x_1)
+        print("x_2", x_2)
+        print("################")
+
+        # 소수점 이전
+        num = False
+        num_count = 9
+        result_num = ""
+        while num is False:
+            # print("x_1...", x_1, num_count)
+            # print("num_count...", num_count)
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_num\\" + str(num_count) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("is num...", str(num_count), imgs_)
+                #
+                if str(num_count) == "4":
+                    x_1 = imgs_.x + 2 # - 1
+
+                elif str(num_count) == "1":
+                    x_1 = imgs_.x + 1
+
+                else:
+                    x_1 = imgs_.x
+
+                x_2 = x_1 + 10
+
+                if is_point == True:
+                    if imgs_.x > x_reg:
+                        num = True
+                    else:
+                        result_num += str(num_count)
+                else:
+                    result_num += str(num_count)
+                # print("result_num...", result_num)
+                num_count = 9
+            else:
+                num_count -= 1
+                if num_count < 0:
+                    num = True
+
+
+        result_num = float(result_num)
+        print("result_num", result_num)
+
+
+        return result_num
+    except Exception as e:
+        print(e)
+        return 0
 
 
 def sell_click(cla, result_price):
@@ -1649,7 +1810,7 @@ def sell_click(cla, result_price):
         print(e)
         return 0
 
-def sell_click_new(cla):
+def sell_click_new(cla, data):
     import numpy as np
     import cv2
     import os
@@ -1671,67 +1832,96 @@ def sell_click_new(cla):
         plus = 960 * 5
 
     try:
-        print("sell_click")
+        print("sell_click_new", data)
 
         anymore_sell = False
 
+        # 판매등록전에 가격 파악하기
+        # 현재는 아이템만...
+        if data == "item":
+            result_get_price_ready = str(get_now_low_price(cla))
+            result_get_price = result_get_price_ready.split(".")
 
-
-        for i in range(5):
-
-
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_enroll_btn.PNG"
+            # 다이아 재화 선택하기
+            for s in range(10):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\diamond.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(400, 600, 540, 650, cla, img, 0.8)
+                imgs_ = imgs_set_(400, 360, 540, 410, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("sell_enroll_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-            else:
-                break
-            time.sleep(0.5)
+                    print("diamond", imgs_)
+                    break
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        click_pos_2(670, 470, cla)
+                    else:
+                        confirm_all(cla)
+                time.sleep(0.5)
 
-        for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 370, 520, 405, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                break
-            time.sleep(0.5)
+            sell_click(cla, int(result_get_price[0]))
 
-        for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(400, 370, 520, 405, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_enroll_btn.PNG"
+        else:
+
+            # 판매등록하기
+            for i in range(5):
+
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(400, 600, 540, 700, cla, img, 0.8)
+                imgs_ = imgs_set_(420, 410, 520, 460, cla, img, 0.8)
                 if imgs_ is not None and imgs_ != False:
-                    print("sell_enroll_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-            else:
-                break
-            time.sleep(0.5)
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_enroll_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 600, 540, 650, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("sell_enroll_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    break
+                time.sleep(0.5)
 
-        for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_list_full.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(350, 100, 660, 160, cla, img, 0.8)
-            if imgs_ is not None and imgs_ != False:
-                print("auction_list_full", imgs_)
-                anymore_sell = True
-                break
-            time.sleep(0.1)
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 370, 520, 405, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    break
+                time.sleep(0.5)
+
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_title2.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(400, 370, 520, 405, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\sell_enroll_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(400, 600, 540, 700, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        print("sell_enroll_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                else:
+                    break
+                time.sleep(0.5)
+
+            for i in range(5):
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_list_full.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(350, 100, 660, 160, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("auction_list_full", imgs_)
+                    anymore_sell = True
+                    break
+                time.sleep(0.1)
 
         return anymore_sell
 
