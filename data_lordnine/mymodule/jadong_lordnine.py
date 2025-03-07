@@ -600,6 +600,9 @@ def spot_in_ready(cla, where):
                             for s in range(10):
                                 result_out_check = out_check(cla)
                                 if result_out_check == True:
+                                    if result_dethland_step == "2":
+                                        # 2층으로 수동 이동해주깅
+                                        dethland_go(cla, result_dethland_step)
                                     break
                                 time.sleep(0.5)
 
@@ -1046,8 +1049,11 @@ def dethland_go(cla, data):
                 for i in range(10):
                     result_out = out_check(cla)
                     if result_out == True:
+                        dethland_random_move(cla)
                         break
                     time.sleep(1)
+
+
 
 
             else:
@@ -1138,6 +1144,52 @@ def spot_click(cla, where):
                 else:
                     clean_screen_start(cla)
             time.sleep(0.5)
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+def dethland_random_move(cla):
+    import numpy as np
+    import cv2
+    import random
+
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from action_lordnine import out_check, loading_check, move_check, attack_on, juljun_on
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("dethland_random_move")
+        # 마지막 랜덤 이동
+        for i in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("dethland_2", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(2)
+
+                result_random_num = random.randint(1, 4)
+                if result_random_num == 1:
+                    click_pos_2(410, 435, cla)
+                elif result_random_num == 2:
+                    click_pos_2(455, 480, cla)
+                elif result_random_num == 2:
+                    click_pos_2(530, 435, cla)
+                elif result_random_num == 2:
+                    click_pos_2(530, 480, cla)
+                time.sleep(2)
+                click_pos_2(930, 55, cla)
+                time.sleep(2)
+                move_check(cla)
+
+            result_out = out_check(cla)
+            if result_out == True:
+                break
+            time.sleep(1)
 
 
     except Exception as e:

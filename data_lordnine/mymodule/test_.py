@@ -67,33 +67,63 @@ def go_test():
 
         print("nowHour", nowHour)
 
+        # 마지막 랜덤 이동
+        for i in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("dethland_2", imgs_)
+                click_pos_reg(imgs_.x, imgs_.y, cla)
+                time.sleep(2)
+
+                result_random_num = random.randint(1, 4)
+                if result_random_num == 1:
+                    click_pos_2(410, 435, cla)
+                elif result_random_num == 2:
+                    click_pos_2(455, 480, cla)
+                elif result_random_num == 2:
+                    click_pos_2(530, 435, cla)
+                elif result_random_num == 2:
+                    click_pos_2(530, 480, cla)
+                time.sleep(2)
+                click_pos_2(930, 55, cla)
+                time.sleep(2)
+                move_check(cla)
+
+            result_out = out_check(cla)
+            if result_out == True:
+                break
+            time.sleep(1)
+
         # get_now_low_price(cla)
 
         # sell_click_new(cla, "item")
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_1.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_for(760, 130, 950, 1000, cla, img, 0.9)
-        if imgs_ is not None and imgs_ != False:
-            print("list_q_1", imgs_)
-            for o in range(len(imgs_)):
-                result_anymore = auction_jangbi_new_sell(cla, imgs_[len(imgs_) - 1 - o][0] + 15, imgs_[len(imgs_) - 1 - o][1] + 15)
-                time.sleep(0.5)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(400, 530, 465, 565, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("no_information 1", imgs_)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(640, 530, 700, 565, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("no_information 2", imgs_)
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\list_jangbi\\list_q_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_for(760, 130, 950, 1000, cla, img, 0.9)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("list_q_1", imgs_)
+        #     for o in range(len(imgs_)):
+        #         result_anymore = auction_jangbi_new_sell(cla, imgs_[len(imgs_) - 1 - o][0] + 15, imgs_[len(imgs_) - 1 - o][1] + 15)
+        #         time.sleep(0.5)
+        #
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(400, 530, 465, 565, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("no_information 1", imgs_)
+        #
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\no_information.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(640, 530, 700, 565, cla, img, 0.8)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("no_information 2", imgs_)
 
         # result_get_price_ready = str(get_now_low_price(cla))
         # result_get_price = result_get_price_ready.split(".")
