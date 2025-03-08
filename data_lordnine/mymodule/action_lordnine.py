@@ -404,7 +404,7 @@ def out_check(cla):
                                         if imgs_ is not None and imgs_ != False:
                                             print("juljun_btn", imgs_)
                                             is_out = True
-                    QTest.qWait((500))
+                    QTest.qWait(500)
 
         else:
             print(str(v_.this_game), " 꺼져있는지 10초간 다시 검사하기")

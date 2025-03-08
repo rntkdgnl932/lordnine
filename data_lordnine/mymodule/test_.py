@@ -41,7 +41,7 @@ def go_test():
 
 
     print("test")
-    cla = "three"
+    cla = "one"
 
     plus = 0
 
@@ -67,35 +67,28 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        # 마지막 랜덤 이동
-        for i in range(10):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
-            if imgs_ is not None and imgs_ != False:
-                print("dethland_2", imgs_)
-                click_pos_reg(imgs_.x, imgs_.y, cla)
-                time.sleep(2)
+        collection_start(cla)
 
-                result_random_num = random.randint(1, 4)
-                if result_random_num == 1:
-                    click_pos_2(410, 435, cla)
-                elif result_random_num == 2:
-                    click_pos_2(455, 480, cla)
-                elif result_random_num == 2:
-                    click_pos_2(530, 435, cla)
-                elif result_random_num == 2:
-                    click_pos_2(530, 480, cla)
-                time.sleep(2)
-                click_pos_2(930, 55, cla)
-                time.sleep(2)
-                move_check(cla)
-
-            result_out = out_check(cla)
-            if result_out == True:
-                break
-            time.sleep(1)
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_3.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("plus_3 : ", imgs_)
+        #
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_8.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.9)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("plus_8 : ", imgs_)
+        #
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_9.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(350, 105, 720, 980, cla, img, 0.85)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("plus_9 : ", imgs_)
 
         # get_now_low_price(cla)
 
