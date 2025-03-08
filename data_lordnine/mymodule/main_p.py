@@ -916,7 +916,7 @@ class FirstTab(QWidget):
         self.collection_on_off1.setLayout(collec_box)
         ################### 콜렉션 온오프(수집 온오프) ####################
 
-        self.collection_on_off2 = QGroupBox('고급콜렉션 On/Off')
+        self.collection_on_off2 = QGroupBox('장비콜렉션 On/Off')
 
         ################################################################
 
@@ -930,7 +930,7 @@ class FirstTab(QWidget):
             tgl_now = "On"
         else:
             tgl_now = "Off"
-        self.now_toggle2 = QLabel("고급장비콜렉션 : " + tgl_now + "\n")
+        self.now_toggle2 = QLabel("고급장비까지 : " + tgl_now + "\n")
 
         ## 토글 버튼
         self.tgl2 = QCheckBox("On / Off")
@@ -938,6 +938,21 @@ class FirstTab(QWidget):
         self.tgl2.setChecked(v_.onCollection)
         self.tgl2.toggled.connect(self.onActivated_slelect_collection_toggle)
 
+        # 3. 희귀장비콜렉
+        self.onActivated_slelect_collection_toggle_read_rare()
+
+        print("onCollection_rare", v_.onCollection_rare)
+        if v_.onCollection_rare == True:
+            tgl_now = "On"
+        else:
+            tgl_now = "Off"
+        self.now_toggle5 = QLabel("희귀장비까지 : " + tgl_now + "\n")
+
+        ## 토글 버튼
+        self.tgl5 = QCheckBox("On / Off")
+        self.tgl5.adjustSize()
+        self.tgl5.setChecked(v_.onCollection_rare)
+        self.tgl5.toggled.connect(self.onActivated_slelect_collection_toggle_rare)
 
 
         ####################################
@@ -946,6 +961,8 @@ class FirstTab(QWidget):
         tgl333 = QVBoxLayout()
         tgl333.addWidget(self.now_toggle2)
         tgl333.addWidget(self.tgl2)
+        tgl333.addWidget(self.now_toggle5)
+        tgl333.addWidget(self.tgl5)
 
 
         collec_box = QVBoxLayout()
@@ -1760,8 +1777,65 @@ class FirstTab(QWidget):
             tgl_now = "On"
         else:
             tgl_now = "Off"
-        self.now_toggle2.setText("고급장비콜렉션 : " + str(tgl_now) + "\n")
+        self.now_toggle2.setText("고급장비까지 : " + str(tgl_now) + "\n")
         self.tgl2.setChecked(v_.onCollection)
+        #self.set_rand_int()
+
+    def onActivated_slelect_collection_toggle_read_rare(self):
+        print('onCollection read rare', v_.onCollection_rare)
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection"
+        file_path = dir_path + "\\mysettings\\collection\\collection_toggle_rare.txt"
+
+        isToggle = False
+        while isToggle is False:
+            if os.path.isfile(file_path) == True:
+                with open(file_path, "r", encoding='utf-8-sig') as file:
+
+                    read_tgl = file.read()
+                    if read_tgl == "on":
+                        isToggle = True
+                        v_.onCollection_rare = True
+                    else:
+                        isToggle = True
+                        v_.onCollection_rare = False
+            else:
+                if os.path.isdir(dir_toggle) == False:
+                    print('토글 디렉토리 존재하지 않음')
+                    os.makedirs(dir_toggle)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("off")
+        return v_.onCollection_rare
+
+    def onActivated_slelect_collection_toggle_rare(self, e):
+        # global onCollection
+        v_.onCollection_rare = e
+        print('onCollection_rare change', v_.onCollection_rare)
+        dir_path = "C:\\my_games\\" + str(v_.game_folder)
+        dir_toggle = "C:\\my_games\\" + str(v_.game_folder) + "\\mysettings\\collection"
+        file_path = dir_path + "\\mysettings\\collection\\collection_toggle_rare.txt"
+
+        isToggle = False
+        while isToggle is False:
+            if os.path.isfile(file_path) == True:
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    isToggle = True
+                    if e == True:
+                        file.write("on")
+                    else:
+                        file.write("off")
+            else:
+                if os.path.isdir(dir_toggle) == False:
+                    print('토글 디렉토리 존재하지 않음')
+                    os.makedirs(dir_toggle)
+                with open(file_path, "w", encoding='utf-8-sig') as file:
+                    file.write("off")
+        if v_.onCollection_rare == True:
+            tgl_now = "On"
+        else:
+            tgl_now = "Off"
+        self.now_toggle5.setText("희귀장비까지 : " + str(tgl_now) + "\n")
+        self.tgl5.setChecked(v_.onCollection_rare)
         #self.set_rand_int()
 
     def onActivated_slelect_collection_boonhae_toggle_read(self):

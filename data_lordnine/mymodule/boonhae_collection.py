@@ -4,7 +4,7 @@ import sys
 
 
 import variable as v_
-
+from PyQt5.QtTest import *
 sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder) + '/mymodule')
 
 
@@ -423,8 +423,31 @@ def collection_scan_option(cla):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(290, 450, 350, 510, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
+                            # 희귀까지 체크인지 확인인
+                            if v_.onCollection_rare == True:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(520, 450, 580, 510, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(400, 450, 460, 510, cla, img, 0.7)
+                                    if imgs_ is not None and imgs_ != False:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(620, 450, 760, 510, cla, img, 0.75)
+                                        if imgs_ is not None and imgs_ != False:
+                                            check_end = False
+                                        else:
+                                            check_end = True
+
+
+
                             # 고급까지 체크인지 확인인
-                            if v_.onCollection == True:
+                            elif v_.onCollection == True:
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -490,7 +513,18 @@ def collection_scan_option(cla):
                                 click_pos_2(370, 480, cla)
                                 time.sleep(0.5)
                         time.sleep(0.5)
-
+                    # 나머지 해제하기 1
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(380, 450, 760, 510, cla, img, 0.75)
+                        if imgs_ is not None and imgs_ != False:
+                            print("scan_option_checked : ", imgs_)
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            break
+                        time.sleep(0.5)
                     if v_.onCollection == True:
                         # 고급까지체크하기
 
@@ -511,8 +545,7 @@ def collection_scan_option(cla):
                                 else:
                                     click_pos_2(480, 480, cla)
                                     time.sleep(0.5)
-                            time.sleep(0.5)
-
+                            QTest.qWait(500)
                         # 나머지 해제하기 1
                         for i in range(10):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
@@ -524,21 +557,62 @@ def collection_scan_option(cla):
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                             else:
                                 break
-                            time.sleep(0.5)
+                            QTest.qWait(500)
 
-                    else:
+                    if v_.onCollection_rare == True:
+                        # 희귀까지체크하기
+                        for i in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 450, 460, 510, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_not_checked.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 450, 460, 510, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    click_pos_2(480, 480, cla)
+                                    time.sleep(0.5)
+                            QTest.qWait(500)
+
+                        for i in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(520, 450, 580, 510, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_not_checked.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(520, 450, 580, 510, cla, img, 0.7)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    click_pos_2(600, 480, cla)
+                                    time.sleep(0.5)
+                            QTest.qWait(500)
+
                         # 나머지 해제하기 1
                         for i in range(10):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\scan_option_checked.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(380, 450, 760, 510, cla, img, 0.75)
+                            imgs_ = imgs_set_(640, 450, 760, 510, cla, img, 0.75)
                             if imgs_ is not None and imgs_ != False:
                                 print("scan_option_checked : ", imgs_)
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
                             else:
                                 break
-                            time.sleep(0.5)
+                            QTest.qWait(500)
+
+
 
                     # 나머지 해제하기 2
                     for i in range(10):

@@ -46,6 +46,7 @@ onForceGoldSpot = "none"
 # 수집(아레스에서는 다크디멘션으로 대체)
 onTutoPotion = False
 onCollection = False
+onCollection_rare = False
 onCollection_boonhae = False
 onCollection_boonhae_rare = False
 

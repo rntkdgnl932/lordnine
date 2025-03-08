@@ -2349,7 +2349,7 @@ def get_post(cla):
                 clean_screen_start(cla)
 
             else:
-                menu_open_last(cla)
+
 
                 get_point = False
 
@@ -2362,6 +2362,9 @@ def get_post(cla):
                         break
 
                     else:
+
+                        menu_open_last(cla)
+
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

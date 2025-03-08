@@ -67,7 +67,7 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        collection_start(cla)
+        collection_scan_option(cla)
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_3.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
