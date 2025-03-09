@@ -594,6 +594,14 @@ def spot_in_ready(cla, where):
                                     if imgs_ is not None and imgs_ != False:
                                         print("jadong_confirm", imgs_)
                                         click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+                                        if imgs_ is not None and imgs_ != False:
+                                            print("dethland_2", imgs_)
+                                            break
 
                                 time.sleep(0.5)
 
@@ -1020,6 +1028,14 @@ def dethland_go(cla, data):
                     if result_loading == True:
                         is_loading = True
                         break
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            print("dethland_2", imgs_)
+                            break
                     time.sleep(0.5)
 
                 # 만약 바로 2층으로 안 넘어갈 경우
@@ -1044,6 +1060,14 @@ def dethland_go(cla, data):
                         if result_loading == True:
                             is_loading = True
                             break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+                            if imgs_ is not None and imgs_ != False:
+                                print("dethland_2", imgs_)
+                                break
                         time.sleep(0.5)
                 # 마지막 도착 점검
                 for i in range(10):
