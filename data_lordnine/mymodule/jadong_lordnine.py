@@ -1201,9 +1201,9 @@ def dethland_random_move(cla):
                     click_pos_2(410, 435, cla)
                 elif result_random_num == 2:
                     click_pos_2(455, 480, cla)
-                elif result_random_num == 2:
+                elif result_random_num == 3:
                     click_pos_2(530, 435, cla)
-                elif result_random_num == 2:
+                elif result_random_num == 4:
                     click_pos_2(530, 480, cla)
                 time.sleep(2)
                 click_pos_2(930, 55, cla)
@@ -1213,7 +1213,7 @@ def dethland_random_move(cla):
             result_out = out_check(cla)
             if result_out == True:
                 break
-            time.sleep(1)
+            QTest.qWait(1000)
 
 
     except Exception as e:
