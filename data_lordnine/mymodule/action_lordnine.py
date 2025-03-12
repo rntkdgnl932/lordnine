@@ -139,6 +139,29 @@ def confirm_all(cla):
         print(e)
 
 
+def cancle_all(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_reg
+    try:
+
+        is_cancle = False
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\cancle\\cancle_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(320, 540, 500, 680, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("cancle_1", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            is_cancle = True
+
+
+        return is_cancle
+
+    except Exception as e:
+        print(e)
 
 def out_check(cla):
     import numpy as np
@@ -929,6 +952,7 @@ def move_check(cla):
 
                 why = "이동 오류 있는 듯 하다."
                 line_to_me(cla, why)
+                attack_on(cla)
                 time.sleep(400)
 
             else:

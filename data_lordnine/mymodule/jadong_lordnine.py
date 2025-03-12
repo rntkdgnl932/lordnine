@@ -956,7 +956,7 @@ def dethland_go(cla, data):
     import os
 
     from function_game import imgs_set_, click_pos_2, click_pos_reg
-    from action_lordnine import out_check, loading_check, move_check, confirm_all, juljun_on
+    from action_lordnine import out_check, loading_check, move_check, confirm_all, cancle_all
     from clean_screen_lordnine import clean_screen_start
 
     try:
@@ -969,80 +969,68 @@ def dethland_go(cla, data):
             if world_count > 6:
                 world = True
 
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+            imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
-                print("worldmap", imgs_)
+                print("dethland_2", imgs_)
+                world = True
+            else:
 
-                if data == "2":
-                    print("2구역으로 가자자")
-                    y_reg_1 = 475
-                    y_reg_2 = 135
-
-                click_pos_2(120, y_reg_1, cla)
-                time.sleep(0.5)
-                click_pos_2(120, y_reg_1, cla)
-                time.sleep(0.5)
-                click_pos_2(800, y_reg_2, cla)
-                time.sleep(0.5)
-                click_pos_2(800, y_reg_2, cla)
-                time.sleep(0.5)
-
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\walking_btn.PNG"
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(700, 980, 920, 1030, cla, img, 0.85)
+                imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                 if imgs_ is not None and imgs_ != False:
-                    print("walking_btn", imgs_)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.2)
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
-                    time.sleep(0.2)
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
-                    if imgs_ is not None and imgs_ != False:
-                        click_pos_2(925, 50, cla)
+                    print("worldmap", imgs_)
 
-                for i in range(10):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
-                    if imgs_ is not None and imgs_ != False:
-                        click_pos_2(925, 50, cla)
-                    else:
-                        result_move = move_check(cla)
-                        if result_move == True:
-                            print("이동중")
-                            world = True
-                            break
+                    if data == "2":
+                        print("2구역으로 가주아앙")
+                        y_reg_1 = 475
+                        y_reg_2 = 135
+
+                    click_pos_2(120, y_reg_1, cla)
+                    time.sleep(0.5)
+                    click_pos_2(120, y_reg_1, cla)
+                    time.sleep(0.5)
+                    click_pos_2(800, y_reg_2, cla)
+                    time.sleep(0.5)
+                    click_pos_2(800, y_reg_2, cla)
                     time.sleep(0.5)
 
-                is_loading = False
-                for i in range(10):
-                    result_loading = loading_check(cla)
-                    if result_loading == True:
-                        is_loading = True
-                        break
-                    else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\walking_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(700, 980, 920, 1030, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        print("walking_btn", imgs_)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.2)
+                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(0.2)
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+                        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
-                            print("dethland_2", imgs_)
-                            break
-                    time.sleep(0.5)
+                            click_pos_2(925, 50, cla)
 
-                # 만약 바로 2층으로 안 넘어갈 경우
-                if is_loading == False:
-                    time.sleep(3)
-                    click_pos_2(100, 500, cla)
-                    time.sleep(2)
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            click_pos_2(925, 50, cla)
+                        else:
+                            result_move = move_check(cla)
+                            if result_move == True:
+                                print("이동중")
+                                world = True
+                                break
+                        time.sleep(0.5)
+
                     for i in range(10):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
@@ -1050,17 +1038,24 @@ def dethland_go(cla, data):
                         imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
                         if imgs_ is not None and imgs_ != False:
                             print("dethland_2", imgs_)
-                            break
-                        result_confirm = confirm_all(cla)
-                        if result_confirm == False:
-                            click_pos_2(655, 600, cla)
-                        time.sleep(1)
-                    for i in range(10):
-                        result_loading = loading_check(cla)
-                        if result_loading == True:
-                            is_loading = True
                             break
                         else:
+                            loading_check(cla)
+                        time.sleep(0.5)
+
+                    # 만약 바로 2층으로 안 넘어갈 경우
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+                    if imgs_ is not None and imgs_ != False:
+                        print("dethland_2", imgs_)
+                    else:
+                        time.sleep(3)
+                        click_pos_2(100, 500, cla)
+                        time.sleep(2)
+                        for i in range(10):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -1068,33 +1063,52 @@ def dethland_go(cla, data):
                             if imgs_ is not None and imgs_ != False:
                                 print("dethland_2", imgs_)
                                 break
-                        time.sleep(0.5)
-                # 마지막 도착 점검
-                for i in range(10):
-                    result_out = out_check(cla)
-                    if result_out == True:
-                        dethland_random_move(cla)
-                        break
-                    time.sleep(1)
-
-
-
-
-            else:
-                result_out = out_check(cla)
-                if result_out == True:
-                    click_pos_2(130, 170, cla)
+                            result_confirm = confirm_all(cla)
+                            if result_confirm == False:
+                                click_pos_2(655, 600, cla)
+                            time.sleep(1)
+                        for i in range(10):
+                            result_loading = loading_check(cla)
+                            if result_loading == True:
+                                is_loading = True
+                                break
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\jadong\\dethland_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(155, 105, 180, 135, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    print("dethland_2", imgs_)
+                                    break
+                            time.sleep(0.5)
+                    # 마지막 도착 점검
                     for i in range(10):
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
-                        if imgs_ is not None and imgs_ != False:
+                        result_out = out_check(cla)
+                        if result_out == True:
+                            dethland_random_move(cla)
                             break
-                        time.sleep(0.3)
+                        time.sleep(1)
+
+
+
 
                 else:
-                    clean_screen_start(cla)
+                    result_out = out_check(cla)
+                    if result_out == True:
+                        cancle_all(cla)
+                        time.sleep(0.5)
+                        click_pos_2(130, 170, cla)
+                        for i in range(10):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\worldmap.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                break
+                            time.sleep(0.3)
+
+                    else:
+                        clean_screen_start(cla)
             time.sleep(0.5)
 
 
