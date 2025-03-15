@@ -23,7 +23,7 @@ def go_test():
     from tuto_lordnine import way_check
     from action_lordnine import attack_on, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear, juljun_time_check, silhumsil_ganghwa
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
-    from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start, boonhae_option_rare
+    from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start
     from potion_lordnine import potion_buy_start, potion_check
     from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary, get_ganghwasuk_sohwan_start
 
@@ -67,7 +67,7 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        boonhae_option_rare(cla)
+        boonhae_option(cla, "rare")
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_option_title.PNG"
         img_array = np.fromfile(full_path, np.uint8)
