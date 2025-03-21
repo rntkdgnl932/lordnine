@@ -290,6 +290,7 @@ def game_ready(cla):
     from function_game import imgs_set_, click_pos_2, text_check_get, int_put_, click_pos_reg
     from action_lordnine import confirm_all
     from massenger import line_to_me
+    from clean_screen_lordnine import clean_screen_just_on_start
 
     try:
 
@@ -483,6 +484,8 @@ def game_ready(cla):
                 time.sleep(0.5)
 
             if detecter == True:
+                clean_screen_just_on_start(cla)
+
                 why = "자동 로그인 방지"
                 line_to_me(cla, why)
 
