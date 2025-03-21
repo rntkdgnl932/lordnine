@@ -67,7 +67,18 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        boonhae_option(cla, "rare")
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\detecter_login.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(380, 420, 600, 500, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("detecter_login", imgs_)
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\auto_login_prevention_title.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(380, 420, 600, 500, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("auto_login_prevention_title", imgs_)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\boonhae_option_title.PNG"
         img_array = np.fromfile(full_path, np.uint8)
