@@ -73,6 +73,7 @@ def go_test():
         imgs_ = imgs_set_(380, 420, 600, 500, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
             print("detecter_login", imgs_)
+            clean_screen_just_on_start(cla)
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\auto_login_prevention_title.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
