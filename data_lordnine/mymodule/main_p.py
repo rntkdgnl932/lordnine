@@ -180,10 +180,10 @@ class MyApp(QDialog):
         last_monitor_number = 0
         for idx, monitor in enumerate(monitors, start=1):
             last_monitor_number = idx
+        y_reg = 120
         if line_[1] == "super_coob":
-            x_reg = 960 * 3
-        elif line_[0] == "ccocco":
-            x_reg = 960 * 4
+            x_reg = 960 * 3 + 250
+            y_reg = 70
         elif last_monitor_number == 1:
             x_reg = 0
         elif last_monitor_number == 2:
@@ -191,7 +191,7 @@ class MyApp(QDialog):
         elif last_monitor_number == 3:
             x_reg = 960 * 2
 
-        self.setGeometry(10 + x_reg, 120, 900, 820)
+        self.setGeometry(10 + x_reg, y_reg, 900, 820)
         self.show()
     def my_title(self):
         self.setWindowTitle(v_.this_game + "(ver " + version + ")")
