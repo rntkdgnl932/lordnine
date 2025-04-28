@@ -29,6 +29,9 @@ def get_start(cla):
         get_upjuk(cla)
         get_monster_dogam(cla)
 
+        get_arena(cla)
+
+
         power_up_sungmool(cla)
 
         guild_start(cla)
@@ -442,7 +445,7 @@ def get_gold_sohwan(cla):
     import cv2
     import os
 
-    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from function_game import imgs_set_, click_pos_reg, click_pos_2, drag_pos
     from action_lordnine import menu_open, out_check
     from clean_screen_lordnine import clean_screen_start
 
@@ -551,17 +554,27 @@ def get_gold_sohwan(cla):
                 #######################
                 # 골드소환
                 for i in range(10):
+                    is_gold_btn = False
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
                     if imgs_ is not None and imgs_ != False:
+                        is_gold_btn = True
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn_2.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
+                        if imgs_ is not None and imgs_ != False:
+                            is_gold_btn = True
+                    if is_gold_btn == True:
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(190, 100, 340, 150, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\ganghwasuk_sohwan_btn.PNG"
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_sohwan_btn.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(190, 295, 340, 335, cla, img, 0.8)
@@ -574,6 +587,13 @@ def get_gold_sohwan(cla):
                                 imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
                                 if imgs_ is not None and imgs_ != False:
                                     click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn_2.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
 
                         else:
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
@@ -582,6 +602,13 @@ def get_gold_sohwan(cla):
                             imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
                             if imgs_ is not None and imgs_ != False:
                                 click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn_2.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
                     else:
                         # click_pos_2(150, 85, cla)
                         for g in range(10):
@@ -592,12 +619,19 @@ def get_gold_sohwan(cla):
                             if imgs_ is not None and imgs_ != False:
                                 break
                             else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\gyohwanso_btn.PNG"
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn_2.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(0, 70, 500, 110, cla, img, 0.8)
+                                imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
                                 if imgs_ is not None and imgs_ != False:
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    break
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\gyohwanso_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(0, 70, 500, 110, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
                             QTest.qWait(200)
                     time.sleep(0.5)
 
@@ -605,11 +639,42 @@ def get_gold_sohwan(cla):
                 # 200 ~ 350, 400 ~ 550
                 get_gold_sohwan_start(cla)
 
-                # 방어구 강화석 사기
+                # 아티팩트 소환하기
+                # 200 ~ 350, 400 ~ 550
+                get_artifact_sohwan_start(cla)
+
+                # 마지막으로 오른쪽에 있는 200만원짜리 사기
+                for i in range(5):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\talgut_box.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(760, 110, 840, 140, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sold_out.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 235, 860, 270, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("200만원은 품절")
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\talgut_box_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(370, 330, 480, 400, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(415, 615, cla)
+                                time.sleep(0.5)
+                                click_pos_2(570, 690, cla)
+                            else:
+                                click_pos_2(830, 215, cla)
+                    else:
+                        drag_pos(800, 300, 300, 300, cla)
+                    QTest.qWait(500)
+
+                # 강화석 사기
                 # 200 ~ 350, 400 ~ 550
                 get_ganghwasuk_sohwan_start(cla)
-
-
 
 
 
@@ -782,6 +847,169 @@ def get_gold_sohwan_start(cla):
         return 0
 
 
+def get_artifact_sohwan_start(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, drag_pos, click_pos_2, click_pos_reg
+    from action_lordnine import confirm_all, skip_start
+    from massenger import line_to_me
+
+    try:
+        print("get_artifact_sohwan_start")
+
+        sohwan = True
+        sohwan_count = 0
+
+        while sohwan is True:
+            sohwan_count += 1
+            if sohwan_count > 7:
+                sohwan = False
+
+            is_sohwan = False
+
+            for i in range(4):
+
+                # 무기 강화석 까지 사려면 x_1 =200, range(4), 방어구만 사려면 600, range(2)
+                x_1 = 200 + (i * 200)
+                x_2 = x_1 + 150
+                x_reg = (x_1 + x_2) / 2
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\moogi_level_not_enough.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_1, 360, x_2, 460, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print(str(i + 1) + "번째는 무기레벨 제한이다.")
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sold_out.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(x_1, 360, x_2, 460, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print(str(i + 1) + "번째는 품절")
+                    else:
+
+                        is_sohwan = True
+                        is_sold_out = False
+
+                        for c in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("artifact_title", imgs_)
+                                # 확인 누르고 그전에 푸시 있으면 푸시 하고...
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\clicked_sold_out.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(320, 500, 400, 600, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_sold_out = True
+                                break
+                            else:
+                                click_pos_2(x_1 + 50, 400, cla)
+                            time.sleep(0.5)
+                        if is_sold_out == True:
+
+                            for e in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_close.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(650, 340, 730, 400, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        break
+                                time.sleep(0.5)
+                            break
+                        else:
+
+                            for c in range(20):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    confirm_all(cla)
+                                else:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_exit_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_checked.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(0, 970, 50, 1040, cla, img, 0.85)
+                                        if imgs_ is not None and imgs_ != False:
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_exit_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.85)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                break
+                                        else:
+                                            for d in range(5):
+                                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_checked.PNG"
+                                                img_array = np.fromfile(full_path, np.uint8)
+                                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                imgs_ = imgs_set_(0, 970, 50, 1040, cla, img, 0.85)
+                                                if imgs_ is not None and imgs_ != False:
+                                                    break
+                                                else:
+                                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_not_checked.PNG"
+                                                    img_array = np.fromfile(full_path, np.uint8)
+                                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                                    imgs_ = imgs_set_(0, 970, 50, 1040, cla, img, 0.85)
+                                                    if imgs_ is not None and imgs_ != False:
+                                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                                time.sleep(0.7)
+                                    else:
+
+                                        skip_start(cla)
+
+                                time.sleep(1)
+
+                            for e in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_exit_btn.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                else:
+                                    break
+                                time.sleep(1)
+
+
+                            if is_sohwan == True:
+                                break
+
+                time.sleep(0.2)
+
+            if is_sohwan == False:
+                sohwan = False
+
+            time.sleep(0.5)
+
+
+
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
+
 def get_ganghwasuk_sohwan_start(cla):
     import numpy as np
     import cv2
@@ -803,10 +1031,103 @@ def get_ganghwasuk_sohwan_start(cla):
 
             is_sohwan = False
 
-            for i in range(4):
+            # 무기
+
+            for i in range(2):
 
                 # 무기 강화석 까지 사려면 x_1 =200, range(4), 방어구만 사려면 600, range(2)
-                x_1 = 200 + (i * 200)
+                x_1 = 350 + (i * 200)
+                x_2 = x_1 + 150
+                x_reg = (x_1 + x_2) / 2
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\moogi_level_not_enough.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(x_1, 170, x_2, 290, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print(str(i + 1) + "번째는 무기레벨 제한이다.")
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sold_out.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(x_1, 170, x_2, 290, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print(str(i + 1) + "번째는 품절")
+                    else:
+
+                        is_sohwan = True
+                        is_sold_out = False
+
+                        for c in range(5):
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\ganghwasuk_title.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                print("ganghwasuk_title", imgs_)
+                                # 확인 누르고 그전에 푸시 있으면 푸시 하고...
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\clicked_sold_out.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(320, 500, 400, 600, cla, img, 0.8)
+                                if imgs_ is not None and imgs_ != False:
+                                    is_sold_out = True
+                                break
+                            else:
+                                click_pos_2(x_1 + 50, 200, cla)
+                            time.sleep(0.5)
+                        if is_sold_out == True:
+
+                            for e in range(10):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\ganghwasuk_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\avatar_sohwan_close.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(650, 340, 730, 400, cla, img, 0.8)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        break
+                                time.sleep(0.5)
+                            break
+                        else:
+
+                            for c in range(20):
+                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\ganghwasuk_title.PNG"
+                                img_array = np.fromfile(full_path, np.uint8)
+                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                imgs_ = imgs_set_(400, 340, 540, 400, cla, img, 0.85)
+                                if imgs_ is not None and imgs_ != False:
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\max.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(370, 600, 450, 650, cla, img, 0.85)
+                                    if imgs_ is not None and imgs_ != False:
+                                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    else:
+                                        click_pos_2(415, 625, cla)
+                                    time.sleep(0.5)
+
+                                    confirm_all(cla)
+                                else:
+                                    break
+
+                                time.sleep(1)
+                            if is_sohwan == True:
+                                break
+
+                time.sleep(0.2)
+
+            # 방어구
+
+            for i in range(2):
+
+                # 무기 강화석 까지 사려면 x_1 =200, range(4), 방어구만 사려면 600, range(2)
+                x_1 = 350 + (i * 200)
                 x_2 = x_1 + 150
                 x_reg = (x_1 + x_2) / 2
 
@@ -897,34 +1218,7 @@ def get_ganghwasuk_sohwan_start(cla):
 
             time.sleep(0.5)
 
-        # 마지막으로 오른쪽에 있는 200만원짜리 사기
-        for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\talgut_box.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(760, 110, 840, 140, cla, img, 0.7)
-            if imgs_ is not None and imgs_ != False:
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sold_out.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(800, 235, 860, 270, cla, img, 0.7)
-                if imgs_ is not None and imgs_ != False:
-                    print("200만원은 품절")
-                    break
-                else:
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\talgut_box_title.PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(370, 330, 480, 400, cla, img, 0.7)
-                    if imgs_ is not None and imgs_ != False:
-                        click_pos_2(415, 615, cla)
-                        time.sleep(0.5)
-                        click_pos_2(570, 690, cla)
-                    else:
-                        click_pos_2(830, 215, cla)
-            else:
-                drag_pos(800, 300, 300, 300, cla)
-            QTest.qWait(500)
+
 
 
 
@@ -2158,7 +2452,7 @@ def get_battle_pass(cla):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\battke_pass_top_point_1.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(100, 70, 515, 110, cla, img, 0.7)
+                    imgs_ = imgs_set_(100, 70, 660, 110, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
                         click_pos_reg(imgs_.x, imgs_.y, cla)
                         time.sleep(1)
@@ -2393,6 +2687,132 @@ def get_post(cla):
         return 0
 
 
+def get_arena(cla):
+    import numpy as np
+    import cv2
+    import os
+
+    from function_game import imgs_set_, click_pos_reg, click_pos_2
+    from action_lordnine import menu_open_last
+    from clean_screen_lordnine import clean_screen_start
+
+    try:
+        print("get_arena")
+
+        reg_x = 730
+        reg_y = 345
+
+        x_1 = reg_x - 20
+        y_1 = reg_y - 20
+        x_2 = reg_x + 20
+        y_2 = reg_y + 20
+
+
+
+        post = False
+        post_count = 0
+
+        while post is False:
+            post_count += 1
+            if post_count > 6:
+                post = True
+
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\arena.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+            if imgs_ is not None and imgs_ != False:
+                print("arena", imgs_)
+
+
+
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(120, 65, 170, 170, cla, img, 0.7)
+                if imgs_ is not None and imgs_ != False:
+                    print("menu_point_1", imgs_)
+
+                    click_pos_reg(imgs_.x - 50, imgs_.y + 10, cla)
+                    time.sleep(0.3)
+                    click_pos_2(880, 190, cla)
+                    time.sleep(3)
+
+                    for i in range(10):
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\arena.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                        if imgs_ is not None and imgs_ != False:
+                            break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\touch_me.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(370, 690, 560, 760, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                        time.sleep(1)
+
+
+
+                else:
+                    post = True
+
+
+
+
+                # 마무리 나가기
+                clean_screen_start(cla)
+
+            else:
+
+
+                get_point = False
+
+                for i in range(10):
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\arena.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+
+                    else:
+
+                        menu_open_last(cla)
+
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+                        img_array = np.fromfile(full_path, np.uint8)
+                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                        imgs_ = imgs_set_(x_1, y_1, x_2, y_2, cla, img, 0.7)
+                        if imgs_ is not None and imgs_ != False:
+                            print("menu_point_1", imgs_)
+                            click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                            get_point = True
+                            QTest.qWait(500)
+
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(x_1, y_1, x_2, y_2, cla, img, 0.7)
+                            if imgs_ is not None and imgs_ != False:
+                                print("menu_point_2", imgs_)
+                                click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
+                                get_point = True
+                                QTest.qWait(500)
+                    QTest.qWait(500)
+                if get_point == False:
+                    post = True
+
+
+
+    except Exception as e:
+        print(e)
+        return 0
+
 def get_upjuk(cla):
     import numpy as np
     import cv2
@@ -2506,7 +2926,7 @@ def get_upjuk(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(860, 140, 905, 180, cla, img, 0.7)
+                        imgs_ = imgs_set_(910, 140, 950, 180, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             print("menu_point_1", imgs_)
                             click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
@@ -2515,7 +2935,7 @@ def get_upjuk(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(860, 140, 905, 180, cla, img, 0.7)
+                            imgs_ = imgs_set_(910, 140, 950, 180, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 print("menu_point_2", imgs_)
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
@@ -2637,7 +3057,7 @@ def get_monster_dogam(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(830, 200, 870, 240, cla, img, 0.7)
+                        imgs_ = imgs_set_(870, 200, 910, 240, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             print("menu_point_1", imgs_)
                             click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)
@@ -2646,7 +3066,7 @@ def get_monster_dogam(cla):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_2.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(830, 200, 870, 240, cla, img, 0.7)
+                            imgs_ = imgs_set_(870, 200, 910, 240, cla, img, 0.7)
                             if imgs_ is not None and imgs_ != False:
                                 print("menu_point_2", imgs_)
                                 click_pos_reg(imgs_.x - 20, imgs_.y + 20, cla)

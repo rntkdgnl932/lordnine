@@ -268,7 +268,7 @@ def guild_in(cla):
                         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\guild\\menu_guild.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(630, 250, 710, 360, cla, img, 0.7)
+                        imgs_ = imgs_set_(680, 250, 750, 360, cla, img, 0.7)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)

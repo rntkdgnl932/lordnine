@@ -25,7 +25,7 @@ def go_test():
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start
     from potion_lordnine import potion_buy_start, potion_check
-    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary, get_ganghwasuk_sohwan_start
+    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary, get_ganghwasuk_sohwan_start, get_arena
 
     from jadong_lordnine import jadong_start, spot_go, dethland_go
     from dead_die import dead_recorvery, dead_check
@@ -66,6 +66,16 @@ def go_test():
         nowHour = int(datetime.today().strftime("%H"))
 
         print("nowHour", nowHour)
+
+        get_arena(cla)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(120, 65, 170, 170, cla, img, 0.7)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_point_1", imgs_)
+
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\detecter_login.PNG"
         img_array = np.fromfile(full_path, np.uint8)
