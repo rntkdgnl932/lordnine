@@ -24,7 +24,7 @@ def go_test():
     from action_lordnine import attack_on, juljun_on, juljun_off, bag_open, juljun_check, confirm_all, go_maul, out_check, homoon_clear, juljun_time_check, silhumsil_ganghwa
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start
-    from potion_lordnine import potion_buy_start, potion_check
+    from potion_lordnine import potion_buy_start, potion_check, potion_setting
     from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary, get_ganghwasuk_sohwan_start, get_arena
 
     from jadong_lordnine import jadong_start, spot_go, dethland_go
@@ -67,7 +67,7 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        get_arena(cla)
+        potion_setting(cla)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)

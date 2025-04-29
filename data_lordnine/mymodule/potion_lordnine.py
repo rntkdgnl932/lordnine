@@ -475,30 +475,20 @@ def potion_setting(cla):
         click_pos_2(530, 400 + y_cal, cla)
         time.sleep(0.5)
 
-        # 드래그
-        for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\gamjung_title.PNG"
-            img_array = np.fromfile(full_path, np.uint8)
-            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(215, 580, 320, 620, cla, img, 0.95)
-            if imgs_ is not None and imgs_ != False:
-                print("감정주문서(귀속)", imgs_)
-            else:
-                drag_pos(740, 600, 740, 400, cla)
-            time.sleep(0.5)
+        # 드래그 이전
 
         for i in range(5):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(715, 365, 760, 405, cla, img, 0.95)
+            imgs_ = imgs_set_(715, 545, 760, 585, cla, img, 0.95)
             if imgs_ is not None and imgs_ != False:
                 print("속도증가주문서", imgs_)
                 break
             else:
-                click_pos_2(525, 385, cla)
+                click_pos_2(525, 565, cla)
                 time.sleep(0.5)
-                click_pos_2(615, 385, cla)
+                click_pos_2(615, 565, cla)
                 time.sleep(0.5)
             time.sleep(0.3)
 
@@ -506,9 +496,38 @@ def potion_setting(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(715, 600, 760, 630, cla, img, 0.95)
+            if imgs_ is not None and imgs_ != False:
+                print("무게게증가주문서", imgs_)
+                break
+            else:
+                click_pos_2(525, 620, cla)
+                time.sleep(0.5)
+                click_pos_2(615, 620, cla)
+                time.sleep(0.5)
+            time.sleep(0.3)
+
+        # 드래그
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\choochool_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(210, 575, 360, 620, cla, img, 0.95)
+            if imgs_ is not None and imgs_ != False:
+                print("추출주문서(캐릭터귀속)", imgs_)
+            else:
+                drag_pos(740, 600, 740, 400, cla)
+            time.sleep(0.5)
+
+
+
+        for i in range(5):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(715, 420, 760, 455, cla, img, 0.95)
             if imgs_ is not None and imgs_ != False:
-                print("무게증가주문서", imgs_)
+                print("회복증가주문서", imgs_)
                 break
             else:
                 click_pos_2(525, 440, cla)
@@ -517,13 +536,15 @@ def potion_setting(cla):
                 time.sleep(0.5)
             time.sleep(0.3)
 
+
+
         for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\20.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(715, 475, 760, 515, cla, img, 0.95)
+            imgs_ = imgs_set_(715, 475, 760, 510, cla, img, 0.95)
             if imgs_ is not None and imgs_ != False:
-                print("회복증가주문서", imgs_)
+                print("순간이동주문서", imgs_)
                 break
             else:
                 click_pos_2(525, 495, cla)
@@ -535,12 +556,12 @@ def potion_setting(cla):
 
 
         for i in range(5):
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\20.PNG"
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(715, 525, 760, 565, cla, img, 0.95)
             if imgs_ is not None and imgs_ != False:
-                print("순간이동주문서", imgs_)
+                print("감정주문서", imgs_)
                 break
             else:
                 click_pos_2(525, 550, cla)
@@ -549,15 +570,13 @@ def potion_setting(cla):
                 time.sleep(0.5)
             time.sleep(0.3)
 
-
-
         for i in range(5):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\potion\\100.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
             imgs_ = imgs_set_(715, 580, 760, 620, cla, img, 0.95)
             if imgs_ is not None and imgs_ != False:
-                print("감정주문서", imgs_)
+                print("추출주문서(캐릭터귀속)", imgs_)
                 break
             else:
                 click_pos_2(525, 605, cla)
