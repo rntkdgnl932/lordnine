@@ -1610,7 +1610,7 @@ def get_now_low_price(cla):
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\auction_num\\" + str(num_count) + ".PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.9)
+            imgs_ = imgs_set_reg(x_1, y_1, x_2, y_2, cla, img, 0.95)
             if imgs_ is not None and imgs_ != False:
                 print("is num...", str(num_count), imgs_)
                 #
