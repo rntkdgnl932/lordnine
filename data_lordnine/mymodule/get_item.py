@@ -2446,7 +2446,7 @@ def get_battle_pass(cla):
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(100, 70, 515, 110, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
-                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    click_pos_reg(imgs_.x - 20, imgs_.y + 5, cla)
 
                 for i in range(10):
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\battke_pass_top_point_1.PNG"
@@ -2454,7 +2454,7 @@ def get_battle_pass(cla):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(100, 70, 660, 110, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
+                        click_pos_reg(imgs_.x - 20, imgs_.y + 5, cla)
                         time.sleep(1)
                         click_pos_2(660, 475, cla)
                     else:
