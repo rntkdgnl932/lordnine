@@ -82,6 +82,15 @@ def confirm_all(cla):
                 print("move_confirm", imgs_)
                 click_pos_reg(imgs_.x, imgs_.y, cla)
                 is_confirm = True
+            else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\confirm\\modoobogi.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 30, 960, 1040, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    print("modoobogi", imgs_)
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                    is_confirm = True
         if is_confirm == False:
             # 감정
             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\gamjung_confirm.PNG"
