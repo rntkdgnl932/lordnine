@@ -330,8 +330,10 @@ def dun_in(cla, where):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(500, 70, 800, 110, cla, img, 0.9)
                         if imgs_ is not None and imgs_ != False:
+
+                            int_step = int(result_spot[2])
+
                             if result_spot[1] == "가르바나지하수로":
-                                int_step = int(result_spot[2])
                                 if int_step > 2:
                                     x_1 = 3
                                 else:
