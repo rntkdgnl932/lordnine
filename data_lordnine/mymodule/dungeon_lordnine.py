@@ -28,58 +28,58 @@ def dungeon_start(cla, where):
         result_spot = where.split("_")
 
         # 검은실험실
+        # if result_spot[1] == "검은실험실":
+        #     myQuest_play_add(cla, where)
+        # else:
+        # result_spot[1] => 던전종류
+        # resut_spot[2] => 층수
         if result_spot[1] == "검은실험실":
+            dun_name = "black"
+        elif result_spot[1] == "어둠의숲":
+            dun_name = "adoom"
+        elif result_spot[1] == "조각의숲": # 던전 없어짐...
+            dun_name = "jogag"
+        elif result_spot[1] == "타락한미궁":
+            dun_name = "talag"
+        elif result_spot[1] == "가르바나지하수로":
+            dun_name = "garbana"
+        elif result_spot[1] == "이벤트": # 눈꽃정원
+            dun_name = "event"
+        elif result_spot[1] == "수련의전당":
+            dun_name = "soolyun"
+
+        if result_spot[1] == "조각의숲":
             myQuest_play_add(cla, where)
         else:
-            # result_spot[1] => 던전종류류
-            # resut_spot[2] => 층수
-            if result_spot[1] == "검은실험실":
-                dun_name = "black"
-            elif result_spot[1] == "어둠의숲":
-                dun_name = "adoom"
-            elif result_spot[1] == "조각의숲": # 던전 없어짐...
-                dun_name = "jogag"
-            elif result_spot[1] == "타락한미궁":
-                dun_name = "talag"
-            elif result_spot[1] == "가르바나지하수로":
-                dun_name = "garbana"
-            elif result_spot[1] == "이벤트": # 눈꽃정원
-                dun_name = "event"
-            elif result_spot[1] == "수련의전당":
-                dun_name = "soolyun"
+            result_juljun = juljun_check(cla)
 
-            if result_spot[1] == "조각의숲":
-                myQuest_play_add(cla, where)
-            else:
-                result_juljun = juljun_check(cla)
+            if result_juljun == True:
 
-                if result_juljun == True:
+                juljun_time_check(cla)
 
-                    juljun_time_check(cla)
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\" + str(dun_name) + ".PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
 
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\" + str(dun_name) + ".PNG"
-                    img_array = np.fromfile(full_path, np.uint8)
-                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.8)
-                    if imgs_ is not None and imgs_ != False:
-
-                        result_juljun_attack = juljun_attack_check(cla)
-                        if result_juljun_attack == True:
+                    result_juljun_attack = juljun_attack_check(cla)
+                    if result_juljun_attack == True:
+                        potion_check(cla)
+                    else:
+                        if str(dun_name) == "soolyun":
                             potion_check(cla)
                         else:
-                            if str(dun_name) == "soolyun":
-                                potion_check(cla)
-                            else:
-                                if dun_name == "garbana":
-                                    garbana_move(cla)
-                                attack_on(cla)
-                    else:
-                        dun_in(cla, where)
+                            if dun_name == "garbana":
+                                garbana_move(cla)
+                            attack_on(cla)
                 else:
-                    result_dead = dead_check(cla)
-                    if result_dead == True:
-                        dead_recorvery(cla)
                     dun_in(cla, where)
+            else:
+                result_dead = dead_check(cla)
+                if result_dead == True:
+                    dead_recorvery(cla)
+                dun_in(cla, where)
 
     except Exception as e:
         print(e)
