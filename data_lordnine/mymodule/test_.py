@@ -29,7 +29,7 @@ def go_test():
 
     from jadong_lordnine import jadong_start, spot_go, dethland_go
     from dead_die import dead_recorvery, dead_check
-    from dungeon_lordnine import dun_in, garbana_move
+    from dungeon_lordnine import dun_in, garbana_move, step_select
     from power_up import power_up_sungmool
     from mission_lordnine import mission_get, mission_get_daily
     from guild_lordnine import guild_start
@@ -67,8 +67,12 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        auction_start(cla)
-
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\juljun_map\\black.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 850, 300, 950, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("menu_point_1", imgs_)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
