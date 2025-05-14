@@ -138,6 +138,24 @@ def clean_screen_just_on_start(cla):
             click_pos_reg(imgs_.x, imgs_.y, cla)
             time.sleep(0.5)
 
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\modoobogi.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 30, 960, 1040, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(0.5)
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\artifact_exit_btn.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(800, 970, 960, 1040, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(0.5)
+
+
+
     except Exception as e:
         print(e)
         return 0
