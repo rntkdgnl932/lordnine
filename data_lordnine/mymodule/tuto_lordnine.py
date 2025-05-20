@@ -393,6 +393,7 @@ def quest_checking(cla):
     from function_game import imgs_set_, click_pos_reg, click_pos_2
     from massenger import line_to_me
     from clean_screen_lordnine import clean_screen_just_on_start
+    from schedule import myQuest_play_add
 
     try:
 
@@ -705,6 +706,20 @@ def quest_checking(cla):
 
 
                 clean_screen_just_on_start(cla)
+
+        # 시련의탑
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\tower.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(800, 30, 960, 100, cla, img, 0.85)
+        if imgs_ is not None and imgs_ != False:
+            print("tower", imgs_)
+
+            clean_screen_just_on_start(cla)
+
+            myQuest_play_add(cla, "튜토육성")
+
+
 
         # tuto 임시 정지
 
