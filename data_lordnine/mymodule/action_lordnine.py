@@ -12,6 +12,7 @@ sys.path.append('C:/my_games/' + str(v_.game_folder) + '/' + str(v_.data_folder)
 
 
 
+
 def confirm_all(cla):
     import numpy as np
     import cv2
