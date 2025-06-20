@@ -329,8 +329,7 @@ def game_ready(cla):
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        click_pos_reg(imgs_.x, imgs_.y, cla)
-                        # click_pos_2(500, 200, cla)
+                        click_pos_2(500, 500, cla)
                         for i in range(10):
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\path_down_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
@@ -346,8 +345,7 @@ def game_ready(cla):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            # click_pos_2(500, 200, cla)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            click_pos_2(500, 500, cla)
                             for i in range(10):
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\path_down_title.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
@@ -409,8 +407,7 @@ def game_ready(cla):
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                         imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            # click_pos_2(500, 200, cla)
-                            click_pos_reg(imgs_.x, imgs_.y, cla)
+                            click_pos_2(500, 500, cla)
                             down = False
                         else:
                             full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start2.PNG"
@@ -418,8 +415,7 @@ def game_ready(cla):
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                # click_pos_2(500, 200, cla)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                click_pos_2(500, 500, cla)
                                 down = False
                             else:
                                 down_count += 1
@@ -454,17 +450,14 @@ def game_ready(cla):
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                             imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                # click_pos_2(500, 200, cla)
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                click_pos_2(500, 500, cla)
                             else:
                                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start2.PNG"
                                 img_array = np.fromfile(full_path, np.uint8)
                                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                                 imgs_ = imgs_set_(350, 900, 660, 1000, cla, img, 0.8)
                                 if imgs_ is not None and imgs_ != False:
-                                    # click_pos_reg(imgs_.x, imgs_.y, cla)
-                                    # click_pos_2(500, 200, cla)
-                                    click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    click_pos_2(500, 500, cla)
                         time.sleep(0.5)
 
         # 완전 바깥일 경우 일딴 들어가기
