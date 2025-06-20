@@ -502,37 +502,37 @@ def game_ready(cla):
                     time.sleep(0.2)
                 os.execl(sys.executable, sys.executable, *sys.argv)
 
-            else:
-                # 최근 접속
-                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_select_title.PNG"
-                img_array = np.fromfile(full_path, np.uint8)
-                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                imgs_ = imgs_set_(400, 300, 550, 400, cla, img, 0.8)
-                if imgs_ is not None and imgs_ != False:
+        else:
+            # 최근 접속
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_select_title.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(400, 300, 550, 400, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
 
-                    for i in range(10):
+                for i in range(10):
 
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\game_start_btn.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        break
+                    else:
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_select_join_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(600, 900, 920, 1030, cla, img, 0.8)
+                        imgs_ = imgs_set_(750, 400, 880, 450, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
-                            break
+                            click_pos_reg(imgs_.x, imgs_.y, cla)
                         else:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_select_join_btn.PNG"
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_select_title.PNG"
                             img_array = np.fromfile(full_path, np.uint8)
                             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(750, 400, 880, 450, cla, img, 0.8)
+                            imgs_ = imgs_set_(400, 300, 550, 400, cla, img, 0.8)
                             if imgs_ is not None and imgs_ != False:
-                                click_pos_reg(imgs_.x, imgs_.y, cla)
-                            else:
-                                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\server_select_title.PNG"
-                                img_array = np.fromfile(full_path, np.uint8)
-                                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                                imgs_ = imgs_set_(400, 300, 550, 400, cla, img, 0.8)
-                                if imgs_ is not None and imgs_ != False:
-                                    click_pos_2(350, 380, cla)
-                        time.sleep(0.5)
+                                click_pos_2(350, 380, cla)
+                    time.sleep(0.5)
 
 
             for i in range(10):
