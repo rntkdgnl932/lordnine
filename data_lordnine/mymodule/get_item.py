@@ -266,20 +266,33 @@ def get_event_click_des(cla, read_data, x_reg, y_reg, point_type):
         y_reg_2 = y_reg + 10
 
 
-        # delete :
+        # delete : 2
 
-        # 1 : 로드나인 9days 출석(ten)
+        # 1 : 로드나인 9days 출석(ten) o
 
-        # 2 : 엘드리히의룬연구소(2_six)
+        # 2 : 로드나인1주년특별출석(free) 2
 
-        # 3 : 로드나인데일리출석(free)
+        # 3 : 로드나인데일리출석(free) o
+
+        # 4 : 델리게온의1주년특별미션(free) 4
+
+        # 5 : 로웨인의1주년특별미션(free) 5
+
+        # 6 : 라엘의1주년특별미션(free) 6
+
+
+        # ? : 로드나인1주년특별출석(free) 2
+        # ? : 델리게온의1주년특별미션(free) 4
+        # ? : 로웨인의1주년특별미션(free) 5
+        # ? : 라엘의1주년특별미션(free) 6
+
 
 
         if read_data == "1":
             is_type = "ten"
-        elif read_data == "2":
+        elif read_data == "0":
             is_type = "2_six"
-        elif read_data == "3":
+        elif read_data == "3" or read_data == "2" or read_data == "4" or  read_data == "5" or read_data == "6":
             is_type = "free"
 
 
