@@ -43,7 +43,7 @@ def dungeon_start(cla, where):
                 dun_name = "talag"
             elif result_spot[1] == "가르바나지하수로":
                 dun_name = "garbana"
-            elif result_spot[1] == "이벤트": # 눈꽃정원
+            elif result_spot[1] == "이벤트": # 푸른빛해변
                 dun_name = "event"
             elif result_spot[1] == "수련의전당":
                 dun_name = "soolyun"

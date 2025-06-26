@@ -67,7 +67,12 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        get_event(cla)
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_click_title\\event.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(0, 100, 150, 950, cla, img, 0.8)
+        if imgs_ is not None and imgs_ != False:
+            print("dun : ", imgs_)
 
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_3.PNG"
