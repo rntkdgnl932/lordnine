@@ -175,7 +175,12 @@ def dun_in(cla, where):
                     # 124
                     y_reg = imgs_.y
 
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_1.PNG"
+                    if dun_name == "event":
+                        com_name = "dun_complete_e"
+                    else:
+                        com_name = "dun_complete_1"
+
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\" +str(com_name) + ".PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(205, y_reg + 51, 255, y_reg + 51 + 25, cla, img, 0.8)

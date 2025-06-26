@@ -74,6 +74,20 @@ def go_test():
         if imgs_ is not None and imgs_ != False:
             print("dun : ", imgs_)
 
+            y_reg = imgs_.y
+
+
+
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_e.PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(205, y_reg + 51, 255, y_reg + 51 + 25, cla, img, 0.8)
+            if imgs_ is not None and imgs_ != False:
+                print("dun_complete_1", imgs_)
+
+            else:
+                print("ㅜㅐㅜㅐㅜㅐㅜㅐ")
+
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_3.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
