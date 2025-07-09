@@ -25,7 +25,7 @@ def go_test():
     from clean_screen_lordnine import clean_screen_just_on_start, clean_screen_start
     from boonhae_collection import collection_scan_option, item_gamjung_start, col_boon_start, boonhae_option, boonhae_start
     from potion_lordnine import potion_buy_start, potion_check, potion_setting
-    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary, get_ganghwasuk_sohwan_start, get_arena
+    from get_item import get_start, get_event, get_battle_pass, get_gold_sohwan, get_diary, get_ganghwasuk_sohwan_start, get_arena, get_event_sohwan_start_2
 
     from jadong_lordnine import jadong_start, spot_go, dethland_go
     from dead_die import dead_recorvery, dead_check
@@ -67,27 +67,68 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_click_title\\event.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 100, 150, 950, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("dun : ", imgs_)
-
-            y_reg = imgs_.y
-
-
-
-            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_complete_e.PNG"
+        for i in range(10):
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\one_year\\one_year.PNG"
             img_array = np.fromfile(full_path, np.uint8)
             img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            imgs_ = imgs_set_(205, y_reg + 51, 255, y_reg + 51 + 25, cla, img, 0.8)
+            imgs_ = imgs_set_(170, 100, 770, 150, cla, img, 0.9)
             if imgs_ is not None and imgs_ != False:
-                print("dun_complete_1", imgs_)
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\one_year\\100gold.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(170, 260, 940, 310, cla, img, 0.8)
+                if imgs_ is not None and imgs_ != False:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\one_year\\one_year_end.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(800, 110, 910, 145, cla, img, 0.8)
+                    if imgs_ is not None and imgs_ != False:
+                        get_event_sohwan_start_2(cla)
+                        break
+                    else:
 
+                        drag_pos(880, 300, 280, 300, cla)
             else:
-                print("ㅜㅐㅜㅐㅜㅐㅜㅐ")
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\one_year\\one_year_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(0, 100, 170, 500, cla, img, 0.9)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_reg(imgs_.x, imgs_.y, cla)
 
+            time.sleep(0.5)
+
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(240, 370, 900, 750, cla, img, 0.7)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("menu_point_1", imgs_)
+        #
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\diary_get_point_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(240, 370, 900, 750, cla, img, 0.7)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("diary_get_point_1", imgs_)
+        #
+        # # 다른 2
+        #
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event_point_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(240, 370, 900, 750, cla, img, 0.7)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("event_point_1", imgs_)
+        #
+        # # 다른 3
+        #
+        # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\seven_point_1.PNG"
+        # img_array = np.fromfile(full_path, np.uint8)
+        # img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        # imgs_ = imgs_set_(240, 370, 900, 750, cla, img, 0.7)
+        # if imgs_ is not None and imgs_ != False:
+        #     print("seven_point_1", imgs_)
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\boonhae_collection\\plus_3.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
