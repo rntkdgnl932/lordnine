@@ -70,7 +70,7 @@ def go_test():
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\gamjung_1.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_for = imgs_set_for(170, 100, 400, y_reg - 20, cla, img, 0.9)
+        imgs_for = imgs_set_for(170, 100, 400, 900, cla, img, 0.9)
         if imgs_for is not None and imgs_for != False:
             print("gamjung_1", imgs_for)
 
