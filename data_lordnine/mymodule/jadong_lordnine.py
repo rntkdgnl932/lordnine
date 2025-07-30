@@ -960,7 +960,7 @@ def dethland_go(cla, data):
     from clean_screen_lordnine import clean_screen_start
 
     try:
-        print("spot_in", data)
+        print("dethland_go", data)
         world = False
         world_count = 0
 
@@ -985,10 +985,13 @@ def dethland_go(cla, data):
                 if imgs_ is not None and imgs_ != False:
                     print("worldmap", imgs_)
 
+                    y_reg_1 = 475
+                    y_reg_2 = 135
+
                     if data == "2":
                         print("2구역으로 가주아앙")
                         y_reg_1 = 475
-                        y_reg_2 = 135
+                        y_reg_2 = 170
 
                     click_pos_2(120, y_reg_1, cla)
                     time.sleep(0.5)
