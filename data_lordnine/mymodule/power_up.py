@@ -207,10 +207,10 @@ def power_up_sungmool(cla):
                     if imgs_ is not None and imgs_ != False:
                         break
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\power_up\\menu_sungmool.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\menu_sungmool.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(755, 200, 835, 280, cla, img, 0.7)
+                        imgs_ = imgs_set_(640, 30, 950, 500, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)

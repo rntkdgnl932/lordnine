@@ -186,10 +186,10 @@ def auction_start(cla):
                         break
 
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\menu_auction.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\menu_auction.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(680, 150, 750, 230, cla, img, 0.85)
+                        imgs_ = imgs_set_(640, 30, 950, 500, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
@@ -320,10 +320,10 @@ def auction_ready(cla):
                         break
 
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\menu_auction.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\menu_auction.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(680, 150, 750, 230, cla, img, 0.85)
+                        imgs_ = imgs_set_(640, 30, 950, 500, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
@@ -577,10 +577,10 @@ def auction_jangbi(cla):
                         break
 
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\menu_auction.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\menu_auction.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(680, 150, 750, 230, cla, img, 0.85)
+                        imgs_ = imgs_set_(640, 30, 950, 500, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
@@ -709,10 +709,10 @@ def auction_jangbi_new(cla):
                         break
 
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\menu_auction.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\menu_auction.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(680, 150, 750, 230, cla, img, 0.85)
+                        imgs_ = imgs_set_(640, 30, 950, 500, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
@@ -1130,10 +1130,10 @@ def auction_item(cla):
                         break
 
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\menu_auction.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\menu_auction.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(680, 150, 750, 230, cla, img, 0.85)
+                        imgs_ = imgs_set_(640, 30, 950, 500, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)
@@ -1323,10 +1323,10 @@ def auction_item_new(cla):
                         break
 
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\auction\\menu_auction.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\menu_auction.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(680, 150, 750, 230, cla, img, 0.85)
+                        imgs_ = imgs_set_(640, 30, 950, 500, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
                     time.sleep(0.5)

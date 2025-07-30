@@ -316,14 +316,27 @@ def game_ready(cla):
                 down = False
 
                 # 완전 바깥일 경우 일딴 들어가기(터치)
+
+                is_mark = False
+
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
                 img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                 imgs_ = imgs_set_(420, 820, 540, 940, cla, img, 0.7)
                 if imgs_ is not None and imgs_ != False:
                     print("lordnine_mark")
+                    is_mark = True
+                else:
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark2.PNG"
+                    img_array = np.fromfile(full_path, np.uint8)
+                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                    imgs_ = imgs_set_(420, 820, 540, 940, cla, img, 0.7)
+                    if imgs_ is not None and imgs_ != False:
+                        print("lordnine_mark2")
+                        is_mark = True
 
 
+                if is_mark == True:
                     full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\touch_to_start.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)

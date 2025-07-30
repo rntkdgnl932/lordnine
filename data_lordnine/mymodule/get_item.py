@@ -266,28 +266,28 @@ def get_event_click_des(cla, read_data, x_reg, y_reg, point_type):
         y_reg_2 = y_reg + 10
 
 
-        # delete : 2
+        # delete : 2 4 5 6 7
 
         # 1 : 로드나인 9days 출석(ten) o
 
-        # 2 : 로드나인1주년특별출석(free) o
+        # 2 : 로드나인데일리출석(free) o
 
-        # 3 : 로드나인데일리출석(free) o
+        # 3 :
 
-        # 4 : 델리게온의1주년특별미션(free) o
+        # 4 :
 
-        # 5 : 로웨인의1주년특별미션(free) o
+        # 5 :
 
-        # 6 : 라엘의1주년특별미션(free) o
+        # 6 :
 
-        # 7 : 1주년전설무기도전이벤트(3_six) 7
+        # 7 :
 
-        # 8 : 영웅아바타확정지급미션(free) 8
+        # 8 : 영웅아바타확정지급미션(free) o
 
 
-        # ? : 1주년전설무기도전이벤트(3_six) 7
-        # ? : 영웅아바타확정지급미션(free) 8
-        # ? :
+        # ? : 영웅아바타확정지급미션(free) 3
+        # ? : HOTSUMMER특별출석이벤트(free) 4
+        # ? : 라엘의특급미션(free) 5
         # ? :
 
 
@@ -297,10 +297,10 @@ def get_event_click_des(cla, read_data, x_reg, y_reg, point_type):
         elif read_data == "0":
             is_type = "2_six"
 
-        elif read_data == "7":
+        elif read_data == "0":
             is_type = "3_six"
 
-        elif read_data == "3" or read_data == "2" or read_data == "4" or  read_data == "5" or read_data == "6" or read_data == "8":
+        elif read_data == "2" or read_data == "3" or read_data == "4"  or read_data == "5" or read_data == "8":
             is_type = "free"
 
 
