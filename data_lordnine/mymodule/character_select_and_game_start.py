@@ -327,12 +327,12 @@ def game_ready(cla):
                     print("lordnine_mark")
                     is_mark = True
                 else:
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark2.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\character_select_and_game_start\\lordnine_mark_2.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
                     imgs_ = imgs_set_(420, 820, 540, 940, cla, img, 0.7)
                     if imgs_ is not None and imgs_ != False:
-                        print("lordnine_mark2")
+                        print("lordnine_mark_2")
                         is_mark = True
 
 
