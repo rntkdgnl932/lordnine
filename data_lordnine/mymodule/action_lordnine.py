@@ -932,7 +932,7 @@ def move_check(cla):
     import cv2
     import os
 
-    from function_game import imgs_set_, click_pos_reg
+    from function_game import imgs_set_, click_pos_2
     from massenger import line_to_me
     try:
 
@@ -966,6 +966,12 @@ def move_check(cla):
                 time.sleep(400)
 
             else:
+                full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\menu\\character_change_btn.PNG"
+                img_array = np.fromfile(full_path, np.uint8)
+                img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                imgs_ = imgs_set_(860, 890, 960, 1000, cla, img, 0.75)
+                if imgs_ is not None and imgs_ != False:
+                    click_pos_2(920, 55, cla)
 
                 full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\move\\move_1.PNG"
                 img_array = np.fromfile(full_path, np.uint8)
