@@ -69,19 +69,13 @@ def go_test():
 
         get_event(cla)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\gamjung_1.PNG"
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\week_mission.PNG"
         img_array = np.fromfile(full_path, np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_for = imgs_set_for(170, 100, 400, 900, cla, img, 0.9)
-        if imgs_for is not None and imgs_for != False:
-            print("gamjung_1", imgs_for)
-
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\gamjung_2.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(600, 60, 700, 110, cla, img, 0.8)
+        imgs_ = imgs_set_(0, 100, 50, 150, cla, img, 0.8)
         if imgs_ is not None and imgs_ != False:
-            print("gamjung_2", imgs_)
+            print("week_mission", imgs_)
+
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
         # img_array = np.fromfile(full_path, np.uint8)
