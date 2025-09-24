@@ -29,7 +29,7 @@ def go_test():
 
     from jadong_lordnine import jadong_start, spot_go, dethland_go
     from dead_die import dead_recorvery, dead_check
-    from dungeon_lordnine import dun_in, garbana_move, step_select
+    from dungeon_lordnine import dun_in, garbana_move, step_select, dungeon_start
     from power_up import power_up_sungmool
     from mission_lordnine import mission_get, mission_get_daily
     from guild_lordnine import guild_start
@@ -67,7 +67,9 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        get_event(cla)
+        for i in range(100):
+            dungeon_start(cla, "던전_타락한미궁_5")
+            time.sleep(5)
 
         full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\week_mission.PNG"
         img_array = np.fromfile(full_path, np.uint8)
