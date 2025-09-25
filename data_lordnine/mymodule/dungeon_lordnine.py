@@ -92,7 +92,7 @@ def dun_in(cla, where):
     import os
 
     from function_game import imgs_set_, click_pos_reg, click_pos_2
-    from action_lordnine import menu_open, out_check, loading_check, attack_on, juljun_on
+    from action_lordnine import menu_open, out_check, loading_check, attack_on, juljun_on, random_move
     from potion_lordnine import potion_buy_start
 
     from schedule import myQuest_play_add
@@ -307,6 +307,8 @@ def dun_in(cla, where):
                     # 가르바나 지하수로 일 경우 지도 체크 후 공격
                     if str(dun_name) == "garbana":
                         garbana_move(cla)
+
+                    random_move(cla)
                     attack_on(cla)
                     time.sleep(0.2)
                     juljun_on(cla)

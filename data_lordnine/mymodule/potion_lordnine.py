@@ -306,7 +306,10 @@ def potion_buy_start(cla):
 
         result_maul = go_maul(cla)
         if result_maul == True:
-            col_boon_start(cla)
+            if "던전" in result_schedule_:
+                print("")
+            else:
+                col_boon_start(cla)
 
 
 

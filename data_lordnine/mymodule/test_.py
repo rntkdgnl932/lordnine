@@ -67,16 +67,22 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        for i in range(100):
-            dungeon_start(cla, "던전_타락한미궁_5")
-            time.sleep(5)
+        for i in range(7):
+            x_1 = i+1
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_step\\top\\" + str(x_1) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(600, 70, 700, 110, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("top ", x_1, imgs_)
 
-        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\mission\\week_mission.PNG"
-        img_array = np.fromfile(full_path, np.uint8)
-        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        imgs_ = imgs_set_(0, 100, 50, 150, cla, img, 0.8)
-        if imgs_ is not None and imgs_ != False:
-            print("week_mission", imgs_)
+            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\dungeon\\dun_step\\bottom\\clicked\\" + str(
+                x_1) + ".PNG"
+            img_array = np.fromfile(full_path, np.uint8)
+            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+            imgs_ = imgs_set_(340, 740, 900, 850, cla, img, 0.9)
+            if imgs_ is not None and imgs_ != False:
+                print("bottom ", x_1, imgs_)
 
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"

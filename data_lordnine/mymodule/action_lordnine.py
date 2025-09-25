@@ -723,6 +723,31 @@ def menu_open(cla):
         print(e)
 
 
+def random_move(cla):
+    import numpy as np
+    import cv2
+
+    from function_game import imgs_set_, click_pos_2, click_pos_reg
+    from clean_screen_lordnine import clean_screen_start
+    from get_item import get_post
+    try:
+
+        print("random_move")
+
+        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\action\\random_move\\random_teleport.PNG"
+        img_array = np.fromfile(full_path, np.uint8)
+        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+        imgs_ = imgs_set_(540, 970, 620, 1040, cla, img, 0.75)
+        if imgs_ is not None and imgs_ != False:
+            print("random_teleport", imgs_)
+            click_pos_reg(imgs_.x, imgs_.y, cla)
+            time.sleep(5)
+
+
+    except Exception as e:
+        print(e)
+
+
 def menu_open_last(cla):
     import numpy as np
     import cv2
