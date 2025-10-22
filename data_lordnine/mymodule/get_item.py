@@ -266,26 +266,26 @@ def get_event_click_des(cla, read_data, x_reg, y_reg, point_type):
         y_reg_2 = y_reg + 10
 
 
-        # delete : 2 4 5 7
+        # delete :
 
         # 1 : 로드나인 9days 출석(ten) o
 
-        # 2 : 추석달맞이출석이벤트(free) 2
+        # 2 : 할로윈소환축제(free)
 
-        # 3 : 영웅아바타확정지급미션(free) o
+        # 3 :
 
         # 4 :
 
         # 5 :
 
-        # 6 : 라엘의특별출석(free) o
+        # 6 :
 
         # 7 :
 
         # 8 :
 
 
-        # ? : 추석달맞이출석이벤트(free) 2
+        # ? :
         # ? :
         # ? :
         # ? :
@@ -300,7 +300,7 @@ def get_event_click_des(cla, read_data, x_reg, y_reg, point_type):
         elif read_data == "0":
             is_type = "3_six"
 
-        elif read_data == "2" or read_data == "3" or read_data == "6"  or read_data == "0" or read_data == "0" or read_data == "0":
+        elif read_data == "2":
             is_type = "free"
 
 
@@ -628,37 +628,54 @@ def get_gold_sohwan(cla):
                 ########################################################################
 
                 #######################
-                # 1주년
+                # 이벤트
                 #######################
                 for i in range(10):
-                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\one_year\\one_year.PNG"
+                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\event\\life_hack.PNG"
                     img_array = np.fromfile(full_path, np.uint8)
                     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                    imgs_ = imgs_set_(170, 100, 770, 150, cla, img, 0.9)
+                    imgs_ = imgs_set_(600, 290, 730, 330, cla, img, 0.8)
                     if imgs_ is not None and imgs_ != False:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\one_year\\100gold.PNG"
-                        img_array = np.fromfile(full_path, np.uint8)
-                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(170, 260, 940, 310, cla, img, 0.8)
-                        if imgs_ is not None and imgs_ != False:
-                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\one_year\\one_year_end.PNG"
-                            img_array = np.fromfile(full_path, np.uint8)
-                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                            imgs_ = imgs_set_(800, 110, 910, 145, cla, img, 0.8)
-                            if imgs_ is not None and imgs_ != False:
-                                get_event_sohwan_start_2(cla)
-                                break
-                            else:
-
-
-                                drag_pos(880, 300, 280, 300, cla)
+                        get_event_sohwan_start_2(cla)
+                        break
                     else:
-                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\one_year\\one_year_btn.PNG"
+                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\event\\event_btn.PNG"
                         img_array = np.fromfile(full_path, np.uint8)
                         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-                        imgs_ = imgs_set_(0, 100, 170, 500, cla, img, 0.9)
+                        imgs_ = imgs_set_(0, 100, 170, 500, cla, img, 0.8)
                         if imgs_ is not None and imgs_ != False:
                             click_pos_reg(imgs_.x, imgs_.y, cla)
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\event\\event\\event_btn2.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(0, 100, 170, 500, cla, img, 0.8)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                            else:
+                                for g in range(10):
+                                    full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn.PNG"
+                                    img_array = np.fromfile(full_path, np.uint8)
+                                    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                    imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
+                                    if imgs_ is not None and imgs_ != False:
+                                        break
+                                    else:
+                                        full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\sangjum_gold_btn_2.PNG"
+                                        img_array = np.fromfile(full_path, np.uint8)
+                                        img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                        imgs_ = imgs_set_(0, 100, 70, 300, cla, img, 0.9)
+                                        if imgs_ is not None and imgs_ != False:
+                                            break
+                                        else:
+                                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\gyohwanso_btn.PNG"
+                                            img_array = np.fromfile(full_path, np.uint8)
+                                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                                            imgs_ = imgs_set_(0, 70, 500, 110, cla, img, 0.8)
+                                            if imgs_ is not None and imgs_ != False:
+                                                click_pos_reg(imgs_.x, imgs_.y, cla)
+                                    QTest.qWait(200)
+
 
 
                     time.sleep(0.5)
@@ -1933,7 +1950,7 @@ def get_event_sohwan_start_2(cla):
 
             for i in range(3):
 
-                x_1 = 400 + (i * 200)
+                x_1 = 170 + (i * 200)
                 x_2 = x_1 + 150
                 x_reg = (x_1 + x_2) / 2
 
@@ -2048,7 +2065,7 @@ def get_event_sohwan_start_2(cla):
 
             for i in range(3):
 
-                x_1 = 400 + (i * 200)
+                x_1 = 170 + (i * 200)
                 x_2 = x_1 + 150
                 x_reg = (x_1 + x_2) / 2
 
