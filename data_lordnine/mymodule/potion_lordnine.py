@@ -421,6 +421,14 @@ def potion_buy_start(cla):
                         imgs_ = imgs_set_(800, 30, 960, 80, cla, img, 0.85)
                         if imgs_ is not None and imgs_ != False:
                             break
+                        else:
+                            full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\title\\jangbi_sangin.PNG"
+                            img_array = np.fromfile(full_path, np.uint8)
+                            img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+                            imgs_ = imgs_set_(800, 30, 960, 80, cla, img, 0.85)
+                            if imgs_ is not None and imgs_ != False:
+                                click_pos_2(930, 50, cla)
+                                time.sleep(0.5)
                     time.sleep(0.3)
             time.sleep(0.5)
             QTest.qWait(100)
