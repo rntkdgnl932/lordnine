@@ -272,7 +272,7 @@ def get_event_click_des(cla, read_data, x_reg, y_reg, point_type):
 
         # 2 : 겨울맞이아티팩트소환이벤트(free)
 
-        # 3 :
+        # 3 : GOODBYE2025출석이벤트(free)
 
         # 4 :
 
@@ -300,7 +300,7 @@ def get_event_click_des(cla, read_data, x_reg, y_reg, point_type):
         elif read_data == "0":
             is_type = "3_six"
 
-        elif read_data == "2":
+        elif read_data == "2" or read_data == "3":
             is_type = "free"
 
 

@@ -67,7 +67,7 @@ def go_test():
 
         print("nowHour", nowHour)
 
-        get_gold_sohwan(cla)
+        get_event(cla)
 
 
         # full_path = "c:\\my_games\\lordnine\\data_lordnine\\imgs\\get_item\\menu_point_1.PNG"
